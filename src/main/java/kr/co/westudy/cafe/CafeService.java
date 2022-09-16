@@ -11,7 +11,12 @@ public class CafeService {
 
     public int write(CafeDTO dto) {
         int successCount = 0;
-        successCount = dao.write(dto);
+        successCount = dao.writecafe(dto);
+
+        if (successCount < 1) {
+            return successCount;
+        }
+        successCount = dao.writeroom(dto);
         return successCount;
     }// write
 }

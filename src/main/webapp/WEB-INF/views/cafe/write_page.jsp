@@ -108,6 +108,27 @@
                                         </td>
                                     </tr>
                                     <tr>
+                                        <th> 최대 인원 </th>
+                                        <td colspan="10">
+                                            <input type="text" id="max_people" name="max_people" maxlength="20" class="form-control">
+                                            <label for="max_people" id="max_people_label" class="write_label"></label>
+                                        </td>
+                                        </tr>
+                                        <tr>
+                                            <th> 시간당 가격 </th>
+                                            <td colspan="10">
+                                                <input type="text" id="price_hour" name="price_hour" maxlength="20" class="form-control">
+                                                <label for="price_hour" id="price_hour_label" class="write_label"></label>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th> 방 개수 </th>
+                                            <td colspan="10">
+                                                <input type="text" id="room_count" name="room_count" maxlength="20" class="form-control">
+                                                <label for="room_count" id="room_count_label" class="write_label"></label>
+                                            </td>
+                                        </tr>
+                                        <tr>
                                         <th> 카 페 주 소 </th>
                                         <td>
                                             <div class="form-inline">
@@ -224,10 +245,6 @@
                                     form.append("cafe_content1", CKEDITOR.instances.content.getData());
                                     form.append("cafe_content2", CKEDITOR.instances.content2.getData());
                                     form.append("cafe_content3", CKEDITOR.instances.content3.getData());
-                                    // 				form.append( "cafe_category", $('#cafe_category option:selected').val());
-                                    // 				form.append( "cafe_sweet", $('#cafe_sweet option:selected').val());
-                                    // 				form.append( "cafe_sour", $('#cafe_sour option:selected').val());
-                                    // 				form.append( "cafe_use", $('#cafe_use option:selected').val());
 
                                     $.ajax({
                                         type: "POST"

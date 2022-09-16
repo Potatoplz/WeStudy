@@ -69,10 +69,15 @@
 		</if>
 	</select> -->
 
-	<insert id="write" parameterType="kr.co.westudy.cafe.CafeDTO">
+	<insert id="writecafe" parameterType="kr.co.westudy.cafe.CafeDTO" useGeneratedKeys="true" keyProperty="cafe_id">
 		insert into cafe (cafe_name, post_code, cafe_addr1, cafe_addr2, open_time, close_time, cafe_img_name1, cafe_img_path1,
 		cafe_img_name2, cafe_img_path2, cafe_content1, cafe_content2, cafe_content3, cafe_category, cafe_oneline )
 		values (#{cafe_name}, #{post_code}, #{cafe_addr1}, #{cafe_addr2}, #{open_time}, #{close_time}, #{cafe_img_name1}, #{cafe_img_path1},
 		#{cafe_img_name2}, #{cafe_img_path2}, #{cafe_content1}, #{cafe_content2}, #{cafe_content3}, #{cafe_category}, #{cafe_oneline}  )
+	</insert>
+
+	<insert id="writeroom" parameterType="kr.co.westudy.cafe.CafeDTO" >
+		insert into room (cafe_id, max_people, price_hour, room_count)
+		values (#{cafe_id}, #{max_people}, #{price_hour}, #{room_count})
 	</insert>
 </mapper>

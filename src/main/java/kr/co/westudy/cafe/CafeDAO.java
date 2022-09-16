@@ -10,9 +10,15 @@ public class CafeDAO {
     @Autowired
     private SqlSession sqlSession;
 
-    public int write(CafeDTO dto) {
+    public int writecafe(CafeDTO dto) {
         int successCount = 0;
-        successCount = sqlSession.insert("CafeMapper.write", dto);
+        successCount = sqlSession.insert("CafeMapper.writecafe", dto);
+        return successCount;
+    }// write
+
+    public int writeroom(CafeDTO dto) {
+        int successCount = 0;
+        successCount = sqlSession.insert("CafeMapper.writeroom", dto);
         return successCount;
     }// write
 
