@@ -1,4 +1,4 @@
-package kr.co.westudy.dto;
+package kr.co.westudy.cafe;
 
 import org.springframework.web.multipart.MultipartFile;
 

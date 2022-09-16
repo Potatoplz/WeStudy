@@ -1,4 +1,4 @@
-package kr.co.westudy.controller;
+package kr.co.westudy.cafe;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -21,8 +21,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-import kr.co.westudy.dto.CafeDTO;
-import kr.co.westudy.service.CafeService;
+import kr.co.westudy.cafe.CafeDTO;
+import kr.co.westudy.cafe.CafeService;
 import lombok.extern.java.Log;
 
 @Log

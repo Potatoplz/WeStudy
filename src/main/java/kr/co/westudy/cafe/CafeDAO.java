@@ -1,10 +1,8 @@
-package kr.co.westudy.dao;
+package kr.co.westudy.cafe;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-
-import kr.co.westudy.dto.CafeDTO;
 
 @Repository
 public class CafeDAO {
