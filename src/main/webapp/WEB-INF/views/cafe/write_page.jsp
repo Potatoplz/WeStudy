@@ -48,7 +48,7 @@
                                         <th> 지역 </th>
                                         <td colspan="10">
                                             <select id="cafe_category" name="cafe_category">
-                                                <option value="kind" selected disabled hidden>구</option>
+                                                <option value="kind" selected disabled hidden>지역구</option>
                                                 <option value="강남구">강남구</option>
                                                 <option value="강동구">강동구</option>
                                                 <option value="강북구">강북구</option>
