@@ -222,8 +222,8 @@
 
                                     let form = new FormData(document.getElementById("write_form"));
                                     form.append("cafe_content1", CKEDITOR.instances.content.getData());
-                                    form.append("cafe_content2", CKEDITOR.instances.content.getData());
-                                    form.append("cafe_content3", CKEDITOR.instances.content.getData());
+                                    form.append("cafe_content2", CKEDITOR.instances.content2.getData());
+                                    form.append("cafe_content3", CKEDITOR.instances.content3.getData());
                                     // 				form.append( "cafe_category", $('#cafe_category option:selected').val());
                                     // 				form.append( "cafe_sweet", $('#cafe_sweet option:selected').val());
                                     // 				form.append( "cafe_sour", $('#cafe_sour option:selected').val());
