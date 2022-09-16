@@ -6,7 +6,7 @@
 <configuration>
 
 	<mappers>
-<!-- 		<mapper resource="META-INF/batch1-mapper.xml" /> -->
+		<mapper resource="META-INF/cafe-mapper.xml" />
 <!-- 		<mapper resource="META-INF/basket-mapper.xml" /> -->
 <!-- 		<mapper resource="META-INF/ckboard-mapper.xml" /> -->
 <!-- 		<mapper resource="META-INF/creditcard-mapper.xml" /> -->
