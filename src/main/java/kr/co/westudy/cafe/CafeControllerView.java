@@ -13,11 +13,17 @@ import lombok.extern.java.Log;
 @RequestMapping(value = "/cafe")
 public class CafeControllerView {
 	
-    @GetMapping(value = "/detail") //Get방식 @ReqeustMapping과 동일한 기능을 합니다. Post방식은 @PostMapping으로 사용.
-	public String detailList(Model model) {
-		log.info("detail"); //@Log 쓰고, log.info로 쓰면 됩니다.
-		return "/cafe/cafe_detail";// jsp file name
+    @GetMapping(value = "/list") //Get방식 @ReqeustMapping과 동일한 기능을 합니다. Post방식은 @PostMapping으로 사용.
+	public String list(Model model) {
+		log.info("list"); //@Log 쓰고, log.info로 쓰면 됩니다.
+		return "/cafe/cafe_list";// jsp file name
 	}//detailList
+    
+    @GetMapping(value = "/detail") //Get방식 @ReqeustMapping과 동일한 기능을 합니다. Post방식은 @PostMapping으로 사용.
+    public String detailList(Model model) {
+    	log.info("detail"); //@Log 쓰고, log.info로 쓰면 됩니다.
+    	return "/cafe/cafe_detail";// jsp file name
+    }//detailList
 	
     @GetMapping(value = "/write_page")
     public String writePage() {

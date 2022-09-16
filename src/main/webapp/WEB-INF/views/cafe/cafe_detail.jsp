@@ -277,6 +277,10 @@
 					<button id="date_time_btn" name="date_time_btn" class="btn btn-info float-left"> 날짜 및 시간 확정 </button>
 					</div>
 					<br>
+					<div class="clearfix">	
+					<button id="test_btn" name="test_btn" class="btn btn-info float-left"> 테스트 버튼 </button>
+					</div>
+					<br>
 					
                   <!-- 예약일시 -->
                   <b>예약 일시</b>

@@ -8,6 +8,7 @@ import java.io.PrintWriter;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
@@ -18,11 +19,13 @@ import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import kr.co.westudy.cafe.CafeDTO;
 import kr.co.westudy.cafe.CafeService;
+import kr.co.westudy.util.SearchDTO;
 import lombok.extern.java.Log;
 
 @Log
@@ -33,7 +36,16 @@ public class CafeController {
 
     @Autowired
     private CafeService service;
-
+    
+    //DB에서 카페 데이터 가져오기
+    @GetMapping( value = "/cafe_list")
+	public List<CafeDTO> list_cate( SearchDTO dto ) {
+		List<CafeDTO> list = null;
+		list = service.cafeList( dto ); //주종~상황별 속성 + limitNum 담은 dto
+		return list;// data 리턴
+	}//list_cate
+    
+    
     @PostMapping(value = "/insert")
     public void insert(CafeDTO dto, HttpSession session, PrintWriter out) throws IOException {
         log.info("cafe");
