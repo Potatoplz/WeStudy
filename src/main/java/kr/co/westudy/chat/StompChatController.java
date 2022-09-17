@@ -1,10 +1,12 @@
 package kr.co.westudy.chat;
 
 
+import java.text.DateFormat;
+import java.util.Date;
+
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Controller;
-
 
 import lombok.RequiredArgsConstructor;
 
@@ -19,7 +21,11 @@ public class StompChatController {
 	// "/pub/chat/enter"
 	@MessageMapping(value = "/chat/enter")
 	public void enter(ChatMessageDTO message) {
-		message.setMessage(message.getWriter() + "님이 채팅방에 참여하였습니다.");
+		/* 입장 메시지 */
+		Date date = new Date();
+		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.DATE_FIELD, DateFormat.DATE_FIELD);
+		String formattedDate = dateFormat.format(date);
+		message.setMessage(formattedDate + " " + "[" +message.getWriter() + "]" + " 님 입장");
 		template.convertAndSend("/sub/chat/room/" + message.getRoomId(), message);
 	}
 

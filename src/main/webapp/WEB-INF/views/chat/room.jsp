@@ -117,40 +117,41 @@ position: relative;}
                      var message = content.message;
                      var fullFilePath =content.fullFilePath;
                      var str = '';
-                     
+                     var date = new Date();
+             		 var dateInfo = date.getHours() + "시" + date.getMinutes() + "분";
+             		 
                       if(writer==username){ //보낸 메시지 #e8f1f3
-                   str =  "<ul style=' float:right;margin-left:50%; margin-right:2%;'>"
+                   str =  "<ul style=' float:right;margin-left:50%; margin-right:2%;'>"+ writer;
                          str += "<li class='left' style='float:right; padding-top: 40px;'>";
                          str += "<li style='background-color: #DBEFF4;  padding: 10px;'>" + message + "</li>";
-                         str += "  <span style='color=#926a9d;'>"+writer+"</span>"; 
+                         str += "  <span style='color=#926a9d; font-size:12px;'>" + dateInfo + "</span>"; 
                          str +="</ul>";   
                          $("#msgArea").append(str).stop().animate({ scrollTop: $('#msgArea')[0].scrollHeight }, 1000);
                        }
                        else{ //받은 메시지 #efefef
-                   str =  "<ul style=' float:left; margin-left:0%; margin-right:50%;'>"
+                   str =  "<ul style=' float:left; margin-left:0%; margin-right:50%;'>"+ writer;
                          str += "<li class='left' style='float:left; padding-top: 40px;'>";
                          str += "<li style='background-color: #eee;  padding: 10px;'>" + message + "</li>";
-                         str += "  <span style='color=#926a9d;'>"+writer+"</span>"; 
+                         str += "  <span style='color=#926a9d;'>"+ dateInfo +"</span>"; 
                          str +="</ul>";   
                          $("#msgArea").append(str).stop().animate({ scrollTop: $('#msgArea')[0].scrollHeight }, 1000);
                        }
                  });
 
                  //3. send(path, header, message)로 메세지를 보낼 수 있음
-//                 stomp.send('/pub/chat/enter', {}, JSON.stringify({roomId: roomId, sendId: username})) //입장 메시지
+                 stomp.send('/pub/chat/enter', {}, JSON.stringify({roomId: roomId, sendId: username})) //입장 메시지
               });
               $("#sendBtn").on("click", function(e){
-					send();
-					
+					sendmsg();
 				});
               
                 //엔터키 이벤트
 				$("#inputMsg").keyup(function() {
 					if (window.event.keyCode == 13) {
-						send();
+						sendmsg();
 					}
 				})
-				function send() {
+				function sendmsg() {
 					//유효성 검사(공백 입력시 전송 안함) 
 					if( $.trim( $("#inputMsg").val() ) == "" ){
 						$("#inputMsg_label").text("메시지를 입력 하세요.");
