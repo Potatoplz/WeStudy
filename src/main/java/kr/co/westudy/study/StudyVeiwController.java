@@ -16,7 +16,7 @@ public class StudyVeiwController {
 		return "/study/study_list";
 	}//list
 	
-	@GetMapping("/study_recruit")
+	@GetMapping("/recruit")
 	public String recruit() {
 		log.info("스터디 등록");
 		return "/study/study_recruit";

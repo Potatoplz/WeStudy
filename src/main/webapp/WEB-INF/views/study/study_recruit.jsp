@@ -106,7 +106,7 @@
 			<button class="btn btn-warning"> 취소 </button>
 		</a>
 		<hr>
-	<%@ include file="/WEB-INF/views/footer.jsp" %>
+<%-- 	<%@ include file="/WEB-INF/views/footer.jsp" %> --%>
 
 	<script type="text/javascript">
 	let onlyNum = /^[0-9]+$/;
