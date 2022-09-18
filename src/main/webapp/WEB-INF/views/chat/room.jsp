@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,9 +14,6 @@
 
 <!-- CSS -->
 <style type="text/css">
-li {
-list-style:none;
-}
 .container{
 max-width:800px; 
 margin:auto;
@@ -61,6 +60,52 @@ position: relative;}
 	font-size:12px;
 	color : #1187CF;
 }
+
+li{
+list-style:none;
+}
+/* 받은 메시지 */
+#incoming {
+margin-left:2%; 
+margin-right:2%;
+width:40%;
+}
+#incoming li {
+list-style:none;
+/* float:right;  */
+margin-top:-2%;
+background-color: #eee;
+padding: 10px;
+
+}
+#incoming span{
+color=#926a9d; font-size:12px;
+}
+#incoming p{
+font-size:17px;
+}
+
+/* 보낸 메시지 */
+#outcoming {
+float:right;
+margin-left:20%; 
+margin-right:2%;
+width:43%;
+}
+#outcoming li {
+list-style:none;
+margin-top:-2%;
+background-color: #DBEFF4;
+padding: 10px;
+}
+#outcoming span{
+color=#926a9d; 
+font-size:12px;
+}
+#outcoming p{
+font-size:17px;
+}
+
 </style>
 </head>
 
@@ -95,14 +140,11 @@ position: relative;}
            	<!-- 메시지 창 -->
 	            <div class="messaging">
 		            <div class="chatcontent" id="msgArea">
-			    			
-			  		 <ul id="msgul">
-	              	   <li id="msgli"></li>
-	                 </ul>
-			    
+							<div id="incoming"></div>		
+							<div id="outcoming"></div>		
 			        </div>
 		        </div>
-	        
+		        
              <!-- 입력 창 -->
                 <div class="type_msg">
                     <div class="input_msg_write">
@@ -124,7 +166,8 @@ position: relative;}
               var roomName = '${room.roomName}';
               var roomId = '${room.roomId}';
               var username = '${login_info.mid}';
-              
+              var date = new Date();
+      		  var dateInfo = date.getMonth() + 1 + "/" + date.getDate() + " "+ date.getHours() + "시 " + date.getMinutes() + "분";
               console.log(roomName + ", " + roomId + ", " + username);
 
               var sockJs = new SockJS("/stomp/chat");
@@ -145,8 +188,7 @@ position: relative;}
                      var message = content.message;
                      var fullFilePath =content.fullFilePath;
                      var str = '';
-                     var date = new Date();
-             		 var dateInfo = date.getMonth() + 1 + "/" + date.getDate() + " "+ date.getHours() + "시 " + date.getMinutes() + "분";
+                     
              		 
                       if(writer==username){ //보낸 메시지 #e8f1f3
                    str =  "<ul style=' float:right;margin-left:50%; margin-right:2%;'>"+ writer;
@@ -154,7 +196,6 @@ position: relative;}
                          str += "<li style='background-color: #DBEFF4;  padding: 10px;'>" + message + "</li>";
                          str += "  <span style='color=#926a9d; font-size:12px;'>" + dateInfo + "</span>"; 
                          str +="</ul>";   
-                         $("#msgArea").append(str).stop().animate({ scrollTop: $('#msgArea')[0].scrollHeight }, 1000);
                        }
                        else{ //받은 메시지 #efefef
                    str =  "<ul style=' float:left; margin-left:0%; margin-right:50%;'>"+ writer;
@@ -162,8 +203,8 @@ position: relative;}
                          str += "<li style='background-color: #eee;  padding: 10px;'>" + message + "</li>";
                          str += "  <span style='color=#926a9d; font-size:12px;float:right;'>"+ dateInfo +"</span>"; 
                          str +="</ul>";   
-                         $("#msgArea").append(str).stop().animate({ scrollTop: $('#msgArea')[0].scrollHeight }, 1000);
                        }
+                         $("#msgArea").append(str).stop().animate({ scrollTop: $('#msgArea')[0].scrollHeight }, 1000);
                  });
                  
                  //3. send(path, header, message)로 메세지를 보낼 수 있음
@@ -197,29 +238,47 @@ position: relative;}
 	                        roomId: roomId
 							, sendId: username
 							, message: msg.value
-							, datetime: Date.now()
+							, datetime: dateInfo
 	                  }));
 	                  
 	                  firebase.database().ref("chat/rooms/" + roomId).push({
 	                	  roomId: roomId
 	                	  , message: msg.value
 	                	  , sendId: username
-	                	  , time : Date.now()
+	                	  , datetime : dateInfo
 	            	  });
 	                  msg.value = ''; //메시지 발송 후 채팅창 비워줌
 				}
                   
-                /* 이전 대화 목록 - 화면 수정 해야 함. */  
-				function addMsgToList(msg, id){
-					var ul = document.getElementById("msgul");
-					var _msg = document.createElement("li");
-					var _id = document.createElement("li");
-					
-					_msg.innerHTML = "메시지 : " + msg;
-					_id.innerHTML = "아이디 : " + id;
-					
-					ul.appendChild(_msg);
-					ul.appendChild(_id);
+                /* 이전 대화 목록 - 화면 수정 완료 */  
+				function addMsgToList(msg, id, dateInfo){
+                	if(username !== id){ //받은 메시지
+						var inMsg = document.getElementById("incoming");
+						var _id = document.createElement("p"); 
+						var _msg = document.createElement("li");
+						var _dateInfo = document.createElement("span");
+						
+						_id.innerHTML = id;
+						_msg.innerHTML = msg;
+						_dateInfo.innerHTML = dateInfo;
+						
+						inMsg.appendChild(_id); 
+						inMsg.appendChild(_msg); 
+						inMsg.appendChild(_dateInfo);
+                	} else { //보낸 메시지
+                		var outMsg = document.getElementById("outcoming");
+    					var _id = document.createElement("p"); 
+    					var _msg = document.createElement("li");
+    					var _dateInfo = document.createElement("span");
+    					
+    					_id.innerHTML = id;
+    					_msg.innerHTML = msg; 
+    					_dateInfo.innerHTML = dateInfo;
+    					
+    					outMsg.appendChild(_id); 
+    					outMsg.appendChild(_msg);
+    					outMsg.appendChild(_dateInfo);
+                	}
 				}
 
                 function getData() {
@@ -230,8 +289,9 @@ position: relative;}
                 			snapshot.forEach(function(ChildSnapshot){
                 				var msg = ChildSnapshot.val().message;
                 				var id = ChildSnapshot.val().sendId;
-                				addMsgToList(msg, id);
-                				console.log("----------" + msg, id);
+                				var dateInfo = ChildSnapshot.val().datetime;
+                				addMsgToList(msg, id, dateInfo);
+                				console.log("----------" + msg, id, dateInfo);
 //                				document.getElementById("data").innerHTML= msg + id;
                 			});
                 	});
