@@ -34,6 +34,7 @@
             .img-box:hover img {
               transform: scale(1.2);
               transition: .3s;
+              
             }
 
             /* 마우스 오버시 커서모양 변경 */
@@ -51,6 +52,7 @@
               margin-bottom: 10px;
               transition: all 0.2s linear;
             }
+
 
             /* 상품명 */
             h5 {
@@ -186,15 +188,45 @@
                 //alert(JSON.stringify (data)); //데이터 확인용
                 $.each(data, function (index, dto) {
                   $("#cafe_test").append(
+				
+               		"<td>"	 
+                    	+ "<div class='img-box'>"
+ 		                  	//<a href="${pageContext.request.contextPath}/md/detail?md_id=${md.md_id}">
+ 		                      	//+ "<img src=" + dto.cafe_img_path1 + "style='width:250px;' >"
+ 		                      	+ "<img src=" + dto.cafe_img_path1 + ">"
+ 		                    //</a>
+ 		                + "</div>"
 
-                          	"<img src=" + dto.cafe_img_path1 + ">"
-                          	
-                          	 //+ "<img src=' + "dto.cafe_img_path1" + ' alt=''>"
-                          	 + "<br>"
-                          	+ dto.cafe_img_path1
-                        
+                		   
+ 		               + "<div class='product-item'>"
+	                    //<input type=hidden id="md_id" value="${md.md_id}">
+	                    
+	                    //<a href="${pageContext.request.contextPath}/md/detail?md_id=${md.md_id}">
+	                     + "<h5>" +"["+ dto.cafe_category+ "]"+ "  "+  dto.cafe_name + "</h5>"
+	                   // </a>
+ 		                
+	                     + "<a>"
+	                      + "<h6>" + dto.cafe_oneline + "</h6>"
+	                  	 + "</a>"
+	                    
+	                    +"<h6>"
+		                    +"<del>"
+		                        //<fmt:formatNumber value="${md.md_price}" pattern="#,###" />원
+		                   +"</del>"
+		                +"</h6>"
+		                
+	                   	+"<h6>"
+	                    	+ "<b>"
+	                        	//<fmt:formatNumber value="${md.sale_price}" pattern="#,###" />원
+	                      	+ "</b>"
+	                    +"</h6>"
+ 		                
+                		   
+                		   
+                		   
+ 		               + "</div>"		   
                       
-
+                + 	"</td>"
                   );//append
 
 
