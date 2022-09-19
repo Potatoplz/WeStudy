@@ -17,4 +17,9 @@
 		insert into chatroom (study_id, roomId, roomName)
 		values (#{study_id}, #{roomId}, #{roomName})
 	</insert>
+	
+	<select id="list" resultType="kr.co.westudy.study.StudyDTO">
+		select study_id,study_team, study_name, study_type, recruit_cnt, study_onoff, study_city, view_cnt, 
+				start_date, end_date, study_content, study_writedate, closed_ok, dead_ok, member_id  from study_recruit
+	</select>
 </mapper>

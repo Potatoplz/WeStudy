@@ -1,5 +1,7 @@
 package kr.co.westudy.study;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -21,4 +23,9 @@ public class StudyDAO {
 		successCount = sqlSession.insert("StudyMapper.chatroom", dto);
 		return successCount;
 	}//chatroom
+
+	public List<StudyDTO> list(StudyDTO dto) {
+		List<StudyDTO> list = sqlSession.selectList("StudyMapper.list", dto);
+		return null;
+	}
 }

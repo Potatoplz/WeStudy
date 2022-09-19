@@ -1,5 +1,7 @@
 package kr.co.westudy.study;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,4 +22,9 @@ public class StudyService {
 		successCount = dao.chatroom(dto);
 		return successCount;		
 	}//recruit
+
+	public List<StudyDTO> list(StudyDTO dto) {
+		List<StudyDTO> list = dao.list(dto);
+		return list;
+	}//list
 }
