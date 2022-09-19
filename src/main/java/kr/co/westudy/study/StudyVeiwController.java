@@ -11,14 +11,13 @@ import lombok.extern.java.Log;
 @RequestMapping(value = "/study")
 public class StudyVeiwController {
 	
-	@GetMapping("")
+	@GetMapping("/list")
 	public String list() {
 		return "/study/study_list";
 	}//list
 	
 	@GetMapping("/recruit")
 	public String recruit() {
-		log.info("스터디 등록");
 		return "/study/study_recruit";
 	}//recruit
 	

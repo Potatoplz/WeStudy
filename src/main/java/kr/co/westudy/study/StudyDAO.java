@@ -15,4 +15,10 @@ public class StudyDAO {
 		successCount = sqlSession.insert("StudyMapper.recruit", dto);
 		return successCount;
 	}//recruit
+
+	public int chatroom(StudyDTO dto) {
+		int successCount = 0;
+		successCount = sqlSession.insert("StudyMapper.chatroom", dto);
+		return successCount;
+	}//chatroom
 }

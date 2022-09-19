@@ -26,10 +26,10 @@ public class StudyRestController {
 		dto.setMember_id(((MemberDTO) session.getAttribute("login_info")).getMember_id());
 		int successCount = 0;
 		service.recruit(dto);
+		
 		out.print(successCount);
+		System.out.println(successCount);
 		out.close();
-	}
-	
-
+	}//recruit
 	
 }
