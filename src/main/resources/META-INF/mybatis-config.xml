@@ -7,6 +7,9 @@
 
 	<mappers>
 		<mapper resource="META-INF/cafe-mapper.xml" />
+		<mapper resource="META-INF/join-mapper.xml" /> 
+		<mapper resource="META-INF/login-mapper.xml" />
+		<mapper resource="META-INF/calendar-mapper.xml" />
 <!-- 		<mapper resource="META-INF/basket-mapper.xml" /> -->
 <!-- 		<mapper resource="META-INF/ckboard-mapper.xml" /> -->
 <!-- 		<mapper resource="META-INF/creditcard-mapper.xml" /> -->

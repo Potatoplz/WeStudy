@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="LoginMapper">
+	
+	<select id="naver_login" parameterType="kr.co.westudy.util.dto.Naver_MemberDTO" resultType="kr.co.westudy.util.dto.MemberDTO">
+	select *
+	from member
+	where member_phone = #{mobile} and member_email = #{email} and join_route = #{join_route}
+	</select>
+	
+	<select id="kakao_login" parameterType="kr.co.westudy.util.dto.Kakao_MemberDTO" resultType="kr.co.westudy.util.dto.MemberDTO">
+	select *
+	from member
+	where member_email = #{email} and join_route = #{join_route}
+	</select>
+	
+	<select id="email_login" parameterType="kr.co.westudy.util.dto.Kakao_MemberDTO" resultType="kr.co.westudy.util.dto.MemberDTO">
+	select *
+	from member
+	where member_email = #{member_email} and member_pwd = #{member_pwd}
+	</select>
+	
+	<select id="emailCheck" parameterType="java.lang.String" resultType="java.lang.String">
+	select join_route
+	from member
+	where member_email = #{member_email} 
+	</select>
+	
+	<select id="member_profile" parameterType="java.lang.String" resultType="kr.co.westudy.util.dto.MemberDTO">
+	select member_id, member_nick, member_email, member_pwd, email_agree, sms_agree, join_route, member_phone
+	from member
+	where member_email = #{member_email} 
+	</select>
+	
+</mapper>
