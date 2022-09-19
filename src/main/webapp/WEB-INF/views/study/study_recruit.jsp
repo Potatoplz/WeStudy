@@ -52,7 +52,7 @@
 						</td>
 						<th> 모집 인원 </th>
 						<td>
-							<input type="number" class="form-control">
+							<input type="number" class="form-control" id="recruit_cnt">
 						</td>
 					</tr>
 					<tr>
@@ -74,11 +74,11 @@
 					<tr>
 						<th> 시작 예정일 </th>
 						<td>
-							<div><input type="date" name="std_start" min="2019-01-01" max="2025-01-01"></div>
+							<div><input type="date" id="std_start" name="std_start" min="2019-01-01" max="2025-01-01"></div>
 						</td>
 						<th> 종료 예정일 </th>
 						<td>
-							<div><input type="date" name="std_end" min="2019-01-01" max="2025-01-01"></div>
+							<div><input type="date" id="std_end" name="std_end" min="2019-01-01" max="2025-01-01"></div>
 						</td>
 						
 					</tr>
@@ -86,9 +86,10 @@
 					<tr>
 						<th> 스터디 소개 </th>
 						<td colspan="3">
-							<textarea class="form-contol" id="desc_txt" name="desc_txt"></textarea>
-							<script type="text/javascript">
-							CKEDITOR.replace("desc_txt");
+							<textarea class="form-contol" id="contents" name="contents"></textarea>
+							<script type="text/javascript
+							">
+							CKEDITOR.replace("contents");
 							</script>
 						</td>
 					</tr>
@@ -102,47 +103,45 @@
 			</table>
 		</form>
 		<button id="write_btn" class="btn btn-primary float-right"> 등록 </button>
-		<a href="${pageContext.request.contextPath}/product/list">
+		<a href="${pageContext.request.contextPath}/study/list">
 			<button class="btn btn-warning"> 취소 </button>
 		</a>
 		<hr>
 <%-- 	<%@ include file="/WEB-INF/views/footer.jsp" %> --%>
 
 	<script type="text/javascript">
-	let onlyNum = /^[0-9]+$/;
-
 	$(document).ready(function() {
 		$("#write_btn").click(function() {
 
-			let form = new FormData( document.getElementById( "write_form" ) );
-			form.append( "description", CKEDITOR.instances.desc_txt.getData() );
-
-			let keys = form.keys();
-			for(key of keys) console.log(key);
-
-			let values = form.values();
-			for(value of values) console.log(value);
-
-			$.ajax({
-					type : "POST"
-					, encType : "multipart/form-data"
-					, url : "${pageContext.request.contextPath}/product/insert"
-					, data : form
-					, processData : false
-					, contentType : false
-					, cache : false
-					, success : function(result) {
-						alert("상품이 등록 되었습니다.");
-						location.href = "${pageContext.request.contextPath}/product/list";
+			$.post(
+					"${pageContext.request.contextPath}/study_rest/"
+					, {
+						study_name : $("#title").val()
+						, study_content : CKEDITOR.instances.contents.getData()
+						, study_team : $("#teamname").val()
+						, study_type : $("#category").val()
+						, study_onoff : $("#onoff").val()
+						, study_city : $("#place").val()
+						, recruit_cnt : $("#recruit_cnt").val()
+						, start_date : $("#std_start").val()
+						, end_date : $("#std_end").val()
+						
+					}
+					, function(data, status) {
+						if(data >= 1){
+							alert("게시글이 성공적으로 업로드 되었습니다.");
+							location.href="${pageContext.request.contextPath}/recruit";
+						} else if(data <= 0){
+							alert("게시글 작성을 실패 하였습니다.");
+						} else {
+							alert("잠시 후 다시 시도해 주세요.");
+						}
 					}//call back function
-					, error : function(xhr) {
-						alert("잠시 후 다시 시도해 주세요.");
-					}//call back function//xhr : xml http request/response
-			});//ajax
-
+			);//post
 		});//click
 	});//ready
 	</script>
+	
 
 	</body>
 </html>

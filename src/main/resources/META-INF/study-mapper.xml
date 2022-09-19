@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="StudyMapper">
+
+	<insert id="recruit" parameterType="kr.co.westudy.study.StudyDTO" useGeneratedKeys="true" keyProperty="study_id">
+		insert into study_recruit (study_team, study_name, study_type, recruit_cnt, study_onoff, study_city, view_cnt,
+									start_date, end_date, study_content, study_writedate, closed_ok, dead_ok, member_id)
+		values (#{study_team}, #{study_name}, #{study_type}, #{recruit_cnt}, #{study_onoff}, #{study_city}, 0,
+				#{start_date}, #{end_date}, #{study_content}, now(), #{closed_ok}, #{dead_ok}, #{member_id})
+	</insert>
+
+	<!-- 스터디 등록시 채팅룸 자동 생성 -->
+	<insert id="chatroom" parameterType="kr.co.westudy.study.StudyDTO" >
+		insert into chatroom (study_id, roomId, roomName)
+		values (#{study_id}, #{roomId}, #{roomName})
+	</insert>
+</mapper>
