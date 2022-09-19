@@ -12,15 +12,15 @@ import lombok.Data;
 @Data
 public class ChatRoomDTO {
     private String roomId;
-    private String name;
+    private String roomName;
     private Set<WebSocketSession> sessions = new HashSet<>();
     //WebSocketSession은 Spring에서 Websocket Connection이 맺어진 세션
 
-    public static ChatRoomDTO create(String name){
+    public static ChatRoomDTO create(String roomName){
     	ChatRoomDTO room = new ChatRoomDTO();
 
         room.roomId = UUID.randomUUID().toString();
-        room.name = name;
+        room.roomName = roomName;
         return room;
     }
 }

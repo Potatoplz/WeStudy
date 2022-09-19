@@ -24,7 +24,7 @@ public class RoomController {
     @GetMapping(value = "/rooms")
     public ModelAndView rooms(){
 
-        log.info("# All Chat Rooms");
+        log.info("채팅방 리스트 조회!");
         ModelAndView mv = new ModelAndView("chat/rooms");
 
         mv.addObject("list", repository.findAllRooms());
@@ -32,20 +32,21 @@ public class RoomController {
         return mv;
     }
 
-    //채팅방 개설
+    //채팅방 개설 [채팅방 이름 DB연동]
     @PostMapping(value = "/room")
-    public String create(@RequestParam String name, RedirectAttributes rttr){
+    public String create(@RequestParam String roomName, RedirectAttributes rttr){
 
-        log.info("# Create Chat Room , name: " + name);
-        rttr.addFlashAttribute("roomName", repository.createChatRoomDTO(name));
+        log.info("생성한 채팅방 이름 : " + roomName);
+        rttr.addFlashAttribute("roomName", repository.createChatRoomDTO(roomName));
+        
         return "redirect:/chat/rooms";
     }
  
-    //채팅방 조회
+    //채팅방 조회 [채팅방 고유번호 DB연동]
     @GetMapping("/room")
     public void getRoom(String roomId, Model model){
 
-        log.info("# get Chat Room, roomID : " + roomId);
+        log.info("채팅방 고유 번호 : " + roomId);
         model.addAttribute("room", repository.findRoomById(roomId));
     }
 }

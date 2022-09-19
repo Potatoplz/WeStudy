@@ -30,8 +30,8 @@ public class ChatRoomRepository {
         return chatRoomDTOMap.get(id);
     }
 
-    public ChatRoomDTO createChatRoomDTO(String name){
-    	ChatRoomDTO room = ChatRoomDTO.create(name);
+    public ChatRoomDTO createChatRoomDTO(String roomName){
+    	ChatRoomDTO room = ChatRoomDTO.create(roomName);
         chatRoomDTOMap.put(room.getRoomId(), room);
         return room;
     }

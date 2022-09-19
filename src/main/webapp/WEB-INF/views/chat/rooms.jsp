@@ -5,20 +5,20 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>채팅방 개설하기</title>
 </head>
 <body>
 	<div class="container">
 		<div>
 		<c:forEach var="room" items="${list}">
 			<ul>
-				<li><a href="/chat/room?roomId=${room.roomId}">${room.name}</a></li>
+				<li><a href="/chat/room?roomId=${room.roomId}">${room.roomName}</a></li>
 			</ul>
 		</c:forEach>
 		</div>
 	</div>
 	<form action="/chat/room" method="post">
-		<input type="text" name="name" class="form-control">
+		<input type="text" name="roomName" class="form-control">
 		<button class="btn btn-secondary">개설하기</button>
 	</form>
       <script type="text/javascript">
@@ -28,7 +28,7 @@
                     alert(roomName + "방이 개설되었습니다.");
                 $(".btn-create").on("click", function (e){
                     e.preventDefault();
-                    var name = $("input[name='name']").val();
+                    var name = $("input[name='roomName']").val();
                     if(name == "")
                         alert("Please write the name.")
                     else

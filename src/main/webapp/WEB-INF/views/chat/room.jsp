@@ -148,7 +148,7 @@ font-size:17px;
              <!-- 입력 창 -->
                 <div class="type_msg">
                     <div class="input_msg_write">
-                        <input type="text" id="inputMsg"  class="form-control" placeholder="">
+                        <input type="text" id="inputMsg"  class="form-control" placeholder="Tyep a message">
                         <div class="input-group-append">
                             <button class="msg_send_btn" type="button" id="sendBtn"><i class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
                         </div>
@@ -165,7 +165,7 @@ font-size:17px;
           $(document).ready(function(){
               var roomName = '${room.roomName}';
               var roomId = '${room.roomId}';
-              var username = '${login_info.mid}';
+              var username = '${login_info.member_id}';
               var date = new Date();
       		  var dateInfo = date.getMonth() + 1 + "/" + date.getDate() + " "+ date.getHours() + "시 " + date.getMinutes() + "분";
               console.log(roomName + ", " + roomId + ", " + username);
