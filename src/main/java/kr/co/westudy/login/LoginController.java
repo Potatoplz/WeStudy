@@ -84,7 +84,7 @@ public class LoginController {
 		String clientSecret = "8s5jP7miRC";//애플리케이션 클라이언트 시크릿값";
 		String code = request.getParameter("code");//네이버 로그인과 정보 제공 동의 과정 완료 후 받은 code 값
 		String state = request.getParameter("state");//네이버 로그인과 정보 제공 동의 과정 완료 후 받은 state 값
-		String redirectURI = URLEncoder.encode("http://localhost:8081/westudy/login/naver_callback", "UTF-8");//자신의 CallBack URL";
+		String redirectURI = URLEncoder.encode("http://localhost/login/naver_callback", "UTF-8");//자신의 CallBack URL";
 		System.out.println("Login 후 네이버에서 받은 code값 : " + code);
 		System.out.println("Login 후 네이버에서 받은 state 값 : " + state);
 		System.out.println("");

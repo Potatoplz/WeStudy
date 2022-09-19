@@ -38,7 +38,7 @@ public class Kakao_LoginService {
 			StringBuilder sb = new StringBuilder();
 			sb.append("grant_type=authorization_code");
 			sb.append("&client_id=bfc269bb21c622c6ca213016138271bb"); //본인이 발급받은 key
-			sb.append("&redirect_uri=http://localhost:8081/westudy/login/kakao_login"); // 본인이 설정한 주소
+			sb.append("&redirect_uri=http://localhost:80/login/kakao_login"); // 본인이 설정한 주소
 			sb.append("&code=" + authorize_code);
 			bw.write(sb.toString());
 			bw.flush();

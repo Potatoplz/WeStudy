@@ -85,7 +85,7 @@
 							<div class="naver">
 								<%
 								    String clientId = "xujU4FZ8FCU3ZG9xXr4Y";//애플리케이션 클라이언트 아이디값";
-								    String redirectURI = URLEncoder.encode("http://localhost:8081/westudy/login/naver_callback", "UTF-8");//CallBack URL";
+								    String redirectURI = URLEncoder.encode("http://localhost/login/naver_callback", "UTF-8");//CallBack URL";
 								    SecureRandom random = new SecureRandom();
 								    String state = new BigInteger(130, random).toString();
 								    String apiURL = "https://nid.naver.com/oauth2.0/authorize?response_type=code";
@@ -101,7 +101,7 @@
 							<!-- 카카오 가입 -->
 			
 							<div class="kakao">
-								<a href="https://kauth.kakao.com/oauth/authorize?client_id=bfc269bb21c622c6ca213016138271bb&redirect_uri=http://localhost:8081/westudy/login/kakao_login&response_type=code">
+								<a href="https://kauth.kakao.com/oauth/authorize?client_id=bfc269bb21c622c6ca213016138271bb&redirect_uri=http://localhost:80/login/kakao_login&response_type=code">
 								<img id="joinBtn" src=${pageContext.request.contextPath}/resources/join/img/kakao_join_btn.png /></a>
 							</div>
 							<!-- 카카오 가입 끝 -->
