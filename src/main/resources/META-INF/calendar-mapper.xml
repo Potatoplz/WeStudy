@@ -9,5 +9,10 @@
     INSERT INTO calendar ( cal_title, cal_start, cal_end )
     VALUES (  #{cal_title}, #{cal_start}, #{cal_end} )
     </insert>
+    
+    <insert id="img_insert" parameterType="kr.co.westudy.util.dto.MemberDTO">
+    INSERT INTO member_image ( member_id, profile_img_name, profile_img_path )
+    VALUES (  #{member_id}, #{profile_img_name}, #{profile_img_path} )
+    </insert>
 
 </mapper>

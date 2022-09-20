@@ -1,5 +1,7 @@
 package kr.co.westudy.util.dto;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import lombok.Data;
 
 @Data
@@ -17,5 +19,9 @@ public class MemberDTO {
 	
 	private String join_route;
 	private String account_on;
+	
+	private MultipartFile profile_img;
+	private String profile_img_name;
+	private String profile_img_path;
 
 }

@@ -53,9 +53,9 @@
                                     alert("종료일이 시작일보다 먼저입니다.");
                                 }else{ // 정상적인 입력 시
                                     let obj = {
-                                        cal_title : $("#calendar_content").val(),
-                                        cal_start : $("#calendar_start_date").val(),
-                                        cal_end : $("#calendar_end_date").val()
+                                        cal_title : content,
+                                        cal_start : start_date,
+                                        cal_end : end_date
                                     };//전송할 객체 생성
 
                                     console.log(obj); //서버로 해당 객체를 전달해서 DB 연동 가능

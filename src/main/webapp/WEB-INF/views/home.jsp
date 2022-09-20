@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%-- <jsp:include page="/WEB-INF/views/header.jsp"></jsp:include> --%>
+<jsp:include page="/WEB-INF/views/header.jsp"></jsp:include>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -31,19 +31,6 @@
 	
 	<div class="row">
 	<div class="col" id="carousel">
-	
-	<!-- 헤더 만들기 전 임시 경로!! 지울 예정!!!! -->
-	
-	<a id="loginBarText" href="${pageContext.request.contextPath}/join/join"> 회원가입 </a>		
-	<a id="loginBarText" href="${pageContext.request.contextPath}/login/login"> 로그인 </a>
-	
-	${login_info.member_nick}님
-	<a id="loginBarText" href="${pageContext.request.contextPath}/mypage/profile?member_email=${login_info.member_email}"> 마이페이지 </a>
-	
-	<a id="calendar" href="${pageContext.request.contextPath}/mypage/calendar"> 캘린더 </a>
-	
-	<!-- 지울 예정!!  -->
-	
 	
 	<!-- 메인 이벤트 carousel -->
 	
