@@ -4,49 +4,50 @@
       <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
         <!-- 헤더 주석처리 해놓음 차후 해제 할 예정 -->
-       <jsp:include page="/WEB-INF/views/header.jsp"></jsp:include>
+        <jsp:include page="/WEB-INF/views/header.jsp"></jsp:include>
 
 
-          <!DOCTYPE html>
-          <html>
+        <!DOCTYPE html>
+        <html>
 
-          <head>
-            <meta charset="UTF-8">
-            <title>WeStudy | 카페 상세</title>
-            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
-            <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
-            <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
-            <link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />
-            <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-            <script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
-            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
+        <head>
+          <meta charset="UTF-8">
+          <title>WeStudy | 카페 상세</title>
+          <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+          <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+          <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+          <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+          <link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />
+          <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+          <script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
+          <link rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
 
-            <style type="text/css">
-              #table2 img {
-                height: 400px;
-                width: 700px;
-                 !important
-              }
+          <style type="text/css">
+            #table2 img {
+              height: 400px;
+              width: 700px;
+               !important
+            }
 
-              #table2 {
-                margin-left: auto;
-                margin-right: auto;
-                border-spacing: 2px;
-                text-align: center;
-              }
-            </style>
-          </head>
+            #table2 {
+              margin-left: auto;
+              margin-right: auto;
+              border-spacing: 2px;
+              text-align: center;
+            }
+          </style>
+        </head>
 
-          <body>
-            <div class="container">
+        <body>
+          <div class="container">
 
-              <main class="clearfix mt-1" style="height:500px">
+            <main class="clearfix mt-1" style="height:500px">
               <c:forEach var="dto" items="${detail_dto}">
                 <!-- <aside class="col-3 h-100 bg-warning float-left">aside</aside> -->
                 <section class="col-9 h-100 bg-gray float-left">
-				
+
                   <table class="table" id="table1">
                     <tbody>
                       <tr>
@@ -87,12 +88,10 @@
                               <!-- slide show - 용도 : 이미지 로드 -->
                               <div class="carousel-inner">
                                 <div class="carousel-item active">
-                                  <img
-                                    src="${dto.cafe_img_path1}">
+                                  <img src="${dto.cafe_img_path1}">
                                 </div>
                                 <div class="carousel-item">
-                                  <img
-                                    src="${dto.cafe_img_path2}">
+                                  <img src="${dto.cafe_img_path2}">
                                 </div>
                               </div>
                               <!-- controls - 용도 : 화면 이동 버튼 -->
@@ -111,7 +110,7 @@
                         <th> </th>
                         <td colspan="2"><br><br>${detail_dto.md_content}</td>
                         </tr> --%>
-                        
+
                     </tbody>
                   </table>
                   <br>
@@ -140,13 +139,13 @@
                     <div id="space_list">
                       <h4>공간소개</h4>
                       <h6>${dto.cafe_content1}</h6>
-                        
+
                     </div>
 
                     <!-- 시설안내 -->
                     <div id="facility_list">
-                     <h4>시설안내</h4>
-                     <h6>${dto.cafe_content2}</h6>
+                      <h4>시설안내</h4>
+                      <h6>${dto.cafe_content2}</h6>
                     </div>
 
                     <!-- 유의사항 -->
@@ -191,14 +190,14 @@
 
                     <!-- Q&A -->
                     <div id="qna_list">
-<%--                       <iframe src="${pageContext.request.contextPath}/mdquestion/question_list?md_id=${md_id}"
+                      <%-- <iframe src="${pageContext.request.contextPath}/mdquestion/question_list?md_id=${md_id}"
                         width="100%" height=700px frameborder=0 framespacing=0 marginheight=0 marginwidth=0 scrolling=no
                         vspace=0></iframe> --%>
                     </div>
 
                     <!-- 이용후기 -->
                     <div id="review_list">
- <%--                      <iframe src="${pageContext.request.contextPath}/mdquestion/question_list?md_id=${md_id}"
+                      <%-- <iframe src="${pageContext.request.contextPath}/mdquestion/question_list?md_id=${md_id}"
                         width="100%" height=700px frameborder=0 framespacing=0 marginheight=0 marginwidth=0 scrolling=no
                         vspace=0></iframe> --%>
 
@@ -235,15 +234,18 @@
                   <br>
                   <!-- 시작 시간선택 -->
                   <b>시작 시간 선택</b>
-                  <input placeholder="시간을 선택해 주세요" type="text" id="time1" name="time1" class="form-control" style="width:200px;">
+                  <input placeholder="시간을 선택해 주세요" type="text" id="time1" name="time1" class="form-control"
+                    style="width:200px;">
                   <br>
                   <!-- 종료 시간선택 -->
                   <b>종료 시간 선택</b>
-                  <input placeholder="시간을 선택해 주세요" type="text" id="time2" name="time2" class="form-control" style="width:200px;">
+                  <input placeholder="시간을 선택해 주세요" type="text" id="time2" name="time2" class="form-control"
+                    style="width:200px;">
                   <br>
-					<div class="clearfix">
+                  <div class="clearfix">
                     <button id="date_time_btn" name="date_time_btn" class="btn btn-info float-left"> 날짜 및 시간 확정
                     </button>
+<<<<<<< HEAD
                     </div>
                     <br>
                     <div class="clearfix">
@@ -263,6 +265,14 @@
 					 </form> 
                     </div>
                     <br>
+=======
+                  </div>
+                  <br>
+                  <div class="clearfix">
+                    <button id="test_btn" name="test_btn" class="btn btn-info float-left"> 테스트 버튼 </button>
+                  </div>
+                  <br>
+>>>>>>> 545a24f33cf75364500f659d7f8e874e9a18751c
 
                   <!-- 예약일시 -->
                   <b>예약 일시</b>
@@ -280,20 +290,29 @@
                   <br>
                   <br>
                 </aside>
-                
-                
-				</c:forEach>
-              </main>
 
 
-            </div><!-- container -->
+              </c:forEach>
+            </main>
 
-            <script type="text/javascript">
 
-              //공간소개 | 시설안내 | 유의사항 | 환불정책 | Q&A | 이용후기
-              $(document).ready(function () {
+          </div><!-- container -->
 
-                // Default 공간소개 페이지 보이기 
+          <script type="text/javascript">
+
+            //공간소개 | 시설안내 | 유의사항 | 환불정책 | Q&A | 이용후기
+            $(document).ready(function () {
+
+              // Default 공간소개 페이지 보이기 
+              $("#space_list").show(10);
+              $("#facility_list").hide();
+              $("#notice_list").hide();
+              $("#refund_list").hide();
+              $("#qna_list").hide();
+              $("#review_list").hide();
+
+              // 공간소개  페이지 보이기
+              $("#space").click(function () {
                 $("#space_list").show(10);
                 $("#facility_list").hide();
                 $("#notice_list").hide();
@@ -301,130 +320,187 @@
                 $("#qna_list").hide();
                 $("#review_list").hide();
 
-                // 공간소개  페이지 보이기
-                $("#space").click(function () {
-                  $("#space_list").show(10);
-                  $("#facility_list").hide();
-                  $("#notice_list").hide();
-                  $("#refund_list").hide();
-                  $("#qna_list").hide();
-                  $("#review_list").hide();
+              });//click
 
-                });//click
+              // 시설안내  페이지 보이기
+              $("#facility").click(function () {
+                $("#space_list").hide();
+                $("#facility_list").show(10);
+                $("#notice_list").hide();
+                $("#refund_list").hide();
+                $("#qna_list").hide();
+                $("#review_list").hide();
 
-                // 시설안내  페이지 보이기
-                $("#facility").click(function () {
-                  $("#space_list").hide();
-                  $("#facility_list").show(10);
-                  $("#notice_list").hide();
-                  $("#refund_list").hide();
-                  $("#qna_list").hide();
-                  $("#review_list").hide();
+              });//click
 
-                });//click
+              // 유의사항  페이지 보이기
+              $("#notice").click(function () {
+                $("#space_list").hide();
+                $("#facility_list").hide();
+                $("#notice_list").show(10);
+                $("#refund_list").hide();
+                $("#qna_list").hide();
+                $("#review_list").hide();
 
-                // 유의사항  페이지 보이기
-                $("#notice").click(function () {
-                  $("#space_list").hide();
-                  $("#facility_list").hide();
-                  $("#notice_list").show(10);
-                  $("#refund_list").hide();
-                  $("#qna_list").hide();
-                  $("#review_list").hide();
+              });//click
 
-                });//click
+              // 환불정책  페이지 보이기
+              $("#refund").click(function () {
+                $("#space_list").hide();
+                $("#facility_list").hide();
+                $("#notice_list").hide();
+                $("#refund_list").show(10);
+                $("#qna_list").hide();
+                $("#review_list").hide();
 
-                // 환불정책  페이지 보이기
-                $("#refund").click(function () {
-                  $("#space_list").hide();
-                  $("#facility_list").hide();
-                  $("#notice_list").hide();
-                  $("#refund_list").show(10);
-                  $("#qna_list").hide();
-                  $("#review_list").hide();
+              });//click
 
-                });//click
+              // Q&A  페이지 보이기
+              $("#qna").click(function () {
+                $("#space_list").hide();
+                $("#facility_list").hide();
+                $("#notice_list").hide();
+                $("#refund_list").hide();
+                $("#qna_list").show(10);
+                $("#review_list").hide();
 
-                // Q&A  페이지 보이기
-                $("#qna").click(function () {
-                  $("#space_list").hide();
-                  $("#facility_list").hide();
-                  $("#notice_list").hide();
-                  $("#refund_list").hide();
-                  $("#qna_list").show(10);
-                  $("#review_list").hide();
+              });//click
 
-                });//click
+              // Q&A  페이지 보이기
+              $("#review").click(function () {
+                $("#space_list").hide();
+                $("#facility_list").hide();
+                $("#notice_list").hide();
+                $("#refund_list").hide();
+                $("#qna_list").hide();
+                $("#review_list").show(10);
 
-                // Q&A  페이지 보이기
-                $("#review").click(function () {
-                  $("#space_list").hide();
-                  $("#facility_list").hide();
-                  $("#notice_list").hide();
-                  $("#refund_list").hide();
-                  $("#qna_list").hide();
-                  $("#review_list").show(10);
+              });//click
+            }); //ready
 
-                });//click
-              }); //ready
-
-              //찜 목록 추가하기 (중복체크)
-              $(document).ready(function () {
-                $("#wish_btn").click(function () {
-                  alert("아직 기능 구현 전 이라능....")
-                  //로그인 체크
-                  /* if ("${login_info.member_id}" == "") {
-                    alert("로그인 해주세요.");
-                    return;
+            //찜 목록 추가하기 (중복체크)
+            $(document).ready(function () {
+              $("#wish_btn").click(function () {
+                alert("아직 기능 구현 전 이라능....")
+                //로그인 체크
+                /* if ("${login_info.member_id}" == "") {
+                  alert("로그인 해주세요.");
+                  return;
+                } else {
+                  $.post(
+                    "${pageContext.request.contextPath}/md/wish_insert"
+                    , {
+                      md_id: ${ dto.cafe_id }
+                    , member_id : ${ dto.member_id }
+                  }
+                  , function(data, status) {
+                  if (data >= 1) {
+                    alert("찜 목록에 추가되었습니다.");
                   } else {
-                    $.post(
-                      "${pageContext.request.contextPath}/md/wish_insert"
-                      , {
-                        md_id: ${ dto.cafe_id }
-                      , member_id : ${ dto.member_id }
-                    }
-                    , function(data, status) {
-                    if (data >= 1) {
-                      alert("찜 목록에 추가되었습니다.");
-                    } else {
-                      alert("이미 찜 목록에 추가된 아이템입니다.");
-                    }
-                  }//call back function
-              );//post
-              }//else */
-                }); //click
-              });//ready
+                    alert("이미 찜 목록에 추가된 아이템입니다.");
+                  }
+                }//call back function
+            );//post
+            }//else */
+              }); //click
+            });//ready
 
-              // 날짜 선택	
-              $(document).ready(function () {
-                $("#Date").datepicker({
-                  changeMonth: true,
-                  changeYear: true,
-                  nextText: '다음 달',
-                  prevText: '이전 달',
-                  dayNames: ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일'],
-                  dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
-                  monthNamesShort: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
-                  monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
-                  dateFormat: "yy-mm-dd",
-                  minDate: 0,                       // 선택할수있는 최소날짜, ( 0 : 오늘 이후 날짜 선택 불가)	
-                  maxDate: 15,                     // 선택할수있는 최소날짜, ( 0 : 오늘 이후 날짜 선택 불가)
-                  showOn: "both"
-                });
-              });//ready
+            // 날짜 선택	
+            $(document).ready(function () {
+              $("#Date").datepicker({
+                changeMonth: true,
+                changeYear: true,
+                nextText: '다음 달',
+                prevText: '이전 달',
+                dayNames: ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일'],
+                dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
+                monthNamesShort: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+                monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+                dateFormat: "yy-mm-dd",
+                minDate: 0,                       // 선택할수있는 최소날짜, ( 0 : 오늘 이후 날짜 선택 불가)	
+                maxDate: 15,                     // 선택할수있는 최소날짜, ( 0 : 오늘 이후 날짜 선택 불가)
+                showOn: "both"
+              });
+            });//ready
 
 
 
-                //시간 선택
-                $(document).ready(function () {
+            //시간 선택
+            $(document).ready(function () {
+              var date = new Date();
+              var year = date.getFullYear();
+              var month = date.getMonth() + 1;
+              var day = date.getDate();
+              var today = year + "-" + "0" + month + "-" + day;
+              var fixtoday = $("#Date").val();
+              var hour = date.getHours();
+
+              $("#time1").timepicker({
+                // var date = new Date();
+                // var hour = date.getHours();
+                timeFormat: 'HH:mm',
+                interval: 60,
+                minTime: '10:00am',
+                maxTime: '11:00pm',
+                //defaultTime: "'" + hour + "'",
+                startTime: '10:00',
+                dynamic: false,
+                dropdown: true,
+                scrollbar: true
+              });
+
+              $("#time2").timepicker({
+                // var date = new Date();
+                // var hour = date.getHours();
+                timeFormat: 'HH:mm',
+                interval: 60,
+                minTime: '10:00am',
+                maxTime: '11:00pm',
+                //defaultTime: "'" + hour + "'",
+                startTime: '10:00',
+                dynamic: false,
+                dropdown: true,
+                scrollbar: true
+              });
+            });//ready
+
+            //에약일시 안내 메세지
+            $(document).ready(function () {
+              $("#date_time_label").text("날짜와 시간을 선택하세요");
+              $("#date_time_label").css("color", "red");
+            });//ready
+
+            /*               $(function() {
+                            if( $("#Date").val() == null || $("#time1").val() == "" ){
+                          $("#date_time_label").text("시간을 입력하세요");
+                          return;//진행 중지
+                        } else { $("#member_addr1_label").text(""); }
+                      	
+                        if( $("#member_addr3").val() == null || $("#member_addr3").val() == "" ){
+                          $("#member_addr1_label").text("상세주소를 입력해 주세요");
+                          return;//진행 중지
+                        } else { $("#member_addr1_label").text(""); }  
+                          }); */
+
+
+            //날짜 및 시간 확정
+            $(document).ready(function () {
+              $("#date_time_btn").click(function () {
+                if ($("#Date").val() != null || !$("#Date").val().equals("") || $("#time1").val() != null || !$("#time1").val().equals("")) {
+                  //$("#date_time_label").text("");
+
+                  alert($("#Date").val())
+                  alert($("#time1").val())
                   var date = new Date();
                   var year = date.getFullYear();
                   var month = date.getMonth() + 1;
                   var day = date.getDate();
                   var today = year + "-" + "0" + month + "-" + day;
-                  var fixtoday = $("#Date").val();
-                  var hour = date.getHours();
+                  alert(today)
+                  $("#date_time_label").text($("#Date").val() + " " + $("#time1").val() + " - " + $("#time2").val());
+                  $("#date_time_label").css("color", "blue");
 
+<<<<<<< HEAD
                   $("#time1").timepicker({
                     // var date = new Date();
                     // var hour = date.getHours();
@@ -494,25 +570,30 @@
                   }
                 }); //click
               });//ready
+=======
+                }
+              }); //click
+            });//ready
+>>>>>>> 545a24f33cf75364500f659d7f8e874e9a18751c
 
 
 
-              $(document).ready(function () {
-                $.datepicker.setDefaults($.datepicker.regional['ko']);
-                $("#startDate").datepicker({
+            $(document).ready(function () {
+              $.datepicker.setDefaults($.datepicker.regional['ko']);
+              $("#startDate").datepicker({
 
-                  onClose: function (selectedDate) {
-                    //시작일(startDate) datepicker가 닫힐때
-                    //종료일(endDate)의 선택할수있는 최소 날짜(minDate)를 선택한 시작일로 지정
-                    $("#endDate").datepicker("option", "minDate", selectedDate);
-                  }
+                onClose: function (selectedDate) {
+                  //시작일(startDate) datepicker가 닫힐때
+                  //종료일(endDate)의 선택할수있는 최소 날짜(minDate)를 선택한 시작일로 지정
+                  $("#endDate").datepicker("option", "minDate", selectedDate);
+                }
 
-                });
               });
+            });
 
-            </script>
-          </body>
-          <!-- 헤더 주석처리 해놓음 차후 해제 할 예정 -->
-          <%-- <%@ include file="/WEB-INF/views/footerMain.jsp" %> --%>
+          </script>
+        </body>
+        <!-- 헤더 주석처리 해놓음 차후 해제 할 예정 -->
+        <%-- <%@ include file="/WEB-INF/views/footerMain.jsp" %> --%>
 
-          </html>
+        </html>

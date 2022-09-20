@@ -18,7 +18,7 @@
         <style type="text/css">
             #div_box {
                 width: 2000px;
-                height: 800px;
+                height: 850px;
             }
 
 
@@ -26,14 +26,15 @@
                 position: absolute;
                 left: 0;
                 bottom: 40px;
-                width: 288px;
-                height: 132px;
+                width: 300px;
+                height: 300px;
                 margin-left: -144px;
                 text-align: left;
                 overflow: hidden;
                 font-size: 12px;
                 font-family: 'Malgun Gothic', dotum, '돋움', sans-serif;
                 line-height: 1.5;
+                border: solid 1px;
             }
 
             .wrap * {
@@ -42,8 +43,8 @@
             }
 
             .wrap .info {
-                width: 286px;
-                height: 120px;
+                width: 300px;
+                height: 300px;
                 border-radius: 5px;
                 border-bottom: 2px solid #ccc;
                 border-right: 1px solid #ccc;
@@ -57,12 +58,13 @@
             }
 
             .info .title {
-                padding: 5px 0 0 10px;
+                padding: 5px 0 0 5px;
                 height: 30px;
-                background: #eee;
-                border-bottom: 1px solid #ddd;
-                font-size: 18px;
+                /* background: #eee; */
+                /* border-bottom: 1px solid #ddd; */
+                font-size: 25px;
                 font-weight: bold;
+                text-align : center;
             }
 
 
@@ -73,32 +75,42 @@
             .info .body {
                 position: relative;
                 overflow: hidden;
+                margin-top: 200px;
             }
 
             .info .desc {
                 position: relative;
-                margin: 13px 0 0 90px;
+                margin: 10px 0 0 10px;
                 height: 75px;
+                text-align : left;
             }
 
-            .desc .ellipsis {
+            .desc .price {
                 overflow: hidden;
-                text-overflow: ellipsis;
+                /* text-overflow: ellipsis; */
                 white-space: nowrap;
+                font-size: 22px;
+                text-align : left;
+                color: purple;
             }
 
-            .desc .jibun {
-                font-size: 11px;
-                color: #888;
+            .desc .addr {
+                font-size: 15px;
                 margin-top: -2px;
+                text-align : left;
+            }
+            .desc .won {
+                font-size: 10px;
+                margin: -20px 0 0 65px;
+                text-align : left;
             }
 
             .info .img {
                 position: absolute;
-                top: 6px;
-                left: 5px;
-                width: 73px;
-                height: 71px;
+                top: -1px;
+                left: -1px;
+                width: 300px;
+                height: 200px;
                 border: 1px solid #ddd;
                 color: #888;
                 overflow: hidden;
@@ -124,7 +136,7 @@
     <body>
 
         <div id="div_box" class="container">
-            <div id="map" style="width:1926px;height:850px; margin-left: -37%;"></div>
+            <div id="map" style="width:1926px;height:900px; margin-left: -37%;"></div>
             <p>
                 <button onclick="hideMarkers()">마커 감추기</button>
                 <button onclick="showMarkers()">마커 보이기</button>
@@ -218,20 +230,20 @@
                             // 커스텀 오버레이에 표시할 컨텐츠 입니다
                             // 커스텀 오버레이는 아래와 같이 사용자가 자유롭게 컨텐츠를 구성하고 이벤트를 제어할 수 있기 때문에
                             // 별도의 이벤트 메소드를 제공하지 않습니다
-                            var content = '<div class="wrap">' +
+                            var content = '<div class="wrap" style = "width:300; height:300;">' +
                                 '    <div class="info">' +
-                                '        <div class="title">' +
-                                dto.cafe_name +
+                                '            <div class="img">' +
+                                '               <img src=' + dto.cafe_img_path1 + ' width="300" height="200">' +
                                 '            <div class="close" onclick="closeOverlay()" title="닫기"></div>' +
                                 '        </div>' +
                                 '        <div class="body">' +
-                                '            <div class="img">' +
-                                '               <img src=' + dto.cafe_img_path1 + ' width="73" height="70">' +
+                                '        <div class="title">' +
+                                dto.cafe_name +
                                 '           </div>' +
                                 '            <div class="desc">' +
-                                '                <div class="ellipsis">    </div>' +
-                                '                <div class="jibun ellipsis">' + dto.cafe_addr1 + '</div>' +
-                                '                <div><a href="https://www.kakaocorp.com/main" target="_blank" class="link">홈페이지</a></div>' +
+                                '                <div class="addr">' + dto.cafe_addr1 + '</div>' +
+                                '                <div class="price">' + dto.price_hour  + ' </div>'+
+                                '                <div class="won">' + "원/시간" + ' </div>'+
                                 '            </div>' +
                                 '        </div>' +
                                 '    </div>' +
