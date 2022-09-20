@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="MapMapper">
+
+	<select id="selectCafe" resultType="kr.co.westudy.cafe.CafeDTO">
+	select c.cafe_id, c.cafe_name, c.cafe_addr1, c.cafe_addr2, c.post_code, c.open_time, c.close_time,
+    c.cafe_img_name1, c.cafe_img_path1, c.cafe_img_name2, c.cafe_img_path2, c.cafe_content1, c.cafe_content2, c.cafe_content3, c.cafe_oneline, 
+    c.cafe_category, room_id, r.max_people, r.price_hour, r.room_count
+		
+	from cafe c, room r 
+    
+    where c.cafe_id = r.cafe_id
+	</select>
+
+</mapper>

@@ -18,11 +18,11 @@
             <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
             <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
-            <link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />  
-			<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>  
-			<script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
-			<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
-			<script src="https://cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
+            <link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />
+            <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+            <script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
 
             <style type="text/css">
               #table2 img {
@@ -265,29 +265,29 @@
                   <b>날짜 선택</b>
                   <br>
                   <input placeholder="날짜를 선택해 주세요" type="text" id="Date" name="Date">
-                  
+
                   <br>
                   <br>
                   <!-- 시간선택 -->
                   <b>시간 선택</b>
                   <input placeholder="시간을 선택해 주세요" type="text" id="time1" name="time1" class="form-control" style="width:200px;">
                   <br>
-                  
-					<div class="clearfix">	
-					<button id="date_time_btn" name="date_time_btn" class="btn btn-info float-left"> 날짜 및 시간 확정 </button>
-					</div>
-					<br>
-					<div class="clearfix">	
-					<button id="test_btn" name="test_btn" class="btn btn-info float-left"> 테스트 버튼 </button>
-					</div>
-					<br>
-					
+<div class="clearfix">
+                    <button id="date_time_btn" name="date_time_btn" class="btn btn-info float-left"> 날짜 및 시간 확정
+                    </button>
+                    </div>
+                    <br>
+                    <div class="clearfix">
+                      <button id="test_btn" name="test_btn" class="btn btn-info float-left"> 테스트 버튼 </button>
+                    </div>
+                    <br>
+
                   <!-- 예약일시 -->
                   <b>예약 일시</b>
                   <br>
-                 	<label for="date_time" id="date_time_label"></label>
-					<br>
-					<br>
+                  <label for="date_time" id="date_time_label"></label>
+                  <br>
+                  <br>
                   <!-- 총 예약인원 -->
                   <hr>
                   <b>공간사용료</b>
@@ -397,108 +397,108 @@
                       , {
                         md_id: ${ detail_dto.md_id }
                       , member_id : ${ login_info.member_id }
-                     }
-                     , function(data, status) {
+                    }
+                    , function(data, status) {
                     if (data >= 1) {
                       alert("찜 목록에 추가되었습니다.");
                     } else {
                       alert("이미 찜 목록에 추가된 아이템입니다.");
                     }
                   }//call back function
-               );//post
+              );//post
               }//else */
                 }); //click
               });//ready
 
-			// 날짜 선택	
+              // 날짜 선택	
               $(document).ready(function () {
                 $("#Date").datepicker({
-                    changeMonth: true,
-                    changeYear: true,
-                    nextText: '다음 달',
-                    prevText: '이전 달',
-                    dayNames: ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일'],
-                    dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
-                    monthNamesShort: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
-                    monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
-                    dateFormat: "yy-mm-dd",
-                    minDate: 0,                       // 선택할수있는 최소날짜, ( 0 : 오늘 이후 날짜 선택 불가)	
-                    maxDate: 15,                     // 선택할수있는 최소날짜, ( 0 : 오늘 이후 날짜 선택 불가)
-                    showOn: "both"
+                  changeMonth: true,
+                  changeYear: true,
+                  nextText: '다음 달',
+                  prevText: '이전 달',
+                  dayNames: ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일'],
+                  dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
+                  monthNamesShort: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+                  monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+                  dateFormat: "yy-mm-dd",
+                  minDate: 0,                       // 선택할수있는 최소날짜, ( 0 : 오늘 이후 날짜 선택 불가)	
+                  maxDate: 15,                     // 선택할수있는 최소날짜, ( 0 : 오늘 이후 날짜 선택 불가)
+                  showOn: "both"
                 });
-	          });//ready
-              
-        	 
-              
-        		  //시간 선택
-             $(document).ready(function () {
-              var date = new Date();
-           	  var year = date.getFullYear();
-           	  var month = date.getMonth() + 1;
-           	  var day = date.getDate();
-           	  var today = year + "-"+ "0" + month + "-" + day;
-           	  var fixtoday = $("#Date").val();
-              var hour = date.getHours();
-           	
-            	    $("#time1").timepicker({
-		             // var date = new Date();
-		             // var hour = date.getHours();
-            	        timeFormat: 'HH:mm',
-            	        interval: 60,
-            	        minTime: '10:00am',
-            	        maxTime: '11:00pm',
-            	        defaultTime: "'" + hour + "'",
-            	        startTime: '10:00',
-            	        dynamic: false,
-            	        dropdown: true,
-            	        scrollbar: true        
-            	    });
-            	});//ready
-              
+              });//ready
+
+
+
+                //시간 선택
+                $(document).ready(function () {
+                  var date = new Date();
+                  var year = date.getFullYear();
+                  var month = date.getMonth() + 1;
+                  var day = date.getDate();
+                  var today = year + "-" + "0" + month + "-" + day;
+                  var fixtoday = $("#Date").val();
+                  var hour = date.getHours();
+
+                  $("#time1").timepicker({
+                    // var date = new Date();
+                    // var hour = date.getHours();
+                    timeFormat: 'HH:mm',
+                    interval: 60,
+                    minTime: '10:00am',
+                    maxTime: '11:00pm',
+                    defaultTime: "'" + hour + "'",
+                    startTime: '10:00',
+                    dynamic: false,
+                    dropdown: true,
+                    scrollbar: true
+                  });
+                });//ready
+
               //에약일시 안내 메세지
               $(document).ready(function () {
-      				$("#date_time_label").text("날짜와 시간을 산텍하세요");
-      				$("#date_time_label").css("color", "red");
-            	});//ready
-            	
-/*               $(function() {
-            	  if( $("#Date").val() == null || $("#time1").val() == "" ){
-      				$("#date_time_label").text("시간을 입력하세요");
-      				return;//진행 중지
-      			} else { $("#member_addr1_label").text(""); }
-      			
-      			if( $("#member_addr3").val() == null || $("#member_addr3").val() == "" ){
-      				$("#member_addr1_label").text("상세주소를 입력해 주세요");
-      				return;//진행 중지
-      			} else { $("#member_addr1_label").text(""); }  
-            	}); */
-            	
-            	
+                $("#date_time_label").text("날짜와 시간을 산텍하세요");
+                $("#date_time_label").css("color", "red");
+              });//ready
+
+                  /*               $(function() {
+                                  if( $("#Date").val() == null || $("#time1").val() == "" ){
+                                $("#date_time_label").text("시간을 입력하세요");
+                                return;//진행 중지
+                              } else { $("#member_addr1_label").text(""); }
+                            	
+                              if( $("#member_addr3").val() == null || $("#member_addr3").val() == "" ){
+                                $("#member_addr1_label").text("상세주소를 입력해 주세요");
+                                return;//진행 중지
+                              } else { $("#member_addr1_label").text(""); }  
+                                }); */
+                
+
               //날짜 및 시간 확정
-             $(document).ready(function () {
+                  $(document).ready(function () {
                 $("#date_time_btn").click(function () {
-                  if( $("#Date").val() != null || !$("#Date").val().equals("") || $("#time1").val() != null || !$("#time1").val().equals("") ){
-                	  $("#date_time_label").text("");
-                	  
-                	  alert( $("#Date").val() )
-                	  alert( $("#time1").val() )
-                	   	var date = new Date();
-           	  			var year = date.getFullYear();
-           	  			var month = date.getMonth() + 1;
-           	  			var day = date.getDate();
-           	 			var today = year + "-"+ "0" + month + "-" + day;
-                	  	alert(today)
-                	  if( $("#time1").val().equals( today ) ){
-                		  alert("동일")
-                	  }
-                	  $("#date_time_label").text( $("#Date").val() + " " +$("#time1").val() );
-                	  $("#date_time_label").css("color", "blue");
-                	  
+                  if ($("#Date").val() != null || !$("#Date").val().equals("") || $("#time1").val() != null || !$("#time1").val().equals("")) {
+                    $("#date_time_label").text("");
+
+                    alert($("#Date").val())
+                    alert($("#time1").val())
+                    var date = new Date();
+                    var year = date.getFullYear();
+                    var month = date.getMonth() + 1;
+                    var day = date.getDate();
+                    var today = year + "-" + "0" + month + "-" + day;
+                    alert(today)
+                    if ($("#time1").val().equals(today)) {
+                      alert("동일")
+                    }
+                    $("#date_time_label").text($("#Date").val() + " " + $("#time1").val());
+                    $("#date_time_label").css("color", "blue");
+
                   }
                 }); //click
               });//ready
-              
-              
+
+
 
               $(document).ready(function () {
                 $.datepicker.setDefaults($.datepicker.regional['ko']);
@@ -512,9 +512,10 @@
 
                 });
               });
-              
+
             </script>
           </body>
           <!-- 헤더 주석처리 해놓음 차후 해제 할 예정 -->
           <%-- <%@ include file="/WEB-INF/views/footerMain.jsp" %> --%>
+
           </html>
