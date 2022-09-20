@@ -206,7 +206,7 @@ body {
 
   <hr>
   <a href="#">카페 예약 리스트</a>
-  <a href="#">나의 스터디</a>
+  <a href="${pageContext.request.contextPath}/study/list">나의 스터디</a>
   <a href="#">찜 리스트</a>
   <a a id="calendar" href="${pageContext.request.contextPath}/mypage/calendar">일정 관리</a>
   <hr>
@@ -233,10 +233,10 @@ body {
                 </div>
                 <div class="menu">
 
-                  <a href="${root}/store">
+                  <a href="${pageContext.request.contextPath}/study/main">
                     <div class="item" style="margin-left:20px;">스터디 모집</div>
                   </a>
-                  <a href="${root }/sns">
+                  <a href="${pageContext.request.contextPath}/cafe/list">
                     <div class="item">스터디 카페</div>
                   </a>
                   <div class="right">
