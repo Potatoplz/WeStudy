@@ -4,8 +4,7 @@
       <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
         <!-- 헤더 주석처리 해놓음 차후 해제 할 예정 -->
-        <%-- <jsp:include page="/WEB-INF/views/headerMain.jsp">
-          </jsp:include> --%>
+       <jsp:include page="/WEB-INF/views/header.jsp"></jsp:include>
 
 
           <!DOCTYPE html>
@@ -13,7 +12,7 @@
 
           <head>
             <meta charset="UTF-8">
-            <title>WeStudy | 상부상조</title>
+            <title>WeStudy | 카페 상세</title>
             <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
             <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
             <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
@@ -44,16 +43,17 @@
             <div class="container">
 
               <main class="clearfix mt-1" style="height:500px">
+              <c:forEach var="dto" items="${detail_dto}">
                 <!-- <aside class="col-3 h-100 bg-warning float-left">aside</aside> -->
                 <section class="col-9 h-100 bg-gray float-left">
-
+				
                   <table class="table" id="table1">
                     <tbody>
                       <tr>
                         <td rowspan="5"></td>
                         <td colspan="2" align="left">
-                          <h2><b> 칸틴선릉점 </b></h2>
-                          <h4> 갤러리에 온듯한 명화로 둘러싸인 공간</h4>
+                          <h2><b>${dto.cafe_name}</b></h2>
+                          <h4> ${dto.cafe_oneline}</h4>
                         </td>
 
                         <!-- 찜 버튼 -->
@@ -88,11 +88,11 @@
                               <div class="carousel-inner">
                                 <div class="carousel-item active">
                                   <img
-                                    src="https://moplqfgeemqv2103108.cdn.ntruss.com/service/165254082_f67e8a0eebbb1decc6fdcf42b1c8ff71.jpg?type=m&w=900&h=900&autorotate=true&quality=90">
+                                    src="${dto.cafe_img_path1}">
                                 </div>
                                 <div class="carousel-item">
                                   <img
-                                    src="https://moplqfgeemqv2103108.cdn.ntruss.com/service/165254084_547bc2c5d9b84ec53c2690e448e8d46d.jpg?type=m&w=900&h=900&autorotate=true&quality=90">
+                                    src="${dto.cafe_img_path2}">
                                 </div>
                               </div>
                               <!-- controls - 용도 : 화면 이동 버튼 -->
@@ -111,6 +111,7 @@
                         <th> </th>
                         <td colspan="2"><br><br>${detail_dto.md_content}</td>
                         </tr> --%>
+                        
                     </tbody>
                   </table>
                   <br>
@@ -137,56 +138,21 @@
                   <div class="iframebox">
                     <!-- 공간소개 -->
                     <div id="space_list">
-                      <%-- <iframe src="${pageContext.request.contextPath}/mdreview/review_list?md_id=${md_id}"
-                        width="100%" height=700px frameborder=0 framespacing=0 marginheight=0 marginwidth=0 scrolling=no
-                        vspace=0></iframe> --%>
-                        <h4>공간소개</h4>
-                        <br>
-                        높은 천장이 가지는 개방감과 명화로 둘러싸인 유럽풍 분위기가 멋스러운 카페.<br>
-
-                        20평, 40석 규모의 좌석과 테라스까지 누릴 수 있는 매력을 가지고 있습니다.<br>
-
-                        아이돌 팬 미팅도 진행된 만큼 충분한 규모를 가지고 있으며 파티 공간과 함께 카페 주방까지 이용 할 수 있습니다.<br>
-                        <br>
-                        영업시간 8 ~ 23 시
-                        <br>
-                        <hr>
-                        휴무일 없음
-                        <br>
-                        <br>
-                        <br>
+                      <h4>공간소개</h4>
+                      <h6>${dto.cafe_content1}</h6>
+                        
                     </div>
 
                     <!-- 시설안내 -->
                     <div id="facility_list">
-                      <h4>시설안내</h4>
-                      <br>
-                      1 테라스
-                      <br>
-                      <hr>
-                      2 카페
-                      <br>
-                      <br>
-                      <br>
+                     <h4>시설안내</h4>
+                     <h6>${dto.cafe_content2}</h6>
                     </div>
 
                     <!-- 유의사항 -->
                     <div id="notice_list">
                       <h4>유의사항</h4>
-                      <br>
-                      1 토요일에만 예약가능 합니다.
-                      <br>
-                      <hr>
-                      2 강남 조선호텔(르네상스 호텔) 사거리
-                      <hr>
-                      3 내부 화장실
-                      <hr>
-                      4 응향시설
-                      <hr>
-                      5 와이파이
-                      <hr>
-                      <br>
-                      <br>
+                      <h6>${dto.cafe_content3}</h6>
                       <br>
                     </div>
 
@@ -225,19 +191,18 @@
 
                     <!-- Q&A -->
                     <div id="qna_list">
-                      <iframe src="${pageContext.request.contextPath}/mdquestion/question_list?md_id=${md_id}"
+<%--                       <iframe src="${pageContext.request.contextPath}/mdquestion/question_list?md_id=${md_id}"
                         width="100%" height=700px frameborder=0 framespacing=0 marginheight=0 marginwidth=0 scrolling=no
-                        vspace=0></iframe>
+                        vspace=0></iframe> --%>
                     </div>
 
                     <!-- 이용후기 -->
                     <div id="review_list">
-                      <iframe src="${pageContext.request.contextPath}/mdquestion/question_list?md_id=${md_id}"
+ <%--                      <iframe src="${pageContext.request.contextPath}/mdquestion/question_list?md_id=${md_id}"
                         width="100%" height=700px frameborder=0 framespacing=0 marginheight=0 marginwidth=0 scrolling=no
-                        vspace=0></iframe>
+                        vspace=0></iframe> --%>
 
                     </div>
-
 
 
                 </section>
@@ -252,7 +217,7 @@
                   <div class="flex_box">
                     <div class="flex"><input type="radio" name="space_reserv" id="space_reserv" value="[object Object]"
                         class="radio"> <label for="space_reserv">메인룸</label>
-                      <strong class="flex align_right">&#8361;20,000</strong>
+                      <strong class="flex align_right">&#8361;${dto.price_hour}</strong>
                       <span class="txt_unit"> / 시간
                       </span>
                     </div>
@@ -268,11 +233,15 @@
 
                   <br>
                   <br>
-                  <!-- 시간선택 -->
-                  <b>시간 선택</b>
+                  <!-- 시작 시간선택 -->
+                  <b>시작 시간 선택</b>
                   <input placeholder="시간을 선택해 주세요" type="text" id="time1" name="time1" class="form-control" style="width:200px;">
                   <br>
-<div class="clearfix">
+                  <!-- 종료 시간선택 -->
+                  <b>종료 시간 선택</b>
+                  <input placeholder="시간을 선택해 주세요" type="text" id="time2" name="time2" class="form-control" style="width:200px;">
+                  <br>
+					<div class="clearfix">
                     <button id="date_time_btn" name="date_time_btn" class="btn btn-info float-left"> 날짜 및 시간 확정
                     </button>
                     </div>
@@ -298,6 +267,9 @@
                   <br>
                   <br>
                 </aside>
+                
+                
+				</c:forEach>
               </main>
 
 
@@ -395,8 +367,8 @@
                     $.post(
                       "${pageContext.request.contextPath}/md/wish_insert"
                       , {
-                        md_id: ${ detail_dto.md_id }
-                      , member_id : ${ login_info.member_id }
+                        md_id: ${ dto.cafe_id }
+                      , member_id : ${ dto.member_id }
                     }
                     , function(data, status) {
                     if (data >= 1) {
@@ -447,7 +419,21 @@
                     interval: 60,
                     minTime: '10:00am',
                     maxTime: '11:00pm',
-                    defaultTime: "'" + hour + "'",
+                    //defaultTime: "'" + hour + "'",
+                    startTime: '10:00',
+                    dynamic: false,
+                    dropdown: true,
+                    scrollbar: true
+                  });
+                  
+                  $("#time2").timepicker({
+                    // var date = new Date();
+                    // var hour = date.getHours();
+                    timeFormat: 'HH:mm',
+                    interval: 60,
+                    minTime: '10:00am',
+                    maxTime: '11:00pm',
+                    //defaultTime: "'" + hour + "'",
                     startTime: '10:00',
                     dynamic: false,
                     dropdown: true,
@@ -457,7 +443,7 @@
 
               //에약일시 안내 메세지
               $(document).ready(function () {
-                $("#date_time_label").text("날짜와 시간을 산텍하세요");
+                $("#date_time_label").text("날짜와 시간을 선택하세요");
                 $("#date_time_label").css("color", "red");
               });//ready
 
@@ -478,7 +464,7 @@
                   $(document).ready(function () {
                 $("#date_time_btn").click(function () {
                   if ($("#Date").val() != null || !$("#Date").val().equals("") || $("#time1").val() != null || !$("#time1").val().equals("")) {
-                    $("#date_time_label").text("");
+                    //$("#date_time_label").text("");
 
                     alert($("#Date").val())
                     alert($("#time1").val())
@@ -488,10 +474,7 @@
                     var day = date.getDate();
                     var today = year + "-" + "0" + month + "-" + day;
                     alert(today)
-                    if ($("#time1").val().equals(today)) {
-                      alert("동일")
-                    }
-                    $("#date_time_label").text($("#Date").val() + " " + $("#time1").val());
+                    $("#date_time_label").text($("#Date").val() + " " + $("#time1").val() + " - " + $("#time2").val());
                     $("#date_time_label").css("color", "blue");
 
                   }

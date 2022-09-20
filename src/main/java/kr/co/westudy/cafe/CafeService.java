@@ -14,7 +14,13 @@ public class CafeService {
     @Autowired
     private CafeDAO dao;
 
-	public List<CafeDTO> cafeList( SearchDTO dto ) {
+	public List<CafeDTO> cafeDetail( String cafe_id ) {
+		List<CafeDTO> list = null;
+		list = dao.cafeDetail( cafe_id );
+		return list;
+	}//detail - 필터링
+	
+	public List<CafeDTO> cafeList( CafeDTO dto ) {
 		List<CafeDTO> list = null;
 		list = dao.cafeList( dto );
 		return list;

@@ -15,7 +15,13 @@ public class CafeDAO {
     @Autowired
     private SqlSession sqlSession;
 
-	public List<CafeDTO> cafeList( SearchDTO dto ) {
+	public List<CafeDTO> cafeDetail( String cafe_id ) {
+		List<CafeDTO> list = null;
+		list = sqlSession.selectList("CafeMapper.cafeDetail", cafe_id);
+		return list;
+	}//list - 필터링
+	
+	public List<CafeDTO> cafeList( CafeDTO dto ) {
 		List<CafeDTO> list = null;
 		list = sqlSession.selectList("CafeMapper.cafeList", dto);
 		return list;
