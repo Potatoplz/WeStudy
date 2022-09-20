@@ -7,9 +7,9 @@
 
 	<insert id="recruit" parameterType="kr.co.westudy.study.StudyDTO" useGeneratedKeys="true" keyProperty="study_id">
 		insert into study_recruit (study_team, study_name, study_type, recruit_cnt, study_onoff, study_city, view_cnt,
-									start_date, end_date, study_content, study_writedate, closed_ok, dead_ok, member_id)
+									start_date, end_date, study_content, study_writedate, closed_ok, dead_ok, member_id, member_nick)
 		values (#{study_team}, #{study_name}, #{study_type}, #{recruit_cnt}, #{study_onoff}, #{study_city}, 0,
-				#{start_date}, #{end_date}, #{study_content}, now(), #{closed_ok}, #{dead_ok}, #{member_id})
+				#{start_date}, #{end_date}, #{study_content}, now(), #{closed_ok}, #{dead_ok}, #{member_id}, #{member_nick})
 	</insert>
 
 	<!-- 스터디 등록시 채팅룸 자동 생성 -->
@@ -18,8 +18,8 @@
 		values (#{study_id}, #{roomId}, #{roomName})
 	</insert>
 	
-	<select id="list" resultType="kr.co.westudy.study.StudyDTO">
+	<select id="studylist" parameterType="kr.co.westudy.study.StudyDTO" resultType="kr.co.westudy.study.StudyDTO">
 		select study_id,study_team, study_name, study_type, recruit_cnt, study_onoff, study_city, view_cnt, 
-				start_date, end_date, study_content, study_writedate, closed_ok, dead_ok, member_id  from study_recruit
+				start_date, end_date, study_content, study_writedate, closed_ok, dead_ok, member_id, member_nick from study_recruit
 	</select>
 </mapper>

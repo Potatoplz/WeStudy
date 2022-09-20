@@ -11,6 +11,11 @@ import lombok.extern.java.Log;
 @RequestMapping(value = "/study")
 public class StudyVeiwController {
 	
+	@GetMapping("/main")
+	public String main() {
+		return "/study/study_main";
+	}//list
+	
 	@GetMapping("/list")
 	public String list() {
 		return "/study/study_list";

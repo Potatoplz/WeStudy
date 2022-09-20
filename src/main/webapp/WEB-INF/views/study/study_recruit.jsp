@@ -38,7 +38,7 @@
 						</td>
 					</tr>
 					<tr>
-						<th> 스터디 종류 </th>
+						<th> 카테고리 </th>
 						<td>
 							<select name="category" id="category">
 								<option>출석/인증</option>
@@ -102,7 +102,10 @@
 				</tbody>
 			</table>
 		</form>
-		<button id="write_btn" class="btn btn-primary float-right"> 등록 </button>
+		
+			<button id="write_btn" class="btn btn-primary float-right"> 등록 </button>
+		
+		
 		<a href="${pageContext.request.contextPath}/study/list">
 			<button class="btn btn-warning"> 취소 </button>
 		</a>
@@ -112,7 +115,15 @@
 	<script type="text/javascript">
 	$(document).ready(function() {
 		$("#write_btn").click(function() {
-
+			
+			$.post(
+					"${pageContext.request.contextPath}/chat/room"
+					, {
+						roomName : $("#teamname").val()
+					}
+					
+			);//post	
+			
 			$.post(
 					"${pageContext.request.contextPath}/study_rest/"
 					, {
@@ -138,6 +149,11 @@
 						}
 					}//call back function
 			);//post
+					
+			
+			
+			
+			
 		});//click
 	});//ready
 	</script>

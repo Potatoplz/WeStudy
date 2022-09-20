@@ -25,7 +25,7 @@ public class StudyDAO {
 	}//chatroom
 
 	public List<StudyDTO> list(StudyDTO dto) {
-		List<StudyDTO> list = sqlSession.selectList("StudyMapper.list", dto);
-		return null;
-	}
+		List<StudyDTO> list = sqlSession.selectList("StudyMapper.studylist", dto);
+		return list;
+	}//list
 }

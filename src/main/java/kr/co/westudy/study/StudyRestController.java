@@ -25,7 +25,7 @@ public class StudyRestController {
 	
 	@PostMapping("/")
 	public void recruit(StudyDTO dto, HttpSession session, PrintWriter out) { 
-		dto.setMember_id(((MemberDTO) session.getAttribute("login_info")).getMember_id());
+//		dto.setMember_id(((MemberDTO) session.getAttribute("login_info")).getMember_id());
 		int successCount = 0;
 		service.recruit(dto);
 		

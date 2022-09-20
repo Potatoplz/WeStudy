@@ -9,6 +9,7 @@ public class StudyDTO {
 
 	private String study_id;
 	private String member_id;
+	private String member_nick;
 	private String study_team;
 	private String study_name;
 	private String study_type;
@@ -21,6 +22,7 @@ public class StudyDTO {
 	private String study_writedate;
 	private String closed_ok;
 	private String dead_ok;
+	private String view_cnt;
 	
 	private String roomId;
 	private String roomName;

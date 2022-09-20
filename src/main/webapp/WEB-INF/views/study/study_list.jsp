@@ -28,7 +28,7 @@
 		<table class="table table-hover">
 			<thead>
 				<tr>
-					<th>번호</th>	<th>제목</th>	<th>작성자</th>	<th>조회수</th>	<th>작성일</th>
+					<th>No</th>	<th>카테고리</th>	<th>스터디명</th>	<th>시작일</th> <th>상태</th> <th>채팅</th>
 				</tr>
 			</thead>
 			<tbody id="list_tbody">
@@ -42,17 +42,18 @@
 					"${pageContext.request.contextPath}/study_rest/list"
 					, {}
 					, function(data, status) {
-						alert(data);
-
+						//alert(JSON.stringify (data)); //데이터 확인용
+						
 						$.each(data, function(index, dto) {
 							$("#list_tbody").append(
 								"<tr>"
 								+ "<td>" + dto.study_id + "</td>"
-+ "<td><a href='${pageContext.request.contextPath}/restmbrbrdview/detail_page?board_no=" + dto.study_id + "'>"
+								+ "<td>" + dto.study_type + "</td>"
+								+ "<td><a href='${pageContext.request.contextPath}/restmbrbrdview/detail_page?board_no=" + dto.study_id + "'>"
 									+ dto.study_name + "</a></td>"
-								+ "<td>" + dto.study_onoff + "</td>"
-								+ "<td>" + dto.view_cnt + "</td>"
-								+ "<td>" + dto.study_write_date + "</td>"
+								+ "<td>" + dto.start_date + "</td>"
+								+ "<td>" + "승인/거절" + "</td>"
+								+ "<td>" + "<button class='btn btn-info'>입장</button>" + "</td>"
 								+ "</tr>"
 							);//append
 						});//each
