@@ -3,7 +3,7 @@
 		<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
 			<%-- 헤더 자리 --%>
-       			<jsp:include page="/WEB-INF/views/header.jsp"></jsp:include>
+				<jsp:include page="/WEB-INF/views/header.jsp"></jsp:include>
 				<html>
 
 				<head>
@@ -49,10 +49,10 @@
 						.img-box {
 							width: 300px;
 							height: 400px;
-							top: 6px; 
-							left: 7px; 
+							top: 6px;
+							left: 7px;
 							border-radius: 10px;
-							margin-bottom: 10px; 
+							margin-bottom: 10px;
 							transition: all 0.2s linear;
 						}
 
@@ -70,9 +70,9 @@
 						}
 
 						/* 상품 리스트 가운데 정렬 */
-						table { 
-						     margin: auto; 
-						      } 
+						table {
+							margin: auto;
+						}
 
 						/* 하이퍼링크 색깔 없애기 */
 						a {
@@ -155,7 +155,7 @@
 
 
 						<div class="btn-group float-right">
-							<button type="button" class="btn btn-warning" style="background-color: coral;">
+							<button type="button" onclick="location.href='/map/map_detail' " class="btn btn-warning" style="background-color: coral;">
 								지 도
 							</button>
 						</div>
@@ -243,4 +243,5 @@
 					});//ready
 
 				</script>
+
 				</html>

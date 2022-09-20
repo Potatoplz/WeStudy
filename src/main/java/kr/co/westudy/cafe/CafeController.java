@@ -36,23 +36,22 @@ public class CafeController {
 
     @Autowired
     private CafeService service;
-    
-    //DB에서 카페 데이터 가져오기
-    @GetMapping( value = "/cafe_detail")
-	public List<CafeDTO> detail_cafe( String cafe_id ) {
-		List<CafeDTO> list = null;
-		list = service.cafeDetail( cafe_id ); //
-		return list;// data 리턴
-	}//list_cate
-    
-    @GetMapping( value = "/cafe_list")
-    public List<CafeDTO> list_cafe( CafeDTO dto ) {
-    	List<CafeDTO> list = null;
-    	list = service.cafeList( dto ); //
-    	return list;// data 리턴
-    }//list_cate
-    
-    
+
+    // DB에서 카페 데이터 가져오기
+    @GetMapping(value = "/cafe_detail")
+    public List<CafeDTO> detail_cafe(String cafe_id) {
+        List<CafeDTO> list = null;
+        list = service.cafeDetail(cafe_id); //
+        return list;// data 리턴
+    }// list_cate
+
+    @GetMapping(value = "/cafe_list")
+    public List<CafeDTO> list_cafe(CafeDTO dto) {
+        List<CafeDTO> list = null;
+        list = service.cafeList(dto); //
+        return list;// data 리턴
+    }// list_cate
+
     @PostMapping(value = "/insert")
     public void insert(CafeDTO dto, HttpSession session, PrintWriter out) throws IOException {
         log.info("cafe");
