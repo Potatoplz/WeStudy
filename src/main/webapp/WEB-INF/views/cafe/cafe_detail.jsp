@@ -248,6 +248,19 @@
                     <br>
                     <div class="clearfix">
                       <button id="test_btn" name="test_btn" class="btn btn-info float-left"> 테스트 버튼 </button>
+                      <form action="/pay/confirm" method="post">
+                      <!-- 예약번호 -->
+						partner_order_id: <input type="text" name="partner_order_id" id="date_time_pay" required> <br><br>
+                      <!-- 회원번호 -->
+						partner_user_id: <input type="text" name="partner_user_id" required><br><br>
+                      <!-- 카페이름 -->
+						item_name: <input type="text" name="item_name" required><br><br>
+                      <!-- 수량 -->
+						quantity: <input type="text" name="quantity" required><br><br>
+                      <!-- 총금액 -->
+						total_amount: <input type="text" name="total_amount" required><br><br>
+						<input type="submit" value="결제하기">
+					 </form> 
                     </div>
                     <br>
 
@@ -476,6 +489,7 @@
                     alert(today)
                     $("#date_time_label").text($("#Date").val() + " " + $("#time1").val() + " - " + $("#time2").val());
                     $("#date_time_label").css("color", "blue");
+                    $("#date_time_pay").val($("#Date").val().replaceAll("-", "")+$("#time1").val().replaceAll(":", "")+$("#time2").val().replaceAll(":", ""));
 
                   }
                 }); //click
