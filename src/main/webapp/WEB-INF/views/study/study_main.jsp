@@ -12,7 +12,7 @@
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
 	</head>
 
-		<link rel="stylesheet" href="/resources/study_main.css">
+		<link rel="stylesheet" href="/resources/study/study_main.css">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/boxicons/2.1.0/css/boxicons.min.css"/>
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/5.3.45/css/materialdesignicons.css" />
 		<!-- bootstrap cdn -->
