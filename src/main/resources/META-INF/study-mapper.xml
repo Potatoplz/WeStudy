@@ -22,4 +22,25 @@
 		select study_id,study_team, study_name, study_type, recruit_cnt, study_onoff, study_city, view_cnt, 
 				start_date, end_date, study_content, study_writedate, closed_ok, dead_ok, member_id, member_nick from study_recruit
 	</select>
+	
+	<update id="incrementViewCnt" parameterType="java.lang.String">
+		update study_recruit
+		set view_cnt = view_cnt + 1
+		where study_id = #{study_id}
+	</update>
+
+	<select id="detail" parameterType="java.lang.String" resultType="kr.co.westudy.study.StudyDTO">
+		select re.study_id, re.study_team, re.study_name, re.study_type, re.recruit_cnt, re.study_onoff
+				, re.study_city, re.view_cnt, re.start_date, re.end_date, re.study_content, re.study_writedate
+				, re.closed_ok, re.dead_ok, re.member_id, re.member_nick 
+		from study_recruit re, member m
+		where re.study_id = #{study_id}
+		and re.member_id = m.member_id
+	</select>
+	
+	<delete id="delete" parameterType="kr.co.westudy.study.StudyDTO">
+		delete from study_recruit
+		where study_id = #{study_id}
+		and member_id = #{member_id}
+	</delete>
 </mapper>

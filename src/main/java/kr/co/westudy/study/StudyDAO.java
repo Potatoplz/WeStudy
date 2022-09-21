@@ -28,4 +28,20 @@ public class StudyDAO {
 		List<StudyDTO> list = sqlSession.selectList("StudyMapper.studylist", dto);
 		return list;
 	}//list
+
+	public StudyDTO detail(String study_id) {
+		StudyDTO dto = null;
+		dto = sqlSession.selectOne("StudyMapper.detail", study_id);
+		return dto;
+	}
+
+	public void incrementViewCnt(String study_id) {
+		sqlSession.update("StudyMapper.incrementViewCnt", study_id);
+	}//incrementViewCnt
+
+	public int delete(StudyDTO dto) {
+		int successCount = 0;
+		successCount = sqlSession.delete("StudyMapper.delete", dto);
+		return successCount;
+	}//delete
 }

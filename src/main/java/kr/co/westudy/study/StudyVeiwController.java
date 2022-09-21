@@ -1,6 +1,7 @@
 package kr.co.westudy.study;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -10,6 +11,12 @@ import lombok.extern.java.Log;
 @Controller
 @RequestMapping(value = "/study")
 public class StudyVeiwController {
+
+	@GetMapping("/detail")
+	public String detail(String study_id, Model model) {
+		model.addAttribute("study_id", study_id);
+		return "study/study_detail";
+	}//detail
 	
 	@GetMapping("/main")
 	public String main() {

@@ -7,7 +7,9 @@ import java.util.List;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -29,6 +31,21 @@ public class StudyRestController {
 
 	@Autowired
 	private StudyService service;
+
+	@DeleteMapping("/{inData}")
+	public int delete(@PathVariable("inData") String study_id, HttpSession session) {
+		StudyDTO dto = new StudyDTO();
+		dto.setStudy_id(study_id);
+		dto.setMember_id( ( (MemberDTO) session.getAttribute("login_info") ).getMember_id() );
+		int successCount = service.delete(dto);
+		return successCount;
+	}//delete
+	
+	@GetMapping("/{inData}")
+	public StudyDTO detail(@PathVariable("inData") String study_id) {
+		StudyDTO dto = service.detail(study_id);
+		return dto;		
+	}//detail
 	
 	@PostMapping("/")
 	public String recruit(StudyDTO dto, HttpSession session, PrintWriter out, 

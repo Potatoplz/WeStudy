@@ -49,7 +49,7 @@
 								"<tr>"
 								+ "<td>" + dto.study_id + "</td>"
 								+ "<td>" + dto.study_type + "</td>"
-								+ "<td><a href='${pageContext.request.contextPath}/restmbrbrdview/detail_page?board_no=" + dto.study_id + "'>"
+								+ "<td><a href='${pageContext.request.contextPath}/study/detail?study_id=" + dto.study_id + "'>"
 									+ dto.study_name + "</a></td>"
 								+ "<td>" + dto.start_date + "</td>"
 								+ "<td>" + "승인/거절" + "</td>"

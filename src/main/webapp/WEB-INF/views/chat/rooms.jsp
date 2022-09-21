@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>채팅방 개설하기</title>
+<title>채팅방 개설 확인용 페이지</title>
 </head>
 <body>
 	<div class="container">

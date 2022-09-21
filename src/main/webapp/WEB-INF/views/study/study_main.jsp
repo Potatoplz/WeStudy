@@ -102,7 +102,7 @@
 								"<div class='card2' >"
 								+ "<ul style='margin:10px;'>"
 								+ "<li>" + "시작 예정일 | " + dto.start_date + "</li>"
-								+ "<li><h5><a href='${pageContext.request.contextPath}/restmbrbrdview/detail_page?board_no=" + dto.study_id + "'>"
+								+ "<li><h5><a href='${pageContext.request.contextPath}/study/detail?study_id=" + dto.study_id + "'>"
 									+ dto.study_name + "</a></h5></li>"
 								+ "<li>" + "#갓생 #미라클모닝 #새벽" + "</li>"	
 								+ "<li class='badge badge-soft-success mb-0'>" + dto.study_onoff + "</li><br>"

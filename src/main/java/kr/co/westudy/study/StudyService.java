@@ -27,4 +27,17 @@ public class StudyService {
 		List<StudyDTO> list = dao.list(dto);
 		return list;
 	}//list
+
+	public StudyDTO detail(String study_id) {
+		dao.incrementViewCnt(study_id);
+		StudyDTO dto = null;
+		dto = dao.detail(study_id);
+		return dto;
+	}//detail
+
+	public int delete(StudyDTO dto) {
+		int successCount = 0;
+		successCount = dao.delete( dto );
+		return successCount;
+	}//delete
 }
