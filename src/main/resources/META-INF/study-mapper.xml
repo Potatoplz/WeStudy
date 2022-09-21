@@ -18,6 +18,12 @@
 		values (#{study_id}, #{roomId}, #{roomName})
 	</insert>
 	
+	<select id="teamNameCheck" parameterType="java.lang.String" resultType="int">
+		select count(study_team) cnt
+		from study_recruit
+		where study_team = #{study_team}
+	</select>
+	
 	<select id="studylist" parameterType="kr.co.westudy.study.StudyDTO" resultType="kr.co.westudy.study.StudyDTO">
 		select study_id,study_team, study_name, study_type, recruit_cnt, study_onoff, study_city, view_cnt, 
 				start_date, end_date, study_content, study_writedate, closed_ok, dead_ok, member_id, member_nick from study_recruit

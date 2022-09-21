@@ -44,4 +44,10 @@ public class StudyDAO {
 		successCount = sqlSession.delete("StudyMapper.delete", dto);
 		return successCount;
 	}//delete
+
+	public int teamNameCheck(String study_team) {
+		int isYN = 0;
+		isYN = sqlSession.selectOne("StudyMapper.teamNameCheck", study_team);
+		return isYN;
+	}
 }

@@ -40,4 +40,10 @@ public class StudyService {
 		successCount = dao.delete( dto );
 		return successCount;
 	}//delete
+
+	public int teamNameCheck(String study_team) {
+		int isYN = 0;
+		isYN = dao.teamNameCheck( study_team );
+		return isYN;
+	}
 }
