@@ -53,7 +53,7 @@
 									+ dto.study_name + "</a></td>"
 								+ "<td>" + dto.start_date + "</td>"
 								+ "<td>" + "승인/거절" + "</td>"
-								+ "<td>" + "<button class='btn btn-info'>입장</button>" + "</td>"
+								+ "<td>" + "<a href='/chat/room?roomId="+ dto.study_team + "'><button class='btn btn-info'>입장</button></a>" + "</td>"
 								+ "</tr>"
 							);//append
 						});//each

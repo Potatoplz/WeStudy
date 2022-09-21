@@ -17,10 +17,10 @@
 		}
 		</style>
 	</head>
+	<%@ include file="/WEB-INF/views/header.jsp" %>
 	<body>
-<%-- 	<%@ include file="/WEB-INF/views/header.jsp" %> --%>
 		<hr>
-		<h3> 스터디 모집 </h3>
+		<h3> 스터디 모집</h3>
 		<hr>
 		<form id="write_form">
 			<table class="table table-hover">
@@ -28,13 +28,13 @@
 					<tr>
 						<th> 스터디 제목 </th>
 						<td colspan="3">
-							<input type="text" id="title" name="title" maxlength="20" class="form-control">
+							<input type="text" id="title" name="title" maxlength="50" class="form-control">
 						</td>
 					</tr>
 					<tr>
 						<th> 스터디 팀명 </th>
 						<td colspan="3">
-							<input type="text" id="teamname" name="teamname" maxlength="20" class="form-control">
+							<input type="text" id="teamname" name="teamname" maxlength="10" class="form-control">
 						</td>
 					</tr>
 					<tr>
@@ -117,15 +117,8 @@
 		$("#write_btn").click(function() {
 			
 			$.post(
-					"${pageContext.request.contextPath}/chat/room"
-					, {
-						roomName : $("#teamname").val()
-					}
-					
-			);//post	
-			
-			$.post(
 					"${pageContext.request.contextPath}/study_rest/"
+					
 					, {
 						study_name : $("#title").val()
 						, study_content : CKEDITOR.instances.contents.getData()
@@ -136,6 +129,7 @@
 						, recruit_cnt : $("#recruit_cnt").val()
 						, start_date : $("#std_start").val()
 						, end_date : $("#std_end").val()
+						, roomName : $("#teamname").val()
 						
 					}
 					, function(data, status) {
