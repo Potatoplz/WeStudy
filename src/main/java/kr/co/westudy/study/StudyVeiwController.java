@@ -18,6 +18,16 @@ public class StudyVeiwController {
 	@Autowired
 	private StudyService service;
 	
+	@GetMapping("/footer")
+	public String footer() {
+		return "footer";
+	}//mystudy
+	
+	@GetMapping("/mystudy")
+	public String mystudy() {
+		return "study/my_study";
+	}//mystudy
+	
 	@GetMapping("/detail")
 	public String detail(String study_id, Model model) {
 		model.addAttribute("study_id", study_id);

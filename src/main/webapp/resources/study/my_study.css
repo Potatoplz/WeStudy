@@ -1,0 +1,146 @@
+@charset "UTF-8";
+
+nav > .nav.nav-tabs{
+
+  border: none;
+    color:#fff;
+    background:#272e38;
+    border-radius:0;
+
+}
+nav > div a.nav-item.nav-link,
+nav > div a.nav-item.nav-link.active
+{
+  border: none;
+    padding: 18px 25px;
+    color:#fff;
+    background:#272e38;
+    border-radius:0;
+}
+
+nav > div a.nav-item.nav-link.active:after
+ {
+  content: "";
+  position: relative;
+  bottom: -60px;
+  left: -10%;
+  border: 15px solid transparent;
+  border-top-color: #3156A1 ;
+}
+.tab-content{
+ 	background: #fdfdfd;
+    line-height: 25px;
+    border: 1px solid #ddd;
+    border-top:5px solid #3156A1;
+    border-bottom:5px solid #3156A1;
+    padding:30px 25px;
+    height:100%;
+}
+
+nav > div a.nav-item.nav-link:hover,
+nav > div a.nav-item.nav-link:focus
+{
+  border: none;
+    background: #3156A1;
+    color:#fff;
+    border-radius:0;
+    transition:background 0.20s linear;
+}
+
+/* 스터디 정보 */
+.open-wrapper {
+	margin-left:158px;
+	margin-right:158px;
+	
+}
+
+.cnt_title {
+    margin-top: 2.5rem;
+    font-weight: 800;
+    font-size: 2rem;
+    line-height: 126.5%;
+    letter-spacing: -.005em;
+    color: #000;
+}
+
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.studyInfo_studyGrid__38Lfj {
+    display: grid;
+    grid-template-columns: repeat(2,3fr);
+    grid-row-gap: 24px;
+    row-gap: 24px;
+    margin-top: 60px;
+}
+.studyInfo_CntWrapper {
+    display: flex;
+    position: relative;
+    align-items: center;
+    font-weight: 700;
+    font-size: 20px;
+}
+
+.studyInfo_title {
+    color: #717171;
+    margin-right: 40px;
+}
+
+.studyInfo_Cnt {
+    color: #333;
+}
+
+/* 승인 리스트 */
+
+.approve-wrapper{
+	margin-left:158px;
+	margin-right:158px;
+}
+
+.approve-ok{
+	float:left;	
+	width:384px;
+}
+.approve-list{
+	float:right;
+	width:384px;	
+}
+
+#app-font{
+	margin-top: 2.5rem;
+    font-weight: 800;
+    font-size: 25px;
+    line-height: 126.5%;
+    letter-spacing: -.005em;
+    color: #3156A1
+}
+
+.appInfo_studyGrid {
+    display: grid;
+    grid-template-columns: repeat(2,3fr);
+    grid-row-gap: 24px;
+    row-gap: 24px;
+    margin-top: 30px;
+}
+
+.appInfo_CntWrapper {
+    display: flex;
+    position: relative;
+    align-items: center;
+    font-weight: 700;
+    font-size: 20px;
+}
+
+.appInfo_name {
+    color: #717171;
+    margin-right: 30px;
+    width:100px;
+}
+
+.appInfo_mail {
+    color: #333;
+}
+

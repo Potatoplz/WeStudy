@@ -221,6 +221,7 @@ body {
 
   <hr>
   <a href="#">카페 예약 리스트</a>
+  <a href="${pageContext.request.contextPath}/study/mystudy">마이 스터디</a>
   <a href="${pageContext.request.contextPath}/study/list">나의 스터디</a>
   <a href="#">찜 리스트</a>
   <a a id="calendar" href="${pageContext.request.contextPath}/mypage/calendar">일정 관리</a>
