@@ -60,6 +60,13 @@
 			<div class="studyCnt_postCnt" id="study_content"><p>안녕하세요.</p></div>
 			</div>
 			
+			<br>
+			<div class="commentInput_buttonWrapper">
+				<button class="btn btn-info" name="register">지원하기</button>
+				<button class="btn btn-warning" name="register">지원취소</button>
+			</div>
+			
+			
 			<!-- 댓글 -->
 			
 			<section class="studyContent_commentAndViews">
