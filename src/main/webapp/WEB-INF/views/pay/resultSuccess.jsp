@@ -9,11 +9,25 @@
 <h2>결제 상세 내역</h2>
 
 <p>
-	${searchVO}
+	
+	${pay_info}
 </p>
 
 <ul>
 	<li>거래번호 : ${searchVO.tid}</li>
+	<li>예약번호 : ${pay_info.partner_order_id}</li>
+	<li>카페번호 : ${pay_info.partner_user_id}</li>
+	<li>카페이름 : ${pay_info.item_name}</li>
+	<li>수량 : ${searchVO.quantity}</li>
+	<li>금액 : ${pay_info.total_amount}</li>
+	<li>회원번호 : ${pay_info.member_id}</li>
+	<li>닉네임 : ${pay_info.member_nick}</li>
+	<li>방문예정일 : ${pay_info.use_date}</li>
+	<li>이용시작시간 : ${pay_info.use_start_time}</li>
+	<li>이용종료시간 : ${pay_info.use_end_time}</li>
+	<li>예약시간 : ${pay_info.reserve_count}</li>
+	<li>방번호 : ${pay_info.room_id}</li>
+	<h6>=================================================</h6>
 	<li>
 		거래상태 : ${searchVO.status}
 		(

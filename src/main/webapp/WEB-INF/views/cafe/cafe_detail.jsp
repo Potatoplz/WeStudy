@@ -205,7 +205,7 @@
                     <div class="flex"><input type="radio" name="space_reserv" id="space_reserv" value="[object Object]"
                         class="radio"> <label for="space_reserv">메인룸</label>
 
-                      <strong class="flex align_right">&#8361;${dto.price_hour}</strong>
+                      <strong class="flex align_right" id="price_hour" name="price_hour">&#8361;${dto.price_hour}</strong>
                       <span class="txt_unit"> / 시간
                       </span>
                     </div>
@@ -236,17 +236,36 @@
                     <br>
                     <div class="clearfix">
                       <button id="test_btn" name="test_btn" class="btn btn-info float-left"> 테스트 버튼 </button>
+                      <br>
+                      <br>
+						<input type="hidden" name="price_hour1" id="price_hour1" value = "${dto.price_hour}" required> <br><br>
                       <form action="/pay/confirm" method="post">
                       <!-- 예약번호 -->
 						예약번호: <input type="text" name="partner_order_id" id="date_time_pay" required> <br><br>
                       <!-- 회원번호 -->
-						partner_user_id: <input type="text" name="partner_user_id" required><br><br>
+						카페번호 : <input type="text" name="partner_user_id" id="cafe_id" value="${dto.cafe_id}" required><br><br>
+								<input type="hidden" name="cafe_id" id="cafe_id" value="${dto.cafe_id}" required><br><br>
                       <!-- 카페이름 -->
-						item_name: <input type="text" name="item_name" required><br><br>
+						카페이름: <input type="text" name="item_name" value="${dto.cafe_name}" required><br><br>
                       <!-- 수량 -->
-						quantity: <input type="text" name="quantity" required><br><br>
+						수량: <input type="text" name="quantity" id="quantity" required><br><br>
                       <!-- 총금액 -->
-						total_amount: <input type="text" name="total_amount" required><br><br>
+						금액: <input type="text" name="total_amount" id="total_amount" required><br><br>
+                      <!-- 회원번호 -->
+						회원번호 : <input type="text" name="member_id" id="member_id" value="${login_info.member_id}" required><br><br>
+                      <!-- 닉네임 -->
+						닉네임: <input type="text" name="member_nick" id="member_nick" value="${login_info.member_nick}" required><br><br>
+                      <!-- 방문예정일 -->
+						방문예정일 : <input type="text" name="use_date" id="use_date" required><br><br>
+                      <!-- 이용시작시간 -->
+						이용시작시간: <input type="text" name="use_start_time" id="use_start_time" required><br><br>
+                      <!-- 이용종료시간 -->
+						이용종료시간: <input type="text" name="use_end_time" id="use_end_time"  required><br><br>
+                      <!-- 예약시간 -->
+						예약시간: <input type="text" name="reserve_count" id="reserve_count" required><br><br>
+                      <!-- 방번호 -->
+						 방번호: <br><input type="text" name="room_id" id="room_id" required><br><br>
+						
 						<input type="submit" value="결제하기">
 					 </form> 
                       
@@ -442,17 +461,26 @@
                 $("#date_time_btn").click(function () {
                   if ($("#Date").val() != null || !$("#Date").val().equals("") || $("#time1").val() != null || !$("#time1").val().equals("")) {
                     //$("#date_time_label").text("");
-                    alert($("#Date").val())
-                    alert($("#time1").val())
+                    //alert($("#Date").val())
+                    //alert($("#time1").val())
                     var date = new Date();
                     var year = date.getFullYear();
                     var month = date.getMonth() + 1;
                     var day = date.getDate();
                     var today = year + "-" + "0" + month + "-" + day;
-                    alert(today)
+                    //alert(today)
+                   
+                    //예약번호, 예약일시, 수량, 금액, 이용시작시간,이용종료시간
                     $("#date_time_label").text($("#Date").val() + " " + $("#time1").val() + " - " + $("#time2").val());
                     $("#date_time_label").css("color", "blue");
-                    $("#date_time_pay").val($("#Date").val().replaceAll("-", "")+$("#time1").val().replaceAll(":", "")+$("#time2").val().replaceAll(":", ""));
+                    $("#use_date").val($("#Date").val());
+                    $("#use_start_time").val($("#time1").val().replaceAll(":", "").substring(0, 2));
+                    $("#use_end_time").val($("#time2").val().replaceAll(":", "").substring(0, 2));
+                    $("#date_time_pay").val($("#Date").val().replaceAll("-", "")+"_"+$("#cafe_id").val()+"_"+$("#time1").val().replaceAll(":", "")+$("#time2").val().replaceAll(":", ""));
+                    var totalprice = $("#quantity").val($("#time2").val().replaceAll(":", "").substring(0, 2) - $("#time1").val().replaceAll(":", "").substring(0, 2));
+                    $("#reserve_count").val($("#time2").val().replaceAll(":", "").substring(0, 2) - $("#time1").val().replaceAll(":", "").substring(0, 2));
+                    var orderNum = $("#date_time_pay").val($("#Date").val().replaceAll("-", "")+"_"+$("#cafe_id").val()+"_"+$("#time1").val().replaceAll(":", "")+$("#time2").val().replaceAll(":", ""));
+                    $("#total_amount").val($("#price_hour1").val() * totalprice.val());
                   }
                 }); //click
               });//ready
