@@ -49,9 +49,10 @@
 	
 		<select id="cafeList" parameterType="kr.co.westudy.cafe.CafeDTO"
 			resultType="kr.co.westudy.cafe.CafeDTO">
-		select cafe_id, cafe_name, post_code, cafe_addr1, cafe_addr2, open_time, close_time, cafe_img_name1, cafe_img_path1,
-		cafe_img_name2, cafe_img_path2, cafe_content1, cafe_content2, cafe_content3, cafe_category, cafe_oneline
-    	from cafe 
+		select c.cafe_id, c.cafe_name, c.post_code, c.cafe_addr1, c.cafe_addr2, c.open_time, c.close_time, c.cafe_img_name1, c.cafe_img_path1,
+		c.cafe_img_name2, c.cafe_img_path2, c.cafe_content1, c.cafe_content2, c.cafe_content3, c.cafe_category, c.cafe_oneline, r.price_hour, r.room_name
+    	from cafe c, room r
+    	where c.cafe_id = r.cafe_id
 		<if test="cafe_category != null and cafe_category != ''">
 			and cafe_category = #{cafe_category}
 		</if>

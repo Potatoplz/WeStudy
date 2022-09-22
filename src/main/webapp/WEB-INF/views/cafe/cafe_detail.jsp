@@ -202,19 +202,28 @@
                   <br>
                   <br>
                   <div class="flex_box">
-                  <c:forEach var="room" items="${roomList}">
                   
-                    <div class="flex"><input type="radio" name="space_reserv" id="space_reserv" value="${room.room_name}"
-                        class="radio"> <label for="space_reserv">${room.room_name}</label>
-
-                      <strong class="flex align_right" id="price_hour" name="price_hour">&#8361;${dto.price_hour}</strong>
-                      <span class="txt_unit"> / 시간
-                      </span>
+                  <c:forEach var="room" items="${roomList}" varStatus="status">
+                  
+                    <div class="flex">
+                      <input type="radio" name="space_reserv" id="space_reserv_${status.index}" value="${room.price_hour}" class="radio"> 
+                      <label for="space_reserv_${status.index}">${room.room_name}
+                       <input type="hidden" name="room_name" id="room_name" value="${room.room_name}" required>
+	
+	                      <strong class="flex align_right" id="price_hour" name="price_hour" >&#8361;${room.price_hour}</strong>
+	                      <span class="txt_unit"> / 시간</span>
+                      </label>
                     </div>
-                  
-                  
                   </c:forEach>
-                  
+                       <input type="hidden" name="price_hour2" id="price_hour2" value="" required>
+                  <!-- 라디오버튼 선택 값 -->
+                  <script type="text/javascript">
+                  $(document).ready(function(){
+                	  $("input[type='radio']").click(function(){
+                		  $("#price_hour2").val( $(this).val() );
+                	  });//click
+                  });//ready
+                  </script>
                   
                   </div>
                   <hr>
@@ -253,7 +262,8 @@
 						카페번호 : <input type="text" name="partner_user_id" id="cafe_id" value="${dto.cafe_id}" required><br><br>
 								<input type="hidden" name="cafe_id" id="cafe_id" value="${dto.cafe_id}" required><br><br>
                       <!-- 카페이름 -->
-						카페이름: <input type="text" name="item_name" value="${dto.cafe_name}" required><br><br>
+						상품명: <input type="text" name="item_name0" id="item_name0" value="${dto.cafe_name}" required><br><br>
+						상품명1: <input type="text" name="item_name" id="item_name" required><br><br>
                       <!-- 수량 -->
 						수량: <input type="text" name="quantity" id="quantity" required><br><br>
                       <!-- 총금액 -->
@@ -481,13 +491,14 @@
                     $("#date_time_label").text($("#Date").val() + " " + $("#time1").val() + " - " + $("#time2").val());
                     $("#date_time_label").css("color", "blue");
                     $("#use_date").val($("#Date").val());
+                    $("#item_name").val("[ "+$("#item_name0").val()+" ]"+" "+ $("#room_name").val());
                     $("#use_start_time").val($("#time1").val().replaceAll(":", "").substring(0, 2));
                     $("#use_end_time").val($("#time2").val().replaceAll(":", "").substring(0, 2));
                     $("#date_time_pay").val($("#Date").val().replaceAll("-", "")+"_"+$("#cafe_id").val()+"_"+$("#time1").val().replaceAll(":", "")+$("#time2").val().replaceAll(":", ""));
                     var totalprice = $("#quantity").val($("#time2").val().replaceAll(":", "").substring(0, 2) - $("#time1").val().replaceAll(":", "").substring(0, 2));
                     $("#reserve_count").val($("#time2").val().replaceAll(":", "").substring(0, 2) - $("#time1").val().replaceAll(":", "").substring(0, 2));
                     var orderNum = $("#date_time_pay").val($("#Date").val().replaceAll("-", "")+"_"+$("#cafe_id").val()+"_"+$("#time1").val().replaceAll(":", "")+$("#time2").val().replaceAll(":", ""));
-                    $("#total_amount").val($("#price_hour1").val() * totalprice.val());
+                    $("#total_amount").val($("#price_hour2").val() * totalprice.val());
                   }
                 }); //click
               });//ready
