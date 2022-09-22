@@ -107,33 +107,33 @@
 <div class="container">
     <h3 class="h3">shopping Demo-1 </h3>
 <!--     <div class="row"> -->
-        <div class="col-md-3 col-sm-6" id="product-list"><!-- 이 안에 append -->
-      1번자리 
-          <div class="product-grid">
-          2번자리
-                <div class="product-image" id="product-image"><!-- 여기서부터 -->
-                3번자리
-                    <a href="#">
-                        <img class="pic-1" src="http://i3.wp.com/ytimg.googleusercontent.com/vi/g9Is-3fTh7Q/mqdefault.jpg">
-                        <img class="pic-2" src="https://i.ytimg.com/vi/v7U78sJxAQk/mqdefault.jpg">
-                    </a>
-                    <ul class="social">
-                        <li><a href="" data-tip="Quick View"><i class="fa fa-search"></i></a></li>
-                        <li><a href="" data-tip="Add to Wishlist"><i class="fa fa-shopping-bag"></i></a></li>
-                        <li><a href="" data-tip="Add to Cart"><i class="fa fa-shopping-cart"></i></a></li>
-                    </ul>
-                    <span class="product-new-label">자양동</span>
-                    <span class="product-discount-label">20%</span>
-                </div>
-                <div class="product-content">
-                    <h3 class="title"><a href="#">[광진구] 카페이름카페이름카페이름</a></h3>
-                    <div class="price">2000원
-                        <span> / 시간</span>
-                    </div>
-                    <a class="add-to-cart" href="">+ Add To Cart</a>
-                </div><!-- 여기까지 -->
-            </div>
-        </div>
+        <div class="product-list" id="product-list"><!-- 이 안에 append -->
+<!--       1번자리  -->
+<!--           <div class="product-grid"> -->
+<!--           2번자리 -->
+<!--                 <div class="product-image" id="product-image">여기서부터 -->
+<!--                 3번자리 -->
+<!--                     <a href="#"> -->
+<!--                         <img class="pic-1" src="http://i3.wp.com/ytimg.googleusercontent.com/vi/g9Is-3fTh7Q/mqdefault.jpg"> -->
+<!--                         <img class="pic-2" src="https://i.ytimg.com/vi/v7U78sJxAQk/mqdefault.jpg"> -->
+<!--                     </a> -->
+<!--                     <ul class="social"> -->
+<!--                         <li><a href="" data-tip="Quick View"><i class="fa fa-search"></i></a></li> -->
+<!--                         <li><a href="" data-tip="Add to Wishlist"><i class="fa fa-shopping-bag"></i></a></li> -->
+<!--                         <li><a href="" data-tip="Add to Cart"><i class="fa fa-shopping-cart"></i></a></li> -->
+<!--                     </ul> -->
+<!--                     <span class="product-new-label">자양동</span> -->
+<!--                     <span class="product-discount-label">20%</span> -->
+<!--                 </div> -->
+<!--                 <div class="product-content"> -->
+<!--                     <h3 class="title"><a href="#">[광진구] 카페이름카페이름카페이름</a></h3> -->
+<!--                     <div class="price">2000원 -->
+<!--                         <span> / 시간</span> -->
+<!--                     </div> -->
+<!--                     <a class="add-to-cart" href="">+ Add To Cart</a> -->
+<!--                 </div>여기까지 -->
+<!--             </div> -->
+        </div><!-- 이안에 appen -->
     </div>
 </div><!-- 끝 -->
 			</div><!-- row -->
@@ -156,13 +156,16 @@
 									$("#product-list").append(
 											"<div class='product-grid'>"
 											+ "<div class='product-image' id='product-image'>"
-											+ "<a href=#>"+ "이미지 자리1" + "이미지자리2" "</a>"	
+											+ "<a href='${pageContext.request.contextPath}/cafe/detail?cafe_id=" + dto.cafe_id + "'>"
+											+ "<img class='pic-1' src=" + dto.cafe_img_path1 + ">"
+											+ "<img class='pic-2' src=" + dto.cafe_img_path2 + ">"
+											+ "</a>"	
 						                    + "<ul class='social'><li><a href=# data-tip='Quick View'><i class='fa fa-search'></i></a></li><li><a href=# data-tip='Add to Wishlist'><i class='fa fa-shopping-bag'></i></a></li><li><a href=# data-tip='Add to Cart'><i class='fa fa-shopping-cart'></i></a></li></ul>"
 											+ "<span class='product-new-list'>" + dto.cafe_category + "</span>"
 											+ "</div>"	
 											
 											+ "<div class='product-content'>" 
-											+ "<h3 class='title'><a href=#>" + dto.cafe_category + 	dto.cafe_name + "</a></h3>"
+											+ "<h3 class='title'><a href=#>"  + "[" + dto.cafe_category + "]" +  	dto.cafe_name + "</a></h3>"
 											+ "</div>"
 											+ "<div class='price'>2000원<span> / 시간</span></div>"
 											+ "<a class='add-to-cart' href=#>" + "Add To Cart" + "</a>"
