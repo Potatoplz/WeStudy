@@ -43,7 +43,7 @@
               <c:forEach var="dto" items="${detail_dto}">
                 <!-- <aside class="col-3 h-100 bg-warning float-left">aside</aside> -->
                 <section class="col-9 h-100 bg-gray float-left">
-            
+				
                   <table class="table" id="table1">
                     <tbody>
                       <tr>
@@ -229,7 +229,7 @@
                   <b>종료 시간 선택</b>
                   <input placeholder="시간을 선택해 주세요" type="text" id="time2" name="time2" class="form-control" style="width:200px;">
                   <br>
-               <div class="clearfix">
+					<div class="clearfix">
                     <button id="date_time_btn" name="date_time_btn" class="btn btn-info float-left"> 날짜 및 시간 확정
                     </button>
                     </div>
@@ -238,36 +238,36 @@
                       <button id="test_btn" name="test_btn" class="btn btn-info float-left"> 테스트 버튼 </button>
                       <br>
                       <br>
-                  <input type="hidden" name="price_hour1" id="price_hour1" value = "${dto.price_hour}" required> <br><br>
+						<input type="hidden" name="price_hour1" id="price_hour1" value = "${dto.price_hour}" required> <br><br>
                       <form action="/pay/confirm" method="post">
                       <!-- 예약번호 -->
-                  예약번호: <input type="text" name="partner_order_id" id="date_time_pay" required> <br><br>
+						예약번호: <input type="text" name="partner_order_id" id="date_time_pay" required> <br><br>
                       <!-- 회원번호 -->
-                  카페번호 : <input type="text" name="partner_user_id" id="cafe_id" value="${dto.cafe_id}" required><br><br>
-                        <input type="hidden" name="cafe_id" id="cafe_id" value="${dto.cafe_id}" required><br><br>
+						카페번호 : <input type="text" name="partner_user_id" id="cafe_id" value="${dto.cafe_id}" required><br><br>
+								<input type="hidden" name="cafe_id" id="cafe_id" value="${dto.cafe_id}" required><br><br>
                       <!-- 카페이름 -->
-                  카페이름: <input type="text" name="item_name" value="${dto.cafe_name}" required><br><br>
+						카페이름: <input type="text" name="item_name" value="${dto.cafe_name}" required><br><br>
                       <!-- 수량 -->
-                  수량: <input type="text" name="quantity" id="quantity" required><br><br>
+						수량: <input type="text" name="quantity" id="quantity" required><br><br>
                       <!-- 총금액 -->
-                  금액: <input type="text" name="total_amount" id="total_amount" required><br><br>
+						금액: <input type="text" name="total_amount" id="total_amount" required><br><br>
                       <!-- 회원번호 -->
-                  회원번호 : <input type="text" name="member_id" id="member_id" value="${login_info.member_id}" required><br><br>
+						회원번호 : <input type="text" name="member_id" id="member_id" value="${login_info.member_id}" required><br><br>
                       <!-- 닉네임 -->
-                  닉네임: <input type="text" name="member_nick" id="member_nick" value="${login_info.member_nick}" required><br><br>
+						닉네임: <input type="text" name="member_nick" id="member_nick" value="${login_info.member_nick}" required><br><br>
                       <!-- 방문예정일 -->
-                  방문예정일 : <input type="text" name="use_date" id="use_date" required><br><br>
+						방문예정일 : <input type="text" name="use_date" id="use_date" required><br><br>
                       <!-- 이용시작시간 -->
-                  이용시작시간: <input type="text" name="use_start_time" id="use_start_time" required><br><br>
+						이용시작시간: <input type="text" name="use_start_time" id="use_start_time" required><br><br>
                       <!-- 이용종료시간 -->
-                  이용종료시간: <input type="text" name="use_end_time" id="use_end_time"  required><br><br>
+						이용종료시간: <input type="text" name="use_end_time" id="use_end_time"  required><br><br>
                       <!-- 예약시간 -->
-                  예약시간: <input type="text" name="reserve_count" id="reserve_count" required><br><br>
+						예약시간: <input type="text" name="reserve_count" id="reserve_count" required><br><br>
                       <!-- 방번호 -->
-                   방번호: <br><input type="text" name="room_id" id="room_id" required><br><br>
-                  
-                  <input type="submit" value="결제하기">
-                </form> 
+						 방번호: <br><input type="text" name="room_id" id="room_id" required><br><br>
+						
+						<input type="submit" value="결제하기">
+					 </form> 
                       
                     </div>
                     <br>
@@ -289,7 +289,7 @@
                 </aside>
 
 
-            </c:forEach>
+				</c:forEach>
               </main>
 
 
@@ -385,7 +385,7 @@
               }//else */
                 }); //click
               });//ready
-              // 날짜 선택   
+              // 날짜 선택	
               $(document).ready(function () {
                 $("#Date").datepicker({
                   changeMonth: true,
@@ -397,7 +397,7 @@
                   monthNamesShort: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
                   monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
                   dateFormat: "yy-mm-dd",
-                  minDate: 0,                       // 선택할수있는 최소날짜, ( 0 : 오늘 이후 날짜 선택 불가)   
+                  minDate: 0,                       // 선택할수있는 최소날짜, ( 0 : 오늘 이후 날짜 선택 불가)	
                   maxDate: 15,                     // 선택할수있는 최소날짜, ( 0 : 오늘 이후 날짜 선택 불가)
                   showOn: "both"
                 });
@@ -449,7 +449,7 @@
                                 $("#date_time_label").text("시간을 입력하세요");
                                 return;//진행 중지
                               } else { $("#member_addr1_label").text(""); }
-                               
+                            	
                               if( $("#member_addr3").val() == null || $("#member_addr3").val() == "" ){
                                 $("#member_addr1_label").text("상세주소를 입력해 주세요");
                                 return;//진행 중지
