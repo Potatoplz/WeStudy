@@ -93,7 +93,8 @@
 						<div class="btn-group">
 							<input placeholder="날짜를 선택해 주세요" type="text" id="Date" name="Date">
 						</div>
-
+						<!-- 컨트롤러에서 받아온 지역정보 -->
+						<input type="hidden" id="category" name="category" value="${cafe_category}">
 
 						<div class="btn-group float-right">
 							<button type="button" onclick="location.href='/map/map_detail' " class="btn btn-warning" style="background-color: coral;">
@@ -105,7 +106,7 @@
 
 						<!-- 상품 목록 -->
 <div class="container2">
-    <h3 class="h3">shopping Demo-1 </h3>
+    <h3 class="h3"> 검색중 </h3>
 <!--     <div class="row"> -->
         <div class="product-list" id="product-list"><!-- 이 안에 append -->
 <!--       1번자리  -->
@@ -148,7 +149,8 @@
 					$(document).ready(function () {
 						$.get(
 
-							"${pageContext.request.contextPath}/cafe/cafe_list"
+							
+							"${pageContext.request.contextPath}/cafe/select_list?cafe_category="+$("#category").val()
 							, {}
 							, function (data, status) {
 								//alert(JSON.stringify (data)); //데이터 확인용

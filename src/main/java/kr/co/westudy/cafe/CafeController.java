@@ -51,6 +51,17 @@ public class CafeController {
         list = service.cafeList(dto); //
         return list;// data 리턴
     }// list_cate
+    
+    @GetMapping(value = "/select_list")
+    public List<CafeDTO> selectlist_cafe(CafeDTO dto) {
+    	System.out.println("===================================여긴 그냥 컨트롤러========================================================");
+    	List<CafeDTO> list = null;
+    	list = service.cafeSelectList(dto); //
+    	return list;// data 리턴
+    }// list_cate
+
+    
+    
 
     @PostMapping(value = "/insert")
     public void insert(CafeDTO dto, HttpSession session, PrintWriter out) throws IOException {

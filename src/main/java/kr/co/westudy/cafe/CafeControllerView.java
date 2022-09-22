@@ -1,5 +1,6 @@
 package kr.co.westudy.cafe;
 
+import java.io.PrintWriter;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +30,15 @@ public class CafeControllerView {
         log.info("list"); // @Log 쓰고, log.info로 쓰면 됩니다.
         return "/cafe/cafe_list";// jsp file name
     }// detailList
+    
+    @GetMapping(value = "/selectlist") // Get방식 @ReqeustMapping과 동일한 기능을 합니다. Post방식은 @PostMapping으로 사용.
+    public String selectlist(String cafe_category, Model model) {
+    	System.out.println("=============================================="+cafe_category);
+    	log.info("list"); // @Log 쓰고, log.info로 쓰면 됩니다.
+    	model.addAttribute("cafe_category", cafe_category);
+    	return "/cafe/cafe_select_list";// jsp file name
+    	
+    }// selectList
 
     @GetMapping(value = "/detail") // Get방식 @ReqeustMapping과 동일한 기능을 합니다. Post방식은 @PostMapping으로 사용.
     public String detail_cafe(String cafe_id, Model model) {
@@ -41,16 +51,9 @@ public class CafeControllerView {
         list1 = service.cafeRoomList(cafe_id); //
         model.addAttribute("roomList", list1);
         
-        
-        
-        
         int roomTotalCount= 0;
 		roomTotalCount = service.cafeRoomCount(cafe_id);
-		
 		model.addAttribute("roomCount", roomTotalCount);
-		System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" + roomTotalCount);
-        
-        
         
         return "/cafe/cafe_detail";// jsp file name
     }// detailList

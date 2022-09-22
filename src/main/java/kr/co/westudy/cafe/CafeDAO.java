@@ -36,6 +36,12 @@ public class CafeDAO {
 		list = sqlSession.selectList("CafeMapper.cafeList", dto);
 		return list;
 	}//list - 필터링
+	
+	public List<CafeDTO> cafeSelectList( CafeDTO dto ) {
+		List<CafeDTO> list = null;
+		list = sqlSession.selectList("CafeMapper.cafeSelectList", dto);
+		return list;
+	}//list - 필터링
     
     public int writecafe(CafeDTO dto) {
         int successCount = 0;
