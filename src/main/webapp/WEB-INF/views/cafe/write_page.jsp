@@ -268,9 +268,9 @@
                                                             let max_people = $("#arr_max_people" + index).text();
                                                             let price_hour = $("#arr_price_hour" + index).text();
                                                             let room_name = $("#arr_room_name" + index).text();
-                                                            alert(max_people);
-                                                            alert(price_hour);
-                                                            alert(room_name);
+                                                            //alert(max_people);
+                                                            //alert(price_hour);
+                                                            //alert(room_name);
                                                             form.append("arr_max_people[" + index + "]", parseInt(max_people));
                                                             form.append("arr_price_hour[" + index + "]", parseInt(price_hour));
                                                             form.append("arr_room_name[" + index + "]", room_name);
