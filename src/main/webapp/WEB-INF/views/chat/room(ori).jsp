@@ -11,8 +11,93 @@
 <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" type="text/css" rel="stylesheet">
-<link rel="stylesheet" href="/resources/study/chatroom(ori).css">
-<!-- 실시간 css수정 -->
+
+<!-- CSS -->
+<style type="text/css">
+.container{
+max-width:800px; 
+margin:auto;
+}
+.messaging { padding: 0 0 0 0;}
+.chatcontent {
+height: 700px; 
+width : 100%; 
+overflow-y: scroll; 
+  height: 516px;
+  border: 1px solid #c4c4c4;
+  clear: both;
+}
+/* 채팅 입력창 */
+.input_msg_write input {
+  background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+  border: medium none;
+  color: #4c4c4c;
+  font-size: 15px;
+  min-height: 48px;
+  width: 100%;
+}
+.type_msg {border-bottom: 1px solid #c4c4c4;
+position: relative;}
+.msg_send_btn {
+  background: #05728f none repeat scroll 0 0;
+  border: medium none;
+  border-radius: 50%;
+  color: #fff;
+  cursor: pointer;
+  font-size: 17px;
+  height: 33px;
+  position: absolute;
+  right: 0;
+  top: 11px;
+  width: 33px;
+}
+.inputMsg_label {
+	font-size:12px;
+	color : #1187CF;
+}
+li{
+list-style:none;
+}
+/* 받은 메시지 */
+#incoming {
+margin-left:2%; 
+margin-right:2%;
+width:40%;
+}
+#incoming li {
+list-style:none;
+/* float:right;  */
+margin-top:-2%;
+background-color: #eee;
+padding: 10px;
+}
+#incoming span{
+color=#926a9d; font-size:12px;
+}
+#incoming p{
+font-size:17px;
+}
+/* 보낸 메시지 */
+#outcoming {
+float:right;
+margin-left:20%; 
+margin-right:2%;
+width:43%;
+}
+#outcoming li {
+list-style:none;
+margin-top:-2%;
+background-color: #DBEFF4;
+padding: 10px;
+}
+#outcoming span{
+color=#926a9d; 
+font-size:12px;
+}
+#outcoming p{
+font-size:17px;
+}
+</style>
 </head>
 
 <body>
@@ -43,9 +128,9 @@
         
            	<!-- 메시지 창 -->
 	            <div class="messaging">
-		            <div class="chatcontent" id="msgArea"><!-- 실시간 대화 append -->
-							<div id="incoming"></div><!-- DB목록 -->		
-							<div id="outgoing"></div><!-- DB목록 -->		
+		            <div class="chatcontent" id="msgArea">
+							<div id="incoming"></div>		
+							<div id="outcoming"></div>		
 			        </div>
 		        </div>
 		        
@@ -66,8 +151,6 @@
 
 <!-- script 시작 -->
           <script type="text/javascript">
-         
-          
           $(document).ready(function(){
               var roomName = '${room.roomName}';
               var roomId = '${room.roomId}';
@@ -93,18 +176,18 @@
                      var str = '';
                      
              		 
-                      if(writer==username){ //보낸 메시지
-                  		 str =  "<ul class='realtime-out'>"+ writer;
-                         str += "<li class='realtime-out-li'>";
-                         str += "<li class='realtime-out-li2'>" + message + "</li>";
-                         str += "  <span class='realtime-out-span'>" + dateInfo + "</span>"; 
+                      if(writer==username){ //보낸 메시지 #e8f1f3
+                   str =  "<ul style=' float:right;margin-left:50%; margin-right:2%;'>"+ writer;
+                         str += "<li class='left' style='float:right; padding-top: 40px;'>";
+                         str += "<li style='background-color: #DBEFF4;  padding: 10px;'>" + message + "</li>";
+                         str += "  <span style='color=#926a9d; font-size:12px;'>" + dateInfo + "</span>"; 
                          str +="</ul>";   
                        }
-                       else{ //받은 메시지
-                 		 str =  "<ul class='realtime-in'>"+ writer;
-                         str += "<li class='realtime-in-li'>";
-                         str += "<li class='realtime-in-li2'>" + message + "</li>";
-                         str += "  <span class='realtime-in-span'>"+ dateInfo +"</span>"; 
+                       else{ //받은 메시지 #efefef
+                   str =  "<ul style=' float:left; margin-left:0%; margin-right:50%;'>"+ writer;
+                         str += "<li class='left' style='float:left; padding-top: 40px;'>";
+                         str += "<li style='background-color: #eee;  padding: 10px;'>" + message + "</li>";
+                         str += "  <span style='color=#926a9d; font-size:12px;float:right;'>"+ dateInfo +"</span>"; 
                          str +="</ul>";   
                        }
                          $("#msgArea").append(str).stop().animate({ scrollTop: $('#msgArea')[0].scrollHeight }, 1000);
@@ -117,11 +200,10 @@
 	              $("#sendBtn").on("click", function(e){
 						sendmsg();
 					});
-	              $(".load").bind("click", function(e){
+	              $(".load").on("click", function(e){
 						getData();
-	              });
-	              $( "#load" ).trigger( "click" );//자동 클릭 jQuery click trigger
-
+					});
+              
                   //엔터키 이벤트
 				  $("#inputMsg").keyup(function() {if (window.event.keyCode == 13) {sendmsg();}})
 				
@@ -169,7 +251,7 @@
 						inMsg.appendChild(_msg); 
 						inMsg.appendChild(_dateInfo);
                 	} else { //보낸 메시지
-                		var outMsg = document.getElementById("outgoing");
+                		var outMsg = document.getElementById("outcoming");
     					var _id = document.createElement("p"); 
     					var _msg = document.createElement("li");
     					var _dateInfo = document.createElement("span");
