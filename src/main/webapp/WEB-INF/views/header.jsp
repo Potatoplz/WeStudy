@@ -9,12 +9,23 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WeStudy</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
   
     
 <style>
+
+/* .study_R { */
+/* text-decoration:none; */
+/* color:white; */
+/* } */
+/* .study_R hover{ */
+/* color:white; */
+/* } */
+
 
 .navigation {
   position: relative;
@@ -47,6 +58,12 @@
   display: inline-block;
   width: calc(100% - 215px);
   position: relative;
+  text-decoration:none;
+  color:white;
+}
+
+.navigation .nav-new .menu a {
+  text-decoration:none;
 }
 
 .navigation .nav-new .menu .right {
@@ -204,19 +221,23 @@ body {
   	</c:otherwise>
 </c:choose>
 
-  <hr>
+  <hr style="color:white;">
   <a href="#">카페 예약 리스트</a>
-  <a href="#">나의 스터디</a>
+  <a href="${pageContext.request.contextPath}/study/mystudy">마이 스터디</a>
+  <a href="${pageContext.request.contextPath}/study/list">나의 스터디</a>
   <a href="#">찜 리스트</a>
-  <a a id="calendar" href="${pageContext.request.contextPath}/mypage/calendar">일정 관리</a>
-  <hr>
+  <a a id="calendar" href="${pageContext.request.contextPath}/calendar/main">일정 관리</a>
+  <hr style="color:white;">
   <a href="#">공지사항</a>
   <a href="#">1:1문의</a>
-  <hr>
+  <hr style="color:white;">
   <a id="logout" href="${pageContext.request.contextPath}/mypage/logout">로그아웃</a>
 </div>
 
+<!-- 사이드바 끝 -->
 
+
+<!-- 헤더  -->
 <div style="height: 100%;">
     <header>
       <div class="navEmptySpace">
@@ -225,7 +246,7 @@ body {
             <div class="navigation">
               <div class="nav-new">
                 <div class="logo">
-                  <a href="${root }">
+                  <a href="${pageContext.request.contextPath}/">
 
                   	<div class="logo-img" style="margin-top:7px; margin-right:10px;"></div>
 
@@ -233,10 +254,10 @@ body {
                 </div>
                 <div class="menu">
 
-                  <a href="${root}/store">
+                  <a class="study_R" href="${pageContext.request.contextPath}/study/main" >
                     <div class="item" style="margin-left:20px;">스터디 모집</div>
                   </a>
-                  <a href="${root }/sns">
+                  <a href="${pageContext.request.contextPath}/cafe/list">
                     <div class="item">스터디 카페</div>
                   </a>
                   <div class="right">
@@ -245,7 +266,7 @@ body {
                       <div class="search-input-wrap">
                         <div class="input-round">
                           <div class="text">
-                            <!-- 내 스타일 매거진, 상품, 사진 검색 -->
+                            
                             <form action="${root}/store/list" method="get">
                               <input
                                 class="search-box"
