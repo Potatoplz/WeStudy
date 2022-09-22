@@ -10,7 +10,7 @@
 			resultType="kr.co.westudy.cafe.CafeDTO">
 			select c.cafe_id, c.cafe_name, c.cafe_addr1, c.cafe_addr2, c.post_code, c.open_time, c.close_time,
 		    c.cafe_img_name1, c.cafe_img_path1, c.cafe_img_name2, c.cafe_img_path2, c.cafe_content1, c.cafe_content2, c.cafe_content3, c.cafe_oneline, 
-		    c.cafe_category, room_id, r.max_people, r.price_hour, r.room_count
+		    c.cafe_category, room_id, r.max_people, r.price_hour, r.room_name
 				
 			from cafe c, room r 
 		<if test="cafe_id != null and cafe_id != ''">
@@ -110,8 +110,8 @@
 		#{cafe_img_name2}, #{cafe_img_path2}, #{cafe_content1}, #{cafe_content2}, #{cafe_content3}, #{cafe_category}, #{cafe_oneline}  )
 	</insert>
 
-	<insert id="writeroom" parameterType="kr.co.westudy.cafe.CafeDTO" >
-		insert into room (cafe_id, max_people, price_hour, room_count)
-		values (#{cafe_id}, #{max_people}, #{price_hour}, #{room_count})
+	<insert id="writeroom" parameterType="kr.co.westudy.cafe.RoomDTO" >
+		insert into room (cafe_id, max_people, price_hour, room_name)
+		values (#{cafe_id}, #{max_people}, #{price_hour}, #{room_name})
 	</insert>
 </mapper>

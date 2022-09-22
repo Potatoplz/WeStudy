@@ -28,5 +28,8 @@ public class CafeDTO {
     private String room_id;
     private String max_people;
     private String price_hour;
-    private String room_count;
+    private String room_name;
+    private String[] arr_max_people;
+    private String[] arr_price_hour;
+    private String[] arr_room_name;
 }

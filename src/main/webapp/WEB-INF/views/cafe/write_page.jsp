@@ -43,7 +43,7 @@
                     <div class="container">
                         <form id="write_form">
                             <table class="table table-hover">
-                                <tbody>
+                                <tbody id="room_data">
                                     <tr>
                                         <th> 지역 </th>
                                         <td colspan="10">
@@ -108,27 +108,6 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <th> 최대 인원 </th>
-                                        <td colspan="10">
-                                            <input type="text" id="max_people" name="max_people" maxlength="20" class="form-control">
-                                            <label for="max_people" id="max_people_label" class="write_label"></label>
-                                        </td>
-                                        </tr>
-                                        <tr>
-                                            <th> 시간당 가격 </th>
-                                            <td colspan="10">
-                                                <input type="text" id="price_hour" name="price_hour" maxlength="20" class="form-control">
-                                                <label for="price_hour" id="price_hour_label" class="write_label"></label>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th> 방 개수 </th>
-                                            <td colspan="10">
-                                                <input type="text" id="room_count" name="room_count" maxlength="20" class="form-control">
-                                                <label for="room_count" id="room_count_label" class="write_label"></label>
-                                            </td>
-                                        </tr>
-                                        <tr>
                                         <th> 카 페 주 소 </th>
                                         <td>
                                             <div class="form-inline">
@@ -184,87 +163,137 @@
                                             </script>
                                         </td>
                                     </tr>
+                                    <tr>
+                                        <th> 최대 인원 </th>
+                                        <td colspan="10">
+                                            <input type="text" id="max_people" name="max_people" maxlength="20" class="form-control">
+                                            <label for="max_people" id="max_people_label" class="write_label"></label>
+                                        </td>
+                                        <th> 시간당 가격 </th>
+                                        <td colspan="10">
+                                            <input type="text" id="price_hour" name="price_hour" maxlength="20" class="form-control">
+                                            <label for="price_hour" id="price_hour_label" class="write_label"></label>
+                                        </td>
+                                        <th> 방 이름 </th>
+                                        <td colspan="10">
+                                            <input type="text" id="room_name" name="room_name" maxlength="20" class="form-control">
+                                            <label for="room_name" id="room_name_label" class="write_label"></label>
+                                        </td>
+                                        <!-- <div class="btnWrap">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <button id="plus_btn" class="btn btn-primary float-right">추가</button>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                </div> -->
+                                    </tr>
                                 </tbody>
                             </table>
                         </form>
                         <button id="write_btn" class="btn btn-primary float-right"> 저장하기 </button>
+                        <button id="plus_btn" class="btn btn-primary float-right">추가</button>
                         <a href="${pageContext.request.contextPath}/cafe/list">
                             <button class="btn btn-warning"> 취소 </button>
                         </a>
+                        <!-- 버튼 -->
                         <hr>
                         <script type="text/javascript">
-                            let onlyNum = /^[0-9]+$/;
 
-                            $(document).ready(function () {
-                                $("#write_btn").click(function () {
+                                                $(document).ready(function () {
+                                                    var i = 0; // 변수설정은 함수의 바깥에 설정!
+                                                    $("#plus_btn").click(function () {
+                                                        let max_people = $("#max_people").val();
+                                                        let price_hour = $("#price_hour").val();
+                                                        let room_name = $("#room_name").val();
+                                                        $("#room_data").append(
+                                                            '<tr name="room">' +
+                                                            '<td id="arr_max_people' + i + '" name="arr_max_people' + i + '">' + max_people + '명 </td>' +
+                                                            '<td id="arr_price_hour' + i + '" name="arr_price_hour' + i + '">' + price_hour + '원 </td>' +
+                                                            '<td id="arr_room_name' + i + '" name="arr_room_name' + i + '">' + room_name + ' </td>' +
+                                                            '</tr>');
+                                                        i++; // 함수 내 하단에 증가문 설정
+                                                    });
+                                                });
+                                                let onlyNum = /^[0-9]+$/;
 
-                                    if ($.trim($("#cafe_name").val()) == "") {
-                                        $("#cafe_name_label").text("카페명을 입력 하세요.");
-                                        return;
-                                    } else { $("cafe_name_label").text(""); }
+                                                $(document).ready(function () {
+                                                    $("#write_btn").click(function () {
+
+                                                    if ($.trim($("#cafe_name").val()) == "") {
+                                                        $("#cafe_name_label").text("카페명을 입력 하세요.");
+                                                        return;
+                                                    } else { $("cafe_name_label").text(""); }
 
                                     // if ($("#price_hour").val().match(onlyNum) == null) {//허용되지 않은 글자는 null.
                                     //     $("#price_hour_label").text("필수 입력 사항이며, 숫자만 허용 됩니다.");
                                     //     return;
                                     // } else { $("#price_hour_label").text(""); }
 
-                                    if ($("#open_time").val().match(onlyNum) == null) {//허용되지 않은 글자는 null.
-                                        $("#open_time_label").text("필수 입력 사항이며, 숫자만 허용 됩니다.");
-                                        return;
-                                    } else { $("#open_time_label").text(""); }
+                                                    if ($("#open_time").val().match(onlyNum) == null) {//허용되지 않은 글자는 null.
+                                                        $("#open_time_label").text("필수 입력 사항이며, 숫자만 허용 됩니다.");
+                                                        return;
+                                                    } else { $("#open_time_label").text(""); }
 
-                                    if ($("#close_time").val().match(onlyNum) == null) {//허용되지 않은 글자는 null.
-                                        $("#close_time_label").text("필수 입력 사항이며, 숫자만 허용 됩니다.");
-                                        return;
-                                    } else { $("#close_time_label").text(""); }
+                                                    if ($("#close_time").val().match(onlyNum) == null) {//허용되지 않은 글자는 null.
+                                                        $("#close_time_label").text("필수 입력 사항이며, 숫자만 허용 됩니다.");
+                                                        return;
+                                                    } else { $("#close_time_label").text(""); }
 
-                                    if ($.trim($("#post_code").val()) == ""
-                                        || $.trim($("#cafe_addr1").val()) == ""
-                                        || $.trim($("#cafe_addr2").val()) == "") {
-                                        $("#post_code_label").text("주소를 입력 하세요.");
-                                        return;
-                                    } else { $("#post_code_label").text(""); }
+                                                    if ($.trim($("#post_code").val()) == ""
+                                                        || $.trim($("#cafe_addr1").val()) == ""
+                                                        || $.trim($("#cafe_addr2").val()) == "") {
+                                                        $("#post_code_label").text("주소를 입력 하세요.");
+                                                        return;
+                                                    } else { $("#post_code_label").text(""); }
 
-                                    let tmp1 = $("#cafe_img1").val().substring($("#cafe_img1").val().length - 3);
-                                    let tmp1_boolean = (tmp1 == "jpg" || tmp1 == "jpeg" || tmp1 == "gif" || tmp1 == "png"
-                                        || tmp1 == "JPG" || tmp1 == "JPEG" || tmp1 == "GIF" || tmp1 == "PNG");
-                                    if ($.trim($("#cafe_img1").val()) == "" || tmp1_boolean == false) {
-                                        $("#cafe_img1_label").text("필수 입력 사항이며, jpg/jpeg/gif/png 파일만 허용 됩니다.");
-                                        return;
-                                    } else { $("#cafe_img1_label").text(""); }
+                                                    let tmp1 = $("#cafe_img1").val().substring($("#cafe_img1").val().length - 3);
+                                                    let tmp1_boolean = (tmp1 == "jpg" || tmp1 == "jpeg" || tmp1 == "gif" || tmp1 == "png"
+                                                        || tmp1 == "JPG" || tmp1 == "JPEG" || tmp1 == "GIF" || tmp1 == "PNG");
+                                                    if ($.trim($("#cafe_img1").val()) == "" || tmp1_boolean == false) {
+                                                        $("#cafe_img1_label").text("필수 입력 사항이며, jpg/jpeg/gif/png 파일만 허용 됩니다.");
+                                                        return;
+                                                    } else { $("#cafe_img1_label").text(""); }
 
-                                    let tmp2 = $("#cafe_img2").val().substring($("#cafe_img2").val().length - 3);
-                                    let tmp2_boolean = (tmp2 == "jpg" || tmp2 == "jpeg" || tmp2 == "gif" || tmp2 == "png"
-                                        || tmp2 == "JPG" || tmp2 == "JPEG" || tmp2 == "GIF" || tmp2 == "PNG");
-                                    if ($.trim($("#cafe_img2").val()) != "" && tmp2_boolean == false) {
-                                        $("#cafe_img2_label").text("상품이미지는 jpg/jpeg/gif/png 파일만 허용 됩니다.");
-                                        return;
-                                    } else { $("#cafe_img2_label").text(""); }
+                                                    let tmp2 = $("#cafe_img2").val().substring($("#cafe_img2").val().length - 3);
+                                                    let tmp2_boolean = (tmp2 == "jpg" || tmp2 == "jpeg" || tmp2 == "gif" || tmp2 == "png"
+                                                        || tmp2 == "JPG" || tmp2 == "JPEG" || tmp2 == "GIF" || tmp2 == "PNG");
+                                                    if ($.trim($("#cafe_img2").val()) != "" && tmp2_boolean == false) {
+                                                        $("#cafe_img2_label").text("상품이미지는 jpg/jpeg/gif/png 파일만 허용 됩니다.");
+                                                        return;
+                                                    } else { $("#cafe_img2_label").text(""); }
 
-                                    let form = new FormData(document.getElementById("write_form"));
-                                    form.append("cafe_content1", CKEDITOR.instances.content.getData());
-                                    form.append("cafe_content2", CKEDITOR.instances.content2.getData());
-                                    form.append("cafe_content3", CKEDITOR.instances.content3.getData());
+                                                    let form = new FormData(document.getElementById("write_form"));
+                                                    form.append("cafe_content1", CKEDITOR.instances.content.getData());
+                                                    form.append("cafe_content2", CKEDITOR.instances.content2.getData());
+                                                    form.append("cafe_content3", CKEDITOR.instances.content3.getData());
 
-                                    $.ajax({
-                                        type: "POST"
-                                        , encType: "multipart/form-data"
-                                        , url: "${pageContext.request.contextPath}/cafe/insert"
-                                        , data: form
-                                        , processData: false
-                                        , contentType: false
-                                        , cache: false
-                                        , success: function (result) {
-                                            alert("카페가 등록 되었습니다.");
-                                            location.href = "${pageContext.request.contextPath}/cafe/cafe_list";
-                                        }//call back function
-                                        , error: function (xhr) {
-                                            alert("잠시 후 다시 시도해 주세요.");
-                                        }//call back function//xhr : xml http request/response
-                                    });//ajax
-                                });//click
-                            });//ready
-                        </script>
+                                                        let list = document.getElementsByName("room");
+                                                        for (let index = 0; index < list.length; index++) {
+                                                            let max_people = $("#arr_max_people" + index).text();
+                                                            let price_hour = $("#arr_price_hour" + index).text();
+                                                            let room_name = $("#arr_room_name" + index).text();
+                                                            alert(max_people);
+                                                            alert(price_hour);
+                                                            alert(room_name);
+                                                            form.append("arr_max_people[" + index + "]", parseInt(max_people));
+                                                            form.append("arr_price_hour[" + index + "]", parseInt(price_hour));
+                                                            form.append("arr_room_name[" + index + "]", room_name);
+                                                        }
+                                                    $.ajax({
+                                                        type: "POST"
+                                                        , encType: "multipart/form-data"
+                                                        , url: "${pageContext.request.contextPath}/cafe/insert"
+                                                        , data: form
+                                                        , processData: false
+                                                        , contentType: false
+                                                        , cache: false
+                                                        , success: function (result) {
+                                                            alert("카페가 등록 되었습니다.");
+                                                            location.href = "${pageContext.request.contextPath}/cafe/cafe_list";
+                                                        }//call back function
+                                                        , error: function (xhr) {
+                                                            alert("잠시 후 다시 시도해 주세요.");
+                                                        }//call back function//xhr : xml http request/response
+                                                    });//ajax
+                                                });//click
+                                            });//ready
+                                                </script>
                     </div>
 
 

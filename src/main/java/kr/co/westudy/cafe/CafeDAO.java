@@ -32,7 +32,7 @@ public class CafeDAO {
         return successCount;
     }// write
 
-    public int writeroom(CafeDTO dto) {
+    public int writeroom(RoomDTO dto) {
         int successCount = 0;
         successCount = sqlSession.insert("CafeMapper.writeroom", dto);
         return successCount;
