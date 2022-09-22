@@ -13,10 +13,22 @@ public class CafeService {
     @Autowired
     private CafeDAO dao;
 
-    public List<CafeDTO> cafeDetail(String cafe_id) {
+    public List<CafeDTO> cafeRoomList(String cafe_id) {
         List<CafeDTO> list = null;
-        list = dao.cafeDetail(cafe_id);
+        list = dao.cafeRoomList(cafe_id);
         return list;
+    }// detail - 필터링
+    
+    public List<CafeDTO> cafeDetail(String cafe_id) {
+    	List<CafeDTO> list = null;
+    	list = dao.cafeDetail(cafe_id);
+    	return list;
+    }// detail - 필터링
+    
+	public int cafeRoomCount( String cafe_id ) {
+		int roomTotalCount= 0;
+		roomTotalCount = dao.cafeRoomCount(cafe_id);
+    	return roomTotalCount;
     }// detail - 필터링
 
     public List<CafeDTO> cafeList(CafeDTO dto) {

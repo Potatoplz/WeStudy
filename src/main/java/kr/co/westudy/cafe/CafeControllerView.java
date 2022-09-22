@@ -31,6 +31,22 @@ public class CafeControllerView {
         List<CafeDTO> list = null;
         list = service.cafeDetail(cafe_id); //
         model.addAttribute("detail_dto", list);
+        
+        List<CafeDTO> list1 = null;
+        list1 = service.cafeRoomList(cafe_id); //
+        model.addAttribute("roomList", list1);
+        
+        
+        
+        
+        int roomTotalCount= 0;
+		roomTotalCount = service.cafeRoomCount(cafe_id);
+		
+		model.addAttribute("roomCount", roomTotalCount);
+		System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" + roomTotalCount);
+        
+        
+        
         return "/cafe/cafe_detail";// jsp file name
     }// detailList
 

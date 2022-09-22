@@ -202,13 +202,20 @@
                   <br>
                   <br>
                   <div class="flex_box">
-                    <div class="flex"><input type="radio" name="space_reserv" id="space_reserv" value="[object Object]"
-                        class="radio"> <label for="space_reserv">메인룸</label>
+                  <c:forEach var="room" items="${roomList}">
+                  
+                    <div class="flex"><input type="radio" name="space_reserv" id="space_reserv" value="${room.room_name}"
+                        class="radio"> <label for="space_reserv">${room.room_name}</label>
 
                       <strong class="flex align_right" id="price_hour" name="price_hour">&#8361;${dto.price_hour}</strong>
                       <span class="txt_unit"> / 시간
                       </span>
                     </div>
+                  
+                  
+                  </c:forEach>
+                  
+                  
                   </div>
                   <hr>
                   <!-- 예약하기 -->
@@ -264,7 +271,7 @@
                       <!-- 예약시간 -->
 						예약시간: <input type="text" name="reserve_count" id="reserve_count" required><br><br>
                       <!-- 방번호 -->
-						 방번호: <br><input type="text" name="room_id" id="room_id" required><br><br>
+						 방번호: <br><input type="text" name="room_id" id="room_id" value="${roomCount}" required><br><br>
 						
 						<input type="submit" value="결제하기">
 					 </form> 

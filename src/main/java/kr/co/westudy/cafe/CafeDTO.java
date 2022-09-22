@@ -24,6 +24,7 @@ public class CafeDTO {
     private String cafe_content3;
     private String cafe_oneline;
     private String cafe_category;
+    private String roomTotalCount;
 
     private String room_id;
     private String max_people;
