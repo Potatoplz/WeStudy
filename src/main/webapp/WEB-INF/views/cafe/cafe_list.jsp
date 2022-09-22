@@ -9,15 +9,16 @@
 				<head>
 					<meta charset="UTF-8">
 					<title>WeStudy | 카페 목록</title>
-					<link rel="stylesheet" href="/resources/cafe/cafe_list.css">
+					
 					<!-- bootstrap cdn -->
+					<link rel="stylesheet" href="/resources/cafe/cafe_list.css">
 <!-- 					<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> -->
 					<link rel="stylesheet"
 						href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
 					<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 					<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
-<!-- 					<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script> -->
-<!-- 					<script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script> -->
+					<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+					<script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
 
 					<!-- Additional CSS Files -->
 					<link rel="stylesheet" href="/resources/mdList/assets/css/fontawesome.css">
@@ -41,59 +42,63 @@
 								지 역
 							</button>
 							<div class="dropdown-menu">
+								<a class="dropdown-item" id="전체"
+									href="${pageContext.request.contextPath}/cafe/list?cafe_category=">전체</a>
 								<a class="dropdown-item" id="강남구"
-									href="${pageContext.request.contextPath}/cafe/selectlist?cafe_category=강남구">강남구</a>
+									href="${pageContext.request.contextPath}/cafe/list?cafe_category=강남구">강남구</a>
 								<a class="dropdown-item" id="강동구"
-									href="${pageContext.request.contextPath}/cafe/selectlist?cafe_category=강동구">강동구</a>
+									href="${pageContext.request.contextPath}/cafe/list?cafe_category=강동구">강동구</a>
 								<a class="dropdown-item" id="강북구"
-									href="${pageContext.request.contextPath}/cafe/selectlist?cafe_category=강북구">강북구</a>
+									href="${pageContext.request.contextPath}/cafe/list?cafe_category=강북구">강북구</a>
 								<a class="dropdown-item" id="강서구"
-									href="${pageContext.request.contextPath}/cafe/selectlist?cafe_category=강서구">강서구</a>
+									href="${pageContext.request.contextPath}/cafe/list?cafe_category=강서구">강서구</a>
 								<a class="dropdown-item" id="관악구"
-									href="${pageContext.request.contextPath}/cafe/selectlist?cafe_category=관악구">관악구</a>
+									href="${pageContext.request.contextPath}/cafe/list?cafe_category=관악구">관악구</a>
 								<a class="dropdown-item" id="광진구"
-									href="${pageContext.request.contextPath}/cafe/selectlist?cafe_category=광진구">광진구</a>
+									href="${pageContext.request.contextPath}/cafe/list?cafe_category=광진구">광진구</a>
 								<a class="dropdown-item" id="구로구"
-									href="${pageContext.request.contextPath}/cafe/selectlist?cafe_category=구로구">구로구</a>
+									href="${pageContext.request.contextPath}/cafe/list?cafe_category=구로구">구로구</a>
 								<a class="dropdown-item" id="금천구"
-									href="${pageContext.request.contextPath}/cafe/selectlist?cafe_category=금천구">금천구</a>
+									href="${pageContext.request.contextPath}/cafe/list?cafe_category=금천구">금천구</a>
 								<a class="dropdown-item" id="노원구"
-									href="${pageContext.request.contextPath}/cafe/selectlist?cafe_category=노원구">노원구</a>
+									href="${pageContext.request.contextPath}/cafe/list?cafe_category=노원구">노원구</a>
 								<a class="dropdown-item" id="도봉구"
-									href="${pageContext.request.contextPath}/cafe/selectlist?cafe_category=도봉구">도봉구</a>
+									href="${pageContext.request.contextPath}/cafe/list?cafe_category=도봉구">도봉구</a>
 								<a class="dropdown-item" id="동대문구"
-									href="${pageContext.request.contextPath}/cafe/selectlist?cafe_category=동대문구">동대문구</a>
+									href="${pageContext.request.contextPath}/cafe/list?cafe_category=동대문구">동대문구</a>
 								<a class="dropdown-item" id="서대문구"
-									href="${pageContext.request.contextPath}/cafe/selectlist?cafe_category=서대문구">서대문구</a>
+									href="${pageContext.request.contextPath}/cafe/list?cafe_category=서대문구">서대문구</a>
 								<a class="dropdown-item" id="서초구"
-									href="${pageContext.request.contextPath}/cafe/selectlist?cafe_category=서초구">서초구</a>
+									href="${pageContext.request.contextPath}/cafe/list?cafe_category=서초구">서초구</a>
 								<a class="dropdown-item" id="성동구"
-									href="${pageContext.request.contextPath}/cafe/selectlist?cafe_category=성동구">성동구</a>
+									href="${pageContext.request.contextPath}/cafe/list?cafe_category=성동구">성동구</a>
 								<a class="dropdown-item" id="성북구"
-									href="${pageContext.request.contextPath}/cafe/selectlist?cafe_category=성북구">성북구</a>
+									href="${pageContext.request.contextPath}/cafe/list?cafe_category=성북구">성북구</a>
 								<a class="dropdown-item" id="송파구"
-									href="${pageContext.request.contextPath}/cafe/selectlist?cafe_category=송파구">송파구</a>
+									href="${pageContext.request.contextPath}/cafe/list?cafe_category=송파구">송파구</a>
 								<a class="dropdown-item" id="양천구"
-									href="${pageContext.request.contextPath}/cafe/selectlist?cafe_category=양천구">양천구</a>
+									href="${pageContext.request.contextPath}/cafe/list?cafe_category=양천구">양천구</a>
 								<a class="dropdown-item" id="영등포구"
-									href="${pageContext.request.contextPath}/cafe/selectlist?cafe_category=영등포구">영등포구</a>
+									href="${pageContext.request.contextPath}/cafe/list?cafe_category=영등포구">영등포구</a>
 								<a class="dropdown-item" id="용산구"
-									href="${pageContext.request.contextPath}/cafe/selectlist?cafe_category=용산구">용산구</a>
+									href="${pageContext.request.contextPath}/cafe/list?cafe_category=용산구">용산구</a>
 								<a class="dropdown-item" id="은평구"
-									href="${pageContext.request.contextPath}/cafe/selectlist?cafe_category=은평구">은평구</a>
+									href="${pageContext.request.contextPath}/cafe/list?cafe_category=은평구">은평구</a>
 								<a class="dropdown-item" id="종로구"
-									href="${pageContext.request.contextPath}/cafe/selectlist?cafe_category=종로구">종로구</a>
+									href="${pageContext.request.contextPath}/cafe/list?cafe_category=종로구">종로구</a>
 								<a class="dropdown-item" id="중구"
-									href="${pageContext.request.contextPath}/cafe/selectlist?cafe_category=중구">중구</a>
+									href="${pageContext.request.contextPath}/cafe/list?cafe_category=중구">중구</a>
 								<a class="dropdown-item" id="중랑구"
-									href="${pageContext.request.contextPath}/cafe/selectlist?cafe_category=중랑구">중랑구</a>
+									href="${pageContext.request.contextPath}/cafe/list?cafe_category=중랑구">중랑구</a>
 							</div>
 						</div>
 
 						<div class="btn-group">
 							<input placeholder="날짜를 선택해 주세요" type="text" id="Date" name="Date">
 						</div>
-
+						
+						<!-- 컨트롤러에서 받아온 지역정보 -->
+						<input type="hidden" id="category" name="category" value="${cafe_category}">
 
 						<div class="btn-group float-right">
 							<button type="button" onclick="location.href='/map/map_detail' " class="btn btn-warning" style="background-color: coral;">
@@ -148,7 +153,7 @@
 					$(document).ready(function () {
 						$.get(
 
-							"${pageContext.request.contextPath}/cafe/cafe_list"
+							"${pageContext.request.contextPath}/cafe/cafe_list?cafe_category="+$("#category").val()
 							, {}
 							, function (data, status) {
 								//alert(JSON.stringify (data)); //데이터 확인용

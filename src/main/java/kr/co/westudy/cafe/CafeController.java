@@ -47,8 +47,15 @@ public class CafeController {
 
     @GetMapping(value = "/cafe_list")
     public List<CafeDTO> list_cafe(CafeDTO dto) {
+    	System.out.println("===================================여긴  카페리스트 전체야========================================================");
         List<CafeDTO> list = null;
-        list = service.cafeList(dto); //
+        if(dto.getCafe_category() == null) {
+        	System.out.println("===================================선택된 카테고리 값을 이 하나도 없어=============================================");
+        	list = service.cafeList(dto); //
+        } else {
+        	System.out.println("===================================선택된 카테고리 값을 가지고 작업할거야=============================================");
+        	list = service.cafeSelectList(dto);
+        }
         return list;// data 리턴
     }// list_cate
     

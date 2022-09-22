@@ -26,8 +26,19 @@ public class CafeControllerView {
 	}
 
     @GetMapping(value = "/list") // Get방식 @ReqeustMapping과 동일한 기능을 합니다. Post방식은 @PostMapping으로 사용.
-    public String list() {
-        log.info("list"); // @Log 쓰고, log.info로 쓰면 됩니다.
+    public String list(String cafe_category, Model model) {
+        
+    	if(cafe_category == null || cafe_category == "") {
+    		System.out.println("카페카테고리가 비어있어요~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+    		log.info("list"); // @Log 쓰고, log.info로 쓰면 됩니다.
+            return "/cafe/cafe_list";// jsp file name
+    	}else if(cafe_category != null || cafe_category != "") {
+    		System.out.println("카페카테고리가 꽉 차있어요~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+    		model.addAttribute("cafe_category", cafe_category);
+        	return "/cafe/cafe_list";// jsp file name    		
+    	}
+    	
+    	log.info("list"); // @Log 쓰고, log.info로 쓰면 됩니다.
         return "/cafe/cafe_list";// jsp file name
     }// detailList
     
