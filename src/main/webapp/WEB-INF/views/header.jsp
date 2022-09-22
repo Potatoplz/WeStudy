@@ -264,7 +264,7 @@ body {
                       <div class="search-input-wrap">
                         <div class="input-round">
                           <div class="text">
-                            
+
                             <form action="${root}/store/list" method="get">
                               <input
                                 class="search-box"

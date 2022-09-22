@@ -2,12 +2,15 @@ package kr.co.westudy.study;
 
 import java.io.PrintWriter;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import kr.co.westudy.util.dto.MemberDTO;
 import lombok.extern.java.Log;
 
 @Log
@@ -28,7 +31,10 @@ public class StudyVeiwController {
 	}//mystudy
 	
 	@GetMapping("/mystudy")
-	public String mystudy() {
+	public String mystudy(HttpSession session, MemberDTO dto, Model model) {
+		String member_id = null;
+		member_id = (((MemberDTO) session.getAttribute("login_info")).getMember_id());
+		model.addAttribute("member_id", member_id);
 		return "study/my_study";
 	}//mystudy
 	

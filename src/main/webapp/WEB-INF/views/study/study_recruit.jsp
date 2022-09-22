@@ -30,6 +30,7 @@
 		<hr>
 		<h3> 스터디 모집</h3>
 		<hr>
+	<div class="container">
 		<div class="wrapper">
 			<table class="table table-hover">
 				<tbody>
@@ -82,8 +83,29 @@
 						<td>
 							<select name="place" id="place">
 								<option>선택 안함(온라인)</option>
-								<option>강남구</option>
-								<option>서초구</option>
+								<option value="강남구">강남구</option>
+                                <option value="강동구">강동구</option>
+                                <option value="강북구">강북구</option>
+                                <option value="강서구">강서구</option>
+                                <option value="관악구">관악구</option>
+                                <option value="광진구">광진구</option>
+                                <option value="구로구">구로구</option>
+                                <option value="금천구">금천구</option>
+                                <option value="노원구">노원구</option>
+                                <option value="도봉구">도봉구</option>
+                                <option value="동대문구">동대문구</option>
+                                <option value="서대문구">서대문구</option>
+                                <option value="서초구">서초구</option>
+                                <option value="성동구">성동구</option>
+                                <option value="성북구">성북구</option>
+                                <option value="송파구">송파구</option>
+                                <option value="양천구">양천구</option>
+                                <option value="영등포구">영등포구</option>
+                                <option value="용산구">용산구</option>
+                                <option value="은평구">은평구</option>
+                                <option value="종로구">종로구</option>
+                                <option value="중구">중구</option>
+                                <option value="중랑구">중랑구</option>
 							</select>
 						</td>
 					</tr>
@@ -119,13 +141,15 @@
 					</tr>
 				</tbody>
 			</table>
+		<div class="write" style="text-align:center;">
+			<button id="write_btn" class="btn btn-primary float-right"> 등록 </button>
 		
-			<button id="write_btn" class="btn btn-primary"> 등록 </button>
 			<a href="${pageContext.request.contextPath}/study/list">
-				<button class="btn btn-warning"> 취소 </button>
+				<button class="btn btn-warning float-left"> 취소 </button>
 			</a>
-		</div><!-- wrapper -->
-		
+		</div>
+	</div><!-- wrapper -->
+	</div>
 		<hr>
 <%-- 	<%@ include file="/WEB-INF/views/footer.jsp" %> --%>
 
@@ -147,13 +171,13 @@
 					, { study_team : $("#teamname").val() }
 					, function(data, status) {
 						if(data == 0){
-							$("#teamname_label").text("사용 가능한 팀명 입니다.");
+							$("#teamname_label").text("사용 가능한 팀명입니다.");
 							$("#teamname_label").css("color", "blue");
 							checkedTeam = $("#teamname").val();
 							checkResult = 0;
 							
 						} else if(data >= 1){
-							$("#teamname_label").text("이미 사용 중인 팀명 입니다.");
+							$("#teamname_label").text("이미 사용 중인 팀명입니다.");
 							$("#teamname_label").css("color", "red");
 							checkResult = 1;
 							return;
@@ -168,7 +192,7 @@
 		$("#write_btn").click(function() {
 			
 			if( checkedTeam == "" || checkedTeam  != $("#teamname").val() ){
-				$("#teamname_label").text("팀명 중복 체크를 해 주세요.");
+				$("#teamname_label").text("팀명 중복 체크를 해주세요.");
 				$("#teamname_label").css("color", "red");
 				return;
 			} else { $("#teamname_label").text(""); }
@@ -191,12 +215,12 @@
 					}
 					, function(data, status) {
 						if(data >= 1){
-							alert("게시글이 성공적으로 업로드 되었습니다.");
+							alert("게시글이 성공적으로 업로드되었습니다.");
 							location.href="${pageContext.request.contextPath}/recruit";
 						} else if(data <= 0){
-							alert("게시글 작성을 실패 하였습니다.");
+							alert("게시글 작성을 실패하였습니다.");
 						} else {
-							alert("잠시 후 다시 시도해 주세요.");
+							alert("잠시 후 다시 시도해주세요.");
 						}
 					}//call back function
 			);//post

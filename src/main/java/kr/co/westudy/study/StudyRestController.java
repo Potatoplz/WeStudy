@@ -6,11 +6,14 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
+import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -42,8 +45,10 @@ public class StudyRestController {
 	}//delete
 	
 	@GetMapping("/{inData}")
-	public StudyDTO detail(@PathVariable("inData") String study_id) {
+	public StudyDTO detail(@PathVariable("inData") String study_id, Model model) {
 		StudyDTO dto = service.detail(study_id);
+		model.addAttribute("dto", dto);
+		System.out.println(dto);
 		return dto;		
 	}//detail
 	
@@ -71,4 +76,33 @@ public class StudyRestController {
 		List<StudyDTO> list = service.list(dto);
 		return list;
 	}//list
+	
+	
+	//내가 신청한 스터디 목록
+	@GetMapping("/apply_list/{inData}")
+	public List<StudyDTO> apply_list(@PathVariable("inData") String member_id, StudyDTO dto) {
+		List<StudyDTO> list = service.apply_list(member_id);
+		return list;
+	}//apply_list
+	
+	
+	//스터디 지원
+	@PostMapping ( "/apply/{inData}" )
+	public void apply( @PathVariable("inData") String study_id, @RequestBody StudyDTO dto, PrintWriter out, HttpSession session) {
+	
+		int successCount = 0;
+
+		dto.setMember_id(((MemberDTO) session.getAttribute("login_info")).getMember_id());
+		dto.setMember_nick(((MemberDTO) session.getAttribute("login_info")).getMember_nick());
+		
+		dto.setStudy_id(study_id);
+		System.out.println(dto);
+		
+		successCount = service.apply_insert( dto );
+	    System.out.println(successCount);
+		out.print(successCount);
+		out.close();
+
+	}//apply 
+	
 }

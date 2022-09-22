@@ -26,4 +26,10 @@ public class StudyDTO {
 	
 	private String roomId;
 	private String roomName;
+	
+	private String apply_id;
+	private String apply_content;
+	private String accept_yn;
+	
+	
 }

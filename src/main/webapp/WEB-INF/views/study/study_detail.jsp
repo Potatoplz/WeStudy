@@ -6,11 +6,14 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>WeStudy | 스터디 모집 상세</title>
+
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
 		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
 		<link rel="stylesheet" href="/resources/study/study_detail.css">
+		
+		
 	</head>
 	<body>
 		<%@ include file="/WEB-INF/views/header.jsp" %>
@@ -25,6 +28,11 @@
 					</div>
 					<div class="cnt_registeredDate" id="study_writedate">2022.09.21</div>
 				</div>
+				
+				<!-- 멤버 정보 -->
+				<input type="hidden" id="member_id" name="member_id" value="${login_info.member_id}">
+				<input type="hidden" id="member_nick" name="member_nick" value="${login_info.member_nick}">
+				<input type="hidden" id="member_email" name="member_email" value="${login_info.member_email}">
 				
 				<ul class="studyInfo_studyGrid__38Lfj"><!-- 주의:ul은 class명바꾸면 적용안됨. 왜지? -->
 					<li class="studyInfo_CntWrapper">
@@ -62,10 +70,9 @@
 			
 			<br>
 			<div class="commentInput_buttonWrapper">
-				<button class="btn btn-info" name="register">지원하기</button>
+				<button class="btn btn-info" id="register" name="register" type="button" data-toggle="modal" data-target="#myModal">지원하기</button>
 				<button class="btn btn-warning" name="register">지원취소</button>
 			</div>
-			
 			
 			<!-- 댓글 -->
 			
@@ -76,6 +83,7 @@
 						<textarea class="commentInput_commentText" placeholder="댓글을 입력하세요."></textarea>
 						<div class="commentInput_buttonWrapper">
 							<button class="commentInput_buttonComplete" name="register">댓글 등록</button>
+							
 						</div>
 					</div>
 						<ul class="commentList_CommentList"></ul>
@@ -98,9 +106,62 @@
 		
 		
 		<div id="delete_div" class="text-right">
-			<button class="btn btn-danger" id="delete_btn"> 게 시 글 삭 제 </button>
+			<button class="btn btn-danger" id="delete_btn"> 게시글 삭제 </button>
 		</div>
 <%-- 		<%@ include file="/WEB-INF/views/footer.jsp" %> --%>
+	
+		
+	<!-- modal (지원 신청) -->
+		<!-- The Modal -->
+	  <div class="modal fade" id="myModal">
+	    <div class="modal-dialog modal-dialog-centered">
+	      <div class="modal-content">
+	      
+	        <!-- Modal Header -->
+	        <div class="modal-header">
+	          <h4 class="modal-title"><b>지원동기를 입력하세요!</b></h4>
+	          <button type="button" class="close" data-dismiss="modal">&times;</button>
+	        </div>
+	        
+	        <!-- Modal body -->
+	        <div class="modal-body">
+	          <textarea id="apply_content" style="width:450px; height:130px;" class="form-control" placeholder="진정성을 어필해보세요."></textarea>
+	        </div>
+	        
+	        <!-- Modal footer -->
+	        <div class="modal-footer">
+	          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+	          <button id="study_submit" type="button" class="btn btn-primary">지원</button>
+	        </div>
+	        
+	      </div>
+	    </div>
+  </div>
+  
+		
+		<script type="text/javascript">
+		$(document).ready(function() {
+			$("#study_submit").click(function() {
+				
+				let board = {
+						apply_content : $("#apply_content").val() 
+				};//javascript object 생성
+				
+				$.ajax( {
+					type : "POST"
+					, url : "${pageContext.request.contextPath}/study_rest/apply/${study_id}"
+					, contentType : "application/json" //json 전송이라는 의미
+					, data : JSON.stringify( board )
+					, success : function(data, status, xhr){alert("지원 성공");}
+					, error : function(data, status, xhr){alert("에러");}
+					, complete : function(data, status, xhr){alert("지원 완료");} //작업 완료 
+				});//ajax
+			
+			});//click
+		});//ready
+		
+		</script>
+
 
 		<script type="text/javascript">
 		$(document).ready(function() {

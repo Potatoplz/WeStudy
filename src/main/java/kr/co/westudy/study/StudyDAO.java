@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+
 @Repository
 public class StudyDAO {
 
@@ -26,6 +27,11 @@ public class StudyDAO {
 
 	public List<StudyDTO> list(StudyDTO dto) {
 		List<StudyDTO> list = sqlSession.selectList("StudyMapper.studylist", dto);
+		return list;
+	}//list
+	
+	public List<StudyDTO> apply_list(String member_id) {
+		List<StudyDTO> list = sqlSession.selectList("StudyMapper.applylist", member_id);
 		return list;
 	}//list
 
@@ -50,4 +56,12 @@ public class StudyDAO {
 		isYN = sqlSession.selectOne("StudyMapper.teamNameCheck", study_team);
 		return isYN;
 	}
+	
+	
+	public int apply_insert( StudyDTO dto ) {
+		int successCount = 0;
+		successCount = sqlSession.insert("StudyMapper.apply_insert", dto);
+		return successCount;
+	}//apply_insert
+	
 }

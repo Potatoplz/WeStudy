@@ -150,7 +150,7 @@
 		<script type="text/javascript">
 		$(document).ready(function() {
 			$.get(
-					"${pageContext.request.contextPath}/study_rest/list"
+					"${pageContext.request.contextPath}/study_rest/apply_list/${member_id}"
 					, {}
 					, function(data, status) {
 						//alert(JSON.stringify (data)); //데이터 확인용
@@ -163,7 +163,7 @@
 								+ "<td><a href='${pageContext.request.contextPath}/study/detail?study_id=" + dto.study_id + "'>"
 									+ dto.study_name + "</a></td>"
 								+ "<td>" + dto.start_date + "</td>"
-								+ "<td>" + "승인/거절" + "</td>"
+								+ "<td>" + dto.accept_yn + "</td>"
 								+ "<td>" + "<a href='/chat/room?roomId="+ dto.study_team + "'><button class='btn btn-info'>입장</button></a>" + "</td>"
 								+ "</tr>"
 							);//append
