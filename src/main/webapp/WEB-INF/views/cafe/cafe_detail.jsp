@@ -209,8 +209,12 @@
                       <input type="radio" name="space_reserv" id="space_reserv_${status.index}" value="${room.price_hour}" class="radio"> 
                       <label for="space_reserv_${status.index}">${room.room_name}
                        <input type="hidden" name="room_name" id="room_name" value="${room.room_name}" required>
-	
-	                      <strong class="flex align_right" id="price_hour" name="price_hour" >&#8361;${room.price_hour}</strong>
+						
+						
+								<c:set var="price" value="${room.price_hour}" />
+								<fmt:formatNumber type="number" var="priceNum" value="${ price }" />
+						
+	                      <strong class="flex align_right" id="price_hour" name="price_hour" >&#8361;${ priceNum }</strong>
 	                      <span class="txt_unit"> / 시간</span>
                       </label>
                     </div>
@@ -249,44 +253,39 @@
                     <button id="date_time_btn" name="date_time_btn" class="btn btn-info float-left"> 날짜 및 시간 확정
                     </button>
                     </div>
-                    <br>
                     <div class="clearfix">
-                      <button id="test_btn" name="test_btn" class="btn btn-info float-left"> 테스트 버튼 </button>
-                      <br>
-                      <br>
 						<input type="hidden" name="price_hour1" id="price_hour1" value = "${dto.price_hour}" required> <br><br>
-                      <form action="/pay/confirm" method="post">
-                      <!-- 예약번호 -->
-						예약번호: <input type="text" name="partner_order_id" id="date_time_pay" required> <br><br>
-                      <!-- 회원번호 -->
-						카페번호 : <input type="text" name="partner_user_id" id="cafe_id" value="${dto.cafe_id}" required><br><br>
-								<input type="hidden" name="cafe_id" id="cafe_id" value="${dto.cafe_id}" required><br><br>
-                      <!-- 카페이름 -->
-						상품명: <input type="text" name="item_name0" id="item_name0" value="${dto.cafe_name}" required><br><br>
-						상품명1: <input type="text" name="item_name" id="item_name" required><br><br>
-                      <!-- 수량 -->
-						수량: <input type="text" name="quantity" id="quantity" required><br><br>
-                      <!-- 총금액 -->
-						금액: <input type="text" name="total_amount" id="total_amount" required><br><br>
-                      <!-- 회원번호 -->
-						회원번호 : <input type="text" name="member_id" id="member_id" value="${login_info.member_id}" required><br><br>
-                      <!-- 닉네임 -->
-						닉네임: <input type="text" name="member_nick" id="member_nick" value="${login_info.member_nick}" required><br><br>
-                      <!-- 방문예정일 -->
-						방문예정일 : <input type="text" name="use_date" id="use_date" required><br><br>
-                      <!-- 이용시작시간 -->
-						이용시작시간: <input type="text" name="use_start_time" id="use_start_time" required><br><br>
-                      <!-- 이용종료시간 -->
-						이용종료시간: <input type="text" name="use_end_time" id="use_end_time"  required><br><br>
-                      <!-- 예약시간 -->
-						예약시간: <input type="text" name="reserve_count" id="reserve_count" required><br><br>
-                      <!-- 방번호 -->
-						 방번호: <br><input type="text" name="room_id" id="room_id" value="${roomCount}" required><br><br>
-						
-						<input type="submit" value="결제하기">
-					 </form> 
                       
                     </div>
+                      <form action="/pay/confirm" method="post">
+                      <!-- 예약번호 -->
+						<input type="hidden" name="partner_order_id" id="date_time_pay" required>
+                      <!-- 카페번호 -->
+						<input type="hidden" name="partner_user_id" id="cafe_id" value="${dto.cafe_id}" required>
+								<input type="hidden" name="cafe_id" id="cafe_id" value="${dto.cafe_id}" required>
+                      <!-- 상품명 -->
+						<input type="hidden" name="item_name0" id="item_name0" value="${dto.cafe_name}" required>
+                      <!-- 상품명 1-->
+						<input type="hidden" name="item_name" id="item_name" required>
+                      <!-- 수량 -->
+						<input type="hidden" name="quantity" id="quantity" required>
+                      <!-- 총금액 -->
+						<input type="hidden" name="total_amount" id="total_amount" required>
+                      <!-- 회원번호 -->
+						<input type="hidden" name="member_id" id="member_id" value="${login_info.member_id}" required>
+                      <!-- 닉네임 -->
+						<input type="hidden" name="member_nick" id="member_nick" value="${login_info.member_nick}" required>
+                      <!-- 방문예정일 -->
+						<input type="hidden" name="use_date" id="use_date" required>
+                      <!-- 이용시작시간 -->
+						<input type="hidden" name="use_start_time" id="use_start_time" required>
+                      <!-- 이용종료시간 -->
+						<input type="hidden" name="use_end_time" id="use_end_time"  required>
+                      <!-- 예약시간 -->
+						<input type="hidden" name="reserve_count" id="reserve_count" required>
+                      <!-- 방번호 -->
+						 <input type="hidden" name="room_id" id="room_id" value="${roomCount}" required>
+                    <br>
                     <br>
                   <!-- 예약일시 -->
                   <b>예약 일시</b>
@@ -296,11 +295,21 @@
                   <br>
                   <!-- 총 예약인원 -->
                   <hr>
-                  <b>공간사용료</b>
+                  <b>공간 </b>
                   <br>
-                  <label for="date_time_pirce" id="date_time_pirce"></label>
+                  <label for="date_time_pirce" id="place_label"></label>
+                  <hr>
+                  <b>사용료</b>
                   <br>
                   <br>
+                  <label for="date_time_pirce" id="date_time_pirce_label"></label>
+                  
+                  <input type="hidden" name="date_time_pirce1" id="date_time_pirce_label1" required>
+                  <br>
+                  <br>
+                  <hr>
+						<input type="submit" value="결제하기" class="btn btn-info float-left">
+					 </form> 
                   <br>
                   <br>
                   <br>
@@ -489,16 +498,23 @@
                     //alert(today)
                    
                     //예약번호, 예약일시, 수량, 금액, 이용시작시간,이용종료시간
+                    var totalprice = $("#quantity").val($("#time2").val().replaceAll(":", "").substring(0, 2) - $("#time1").val().replaceAll(":", "").substring(0, 2));
+                    var orderNum = $("#date_time_pay").val($("#Date").val().replaceAll("-", "")+"_"+$("#cafe_id").val()+"_"+$("#time1").val().replaceAll(":", "")+$("#time2").val().replaceAll(":", ""));
                     $("#date_time_label").text($("#Date").val() + " " + $("#time1").val() + " - " + $("#time2").val());
                     $("#date_time_label").css("color", "blue");
+                    
+                    $("#place_label").text("[ "+$("#item_name0").val()+" ]"+" "+ $("#room_name").val());
+                    $("#place_label").css("color", "blue");
+                    
+                    $("#date_time_pirce_label").text( $("#price_hour2").val() * totalprice.val() + "원");
+                    $("#date_time_pirce_label").css("color", "blue");
+                    
                     $("#use_date").val($("#Date").val());
                     $("#item_name").val("[ "+$("#item_name0").val()+" ]"+" "+ $("#room_name").val());
                     $("#use_start_time").val($("#time1").val().replaceAll(":", "").substring(0, 2));
                     $("#use_end_time").val($("#time2").val().replaceAll(":", "").substring(0, 2));
                     $("#date_time_pay").val($("#Date").val().replaceAll("-", "")+"_"+$("#cafe_id").val()+"_"+$("#time1").val().replaceAll(":", "")+$("#time2").val().replaceAll(":", ""));
-                    var totalprice = $("#quantity").val($("#time2").val().replaceAll(":", "").substring(0, 2) - $("#time1").val().replaceAll(":", "").substring(0, 2));
                     $("#reserve_count").val($("#time2").val().replaceAll(":", "").substring(0, 2) - $("#time1").val().replaceAll(":", "").substring(0, 2));
-                    var orderNum = $("#date_time_pay").val($("#Date").val().replaceAll("-", "")+"_"+$("#cafe_id").val()+"_"+$("#time1").val().replaceAll(":", "")+$("#time2").val().replaceAll(":", ""));
                     $("#total_amount").val($("#price_hour2").val() * totalprice.val());
                   }
                 }); //click
