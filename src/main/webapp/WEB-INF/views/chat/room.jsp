@@ -165,7 +165,7 @@ font-size:17px;
           $(document).ready(function(){
               var roomName = '${room.roomName}';
               var roomId = '${room.roomId}';
-              var username = '${login_info.member_id}';
+              var username = '${login_info.member_nick}';
               var date = new Date();
       		  var dateInfo = date.getMonth() + 1 + "/" + date.getDate() + " "+ date.getHours() + "시 " + date.getMinutes() + "분";
               console.log(roomName + ", " + roomId + ", " + username);

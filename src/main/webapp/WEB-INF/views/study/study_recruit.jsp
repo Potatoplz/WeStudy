@@ -9,36 +9,51 @@
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
 		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
-		<script src="//cdn.ckeditor.com/4.19.0/full/ckeditor.js"></script>
+		<script src="//cdn.ckeditor.com/4.19.0/basic/ckeditor.js"></script>
 		<style type="text/css">
 		.write_label {
 			font-size : 0.7em;
 			color : red;
 		}
+		.wrapper{
+			max-width: 900px;
+			width: 100%;
+		    display: flex;
+		    flex-direction: column;
+		    margin: 0 auto;
+		    padding: 1.5rem 1.5rem 5rem;
+		}
 		</style>
 	</head>
+	<%@ include file="/WEB-INF/views/header.jsp" %>
 	<body>
-<%-- 	<%@ include file="/WEB-INF/views/header.jsp" %> --%>
 		<hr>
-		<h3> 스터디 모집 </h3>
+		<h3> 스터디 모집</h3>
 		<hr>
-		<form id="write_form">
+		<div class="wrapper">
 			<table class="table table-hover">
 				<tbody>
 					<tr>
 						<th> 스터디 제목 </th>
 						<td colspan="3">
-							<input type="text" id="title" name="title" maxlength="20" class="form-control">
+							<input type="text" id="title" name="title" maxlength="50" class="form-control">
 						</td>
 					</tr>
 					<tr>
 						<th> 스터디 팀명 </th>
 						<td colspan="3">
-							<input type="text" id="teamname" name="teamname" maxlength="20" class="form-control">
+							<div class="input-group">
+							<input type="text" id="teamname" name="teamname" maxlength="10" class="form-control">
+								<div class="input-group-append">
+									<button id="team_btn" class="btn btn-info">중복 체크</button>
+								</div>
+							</div>
+							<label for="teamname" id="teamname_label"></label>
+							
 						</td>
 					</tr>
 					<tr>
-						<th> 스터디 종류 </th>
+						<th> 카테고리 </th>
 						<td>
 							<select name="category" id="category">
 								<option>출석/인증</option>
@@ -66,6 +81,7 @@
 						<th> 희망 지역 </th>
 						<td>
 							<select name="place" id="place">
+								<option>선택 안함(온라인)</option>
 								<option>강남구</option>
 								<option>서초구</option>
 							</select>
@@ -86,7 +102,9 @@
 					<tr>
 						<th> 스터디 소개 </th>
 						<td colspan="3">
-							<textarea class="form-contol" id="contents" name="contents"></textarea>
+							<textarea class="form-contol" id="contents" name="contents" placeholder="스터디 시작 동기, 진행 방식, 시간, 스터디 목적 등을 적어주세요!">
+								스터디 시작 동기, 진행 방식, 시간, 스터디 목적 등을 적어주세요!
+							</textarea>
 							<script type="text/javascript
 							">
 							CKEDITOR.replace("contents");
@@ -101,20 +119,63 @@
 					</tr>
 				</tbody>
 			</table>
-		</form>
-		<button id="write_btn" class="btn btn-primary float-right"> 등록 </button>
-		<a href="${pageContext.request.contextPath}/study/list">
-			<button class="btn btn-warning"> 취소 </button>
-		</a>
+		
+			<button id="write_btn" class="btn btn-primary"> 등록 </button>
+			<a href="${pageContext.request.contextPath}/study/list">
+				<button class="btn btn-warning"> 취소 </button>
+			</a>
+		</div><!-- wrapper -->
+		
 		<hr>
 <%-- 	<%@ include file="/WEB-INF/views/footer.jsp" %> --%>
 
 	<script type="text/javascript">
+	let checkedTeam = "";
+	let checkResult = null;
+	
 	$(document).ready(function() {
-		$("#write_btn").click(function() {
+		/* 팀명 중복 체크 버튼 */
+		$("#team_btn").click(function() {
 
+			if( $.trim( $("#teamname").val() ) == "" || $.trim( $("#teamname").val() ) == null){
+				$("#teamname_label").text("팀명을 입력하세요.");
+				return;
+			} else { $("#teamname_label").text(""); }
+
+			$.get(
+					"${pageContext.request.contextPath}/study/teamNameCheck"
+					, { study_team : $("#teamname").val() }
+					, function(data, status) {
+						if(data == 0){
+							$("#teamname_label").text("사용 가능한 팀명 입니다.");
+							$("#teamname_label").css("color", "blue");
+							checkedTeam = $("#teamname").val();
+							checkResult = 0;
+							
+						} else if(data >= 1){
+							$("#teamname_label").text("이미 사용 중인 팀명 입니다.");
+							$("#teamname_label").css("color", "red");
+							checkResult = 1;
+							return;
+						} else {
+							alert("잠시 후 다시 시도해 주세요.");
+						}
+					}//call back function
+			);//get
+
+		});//click
+		
+		$("#write_btn").click(function() {
+			
+			if( checkedTeam == "" || checkedTeam  != $("#teamname").val() ){
+				$("#teamname_label").text("팀명 중복 체크를 해 주세요.");
+				$("#teamname_label").css("color", "red");
+				return;
+			} else { $("#teamname_label").text(""); }
+			
 			$.post(
 					"${pageContext.request.contextPath}/study_rest/"
+					
 					, {
 						study_name : $("#title").val()
 						, study_content : CKEDITOR.instances.contents.getData()
@@ -125,6 +186,7 @@
 						, recruit_cnt : $("#recruit_cnt").val()
 						, start_date : $("#std_start").val()
 						, end_date : $("#std_end").val()
+						, roomName : $("#teamname").val()
 						
 					}
 					, function(data, status) {
@@ -140,6 +202,7 @@
 			);//post
 		});//click
 	});//ready
+	
 	</script>
 	
 

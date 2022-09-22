@@ -31,8 +31,8 @@ public class RoomController {
         
         return mv;
     }
-
-    //채팅방 개설 [채팅방 이름 DB연동]
+/*
+    //채팅방 개설 [채팅방 이름 DB연동] : StudyRestController로 merge
     @PostMapping(value = "/room")
     public String create(@RequestParam String roomName, RedirectAttributes rttr){
 
@@ -41,7 +41,7 @@ public class RoomController {
         
         return "redirect:/chat/rooms";
     }
- 
+*/ 
     //채팅방 조회 [채팅방 고유번호 DB연동]
     @GetMapping("/room")
     public void getRoom(String roomId, Model model){
