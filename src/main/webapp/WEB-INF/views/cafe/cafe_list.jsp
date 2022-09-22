@@ -104,7 +104,7 @@
 						<hr>
 
 						<!-- 상품 목록 -->
-<div class="container">
+<div class="container2">
     <h3 class="h3">shopping Demo-1 </h3>
 <!--     <div class="row"> -->
         <div class="product-list" id="product-list"><!-- 이 안에 append -->
