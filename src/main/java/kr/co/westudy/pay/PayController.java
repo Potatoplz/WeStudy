@@ -1,9 +1,11 @@
 package kr.co.westudy.pay;
 
+import java.io.PrintWriter;
 import java.net.URISyntaxException;
 
 import javax.servlet.http.HttpSession;
 
+import org.apache.jasper.tagplugins.jstl.core.Out;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -25,6 +27,9 @@ import kr.co.westudy.vo.KakaoPaySearchVO;
 @RequestMapping("/pay")
 public class PayController {
 	
+	@Autowired
+	private PayService1 payService1;
+	
 	@Autowired//2개가 등록되어있으므로 사용이 불가능
 	@Qualifier("kakaoPayService")//id=kakaoPayService인 bean을 주입
 	private PayService payService;
@@ -45,6 +50,19 @@ public class PayController {
 		//= partner_order_id / partner_user_id / tid
 		session.setAttribute("partner_order_id", prepareVO.getPartner_order_id());
 		session.setAttribute("partner_user_id", prepareVO.getPartner_user_id());
+		
+		session.setAttribute("cafe_id", prepareVO.getCafe_id());
+		session.setAttribute("item_name", prepareVO.getItem_name());
+		session.setAttribute("member_id", prepareVO.getMember_id());
+		session.setAttribute("member_nick", prepareVO.getMember_nick());
+		session.setAttribute("use_date", prepareVO.getUse_date());
+		session.setAttribute("use_start_time", prepareVO.getUse_start_time());
+		session.setAttribute("use_end_time", prepareVO.getUse_end_time());
+		session.setAttribute("reserve_count", prepareVO.getReserve_count());
+		session.setAttribute("room_id", prepareVO.getRoom_id());
+		session.setAttribute("total_amount", prepareVO.getTotal_amount());
+		
+		
 		session.setAttribute("tid", readyVO.getTid());
 		
 		//사용자에게 결제 페이지 주소로 재접속 지시를 내린다(리다이렉트)
@@ -53,13 +71,24 @@ public class PayController {
 	
 	@GetMapping("/success")
 //	public String success(@RequestParam String pg_token) {
-	public String success(
-			HttpSession session,
-			@ModelAttribute KakaoPayApprovePrepareVO prepareVO) throws URISyntaxException {
+	public String success( HttpSession session,	@ModelAttribute KakaoPayApprovePrepareVO prepareVO) throws URISyntaxException {
 		//세션에서 데이터를 추출 후 삭제
 		prepareVO.setPartner_order_id((String)session.getAttribute("partner_order_id"));
 		prepareVO.setPartner_user_id((String)session.getAttribute("partner_user_id"));
+		
+		prepareVO.setCafe_id((String)session.getAttribute("cafe_id"));
+		prepareVO.setItem_name((String)session.getAttribute("item_name"));
+		prepareVO.setMember_id((String)session.getAttribute("member_id"));
+		prepareVO.setMember_nick((String)session.getAttribute("member_nick"));
+		prepareVO.setUse_date((String)session.getAttribute("use_date"));
+		prepareVO.setUse_start_time((String)session.getAttribute("use_start_time"));
+		prepareVO.setUse_end_time((String)session.getAttribute("use_end_time"));
+		prepareVO.setReserve_count((String)session.getAttribute("reserve_count"));
+		prepareVO.setRoom_id((String)session.getAttribute("room_id"));
+		prepareVO.setTotal_amount((int) session.getAttribute("total_amount"));
 		prepareVO.setTid((String)session.getAttribute("tid"));
+		
+		session.setAttribute("pay_info", prepareVO);
 		
 		session.removeAttribute("partner_order_id");
 		session.removeAttribute("partner_user_id");
@@ -74,12 +103,33 @@ public class PayController {
 	}
 	
 	@GetMapping("/result_success")
-	public String resultSuccess(
-			@RequestParam String tid,
-			Model model) throws URISyntaxException {
+	public String resultSuccess( @RequestParam String tid, Model model, HttpSession session, KakaoPayApprovePrepareVO prepareVO, PrintWriter out ) throws URISyntaxException {
 		KakaoPaySearchVO searchVO = payService.search(tid);
 		model.addAttribute("searchVO", searchVO);
-		return "pay/resultSuccess";//"/WEB-INF/views/pay/resultSuccess.jsp"
+		
+        String pay_stat = searchVO.getStatus();// 거래 후 결과 변수에 담기
+        
+		prepareVO.setCafe_id((String)session.getAttribute("cafe_id"));
+		prepareVO.setItem_name((String)session.getAttribute("item_name"));
+		prepareVO.setMember_id((String)session.getAttribute("member_id"));
+		prepareVO.setMember_nick((String)session.getAttribute("member_nick"));
+		prepareVO.setUse_date((String)session.getAttribute("use_date"));
+		prepareVO.setUse_start_time((String)session.getAttribute("use_start_time"));
+		prepareVO.setUse_end_time((String)session.getAttribute("use_end_time"));
+		prepareVO.setReserve_count((String)session.getAttribute("reserve_count"));
+		prepareVO.setRoom_id((String)session.getAttribute("room_id"));
+		prepareVO.setTotal_amount((int) session.getAttribute("total_amount"));
+		prepareVO.setPay_state(pay_stat);// 거래 후 결과 VO에 담기
+		
+		
+		//예약 table DB 입력
+		int successCount = 0;
+        successCount = payService1.reserve(prepareVO);
+        out.print(successCount);
+        out.close();
+		return "pay/resultSuccess";
+		
+		//"/WEB-INF/views/pay/resultSuccess.jsp"
 	}
 	
 //	@GetMapping("/cancel")
