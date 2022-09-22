@@ -53,11 +53,28 @@ public class StudyService {
 		return isYN;
 	}
 	
+	//스터디 지원 여부 확인
+	public int apply_cnt(StudyDTO dto) {
+		int apply_cnt = 0;
+		apply_cnt = dao.apply_cnt( dto );
+		return apply_cnt;
+	}//apply_cnt
+	
+	
 	//스터디 지원
 	public int apply_insert( StudyDTO dto ) {
 		int successCount = 0;
 		successCount = dao.apply_insert( dto );
 		return successCount;
 	}//apply_insert
+	
+	//스터디 지원 취소
+	public int apply_cancel(StudyDTO dto) {
+		int successCount = 0;
+		successCount = dao.apply_cancel( dto );
+		return successCount;
+	}//delete
+	
+	
 	
 }

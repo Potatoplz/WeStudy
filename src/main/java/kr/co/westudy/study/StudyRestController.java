@@ -36,7 +36,7 @@ public class StudyRestController {
 	private StudyService service;
 
 	@DeleteMapping("/{inData}")
-	public int delete(@PathVariable("inData") String study_id, HttpSession session) {
+	public int delete(@PathVariable("inData") String study_id, HttpSession session, Model model) {
 		StudyDTO dto = new StudyDTO();
 		dto.setStudy_id(study_id);
 		dto.setMember_id( ( (MemberDTO) session.getAttribute("login_info") ).getMember_id() );
@@ -106,5 +106,17 @@ public class StudyRestController {
 		out.close();
 
 	}//apply 
+	
+	
+	//스터디 지원 취소
+	@DeleteMapping("/apply_cancel/{inData}")
+	public int apply_cancel(@PathVariable("inData") String study_id, HttpSession session, Model model) {
+		StudyDTO dto = new StudyDTO();
+		dto.setStudy_id(study_id);
+		dto.setMember_id( ( (MemberDTO) session.getAttribute("login_info") ).getMember_id() );
+		int successCount = service.apply_cancel(dto);
+		return successCount;
+	}//delete
+	
 	
 }

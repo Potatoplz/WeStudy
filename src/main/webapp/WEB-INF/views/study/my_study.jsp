@@ -27,7 +27,8 @@
                 <div class="col-12 ">
                   <nav>
                     <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
-                      <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">개설한 스터디</a>
+                      <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selecte
+                      d="true">개설한 스터디</a>
                       <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">신청한 스터디</a>
                     </div>
                   </nav>
@@ -154,19 +155,25 @@
 					, {}
 					, function(data, status) {
 						//alert(JSON.stringify (data)); //데이터 확인용
-						
+
 						$.each(data, function(index, dto) {
-							$("#list_tbody").append(
-								"<tr>"
+
+							let str1 = "<tr>"
 								+ "<td>" + dto.study_id + "</td>"
 								+ "<td>" + dto.study_type + "</td>"
 								+ "<td><a href='${pageContext.request.contextPath}/study/detail?study_id=" + dto.study_id + "'>"
 									+ dto.study_name + "</a></td>"
 								+ "<td>" + dto.start_date + "</td>"
-								+ "<td>" + dto.accept_yn + "</td>"
-								+ "<td>" + "<a href='/chat/room?roomId="+ dto.study_team + "'><button class='btn btn-info'>입장</button></a>" + "</td>"
-								+ "</tr>"
-							);//append
+								+ "<td>" + dto.accept_yn + "</td>";
+							if(dto.accept_yn == '승인완료'){
+								str1 = str1 + "<td>" + "<a href='/chat/room?roomId="+ dto.study_team + "'><button class='btn btn-info'>입장</button></a>" + "</td>";
+							}
+							else {
+								str1 = str1 + "<td><button class='btn btn-secondary'>입장대기</button></td>";
+							}
+							str1 = str1 + "</tr>";
+
+							$("#list_tbody").append( str1 );//append
 						});//each
 
 					}//call back function

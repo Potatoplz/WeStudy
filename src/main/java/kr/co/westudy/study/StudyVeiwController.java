@@ -39,8 +39,16 @@ public class StudyVeiwController {
 	}//mystudy
 	
 	@GetMapping("/detail")
-	public String detail(String study_id, Model model) {
+	public String detail(String study_id, Model model, StudyDTO dto, HttpSession session) {
 		model.addAttribute("study_id", study_id);
+		
+		//스터디 지원 여부 확인
+		dto.setStudy_id(study_id);
+		dto.setMember_id( ( (MemberDTO) session.getAttribute("login_info") ).getMember_id() );
+		System.out.println("~~~~~~~~~~~~~~~~~~~" + dto);
+		int apply_cnt = service.apply_cnt(dto);
+		model.addAttribute("apply_cnt", apply_cnt);
+		
 		return "study/study_detail";
 	}//detail
 	

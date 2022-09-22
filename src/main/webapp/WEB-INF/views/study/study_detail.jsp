@@ -29,11 +29,6 @@
 					<div class="cnt_registeredDate" id="study_writedate">2022.09.21</div>
 				</div>
 				
-				<!-- 멤버 정보 -->
-				<input type="hidden" id="member_id" name="member_id" value="${login_info.member_id}">
-				<input type="hidden" id="member_nick" name="member_nick" value="${login_info.member_nick}">
-				<input type="hidden" id="member_email" name="member_email" value="${login_info.member_email}">
-				
 				<ul class="studyInfo_studyGrid__38Lfj"><!-- 주의:ul은 class명바꾸면 적용안됨. 왜지? -->
 					<li class="studyInfo_CntWrapper">
 						<span class="studyInfo_title">스터디 종류</span>
@@ -70,8 +65,16 @@
 			
 			<br>
 			<div class="commentInput_buttonWrapper">
-				<button class="btn btn-info" id="register" name="register" type="button" data-toggle="modal" data-target="#myModal">지원하기</button>
-				<button class="btn btn-warning" name="register">지원취소</button>
+			<c:choose>
+			    <c:when test="${apply_cnt == 0}">
+			    <button class="btn btn-info" id="register" name="register" type="button" data-toggle="modal" data-target="#myModal">지원하기</button>
+				</c:when>
+				<c:otherwise>
+				<div class="apply_cancel" style="text-align:center;">
+				<button class="btn btn-warning" name="cancel_btn" id="cancel_btn">지원 취소</button>
+				</div>
+				</c:otherwise>
+			</c:choose>
 			</div>
 			
 			<!-- 댓글 -->
@@ -139,6 +142,34 @@
   </div>
   
 		
+		
+		<!-- 스터디 지원 취소 -->
+		<script type="text/javascript">
+		$(document).ready(function() {
+			$("#cancel_btn").click(function() {
+
+				$.ajax({
+					type : "DELETE"
+					, url : "${pageContext.request.contextPath}/study_rest/apply_cancel/${study_id}"
+					, processData : false
+					, contentType : false
+					, cache : false
+					, success : function(result, status, xhr) {
+						if(result > 0) {
+							alert("취소 성공");
+							location.href = "${pageContext.request.contextPath}/study/detail?study_id=${study_id}";
+						}//if
+					}//success
+				});//ajax
+
+			});//click
+		});//ready
+		</script>
+		
+		
+		
+		
+		<!-- 스터디 지원하기 -->
 		<script type="text/javascript">
 		$(document).ready(function() {
 			$("#study_submit").click(function() {
@@ -154,7 +185,7 @@
 					, data : JSON.stringify( board )
 					, success : function(data, status, xhr){alert("지원 성공");}
 					, error : function(data, status, xhr){alert("에러");}
-					, complete : function(data, status, xhr){alert("지원 완료");} //작업 완료 
+					, complete : function(data, status, xhr){} //작업 완료 
 				});//ajax
 			
 			});//click

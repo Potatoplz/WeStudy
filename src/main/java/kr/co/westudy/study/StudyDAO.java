@@ -57,11 +57,23 @@ public class StudyDAO {
 		return isYN;
 	}
 	
+	public int apply_cnt(StudyDTO dto) {
+		int apply_cnt = 0;
+		apply_cnt = sqlSession.selectOne("StudyMapper.apply_cnt", dto);
+		return apply_cnt;
+	}//apply_cnt
 	
 	public int apply_insert( StudyDTO dto ) {
 		int successCount = 0;
 		successCount = sqlSession.insert("StudyMapper.apply_insert", dto);
 		return successCount;
 	}//apply_insert
+	
+	
+	public int apply_cancel(StudyDTO dto) {
+		int successCount = 0;
+		successCount = sqlSession.delete("StudyMapper.apply_cancel", dto);
+		return successCount;
+	}//delete
 	
 }
