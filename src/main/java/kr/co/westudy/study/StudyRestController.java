@@ -71,8 +71,10 @@ public class StudyRestController {
         return "redirect:/chat/rooms";
 	}//recruit
 	
-	@GetMapping("/list")
-	public List<StudyDTO> list(StudyDTO dto) {
+	@GetMapping("/list/{inData}")
+	public List<StudyDTO> list(@PathVariable("inData") String limit_cnt) {
+		StudyDTO dto = new StudyDTO();
+		dto.setLimit_cnt(limit_cnt);
 		List<StudyDTO> list = service.list(dto);
 		return list;
 	}//list

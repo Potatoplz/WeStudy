@@ -23,6 +23,7 @@ public class StudyDTO {
 	private String closed_ok;
 	private String dead_ok;
 	private String view_cnt;
+	private String limit_cnt;
 	
 	private String roomId;
 	private String roomName;

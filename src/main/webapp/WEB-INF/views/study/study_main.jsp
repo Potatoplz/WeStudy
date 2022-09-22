@@ -48,14 +48,6 @@
         </div>
     </div>
  <!-- 카드 -->   
-    	<div class="row">
-       		<div class="study-list-box">
-				<!-- cardbox안에 내용이 들어갑니다. -->
-	            	<div class="cardbox" id="cardbox"></div>
-	 			</div>
-			</div>
-        </div>
-        
         <section class="feature-area">
 	    <div class="container">
 	        <div class="row feature-box">
@@ -63,8 +55,10 @@
 	            <div class="cardboxnew" id="cardboxnew">
 	            <!-- 이 안에 내용 들어갑니다. -->
 	            </div><!-- end col-md-4 -->
+	            
 
 	        </div><!-- end row -->
+        	<button id="tmpBtn">노재호 입니다 ㅋㅋ</button>
 
 
 	    </div><!-- end container -->
@@ -75,31 +69,38 @@
     </div><!-- container -->
 
 		<script type="text/javascript">
+		let limit_cnt = 0;
 		$(document).ready(function() {
-			$.get(
-					"${pageContext.request.contextPath}/study_rest/list"
-					, {}
-					, function(data, status) {
-						//alert(JSON.stringify (data)); //데이터 확인용
-						
-						$.each(data, function(index, dto) {
-							$("#cardboxnew").append(
-									"<div class='feature-item'>"
-				                    + "<span class='feature__number'>" + dto.study_id + "</span>"
-				                    + "<span class='start_date'>"+ "시작 예정일 | " + dto.start_date +"</span>"
-				                    + "<h3 class='feature__title'>" + dto.study_name + "</h3>"
-				                    + "<h3 class='feature__desc2'>" + "#갓생 #미라클 #프로젝트" + "</h3>"
-				                    + "<p class='badge badge-soft-success mb-0'>" + dto.study_onoff + "</p>"
-				                    + "<p class='badge badge-soft-success mb-0'>" + dto.study_city + "</p><br><hr>"
-				                    + "<p class='feature__desc'><i class='fa fa-user-circle-o' aria-hidden='true'></i>" + dto.member_nick + "</p>"
-				                    + "<p class='recruit_cnt'><i class='fa fa-users' aria-hidden='true'></i>" + "2 / 6" + "</p>"
-									+ "</div>"
-							);//append
-						});//each
+			
+			$("#tmpBtn").bind("click", function(){
+				$.get(
+						"${pageContext.request.contextPath}/study_rest/list/"+limit_cnt
+						, {}
+						, function(data, status) {
+							//alert(JSON.stringify (data)); //데이터 확인용
+							
+							$.each(data, function(index, dto) {
+								$("#cardboxnew").append(
+										"<div class='feature-item'>"
+					                    + "<span class='feature__number'>" + dto.study_id + "</span>"
+					                    + "<span class='start_date'>"+ "시작 예정일 | " + dto.start_date +"</span>"
+					                    + "<h3 class='feature__title'>" + dto.study_name + "</h3>"
+					                    + "<h3 class='feature__desc2'>" + "#갓생 #미라클 #프로젝트" + "</h3>"
+					                    + "<p class='badge badge-soft-success mb-0'>" + dto.study_onoff + "</p>"
+					                    + "<p class='badge badge-soft-success mb-0'>" + dto.study_city + "</p><br><hr>"
+					                    + "<p class='feature__desc'><i class='fa fa-user-circle-o' aria-hidden='true'></i>" + dto.member_nick + "</p>"
+					                    + "<p class='recruit_cnt'><i class='fa fa-users' aria-hidden='true'></i>" + "2 / 6" + "</p>"
+										+ "</div>"
+								);//append
+							});//each
+	
+						}//call back function
+						, "json"
+				);//get
+				limit_cnt = limit_cnt + 12;
+			});//click
 
-					}//call back function
-					, "json"
-			);//get
+			$( "#tmpBtn" ).trigger( "click" );
 		});//ready
 		</script>
 		
