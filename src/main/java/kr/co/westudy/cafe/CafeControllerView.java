@@ -18,6 +18,11 @@ public class CafeControllerView {
 
     @Autowired
     private CafeService service;
+    
+    @GetMapping("/my_reserv")
+    public String myReserv() {
+		return "cafe/my_reserv";
+	}
 
     @GetMapping(value = "/list") // Get방식 @ReqeustMapping과 동일한 기능을 합니다. Post방식은 @PostMapping으로 사용.
     public String list() {
