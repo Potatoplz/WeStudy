@@ -22,13 +22,14 @@
 
 
 <div class="container">
-    <div class="row align-items-center">
-        <div class="col-md-6">
+    <div class="row align-items-center" id="nav2">
+            <div class="cardTitle">
             <div class="mb-3">
-                <h5 class="card-title">Contact List <span class="text-muted fw-normal ms-2">(834)</span></h5>
+                <h5 class="card-title">모집 리스트 <span class="text-muted fw-normal ms-2">(834)</span></h5>
             </div>
         </div>
-        <div class="col-md-6">
+        <div class="cardWrite">
+<!--         <div class="col-md-6"> -->
             <div class="d-flex flex-wrap align-items-center justify-content-end gap-2 mb-3">
                 <div>
                     <ul class="nav nav-pills">
@@ -58,39 +59,16 @@
         <section class="feature-area">
 	    <div class="container">
 	        <div class="row feature-box">
-	            <div class="col-md-4 col-sm-6">
-	                <div class="feature-item">
-	                    <span class="feature__number">01</span>
-	                    <span class="flaticon-003-target feature__icon"></span>
-	                    <h3 class="feature__title">
-	                        <a href="service-detail.html">finance management.</a>
-	                    </h3>
-	                    <p class="feature__desc">
-	                        sed quia lipsum dolor sit atur adipiscing elit is nunc quis
-	                        tellus sed ligula porta ultricies quis nec neulla.
-	                    </p>
-	                </div><!-- end feature-item -->
+	        
+	            <div class="cardboxnew" id="cardboxnew">
+	            <!-- 이 안에 내용 들어갑니다. -->
 	            </div><!-- end col-md-4 -->
 
-
-	            <div class="col-md-4 col-sm-6">
-	                <div class="feature-item">
-	                    <span class="feature__number">02</span>
-	                    <span class="flaticon-043-bank feature__icon"></span>
-	                    <h3 class="feature__title">
-	                        <a href="service-detail.html">banking investigation.</a>
-	                    </h3>
-	                    <p class="feature__desc">
-	                        sed quia lipsum dolor sit atur adipiscing elit is nunc quis
-	                        tellus sed ligula porta ultricies quis nec neulla.
-	                    </p>
-	                </div><!-- end feature-item -->
-	            </div><!-- end col-md-4 -->
 	        </div><!-- end row -->
 
 
 	    </div><!-- end container -->
-	</section>
+	  </section>
         
         
  <!-- 카드 종료 -->       
@@ -105,18 +83,17 @@
 						//alert(JSON.stringify (data)); //데이터 확인용
 						
 						$.each(data, function(index, dto) {
-							$("#cardbox").append(
-								"<div class='card2' >"
-								+ "<ul style='margin:10px;'>"
-								+ "<li>" + "시작 예정일 | " + dto.start_date + "</li>"
-								+ "<li><h5><a href='${pageContext.request.contextPath}/study/detail?study_id=" + dto.study_id + "'>"
-									+ dto.study_name + "</a></h5></li>"
-								+ "<li>" + "#갓생 #미라클모닝 #새벽" + "</li>"	
-								+ "<li class='badge badge-soft-success mb-0'>" + dto.study_onoff + "</li><br>"
-								+ "<li style='float:left;'>" + "<i class='fa fa-user-circle-o' aria-hidden='true'></i> " + dto.member_nick + "</li>"
-								+ "<li style='float:right;'>" + "<i class='fa fa-users' aria-hidden='true'></i>2 / 6" + "</li>"
-								+ "</ul>"
-								+ "</div>"
+							$("#cardboxnew").append(
+									"<div class='feature-item'>"
+				                    + "<span class='feature__number'>" + dto.study_id + "</span>"
+				                    + "<span class='start_date'>"+ "시작 예정일 | " + dto.start_date +"</span>"
+				                    + "<h3 class='feature__title'>" + dto.study_name + "</h3>"
+				                    + "<h3 class='feature__desc2'>" + "#갓생 #미라클 #프로젝트" + "</h3>"
+				                    + "<p class='badge badge-soft-success mb-0'>" + dto.study_onoff + "</p>"
+				                    + "<p class='badge badge-soft-success mb-0'>" + dto.study_city + "</p><br><hr>"
+				                    + "<p class='feature__desc'><i class='fa fa-user-circle-o' aria-hidden='true'></i>" + dto.member_nick + "</p>"
+				                    + "<p class='recruit_cnt'><i class='fa fa-users' aria-hidden='true'></i>" + "2 / 6" + "</p>"
+									+ "</div>"
 							);//append
 						});//each
 

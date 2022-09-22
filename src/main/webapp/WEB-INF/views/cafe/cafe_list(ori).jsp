@@ -9,7 +9,7 @@
 				<head>
 					<meta charset="UTF-8">
 					<title>WeStudy | 카페 목록</title>
-					<link rel="stylesheet" href="/resources/cafe/cafe_list.css">
+
 					<!-- bootstrap cdn -->
 					<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 					<link rel="stylesheet"
@@ -25,6 +25,65 @@
 					<link rel="stylesheet" href="/resources/mdList/assets/css/owl.css">
 					<link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css"
 						type="text/css" />
+
+					<style type="text/css">
+						.img-box {
+							overflow: hidden;
+							margin-top: 20px;
+						}
+
+						/* 마우스 오버시 이미지 확대 */
+						.img-box:hover img {
+							transform: scale(1.2);
+							transition: .3s;
+
+						}
+
+						/* 마우스 오버시 커서모양 변경 */
+						.product-item:hover {
+							cursor: pointer;
+							 !important
+						}
+
+						/* 이미지 모양 조정 */
+						.img-box {
+							width: 300px;
+							height: 400px;
+							top: 6px;
+							left: 7px;
+							border-radius: 10px;
+							margin-bottom: 10px;
+							transition: all 0.2s linear;
+						}
+
+
+						/* 상품명 */
+						h5 {
+							font-family: sans_serif;
+							font-weight: bold;
+							font-size: 18px;
+						}
+
+						/* 상품 한 줄 설명 */
+						h6 {
+							font-size: 13px;
+						}
+
+						/* 상품 리스트 가운데 정렬 */
+						table {
+							margin: auto;
+						}
+
+						/* 하이퍼링크 색깔 없애기 */
+						a {
+							color: black;
+						}
+
+						/* 하이퍼링크 밑줄 없애기 */
+						a:hover {
+							text-decoration: none !important
+						}
+					</style>
 
 				</head>
 
@@ -104,39 +163,16 @@
 						<hr>
 
 						<!-- 상품 목록 -->
-<div class="container">
-    <h3 class="h3">shopping Demo-1 </h3>
-<!--     <div class="row"> -->
-        <div class="col-md-3 col-sm-6" id="product-list"><!-- 이 안에 append -->
-      1번자리 
-          <div class="product-grid">
-          2번자리
-                <div class="product-image" id="product-image"><!-- 여기서부터 -->
-                3번자리
-                    <a href="#">
-                        <img class="pic-1" src="http://i3.wp.com/ytimg.googleusercontent.com/vi/g9Is-3fTh7Q/mqdefault.jpg">
-                        <img class="pic-2" src="https://i.ytimg.com/vi/v7U78sJxAQk/mqdefault.jpg">
-                    </a>
-                    <ul class="social">
-                        <li><a href="" data-tip="Quick View"><i class="fa fa-search"></i></a></li>
-                        <li><a href="" data-tip="Add to Wishlist"><i class="fa fa-shopping-bag"></i></a></li>
-                        <li><a href="" data-tip="Add to Cart"><i class="fa fa-shopping-cart"></i></a></li>
-                    </ul>
-                    <span class="product-new-label">자양동</span>
-                    <span class="product-discount-label">20%</span>
-                </div>
-                <div class="product-content">
-                    <h3 class="title"><a href="#">[광진구] 카페이름카페이름카페이름</a></h3>
-                    <div class="price">2000원
-                        <span> / 시간</span>
-                    </div>
-                    <a class="add-to-cart" href="">+ Add To Cart</a>
-                </div><!-- 여기까지 -->
-            </div>
-        </div>
-    </div>
-</div><!-- 끝 -->
-			</div><!-- row -->
+						<table class="table table-hover">
+							<tbody id="tbody_for_list">
+							</tbody>
+							<tr>
+								<div id="cafe_test">
+								</div>
+							</tr>
+						</table>
+					</div>
+					<hr>
 				</body>
 				<!-- 푸터 자리입니다 -->
 
@@ -153,24 +189,33 @@
 							, function (data, status) {
 								//alert(JSON.stringify (data)); //데이터 확인용
 								$.each(data, function (index, dto) {
-									$("#product-list").append(
-											"<div class='product-grid'>"
-											+ "<div class='product-image' id='product-image'>"
-											+ "<a href=#>"+ "이미지 자리1" + "이미지자리2" "</a>"	
-						                    + "<ul class='social'><li><a href=# data-tip='Quick View'><i class='fa fa-search'></i></a></li><li><a href=# data-tip='Add to Wishlist'><i class='fa fa-shopping-bag'></i></a></li><li><a href=# data-tip='Add to Cart'><i class='fa fa-shopping-cart'></i></a></li></ul>"
-											+ "<span class='product-new-list'>" + dto.cafe_category + "</span>"
-											+ "</div>"	
-											
-											+ "<div class='product-content'>" 
-											+ "<h3 class='title'><a href=#>" + dto.cafe_category + 	dto.cafe_name + "</a></h3>"
-											+ "</div>"
-											+ "<div class='price'>2000원<span> / 시간</span></div>"
-											+ "<a class='add-to-cart' href=#>" + "Add To Cart" + "</a>"
-										+ "</div>"	
-											
-											
-											
-											
+									$("#cafe_test").append(
+										"<td>"
+										+ "<div class='img-box'>"
+										+ "<a href='${pageContext.request.contextPath}/cafe/detail?cafe_id=" + dto.cafe_id + "'>"
+										+ "<img src=" + dto.cafe_img_path1 + ">"
+										//</a>
+										+ "</div>"
+										+ "<div class='product-item'>"
+										//<input type=hidden id="md_id" value="${md.md_id}">
+										//<a href="${pageContext.request.contextPath}/md/detail?md_id=${md.md_id}">
+										+ "<h5>" + "[" + dto.cafe_category + "]" + "  " + dto.cafe_name + "</h5>"
+										// </a>
+										+ "<a>"
+										+ "<h6>" + dto.cafe_oneline + "</h6>"
+										+ "</a>"
+										+ "<h6>"
+										+ "<del>"
+										//<fmt:formatNumber value="${md.md_price}" pattern="#,###" />원
+										+ "</del>"
+										+ "</h6>"
+										+ "<h6>"
+										+ "<b>"
+										//<fmt:formatNumber value="${md.sale_price}" pattern="#,###" />원
+										+ "</b>"
+										+ "</h6>"
+										+ "</div>"
+										+ "</td>"
 									);//append
 								});//each
 							}//call back function
