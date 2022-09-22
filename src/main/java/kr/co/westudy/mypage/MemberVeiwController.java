@@ -8,10 +8,16 @@ import java.io.PrintWriter;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,8 +26,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import kr.co.westudy.TestController;
 import kr.co.westudy.login.LoginService;
 import kr.co.westudy.util.dto.MemberDTO;
 import lombok.extern.java.Log;
@@ -31,11 +40,11 @@ import lombok.extern.java.Log;
 @RequestMapping(value = "/mypage")
 public class MemberVeiwController {
 	
+	private static final Logger log = LoggerFactory.getLogger(MemberVeiwController.class);
+	
 	@Autowired
 	private LoginService service;
 	
-	@Autowired
-	private CalendarService c_service;
 	
 	
 	@RequestMapping( value = "/logout", method = RequestMethod.GET )
@@ -97,29 +106,11 @@ public class MemberVeiwController {
 		
 
 		int successCount = 0;
-		successCount = c_service.img_insert(dto);
+		successCount = service.img_insert(dto);
 		out.print(successCount);
 		out.close();
 	}//img_insert
 	
 	
-	
-	//캘린더 띄우기
-	@GetMapping("/calendar")
-	public String calendar( ) {
-			
-		return "/mypage/calendar";
-	}//profile
-	
-	//캘린더 내용 저장
-	@PostMapping("/calendar_insert")
-	public void calendar_insert( CalendarDTO dto, PrintWriter out ) {
-		
-		int successCount = 0;
-		successCount = c_service.insert( dto );
-		out.print(successCount);
-		out.close();
 
-	}//calendar_insert
-	
 }

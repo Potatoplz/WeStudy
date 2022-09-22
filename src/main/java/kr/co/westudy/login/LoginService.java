@@ -33,4 +33,10 @@ public class LoginService {
 		return list;
 	}
 	
+	public int img_insert(MemberDTO dto) {
+		int successCount = 0;
+		successCount = dao.img_insert(dto);
+		return successCount;
+	}//img_insert
+	
 }//class

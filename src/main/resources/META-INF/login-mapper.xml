@@ -36,4 +36,9 @@
 	where member_email = #{member_email} 
 	</select>
 	
+	<insert id="img_insert" parameterType="kr.co.westudy.util.dto.MemberDTO">
+    INSERT INTO member_image ( member_id, profile_img_name, profile_img_path )
+    VALUES (  #{member_id}, #{profile_img_name}, #{profile_img_path} )
+    </insert>
+	
 </mapper>

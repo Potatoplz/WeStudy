@@ -31,6 +31,13 @@ public class LoginDAO {
 		list = sqlSession.selectList( "LoginMapper.member_profile", member_email );
 		return list;
 	}//member_profile
+	
+
+	public int img_insert(MemberDTO dto) {
+		int successCount = 0;
+		successCount = sqlSession.insert("LoginMapper.img_insert", dto);
+		return successCount;
+	}//img_insert
 
 
 }//class

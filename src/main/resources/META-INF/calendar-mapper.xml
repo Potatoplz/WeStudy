@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="CalendarMapper">
+
+	<delete id="dayPlanDelete" parameterType="kr.co.westudy.calendar.CalendarDTO">
+	delete from calendar_day_plan
+	where plan_no = #{plan_no}
+	and member_id = #{member_id}
+	</delete>
+
+	<select id="myPlanCalendar" parameterType="kr.co.westudy.calendar.CalendarDTO"
+			resultType="kr.co.westudy.calendar.CalendarDTO">
+	select plan_no, plan_year, plan_month, plan_date, member_id
+		, plan_start_time, plan_end_time, plan_desc, 
+	from calendar_day_plan
+	where member_id = #{member_id}
+	and plan_year = #{plan_year}
+	and plan_month = #{plan_month}
+	<choose>
+		<when test="plan_date != null and plan_date != ''">
+		and plan_date = #{plan_date}
+		order by plan_start_time
+		</when>
+		<otherwise>
+		order by plan_date
+		</otherwise>
+	</choose>
+	</select>
+
+	<update id="dayPlanUpdate" parameterType="kr.co.westudy.calendar.CalendarDTO">
+		<foreach collection="list" item="dto">
+		update calendar_day_plan set plan_start_time = #{dto.plan_start_time}
+									, plan_end_time = #{dto.plan_end_time}
+									, plan_desc = #{dto.plan_desc}
+		where plan_no = #{dto.plan_no}
+		and mno = #{dto.mno};
+		</foreach>
+	</update>
+
+	<insert id="dayPlanInsert" parameterType="kr.co.westudy.calendar.CalendarDTO">
+	insert into calendar_day_plan (plan_year, plan_month, plan_date, mno
+		, plan_start_time, plan_end_time, plan_desc)
+	values
+		<foreach collection="list" item="dto" separator=" , ">
+		( #{dto.plan_year}, #{dto.plan_month}, #{dto.plan_date}, #{dto.mno}
+			, #{dto.plan_start_time}, #{dto.plan_end_time}, #{dto.plan_desc})
+		</foreach>
+	;
+	</insert>
+
+	<select id="dateInfo"	parameterType="java.lang.String"
+							resultType="kr.co.westudy.calendar.CalendarDTO">
+	select dayofmonth( now() ) to_date
+		, dayofmonth( last_day( #{userWantMonth} ) ) last_date
+		, dayofweek( #{userWantMonth} ) first_day
+		, dayofmonth( last_day( #{userWantMonth} ) ) + dayofweek( #{userWantMonth} ) for_end
+		, month( #{userWantMonth} ) plan_month
+		, year( #{userWantMonth} ) plan_year
+	from dual
+	</select>
+
+</mapper>
