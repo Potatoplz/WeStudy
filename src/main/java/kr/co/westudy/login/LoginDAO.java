@@ -32,12 +32,19 @@ public class LoginDAO {
 		return list;
 	}//member_profile
 	
+	public int update( MemberDTO dto ) {
+	    int successCount = 0;
+	    successCount = sqlSession.update("LoginMapper.member_update", dto);
+	    return successCount;
+	}//update
+	
+	
 
-	public int img_insert(MemberDTO dto) {
-		int successCount = 0;
-		successCount = sqlSession.insert("LoginMapper.img_insert", dto);
-		return successCount;
-	}//img_insert
+//	public int img_insert(MemberDTO dto) {
+//		int successCount = 0;
+//		successCount = sqlSession.insert("LoginMapper.img_insert", dto);
+//		return successCount;
+//	}//img_insert
 
 
 }//class

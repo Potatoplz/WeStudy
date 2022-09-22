@@ -45,8 +45,6 @@ public class MemberVeiwController {
 	@Autowired
 	private LoginService service;
 	
-	
-	
 	@RequestMapping( value = "/logout", method = RequestMethod.GET )
 	public String logout( HttpSession session ) {
 		session.invalidate();//세션 삭제
@@ -55,8 +53,9 @@ public class MemberVeiwController {
 	
 	//프로필 띄우기
 	@GetMapping("/profile")
-	public String profile( String member_email, Model model, MemberDTO dto ) {
+	public String profile( String member_email, Model model, MemberDTO dto, HttpSession session ) {
 		System.out.println("확인용~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" + member_email);
+		dto.setMember_email( ( (MemberDTO) session.getAttribute("login_info") ).getMember_email() );
 		List<MemberDTO> list = null;
 		list = service.member_profile(member_email);
 		model.addAttribute("list", list);
@@ -64,9 +63,11 @@ public class MemberVeiwController {
 	}//profile
 	
 	
-	@GetMapping( "/profile_update" )
-	private String update_form( String member_email, Model model, MemberDTO dto ) {
-		
+	//프로필 수정 폼 열기
+	@GetMapping( "/pro_update_form" )
+	private String update_form( String member_email, Model model, MemberDTO dto, HttpSession session ) {
+		System.out.println("확인용~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" + member_email);
+	     dto.setMember_email( ( (MemberDTO) session.getAttribute("login_info") ).getMember_email() );
 		 List<MemberDTO> list = null;
 	     list = service.member_profile(member_email);
 	     model.addAttribute("detail_dto", list);
@@ -74,42 +75,52 @@ public class MemberVeiwController {
 	 }//update_form
 	
 	
+	//프로필 수정 반영하기
+	@PostMapping( "/pro_update" )
+	public void memberUpdate( MemberDTO dto, PrintWriter out, HttpSession session) {
 	
-	
-	//프로필 사진 저장
-	@PostMapping("/img_insert")
-	public void img_insert( MemberDTO dto, HttpSession session, PrintWriter out ) throws IOException {
-		
-		System.out.println("확인용");
-		System.out.println(dto);
-		System.out.println("확인용");
-		
-		Date today = new Date();
-		DateFormat nalja = new SimpleDateFormat("YYYYMMdd");
-		DateFormat sigan = new SimpleDateFormat("HHmmss");
-		String todayNalja = nalja.format(today);
-		String todaySigan = sigan.format(today);
-
-		//String mid = ( (MemberDTO) session.getAttribute("login_info") ).getMid();
-		File newFolder = new File("C:/upload/md/" + todayNalja + "/"); //이미지 저장될 폴더명
-		if( newFolder.exists() == false ) newFolder.mkdirs();
-
-		MultipartFile thumbnail = dto.getProfile_img();
-		InputStream is = thumbnail.getInputStream();
-		FileOutputStream fos 
-			= new FileOutputStream("C:/upload/md/" + todayNalja + "/" + todaySigan + "_" + thumbnail.getOriginalFilename());
-		FileCopyUtils.copy(is, fos);
-		is.close();
-		fos.close();
-		dto.setProfile_img_name(todayNalja + "_" + todaySigan + "_" + thumbnail.getOriginalFilename());
-		dto.setProfile_img_path("/upload/md/" + todayNalja + "/" + todaySigan + "_" + thumbnail.getOriginalFilename());
-		
-
 		int successCount = 0;
-		successCount = service.img_insert(dto);
+		successCount = service.update( dto );
 		out.print(successCount);
 		out.close();
-	}//img_insert
+		
+	}//join
+	
+	
+//	//프로필 사진 저장
+//	@PostMapping("/img_insert")
+//	public void img_insert( MemberDTO dto, HttpSession session, PrintWriter out ) throws IOException {
+//		
+//		System.out.println("확인용");
+//		System.out.println(dto);
+//		System.out.println("확인용");
+//		
+//		Date today = new Date();
+//		DateFormat nalja = new SimpleDateFormat("YYYYMMdd");
+//		DateFormat sigan = new SimpleDateFormat("HHmmss");
+//		String todayNalja = nalja.format(today);
+//		String todaySigan = sigan.format(today);
+//
+//		//String mid = ( (MemberDTO) session.getAttribute("login_info") ).getMid();
+//		File newFolder = new File("C:/upload/md/" + todayNalja + "/"); //이미지 저장될 폴더명
+//		if( newFolder.exists() == false ) newFolder.mkdirs();
+//
+//		MultipartFile thumbnail = dto.getProfile_img();
+//		InputStream is = thumbnail.getInputStream();
+//		FileOutputStream fos 
+//			= new FileOutputStream("C:/upload/md/" + todayNalja + "/" + todaySigan + "_" + thumbnail.getOriginalFilename());
+//		FileCopyUtils.copy(is, fos);
+//		is.close();
+//		fos.close();
+//		dto.setProfile_img_name(todayNalja + "_" + todaySigan + "_" + thumbnail.getOriginalFilename());
+//		dto.setProfile_img_path("/upload/md/" + todayNalja + "/" + todaySigan + "_" + thumbnail.getOriginalFilename());
+//		
+//
+//		int successCount = 0;
+//		successCount = service.img_insert(dto);
+//		out.print(successCount);
+//		out.close();
+//	}//img_insert
 	
 	
 

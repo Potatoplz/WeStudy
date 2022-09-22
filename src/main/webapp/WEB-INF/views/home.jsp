@@ -48,8 +48,8 @@
 											class="d-block w-100" alt="1"></a>
 								</div>
 								<div class="carousel-item">
-									<a href=" "><img
-											src="${pageContext.request.contextPath}/resources/home/img/main_2.jpg"
+									<a href="${pageContext.request.contextPath}/study/main">
+									<img src="${pageContext.request.contextPath}/resources/home/img/main_2.jpg"
 											class="d-block w-100" alt="2"></a>
 								</div>
 							</div>

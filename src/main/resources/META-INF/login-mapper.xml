@@ -36,9 +36,20 @@
 	where member_email = #{member_email} 
 	</select>
 	
-	<insert id="img_insert" parameterType="kr.co.westudy.util.dto.MemberDTO">
-    INSERT INTO member_image ( member_id, profile_img_name, profile_img_path )
-    VALUES (  #{member_id}, #{profile_img_name}, #{profile_img_path} )
-    </insert>
+	<update id="member_update" parameterType="kr.co.westudy.util.dto.MemberDTO">
+	update member set member_nick = #{member_nick}, email_agree = #{email_agree}, sms_agree = #{sms_agree}
+	where member_id = #{member_id} and member_email = #{member_email}
+	</update>
+	
+<!-- 	<select id="img_chk" parameterType="java.lang.String" resultType="int"> -->
+<!-- 	select count(profile_img_id) cnt -->
+<!-- 	from member_image -->
+<!-- 	where member_id = #{member_id} -->
+<!-- 	</select> -->
+	
+<!-- 	<insert id="img_insert" parameterType="kr.co.westudy.util.dto.MemberDTO"> -->
+<!--     INSERT INTO member_image ( member_id, profile_img_name, profile_img_path ) -->
+<!--     VALUES (  #{member_id}, #{profile_img_name}, #{profile_img_path} ) -->
+<!--     </insert> -->
 	
 </mapper>

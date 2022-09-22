@@ -13,6 +13,7 @@
 	<body>
 	<%@ include file="/WEB-INF/views/header.jsp" %>
 		<hr>
+	<div class="container">
 		<div class="input-group">
 			<h3> Calendar Main </h3>
 			<h3 class="ml-auto"> &lt; ${date_info.plan_year}년 ${date_info.plan_month}월 &gt; </h3>
@@ -86,7 +87,7 @@
 			</tbody>
 		</table>
 		<hr>
-
+    </div>
 	<%@ include file="/WEB-INF/views/footer.jsp" %>
 
 	<script type="text/javascript">
@@ -117,6 +118,6 @@
 
 	});//ready
 	</script>
-
+ 
 	</body>
 </html>

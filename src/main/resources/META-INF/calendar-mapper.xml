@@ -14,7 +14,7 @@
 	<select id="myPlanCalendar" parameterType="kr.co.westudy.calendar.CalendarDTO"
 			resultType="kr.co.westudy.calendar.CalendarDTO">
 	select plan_no, plan_year, plan_month, plan_date, member_id
-		, plan_start_time, plan_end_time, plan_desc, 
+		, plan_start_time, plan_end_time, plan_desc 
 	from calendar_day_plan
 	where member_id = #{member_id}
 	and plan_year = #{plan_year}
@@ -36,16 +36,16 @@
 									, plan_end_time = #{dto.plan_end_time}
 									, plan_desc = #{dto.plan_desc}
 		where plan_no = #{dto.plan_no}
-		and mno = #{dto.mno};
+		and member_id = #{dto.member_id};
 		</foreach>
 	</update>
 
 	<insert id="dayPlanInsert" parameterType="kr.co.westudy.calendar.CalendarDTO">
-	insert into calendar_day_plan (plan_year, plan_month, plan_date, mno
+	insert into calendar_day_plan (plan_year, plan_month, plan_date, member_id
 		, plan_start_time, plan_end_time, plan_desc)
 	values
 		<foreach collection="list" item="dto" separator=" , ">
-		( #{dto.plan_year}, #{dto.plan_month}, #{dto.plan_date}, #{dto.mno}
+		( #{dto.plan_year}, #{dto.plan_month}, #{dto.plan_date}, #{dto.member_id}
 			, #{dto.plan_start_time}, #{dto.plan_end_time}, #{dto.plan_desc})
 		</foreach>
 	;
