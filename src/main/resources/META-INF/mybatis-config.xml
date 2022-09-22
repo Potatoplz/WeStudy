@@ -12,6 +12,7 @@
 		<mapper resource="META-INF/calendar-mapper.xml" />
 		<mapper resource="META-INF/study-mapper.xml" />
 		<mapper resource="META-INF/map-mapper.xml" />
+		<mapper resource="META-INF/pay-mapper.xml" />
 <!-- 		<mapper resource="META-INF/ckboard-mapper.xml" /> -->
 <!-- 		<mapper resource="META-INF/creditcard-mapper.xml" /> -->
 <!-- 		<mapper resource="META-INF/delivery-mapper.xml" /> -->
