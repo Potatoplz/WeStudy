@@ -298,6 +298,7 @@
                   <hr>
                   <b>공간사용료</b>
                   <br>
+                  <label for="date_time_pirce" id="date_time_pirce"></label>
                   <br>
                   <br>
                   <br>
