@@ -85,6 +85,7 @@ overflow-y: scroll;
   height: 516px;
   border: 1px solid #c4c4c4;
   clear: both;
+  -webkit-box-shadow: 0 0 40px rgb(82 85 90 / 10%);
 }
 /* 채팅 입력창 */
 .input_msg_write input {

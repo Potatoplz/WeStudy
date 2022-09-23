@@ -7,14 +7,14 @@
 <head>
 <meta charset="UTF-8">
 <title>WeStudy</title>
-<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<!-- <script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
+<!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" type="text/css" rel="stylesheet"> -->
 <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" type="text/css" rel="stylesheet">
 <link rel="stylesheet" href="/resources/study/chatroom(ori).css">
 <!-- 실시간 css수정 -->
 </head>
-
+<%@ include file="/WEB-INF/views/header.jsp" %>
 <body>
 <!-- firebase -->
     <script src="https://www.gstatic.com/firebasejs/6.2.3/firebase-app.js"></script>
@@ -63,7 +63,7 @@
                 
 </body>
 <!-- body 끝 -->
-
+<%@ include file="/WEB-INF/views/footer.jsp" %>
 <!-- script 시작 -->
           <script type="text/javascript">
          
@@ -121,7 +121,7 @@
 						getData();
 	              });
 	              $( "#load" ).trigger( "click" );//자동 클릭 jQuery click trigger
-
+	              
                   //엔터키 이벤트
 				  $("#inputMsg").keyup(function() {if (window.event.keyCode == 13) {sendmsg();}})
 				
@@ -198,6 +198,7 @@
                 			});
                 	});
                 }
+                
                 
 			});
           
