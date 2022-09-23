@@ -82,7 +82,7 @@
 						<th> 희망 지역 </th>
 						<td>
 							<select name="place" id="place">
-								<option>선택 안함(온라인)</option>
+								<option>비대면</option>
 								<option value="강남구">강남구</option>
                                 <option value="강동구">강동구</option>
                                 <option value="강북구">강북구</option>

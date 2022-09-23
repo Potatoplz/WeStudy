@@ -19,12 +19,6 @@ public class StudyDAO {
 		return successCount;
 	}//recruit
 
-	public int chatroom(StudyDTO dto) {
-		int successCount = 0;
-		successCount = sqlSession.insert("StudyMapper.chatroom", dto);
-		return successCount;
-	}//chatroom
-
 	public List<StudyDTO> list(StudyDTO dto) {
 		List<StudyDTO> list = sqlSession.selectList("StudyMapper.studylist", dto);
 		return list;
