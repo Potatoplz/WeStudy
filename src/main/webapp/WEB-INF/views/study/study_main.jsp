@@ -30,17 +30,7 @@
         <div class="cardWrite">
 <!--         <div class="col-md-6"> -->
             <div class="d-flex flex-wrap align-items-center justify-content-end gap-2 mb-3">
-                <div>
-                    <ul class="nav nav-pills">
-                        <li class="nav-item">
-                            <a href="#" class="nav-link" data-bs-toggle="tooltip" data-bs-placement="top" title="List"><i class="bx bx-list-ul"></i></a>
-                        </li>
-                        <li class="nav-item">
-                            <a aria-current="page" href="#" class="router-link-active router-link-exact-active nav-link active" data-bs-toggle="tooltip" data-bs-placement="top" title="Grid"><i class="bx bx-grid-alt"></i></a>
-                        </li>
-                    </ul>
-                </div>
-                <div>
+                <div>                
                     <a href="${pageContext.request.contextPath}/study/recruit" class="btn btn-primary"><i class="bx bx-plus me-1"></i>모집하기</a>
                 </div>
             </div>

@@ -8,10 +8,13 @@ list-style:none;
 }
 
 #nav2{
-	max-width: 995px;
-    margin-left: 17px;
-	
+    max-width: 995px;
+    margin-left: 104px;
+    margin-right: 56px;
+    gap: 685px;
+    margin-top: 32px;
 }
+
 
 .cardTitle{
 	float:left;

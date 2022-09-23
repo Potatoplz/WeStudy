@@ -39,7 +39,7 @@
 				where member_id = #{member_id};
 	</select>
 	
-	<select id="applymember" parameterType="java.lang.String" resultType="kr.co.westudy.study.StudyDTO">
+	<select id="applymember" parameterType="kr.co.westudy.study.StudyDTO" resultType="kr.co.westudy.study.StudyDTO">
 		select apply_id, study_id, member_id, member_nick, apply_content, accept_yn
 				from study_apply
 				where study_id = #{study_id};
