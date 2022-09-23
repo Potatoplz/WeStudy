@@ -136,7 +136,7 @@
 					<tr>
 						<th> 태그 </th>
 						<td colspan="3">
-							<input type="text" id="tag" name="tag" maxlength="20" class="form-control" placeholder="#갓생 #미라클모닝 #코딩">
+							<input type="text" id="tag" name="tag" maxlength="20" class="form-control" placeholder="#갓생 #미라클모닝 #코딩" value="#갓생 #열공 #스터디">
 						</td>
 					</tr>
 				</tbody>
@@ -211,14 +211,16 @@
 						, start_date : $("#std_start").val()
 						, end_date : $("#std_end").val()
 						, roomName : $("#teamname").val()
+						, hashtag : $("#tag").val()
 						
 					}
 					, function(data, status) {
 						if(data >= 1){
-							alert("게시글이 성공적으로 업로드되었습니다.");
-							location.href="${pageContext.request.contextPath}/recruit";
+							alert("스터디 모집이 완료 되었습니다!");
+							location.href="${pageContext.request.contextPath}/study/main";
 						} else if(data <= 0){
-							alert("게시글 작성을 실패하였습니다.");
+							alert("스터디 모집이 완료 되었습니다!");
+							location.href="${pageContext.request.contextPath}/study/main";
 						} else {
 							alert("잠시 후 다시 시도해주세요.");
 						}

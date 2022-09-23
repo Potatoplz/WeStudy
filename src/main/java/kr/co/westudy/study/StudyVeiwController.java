@@ -74,6 +74,11 @@ public class StudyVeiwController {
 			int apply_cnt = service.apply_cnt(dto);
 			model.addAttribute("apply_cnt", apply_cnt);
 		} 
+		dto.setStudy_id(study_id);
+//		dto.setMember_id( ( (MemberDTO) session.getAttribute("login_info") ).getMember_id() );
+		System.out.println("~~~~~~~~~~~~~~~~~~~" + dto);
+		int apply_cnt = service.apply_cnt(dto);
+		model.addAttribute("apply_cnt", apply_cnt);
 		
 			return "study/study_detail";
 			

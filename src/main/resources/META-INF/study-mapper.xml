@@ -7,9 +7,9 @@
 
 	<insert id="recruit" parameterType="kr.co.westudy.study.StudyDTO" useGeneratedKeys="true" keyProperty="study_id">
 		insert into study_recruit (study_team, study_name, study_type, recruit_cnt, study_onoff, study_city, view_cnt,
-									start_date, end_date, study_content, study_writedate, member_id, member_nick)
+									start_date, end_date, study_content, study_writedate, member_id, member_nick, hashtag)
 		values (#{study_team}, #{study_name}, #{study_type}, #{recruit_cnt}, #{study_onoff}, #{study_city}, 0,
-				#{start_date}, #{end_date}, #{study_content}, now(), #{member_id}, #{member_nick})
+				#{start_date}, #{end_date}, #{study_content}, now(), #{member_id}, #{member_nick}, #{hashtag})
 	</insert>
 
 	<select id="teamNameCheck" parameterType="java.lang.String" resultType="int">
@@ -20,7 +20,7 @@
 	
 	<select id="studylist" parameterType="kr.co.westudy.study.StudyDTO" resultType="kr.co.westudy.study.StudyDTO">
 		select study_id,study_team, study_name, study_type, recruit_cnt, study_onoff, study_city, view_cnt, 
-				start_date, end_date, study_content, study_writedate, study_state, member_id, member_nick
+				start_date, end_date, study_content, study_writedate, study_state, member_id, member_nick, hashtag
 		from study_recruit
 		order by study_id desc
 		limit ${limit_cnt}, 12
@@ -34,7 +34,7 @@
 	
 	<select id="mystudylist" parameterType="kr.co.westudy.study.StudyDTO" resultType="kr.co.westudy.study.StudyDTO">
 		select study_id, study_team, study_name, study_type, recruit_cnt, study_onoff, study_city, view_cnt, 
-				start_date, end_date, study_content, study_writedate, study_state, member_id, member_nick
+				start_date, end_date, study_content, study_writedate, study_state, member_id, member_nick, hashtag
 				from study_recruit
 				where member_id = #{member_id};
 	</select>
@@ -48,7 +48,7 @@
 	<select id="applylist" parameterType="kr.co.westudy.study.StudyDTO" resultType="kr.co.westudy.study.StudyDTO">
 		select sa.study_id, sr.study_team, sr.study_name, sr.study_type, sr.recruit_cnt, sr.study_onoff, sr.study_city, sr.view_cnt, 
 				sr.start_date, sr.end_date, sr.study_content, sr.study_writedate, sr.study_state, sr.member_id, sr.member_nick,
-				sa.apply_content, sa.accept_yn
+				sa.apply_content, sa.accept_yn, sr.hashtag
 				from study_recruit sr, study_apply sa
 				where sa.member_id = #{member_id} and sa.study_id = sr.study_id;
 	</select>
@@ -62,7 +62,7 @@
 	<select id="detail" parameterType="java.lang.String" resultType="kr.co.westudy.study.StudyDTO">
 		select re.study_id, re.study_team, re.study_name, re.study_type, re.recruit_cnt, re.study_onoff
 				, re.study_city, re.view_cnt, re.start_date, re.end_date, re.study_content, re.study_writedate
-				, re.study_state, re.member_id, re.member_nick
+				, re.study_state, re.member_id, re.member_nick, re.hashtag
 		from study_recruit re, member m
 		where re.study_id = #{study_id}
 		and re.member_id = m.member_id

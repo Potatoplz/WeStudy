@@ -22,6 +22,7 @@ public class StudyDTO {
 	private String study_writedate;
 	private String study_state;
 	private String view_cnt;
+	private String hashtag;
 	private String limit_cnt;
 	
 	private String roomId;

@@ -84,7 +84,7 @@
 					                    + "<span class='feature__number'>" + dto.study_id + "</span>"
 					                    + "<span class='start_date'>"+ "시작 예정일 | " + dto.start_date +"</span>"
 					                    + "<h3 class='feature__title'><a href='${pageContext.request.contextPath}/study/detail?study_id=" + dto.study_id + "'>" + dto.study_name + "</a></h3>"
-					                    + "<h3 class='feature__desc2'>" + "#갓생 #미라클 #프로젝트" + "</h3>"
+					                    + "<h3 class='feature__desc2'>" + dto.hashtag + "</h3>"
 					                    + "<p class='badge badge-soft-success mb-0'>" + dto.study_onoff + "</p>"
 					                    + "<p class='badge badge-soft-success mb-0' id='city'>" + dto.study_city + "</p><br><hr>"
 					                    + "<p class='feature__desc'><i class='fa fa-user-circle-o' aria-hidden='true'></i>" + dto.member_nick + "</p>"

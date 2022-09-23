@@ -21,9 +21,10 @@
 		<div class="cnt_wrapper">
 			<section class="cnt_header">
 				<div class="cnt_title" id="study_name"></div>
+				<span id="tag"></span>
 				<div class="cnt_userdate">
 					<div class="cnt_user">
-						<img class="cnt_userImg" src="https://hola-post-image.s3.ap-northeast-2.amazonaws.com/default.PNG" alt="userImg">
+						<img class="cnt_userImg" src="${pageContext.request.contextPath}/resources/study/img/cat.png" alt="userImg">
 						<div class="cnt_userName" id="member_nick"></div>
 					</div>
 					<div class="cnt_registeredDate" id="study_writedate"></div>
@@ -237,6 +238,7 @@
 						$("#end_date ").text( data.end_date );
 						$("#study_city ").text( data.study_city );
 						$("#study_content").html( data.study_content);
+						$("#tag").html( data.hashtag);
 
 						if("${login_info.member_id}" == data.member_id){
 							$("#delete_div").show();
