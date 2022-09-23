@@ -64,16 +64,27 @@
 <!--                               <span><a href="#">292513</span> -->
 <!--                             </div> -->
 <!--                           </th> -->
+
+
+
+
 <!--                           <td> -->
 <!--                             <div class="event-img text-center"> -->
 <!--                               <h4>[강남구] 햇볕좋은 놀부네</h4> -->
 <!--                             </div> -->
 <!--                           </td> -->
+
+
+
+
 <!--                           <td> -->
 <!--                             <div class="event-wrap text-center"> -->
 <!--                               <span> 놀부방 </span> -->
 <!--                             </div> -->
 <!--                           </td> -->
+
+
+
 <!--                           <td> -->
 <!--                             <div class="event-wrap text-center"> -->
 <!--                               <div class="meta"> -->
@@ -83,21 +94,37 @@
 <!--                               </div> -->
 <!--                             </div> -->
 <!--                           </td> -->
+
+
+<!-- 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 -->
+
+
 <!--                           <td> -->
 <!--                             <div class="r-no text-center"> -->
 <!--                               <span>13 - 15 시</span> -->
 <!--                             </div> -->
 <!--                           </td> -->
+
+
+
+
 <!--                           <td> -->
 <!--                             <div class="text-center"> -->
 <!--                               55,000원 -->
 <!--                             </div> -->
 <!--                           </td> -->
+
+
+
 <!--                           <td> -->
 <!--                             <div class="text-center"> -->
 <!--                               결제완료 -->
 <!--                             </div> -->
 <!--                           </td> -->
+
+
+
+
 <!--                         </tr> -->
 
                     </tbody>
@@ -133,13 +160,52 @@
 						$.each(data, function(index, dto) {
 							$("#reserv-list").append(
 									
-				                       "<tr class="inner-box'>"
-				                          +"<th scope="row">"
-				                          <div class="event-date text-center">
-				                      	  <span><a href="#">292513</span>
-				                       </div>		
+				                       "<tr class='inner-box'>"
+				                          +"<th scope='row'>"
+				                          +"<div class='event-date text-center'>"
+				                      	  +"<span>"
+				                          +"<a href='#'>" + dto.reserve_id + "</span>"
+				                       +"</div>"		
 							
-							
+				                          +"<td>"
+				                            +"<div class='event-img text-center'>"
+				                              +"<h5>" + dto.cafe_name + "</h5>"
+				                            +"</div>"
+				                          +"</td>"
+				                       
+				                          +"<td>"
+				                            +"<div class='event-wrap text-center'>"
+				                              +"<span>" + dto.room_name + "</span>"
+				                            +"</div>"
+				                          +"</td>"
+				                          
+				                          +"<td>"
+				                            +"<div class='event-wrap text-center'>"
+				                              +"<div class='meta'>"
+				                                +"<div class='time'>"
+				                                  +"<span>" + dto.use_date + "</span>"
+				                                +"</div>"
+				                              +"</div>"
+				                            +"</div>"
+				                          +"</td>"
+				                          
+				                          +"<td>"
+				                            +"<div class='r-no text-center'>"
+				                              +"<span>" + dto.use_start_time + "</span>"
+				                            +"</div>"
+				                          +"</td>"
+
+				                          +"<td>"
+				                            +"<div class='text-center'>" + dto.pay_amount + "</div>"
+				                          +"</td>"
+				                          +"<td>"
+				                            +"<div class='text-center'>" + dto.pay_state+ "</div>"
+				                          +"</td>"
+				                        +"</tr>"
+				                          
+				                          
+				                          
+				                          
 							);//append
 						});//each
 					}//call back function

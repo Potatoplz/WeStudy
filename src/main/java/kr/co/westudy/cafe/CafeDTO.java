@@ -26,6 +26,15 @@ public class CafeDTO {
     private String cafe_category;
     private String roomTotalCount;
 
+    private String member_id;
+    private String reserve_id;
+    private String use_date;
+    private String use_start_time;
+    private String use_end_time;
+    private String pay_amount;
+    private String pay_state;
+
+    
     private String room_id;
     private String max_people;
     private String price_hour;

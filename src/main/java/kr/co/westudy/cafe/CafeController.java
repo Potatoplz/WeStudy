@@ -66,8 +66,11 @@ public class CafeController {
     @GetMapping(value = "/reserv_list/{inData}")
     public List<CafeDTO> reservlist_cafe(@PathVariable("inData") String member_id, CafeDTO dto) {
     	List<CafeDTO> list = null;
-    	list = service.cafeSelectList(dto); //
+    	list = service.cafeReservList(member_id); //
 		
+    	System.out.println("***********************************");
+    	System.out.println(member_id);
+    	System.out.println("***********************************");
     	System.out.println("***********************************");
     	System.out.println(list);
 		System.out.println("***********************************");

@@ -44,9 +44,9 @@ public class CafeService {
     }// list - 필터링
     
     
-    public List<CafeDTO> cafeReservList(CafeDTO dto) {
+    public List<CafeDTO> cafeReservList( String member_id ) {
     	List<CafeDTO> list = null;
-    	list = dao.cafeReservList(dto);
+    	list = dao.cafeReservList(member_id);
     	return list;
     }// list - 필터링
 

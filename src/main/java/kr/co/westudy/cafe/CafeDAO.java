@@ -43,9 +43,9 @@ public class CafeDAO {
 		return list;
 	}//list - 필터링
 	
-	public List<CafeDTO> cafeReservList( CafeDTO dto ) {
+	public List<CafeDTO> cafeReservList( String member_id ) {
 		List<CafeDTO> list = null;
-		list = sqlSession.selectList("CafeMapper.cafeSelectList", dto);
+		list = sqlSession.selectList("CafeMapper.cafeReservList", member_id);
 		return list;
 	}//예약 목록 출력
     

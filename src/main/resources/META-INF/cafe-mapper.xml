@@ -80,10 +80,7 @@
 		from reserve r, cafe c, room b, pay p, member m
 
 		where c.cafe_id=b.cafe_id and b.room_id=r.room_id and r.reserve_id=p.reserve_id and r.member_id=m.member_id 
-		and r.cafe_id=b.cafe_id and m.member_id=${member_id}
-		<if test="cafe_id != null and cafe_id != ''">
-		where c.cafe_id = #{cafe_id} and c.cafe_id = r.cafe_id
-		</if>
+		and r.cafe_id=b.cafe_id and m.member_id=#{member_id}
 		</select>
 	
 	
