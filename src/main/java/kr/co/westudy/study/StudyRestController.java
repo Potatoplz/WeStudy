@@ -79,6 +79,14 @@ public class StudyRestController {
 		return list;
 	}//list
 	
+	//스터디 신청자 목록
+	@GetMapping("/apply_member/{inData}")
+	public List<StudyDTO> apply_member(@PathVariable("inData") String study_id, StudyDTO dto) {
+		List<StudyDTO> list = service.apply_member(study_id);
+		System.out.println("~~~~~~~~~~~~~신청자 여기~~~~ " + list);
+		return list;
+	}//apply_list
+	
 	
 	//내가 신청한 스터디 목록
 	@GetMapping("/apply_list/{inData}")

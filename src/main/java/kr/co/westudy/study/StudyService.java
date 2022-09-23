@@ -34,6 +34,13 @@ public class StudyService {
 		List<StudyDTO> list = dao.myStudy_list(member_id);
 		return list;
 	}//list
+	
+	
+	//신청자 목록
+	public List<StudyDTO> apply_member(String study_id) {
+		List<StudyDTO> list = dao.apply_member(study_id);
+		return list;
+	}//list
 		
 	
 	//내가 신청한 리스트

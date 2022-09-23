@@ -235,7 +235,7 @@ public class LoginController {
 				
 			}
 		} catch ( NullPointerException e) {
-			return "/login/login"; // 가입페이지에서 새로고침 할경우 access_token 유실되어 nullpoint exception 발생---------------------------------->
+			//return "/login/login"; // 가입페이지에서 새로고침 할경우 access_token 유실되어 nullpoint exception 발생---------------------------------->
 		} catch (Exception e) {
 			System.out.println(e);
 	}

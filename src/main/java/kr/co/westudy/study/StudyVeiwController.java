@@ -49,6 +49,8 @@ public class StudyVeiwController {
 		return "study/my_study_state";
 	}//mystudy_state
 	
+	
+	
 	//개설자용 디테일
 	@GetMapping("/my_detail")
 	public String myDetail(String study_id, Model model, StudyDTO dto, HttpSession session) {

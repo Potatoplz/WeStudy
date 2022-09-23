@@ -30,6 +30,11 @@ public class StudyDAO {
 		return list;
 	}//list
 	
+	public List<StudyDTO> apply_member(String study_id) {
+		List<StudyDTO> list = sqlSession.selectList("StudyMapper.applymember", study_id);
+		return list;
+	}//list
+	
 	public List<StudyDTO> apply_list(String member_id) {
 		List<StudyDTO> list = sqlSession.selectList("StudyMapper.applylist", member_id);
 		return list;
