@@ -35,7 +35,8 @@
                 font-size: 12px;
                 font-family: 'Malgun Gothic', dotum, '돋움', sans-serif;
                 line-height: 1.5;
-                border: solid 1px;
+                border: solid 1px yellow;
+                
             }
 
             .wrap * {
@@ -138,10 +139,10 @@
 
         <div id="div_box" class="container">
             <div id="map" style="width:1926px;height:900px; margin-left: -37%;"></div>
-            <p>
+            <!-- <p>
                 <button onclick="hideMarkers()">마커 감추기</button>
                 <button onclick="showMarkers()">마커 보이기</button>
-            </p>
+            </p> -->
 
             <script>
                 var mapContainer = document.getElementById('map'), // 지도의 중심좌표
@@ -162,7 +163,7 @@
                             lon = position.coords.longitude; // 경도
 
                         var locPosition = new kakao.maps.LatLng(lat, lon), // 마커가 표시될 위치를 geolocation으로 얻어온 좌표로 생성합니다
-                            message = '<div style="padding:5px;">내 위치</div>'; // 인포윈도우에 표시될 내용입니다
+                            message = '<div style="padding:5px;">현재 위치</div>'; // 인포윈도우에 표시될 내용입니다
 
                         // 마커와 인포윈도우를 표시합니다
                         displayMarker(locPosition, message);
@@ -234,8 +235,9 @@
                             var content = '<div class="wrap" style = "width:300; height:300;">' +
                                 '    <div class="info">' +
                                 '            <div class="img">' +
+                                '            <a href="${ pageContext.request.contextPath }/cafe/detail?cafe_id=' + dto.cafe_id + '">'+
                                 '               <img src=' + dto.cafe_img_path1 + ' width="300" height="200">' +
-                                '            <div class="close" onclick="closeOverlay()" title="닫기"></div>' +
+                                '            </a>' +
                                 '        </div>' +
                                 '        <div class="body">' +
                                 '        <div class="title">' +

@@ -48,23 +48,9 @@ public class CafeController {
     @GetMapping(value = "/cafe_list")
     public List<CafeDTO> list_cafe(CafeDTO dto) {
         List<CafeDTO> list = null;
-        if(dto.getCafe_category() == null) {
-        	list = service.cafeList(dto); //
-        } else {
-        	list = service.cafeSelectList(dto);
-        }
+        list = service.cafeList(dto); //
         return list;// data 리턴
     }// list_cate
-    
-    @GetMapping(value = "/select_list")
-    public List<CafeDTO> selectlist_cafe(CafeDTO dto) {
-    	List<CafeDTO> list = null;
-    	list = service.cafeSelectList(dto); //
-    	return list;// data 리턴
-    }// list_cate
-
-    
-    
 
     @PostMapping(value = "/insert")
     public void insert(CafeDTO dto, HttpSession session, PrintWriter out) throws IOException {
@@ -105,6 +91,7 @@ public class CafeController {
         }
 
         int successCount = 0;
+
         successCount = service.write(dto);
         out.print(successCount);
         out.close();
