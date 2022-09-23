@@ -20,8 +20,7 @@ public class StudyDTO {
 	private Date end_date;
 	private String study_content;
 	private String study_writedate;
-	private String closed_ok;
-	private String dead_ok;
+	private String study_state;
 	private String view_cnt;
 	private String limit_cnt;
 	

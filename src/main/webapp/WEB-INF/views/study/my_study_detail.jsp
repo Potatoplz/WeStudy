@@ -5,7 +5,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>WeStudy | 스터디 모집 상세</title>
+		<title>WeStudy | 개설한 스터디 상세</title>
 
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
@@ -63,21 +63,15 @@
 			<div class="studyCnt_postCnt" id="study_content"><p>안녕하세요.</p></div>
 			</div>
 			
-			<hr><br><br><br><br>
+			<br><br><br><br>
 			
-			  <div class="col text-center">
-				<c:choose>
-				    <c:when test="${apply_cnt == 0}">
-				    <button class="btn btn-info" id="register" name="register" type="button" data-toggle="modal" data-target="#myModal">지원하기</button>
-					</c:when>
-					<c:otherwise>
-					<div class="apply_cancel" style="text-align:center;">
-					<button class="btn btn-warning" name="cancel_btn" id="cancel_btn">지원 취소</button>
-					</div>
-					</c:otherwise>
-				</c:choose>
+			<!-- 삭제 버튼 -->
+			<div class="studyCnt_buttonWrapper">
+			<div id="delete_div" class="text-center">
+				<button class="btn btn-danger" id="delete_btn"> 게시글 삭제 </button>
 			</div>
-
+			</div>
+			
 			<!-- 댓글 -->
 			
 			<section class="studyContent_commentAndViews">
@@ -98,20 +92,7 @@
 		</div><!-- cnt-wrapper -->
 		
 		
-		
-		
-		
-		
-
-		
-		
-		
-		
-		
-		
-		<div id="delete_div" class="text-right">
-			<button class="btn btn-danger" id="delete_btn"> 게시글 삭제 </button>
-		</div>
+	
 <%-- 		<%@ include file="/WEB-INF/views/footer.jsp" %> --%>
 	
 		
@@ -119,84 +100,9 @@
 		
 	<!-- modal (지원 동기 작성) -->
 		
-	  <div class="modal fade" id="myModal">
-	    <div class="modal-dialog modal-dialog-centered">
-	      <div class="modal-content">
-	      
-	        <!-- Modal Header -->
-	        <div class="modal-header">
-	          <h4 class="modal-title"><b>지원동기를 입력하세요!</b></h4>
-	          <button type="button" class="close" data-dismiss="modal">&times;</button>
-	        </div>
-	        
-	        <!-- Modal body -->
-	        <div class="modal-body">
-	          <textarea id="apply_content" style="width:450px; height:130px;" class="form-control" placeholder="진정성을 어필해보세요."></textarea>
-	        </div>
-	        
-	        <!-- Modal footer -->
-	        <div class="modal-footer">
-	          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-	          <button id="study_submit" type="button" class="btn btn-primary">지원</button>
-	        </div>
-	        
-	      </div>
-	    </div>
+
   </div>
   
-		
-		
-		<!-- 스터디 지원 취소 -->
-		<script type="text/javascript">
-		$(document).ready(function() {
-			$("#cancel_btn").click(function() {
-
-				$.ajax({
-					type : "DELETE"
-					, url : "${pageContext.request.contextPath}/study_rest/apply_cancel/${study_id}"
-					, processData : false
-					, contentType : false
-					, cache : false
-					, success : function(result, status, xhr) {
-						if(result > 0) {
-							alert("취소 성공");
-							location.href = "${pageContext.request.contextPath}/study/detail?study_id=${study_id}";
-						}//if
-					}//success
-				});//ajax
-
-			});//click
-		});//ready
-		</script>
-		
-		
-		
-		
-		<!-- 스터디 지원하기 (모달창) -->
-		<script type="text/javascript">
-		$(document).ready(function() {
-			$("#study_submit").click(function() {
-				
-				let board = {
-						apply_content : $("#apply_content").val() 
-				};//javascript object 생성
-				
-				$.ajax( {
-					type : "POST"
-					, url : "${pageContext.request.contextPath}/study_rest/apply/${study_id}"
-					, contentType : "application/json" //json 전송이라는 의미
-					, data : JSON.stringify( board )
-					, success : function(data, status, xhr){alert("지원 성공");}
-					, error : function(data, status, xhr){alert("에러");}
-					, complete : function(data, status, xhr){} //작업 완료 
-				});//ajax
-			
-			});//click
-		});//ready
-		
-		</script>
-
-
 		<script type="text/javascript">
 		$(document).ready(function() {
 			$("#delete_btn").click(function() {

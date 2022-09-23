@@ -38,6 +38,26 @@ public class StudyVeiwController {
 		return "study/my_study";
 	}//mystudy
 	
+	
+	//개설자용 모집현황 디테일
+	@GetMapping("/mystudy_state")
+	public String mystudy_state(String study_id, Model model, StudyDTO dto, HttpSession session) {
+		String member_id = null;
+		member_id = (((MemberDTO) session.getAttribute("login_info")).getMember_id());
+		model.addAttribute("member_id", member_id);
+		model.addAttribute("study_id", study_id);	
+		return "study/my_study_state";
+	}//mystudy_state
+	
+	//개설자용 디테일
+	@GetMapping("/my_detail")
+	public String myDetail(String study_id, Model model, StudyDTO dto, HttpSession session) {
+		model.addAttribute("study_id", study_id);	
+		return "study/my_study_detail";
+	}//detail
+	
+	
+	//일반 디테일
 	@GetMapping("/detail")
 	public String detail(String study_id, Model model, StudyDTO dto, HttpSession session) {
 		model.addAttribute("study_id", study_id);

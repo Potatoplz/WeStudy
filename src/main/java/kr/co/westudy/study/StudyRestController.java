@@ -88,6 +88,14 @@ public class StudyRestController {
 	}//apply_list
 	
 	
+	//내가 개설한 스터디 목록
+	@GetMapping("/myStudy_list/{inData}")
+	public List<StudyDTO> mystudy_list(@PathVariable("inData") String member_id, StudyDTO dto) {
+		List<StudyDTO> list = service.myStudy_list(member_id);
+		return list;
+	}//mystudy_list
+	
+	
 	//스터디 지원
 	@PostMapping ( "/apply/{inData}" )
 	public void apply( @PathVariable("inData") String study_id, @RequestBody StudyDTO dto, PrintWriter out, HttpSession session) {

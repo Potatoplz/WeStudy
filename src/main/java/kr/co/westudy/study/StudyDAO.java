@@ -34,6 +34,11 @@ public class StudyDAO {
 		List<StudyDTO> list = sqlSession.selectList("StudyMapper.applylist", member_id);
 		return list;
 	}//list
+	
+	public List<StudyDTO> myStudy_list(String member_id) {
+		List<StudyDTO> list = sqlSession.selectList("StudyMapper.mystudylist", member_id);
+		return list;
+	}//list
 
 	public StudyDTO detail(String study_id) {
 		StudyDTO dto = null;

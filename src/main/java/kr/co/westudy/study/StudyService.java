@@ -29,6 +29,14 @@ public class StudyService {
 		return list;
 	}//list
 	
+	//내가 개설한 리스트
+	public List<StudyDTO> myStudy_list(String member_id) {
+		List<StudyDTO> list = dao.myStudy_list(member_id);
+		return list;
+	}//list
+		
+	
+	//내가 신청한 리스트
 	public List<StudyDTO> apply_list(String member_id) {
 		List<StudyDTO> list = dao.apply_list(member_id);
 		return list;
@@ -67,6 +75,7 @@ public class StudyService {
 		successCount = dao.apply_insert( dto );
 		return successCount;
 	}//apply_insert
+	
 	
 	//스터디 지원 취소
 	public int apply_cancel(StudyDTO dto) {
