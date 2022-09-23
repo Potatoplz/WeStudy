@@ -273,7 +273,7 @@ ul {
     padding: 1rem 1rem 1.5rem;
     outline: none;
     border: 2px solid #e1e1e1;
-    border-radius: 16px;
+    border-radius: 6px;
     width: 100%;
     min-height: 100px;
     margin-bottom: 10px;
@@ -305,7 +305,9 @@ button {
 }
 
 
-
+.register {
+	border-radius: 50px;
+}
 
 
 
