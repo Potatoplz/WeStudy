@@ -13,194 +13,18 @@
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
 		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
-    
+<!-- CSS -->
+<link rel="stylesheet" href="/resources/header.css">
 <style>
-
-/* .study_R { */
-/* text-decoration:none; */
-/* color:white; */
-/* } */
-/* .study_R hover{ */
-/* color:white; */
-/* } */
-
-
-.navigation {
-  position: relative;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
-}
-.navigation .nav-new {
-  width: 1430px;
-  height: 80px;
-  margin-left: auto;
-  margin-right: auto;
-}
-.navigation .nav-new .logo {
-  padding: 0;
-  width: 170px;
-  height: 50px;
-  margin-top: 15px;
-  margin-bottom: 15px;
-  display: inline-block;
-  vertical-align: top;
-}
 .navigation .nav-new .logo .logo-img {
   background-image: url("${pageContext.request.contextPath}/resources/home/img/logo.png");
   background-repeat: no-repeat;
   background-size: contain;
   width: 100%;
   height: 100%;
-}
-.navigation .nav-new .menu {
-  vertical-align: top;
-  display: inline-block;
-  width: calc(100% - 215px);
-  position: relative;
-  text-decoration:none;
-  color:white;
-}
-
-.navigation .nav-new .menu a {
-  text-decoration:none;
-}
-
-.navigation .nav-new .menu .right {
-  float: right;
-  position: relative;
-}
-.navigation .nav-new .menu .item {
-  vertical-align: top;
-  display: inline-block;
-  color: #333c45;
-  font-size: 18px;
-  height: 80px;
-  padding: 0 15px;
-  line-height: 80px;
-  text-align: center;
-  font-weight: bold;
-  font-family: "Spoqa Han Sans Neo" !important;
-}
-
-.navigation .nav-new .menu .item .search-input-wrap .input-round {
-  width: 300px;
-  height: 40px;
-  background-color: #f5f5f5;
-  border-radius: 20px;
-  margin-top: 20px;
-  margin-bottom: 20px;
-  text-align: left;
-}
-.navigation .nav-new .menu .item .search-input-wrap .input-round .text {
-  display: inline-block;
-  padding-left: 18px;
-  font-size: 13px;
-  line-height: 40px;
-  height: 40px;
-  vertical-align: top;
-  color: #9e9e9e;
-}
-.navigation .nav-new .menu .item .search-input-wrap .input-round .search-icon {
-  display: inline-block;
-  float: right;
-  background-image: url("//cdn.ggumim.co.kr/storage/20190819234645GI8IRuYjml.png");
-  background-size: cover;
-  background-repeat: no-repeat;
-  width: 22px;
-  height: 22px;
-  margin-top: 9px;
-  vertical-align: top;
-  margin-right: 15px;
-}
-.navigation
-  .nav-new
-  .menu
-  .item
-  .search-input-wrap
-  .input-round
-  .text
-  .search-box {
-  background-color: transparent;
-  border: none;
-  outline: none;
-  width: 200px;
-}
-
-
-/*사이드바 디자인 */
-
-body {
-  font-family: "Lato", sans-serif;
-}
-
-.sidenav {
-  height: 100%;
-  width: 0;
-  position: fixed;
-  z-index: 10; /* 우선순위 설정 : 숫자 높을수록 앞으로 */
-  top: 0;
-  right: 0;
-  background-color: #134674;
-  overflow-x: hidden;
-  transition: 0.5s;
-  padding-top: 60px;
-}
-
-.sidenav a {
-  padding: 8px 8px 8px 32px;
-  text-decoration: none;
-  font-size: 25px;
-  color: #bcbcbc;
-  display: block;
-  transition: 0.3s;
-}
-
-#nick {
-  padding: 8px 8px 8px 32px;
-  text-decoration: none;
-  font-size: 20px;
-  color: white;
-  display: block;
-  transition: 0.3s;
-}
-
-#mypage {
-  padding: 8px 8px 8px 32px;
-  text-decoration: none;
-  font-size: 17px;
-  color: white;
-  display: block;
-  transition: 0.3s;
-}
-
-#logout {
-  padding: 8px 8px 8px 32px;
-  text-decoration: none;
-  font-size: 15px;
-  color: white;
-  display: block;
-  transition: 0.3s;
-  text-align: center;
-}
-
-
-.sidenav a:hover {
-  color: #f1f1f1;
-}
-
-.sidenav .closebtn {
-  position: absolute;
-  top: 0;
-  right: 25px;
-  font-size: 36px;
-  margin-left: 50px;
-}
-
-@media screen and (max-height: 450px) {
-  .sidenav {padding-top: 15px;}
-  .sidenav a {font-size: 18px;}
-}
-      
-    </style>
+  margin-top:7px; margin-right:10px;
+}      
+</style>
 </head>
 <body>
 
@@ -221,8 +45,7 @@ body {
 
   <hr style="color:white;">
   <a href="#">카페 예약 리스트</a>
-  <a href="${pageContext.request.contextPath}/study/mystudy">마이 스터디</a>
-  <a href="${pageContext.request.contextPath}/study/list">나의 스터디</a>
+  <a href="${pageContext.request.contextPath}/study/mystudy">나의 스터디</a>
   <a href="#">찜 리스트</a>
   <a a id="calendar" href="${pageContext.request.contextPath}/calendar/main">일정 관리</a>
   <hr style="color:white;">
@@ -246,7 +69,7 @@ body {
                 <div class="logo">
                   <a href="${pageContext.request.contextPath}/">
 
-                  	<div class="logo-img" style="margin-top:7px; margin-right:10px;"></div>
+                  	<div class="logo-img"></div>
 
                   </a>
                 </div>
@@ -279,14 +102,46 @@ body {
                         </div>
                       </div>
                     </div>
-                    <!-- </a> -->
- 
-
-<%--                     <a href="${root}/help/"> --%>
+                    <!-- 알림 -->
+                            <c:choose>
+								<c:when test="${login}">
+									<a href="${root }/cart/list">
+                	                    <div class="item sm-bar cart-icon">
+                	                    	<c:if test="${cartCount > 0}">
+                	                    	<span id="count" class="cart-count"></span>
+                	                    	</c:if>
+					                       <img src="//cdn.ggumim.co.kr/resource/icons/ic_cart_black.png"
+					                         style="
+					                           width: 20px;
+					                           height: 28px;
+					                           vertical-align: top;
+					                           margin-top: 26px;
+					                         "
+					                       />
+					                     </div>
+					               </a>
+								</c:when>
+								<c:otherwise>
+									<a href="${root }/member/login">
+					                    <div class="item sm-bar cart-icon">
+					                       <img
+					                        src="//cdn.ggumim.co.kr/resource/icons/ic_cart_black.png"
+					                        style="
+					                          width: 20px;
+					                          height: 28px;
+					                          vertical-align: top;
+					                          margin-top: 26px;
+					                         "
+					                       />
+					                     </div>
+					               </a>
+								</c:otherwise>
+							</c:choose>
+							
+					<!-- 사이드바 버튼 -->
                        <div class="item sm-bar nonmember-order" >
                       <span style="font-size:30px;cursor:pointer;" onclick="openNav()">&#9776; </span>
                       </div>
-                    </a>
                   </div>
                 </div>
               </div>
