@@ -44,7 +44,7 @@
 </c:choose>
 
   <hr style="color:white;">
-  <a href="#">카페 예약 리스트</a>
+  <a href="${pageContext.request.contextPath}/cafe/my_reserv">카페 예약 리스트</a>
   <a href="${pageContext.request.contextPath}/study/mystudy">나의 스터디</a>
   <a href="#">찜 리스트</a>
   <a a id="calendar" href="${pageContext.request.contextPath}/calendar/main">일정 관리</a>

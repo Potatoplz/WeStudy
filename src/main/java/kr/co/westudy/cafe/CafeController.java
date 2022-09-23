@@ -17,6 +17,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -43,14 +44,36 @@ public class CafeController {
         List<CafeDTO> list = null;
         list = service.cafeDetail(cafe_id); //
         return list;// data 리턴
-    }// list_cate
-
+    }// cafe_detail
+ 
+    // DB에서 카페 리스트 가져오기
     @GetMapping(value = "/cafe_list")
     public List<CafeDTO> list_cafe(CafeDTO dto) {
         List<CafeDTO> list = null;
         list = service.cafeList(dto); //
         return list;// data 리턴
-    }// list_cate
+    }// cafe_list
+    
+    // DB에서 카테고리에 맞는 DB 가져오기
+    @GetMapping(value = "/select_list")
+    public List<CafeDTO> selectlist_cafe(CafeDTO dto) {
+    	List<CafeDTO> list = null;
+    	list = service.cafeSelectList(dto); //
+    	return list;// data 리턴
+    }// select_list
+    
+    // DB에서 예약  데이터 가저오기
+    @GetMapping(value = "/reserv_list/{inData}")
+    public List<CafeDTO> reservlist_cafe(@PathVariable("inData") String member_id, CafeDTO dto) {
+    	List<CafeDTO> list = null;
+    	list = service.cafeSelectList(dto); //
+		
+    	System.out.println("***********************************");
+    	System.out.println(list);
+		System.out.println("***********************************");
+    	
+    	return list;// data 리턴
+    }// reserv_list
 
     @PostMapping(value = "/insert")
     public void insert(CafeDTO dto, HttpSession session, PrintWriter out) throws IOException {

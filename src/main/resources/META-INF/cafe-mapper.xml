@@ -41,12 +41,6 @@
 		</if>
 		</select>
 		
-		
-		
-		
-		
-		
-	
 		<select id="cafeList" parameterType="kr.co.westudy.cafe.CafeDTO"
 			resultType="kr.co.westudy.cafe.CafeDTO">
 		select cafe_id, cafe_name, post_code, cafe_addr1, cafe_addr2, open_time, close_time, cafe_img_name1, cafe_img_path1,
@@ -61,6 +55,7 @@
 
 		order by cafe_id desc
 		</select>
+		
 		
 		<select id="cafeSelectList" parameterType="kr.co.westudy.cafe.CafeDTO"
 			resultType="kr.co.westudy.cafe.CafeDTO">
@@ -78,6 +73,18 @@
 		</select>
 	
 	
+		<select id="cafeReservList" parameterType="java.lang.String"
+		resultType="kr.co.westudy.cafe.CafeDTO">
+		select r.reserve_id, c.cafe_name, b.room_name, r.use_date, r.use_start_time, r.use_end_time, p.pay_amount, p.pay_state, m.member_id
+		
+		from reserve r, cafe c, room b, pay p, member m
+
+		where c.cafe_id=b.cafe_id and b.room_id=r.room_id and r.reserve_id=p.reserve_id and r.member_id=m.member_id 
+		and r.cafe_id=b.cafe_id and m.member_id=${member_id}
+		<if test="cafe_id != null and cafe_id != ''">
+		where c.cafe_id = #{cafe_id} and c.cafe_id = r.cafe_id
+		</if>
+		</select>
 	
 	
 	

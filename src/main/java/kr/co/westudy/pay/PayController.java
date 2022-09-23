@@ -125,8 +125,8 @@ public class PayController {
 		//예약 table DB 입력
 		int successCount = 0;
         successCount = payService1.reserve(prepareVO);
-        out.print(successCount);
-        out.close();
+        //out.print(successCount);
+        //out.close();
 		return "pay/resultSuccess";
 		
 		//"/WEB-INF/views/pay/resultSuccess.jsp"

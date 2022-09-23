@@ -3,6 +3,8 @@ package kr.co.westudy.cafe;
 import java.io.PrintWriter;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import kr.co.westudy.util.dto.MemberDTO;
 import lombok.extern.java.Log;
 
 @Log
@@ -21,8 +24,11 @@ public class CafeControllerView {
     private CafeService service;
     
     @GetMapping("/my_reserv")
-    public String myReserv() {
-		return "cafe/my_reserv";
+    public String myReserv(HttpSession session, MemberDTO dto, Model model) {
+    	String member_id = null;
+		member_id = (((MemberDTO) session.getAttribute("login_info")).getMember_id());
+		model.addAttribute("member_id", member_id);
+    	return "cafe/my_reserv";
 	}
 
     @GetMapping(value = "/list") // Get방식 @ReqeustMapping과 동일한 기능을 합니다. Post방식은 @PostMapping으로 사용.
