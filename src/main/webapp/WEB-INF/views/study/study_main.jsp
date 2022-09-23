@@ -47,7 +47,9 @@
 	            
 
 	        </div><!-- end row -->
-        	<button class="btn btn-primary" id="tmpBtn">더 보기</button>
+	        <div class="btnBox">
+	        	<button class="btn btn-primary" id="tmpBtn">더 보기</button>
+	        </div>
 
 
 	    </div><!-- end container -->
@@ -77,9 +79,11 @@
 					                    + "<h3 class='feature__desc2'>" + dto.hashtag + "</h3>"
 					                    + "<p class='badge badge-soft-success mb-0'>" + dto.study_onoff + "</p>"
 					                    + "<p class='badge badge-soft-success mb-0' id='city'>" + dto.study_city + "</p><br><hr>"
+					                    + "<section>"
 					                    + "<p class='feature__desc'><i class='fa fa-user-circle-o' aria-hidden='true'></i>" + dto.member_nick + "</p>"
 					                    + "<p class='recruit_cnt'><i class='fa fa-users' aria-hidden='true'></i>" + "2 / 6" + "</p>"
-										+ "</div>"
+										+ "</section>"
+					                    + "</div>"
 								);//append
 							});//each
 	

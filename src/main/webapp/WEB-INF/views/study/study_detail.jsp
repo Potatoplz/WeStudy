@@ -44,16 +44,16 @@
 						<span class="studyInfo_Cnt" id="onoff"></span>
 					</li>
 					<li class="studyInfo_CntWrapper">
+						<span class="studyInfo_title">희망 지역</span>
+						<span class="studyInfo_Cnt" id="study_city"></span>
+					</li>
+					<li class="studyInfo_CntWrapper">
 						<span class="studyInfo_title">시작 예정일</span>
 						<span class="studyInfo_Cnt" id="start_date"></span>
 					</li>
 					<li class="studyInfo_CntWrapper">
 						<span class="studyInfo_title">종료 예정일</span>
 						<span class="studyInfo_Cnt" id="end_date"></span>
-					</li>
-					<li class="studyInfo_CntWrapper">
-						<span class="studyInfo_title">희망 지역</span>
-						<span class="studyInfo_Cnt" id="study_city"></span>
 					</li>
 				</ul>
 			</section>

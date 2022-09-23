@@ -8,13 +8,18 @@ list-style:none;
 }
 
 #nav2{
+    display: flex;
     max-width: 995px;
     margin-left: 104px;
     margin-right: 56px;
     gap: 685px;
     margin-top: 32px;
+    flex-wrap: nowrap;
 }
 
+.btnBox{
+	padding-left: 89px;
+}
 
 .cardTitle{
 	float:left;
@@ -25,6 +30,11 @@ list-style:none;
 
 .feature__title{
 	margin-top:5px;
+	    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    word-break: break-all;
+    overflow: hidden;
 }
 
 
