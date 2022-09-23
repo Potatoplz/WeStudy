@@ -43,10 +43,16 @@ public class RoomController {
     }
 */ 
     //채팅방 조회 [채팅방 고유번호 DB연동]
+//    @GetMapping("/room")
+//    public void getRoom(String roomName, Model model){
+//
+//        log.info("채팅방 고유 번호 : " + roomName);
+//        model.addAttribute("room", repository.findRoomById(roomName));
+//    }
+    //채팅방 조회 [채팅방 고유번호 DB연동]
     @GetMapping("/room")
-    public void getRoom(String roomId, Model model){
-
-        log.info("채팅방 고유 번호 : " + roomId);
-        model.addAttribute("room", repository.findRoomById(roomId));
+    public String getRoom(String roomId, Model model){
+    	model.addAttribute("roomId", roomId);
+    	return "chat/room";
     }
 }

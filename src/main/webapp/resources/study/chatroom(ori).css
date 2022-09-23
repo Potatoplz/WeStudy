@@ -1,12 +1,31 @@
 @charset "UTF-8";
-.container{max-width:1170px; margin:auto;}
+@font-face {
+    font-family: 'Happiness-Sans-Title';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2205@1.0/Happiness-Sans-Title.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@import url('//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css');
+#jm-font { font-family: 'Spoqa Han Sans', 'Spoqa Han Sans JP', 'Sans-serif'; }
+
+.box-wrapper{
+	border:#3156A1 solid 2px;
+	border-radius:13px;
+	height: 637px;
+	-webkit-box-shadow: 0 0 40px rgb(82 85 90 / 10%);
+}
 
 .container2 {
     width: 60%;
     padding-right: 15px;
     padding-left: 15px;
+    padding-bottom: 15px;
     margin-right: auto;
     margin-left: auto;
+    margin-top: 49px;
+    margin-bottom: 110px;
+}
 }
 
 img{ max-width:100%;}
@@ -66,12 +85,24 @@ img{ max-width:100%;}
   margin: 0;
   padding: 18px 16px 10px;
 }
-.inbox_chat { height: 550px; overflow-y: scroll;}
+.inbox_chat { 
+	height: 550px; overflow-y: scroll;
+	
+}
 
 .active_chat{ background:#ebebeb;}
 
 
 /* 채팅방 */
+
+#room-title{
+	font-weight:bold;
+}
+
+.his-btn{
+	margin-top:10px;
+	margin-bottom:11px;
+}
 
 .container{
 max-width:800px; 
@@ -85,8 +116,14 @@ overflow-y: scroll;
   height: 516px;
   border: 1px solid #c4c4c4;
   clear: both;
-  -webkit-box-shadow: 0 0 40px rgb(82 85 90 / 10%);
+  
 }
+
+/* .chatcontent::-webkit-scrollbar{ */
+/* 	color:blue; */
+/* 	border-radius:10px; */
+/* } 스크롤 바 */
+
 /* 채팅 입력창 */
 .input_msg_write input {
   background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
@@ -96,8 +133,9 @@ overflow-y: scroll;
   min-height: 48px;
   width: 100%;
 }
-.type_msg {border-bottom: 1px solid #c4c4c4;
-position: relative;}
+.type_msg {
+/* 	border-bottom: 1px solid #c4c4c4; */
+	position: relative;}
 .msg_send_btn {
   background: #05728f none repeat scroll 0 0;
   border: medium none;
@@ -112,7 +150,8 @@ position: relative;}
   width: 33px;
 }
 .inputMsg_label {
-	font-size:12px;
+	margin-top:23px;
+	font-size:15px;
 	color : #1187CF;
 }
 li{
@@ -159,6 +198,7 @@ font-size:17px;
 }
 /* 실시간 보낸 메시지*/
 .realtime-out {
+	
 	float:right;margin-left:50%; margin-right:2%;
 }
 .realtime-out-li {

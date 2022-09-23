@@ -34,15 +34,21 @@
 	  firebase.initializeApp(firebaseConfig);
 	</script>
 
-<button class="load" id="load">이전 대화목록 불러오기</button>
-
+<button class="load btn" id="load" style="color:white;"></button><!-- history load btn -->
 <!-- body 시작 -->
-  <div class="container">
-            <!-- 채팅방 제목 -->
-            <h3 class=" text-center">${room.roomName}</h3>
-        
+  <div class="container2" id="jm-font">
+         				
+       <section class="box-wrapper">
            	<!-- 메시지 창 -->
 	            <div class="messaging">
+           		 <!-- 채팅방 제목, 이전 메시지 -->
+		           	<ul class="his-btn">
+			            <li class="text-center">
+<!-- 	                        <a href="#" class="load btn btn-outline-secondary" id="load"></a> -->
+	                        <h3 class="text-center" id="room-title">${roomId}</h3>
+	                    </li>
+		           	</ul>
+		           	
 		            <div class="chatcontent" id="msgArea"><!-- 실시간 대화 append -->
 							<div id="incoming"></div><!-- DB목록 -->		
 							<div id="outgoing"></div><!-- DB목록 -->		
@@ -52,15 +58,15 @@
              <!-- 입력 창 -->
                 <div class="type_msg">
                     <div class="input_msg_write">
-                        <input type="text" id="inputMsg"  class="form-control" placeholder="Tyep a message">
+                        <input type="text" id="inputMsg"  class="form-control" placeholder="type a message">
                         <div class="input-group-append">
                             <button class="msg_send_btn" type="button" id="sendBtn"><i class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
                         </div>
                     </div>
                 </div>
                         <label for="inputMsg_label" id="inputMsg_label" class="inputMsg_label"></label>
-   </div>
-                
+   </section>
+ </div>                
 </body>
 <!-- body 끝 -->
 <%@ include file="/WEB-INF/views/footer.jsp" %>
@@ -70,7 +76,7 @@
           
           $(document).ready(function(){
               var roomName = '${room.roomName}';
-              var roomId = '${room.roomId}';
+              var roomId = '${roomId}';
               var username = '${login_info.member_nick}';
               var date = new Date();
       		  var dateInfo = date.getMonth() + 1 + "/" + date.getDate() + " "+ date.getHours() + "시 " + date.getMinutes() + "분";
@@ -117,11 +123,6 @@
 	              $("#sendBtn").on("click", function(e){
 						sendmsg();
 					});
-	              $(".load").bind("click", function(e){
-						getData();
-	              });
-	              $( "#load" ).trigger( "click" );//자동 클릭 jQuery click trigger
-	              
                   //엔터키 이벤트
 				  $("#inputMsg").keyup(function() {if (window.event.keyCode == 13) {sendmsg();}})
 				
@@ -154,29 +155,27 @@
 				}
                   
                 /* 이전 대화 목록 - 화면 수정 완료 */  
+			$(".load").one("click", function(e){
+					getData();
+              });
+            $( "#load" ).trigger( "click" );//자동 클릭 jQuery click trigger
 				function addMsgToList(msg, id, dateInfo){
+					var _id = document.createElement("p"); 
+					var _msg = document.createElement("li");
+					var _dateInfo = document.createElement("span");
+					
+					_id.innerHTML = id;
+					_msg.innerHTML = msg;
+					_dateInfo.innerHTML = dateInfo;
+					
                 	if(username !== id){ //받은 메시지
 						var inMsg = document.getElementById("incoming");
-						var _id = document.createElement("p"); 
-						var _msg = document.createElement("li");
-						var _dateInfo = document.createElement("span");
-						
-						_id.innerHTML = id;
-						_msg.innerHTML = msg;
-						_dateInfo.innerHTML = dateInfo;
 						
 						inMsg.appendChild(_id); 
 						inMsg.appendChild(_msg); 
 						inMsg.appendChild(_dateInfo);
                 	} else { //보낸 메시지
                 		var outMsg = document.getElementById("outgoing");
-    					var _id = document.createElement("p"); 
-    					var _msg = document.createElement("li");
-    					var _dateInfo = document.createElement("span");
-    					
-    					_id.innerHTML = id;
-    					_msg.innerHTML = msg; 
-    					_dateInfo.innerHTML = dateInfo;
     					
     					outMsg.appendChild(_id); 
     					outMsg.appendChild(_msg);

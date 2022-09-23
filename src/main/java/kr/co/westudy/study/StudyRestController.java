@@ -64,7 +64,7 @@ public class StudyRestController {
 		out.close();
 		
 		log.info("생성한 채팅방 이름 : " + roomName);
-		rttr.addFlashAttribute("roomName", repository.createChatRoomDTO(roomName));
+		rttr.addAttribute("roomName", repository.createChatRoomDTO(roomName));
 /* addFlashAttribute : 일회성으로 URL에 붙지 않고 세션 후 재지정 요청이 들어오면 값이 사라진다.
  * addAttribute : URL에 붙어서 전달되어 값이 유지가 된다.
  */        
