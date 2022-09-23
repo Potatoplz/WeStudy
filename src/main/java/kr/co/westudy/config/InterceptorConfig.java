@@ -19,6 +19,7 @@ import kr.co.westudy.login.LoginCheckInterceptor_member;
 			.excludePathPatterns("/map/*")
 			.excludePathPatterns("/repository/*")
 			.excludePathPatterns("/study/*")
+			.excludePathPatterns("/study_rest/*")
 			.excludePathPatterns("/util/*")
 			.excludePathPatterns("/vo/*")
 			;
