@@ -140,7 +140,7 @@
 						$("#member_nick").text( data.member_nick );
 						$("#start_date ").text( data.start_date );
 						$("#end_date ").text( data.end_date );
-						$("#study_content").text( data.study_content);
+						$("#study_content").html( data.study_content);
 
 						if("${login_info.member_id}" == data.member_id){
 							$("#delete_div").show();

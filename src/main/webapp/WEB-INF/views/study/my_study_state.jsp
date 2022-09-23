@@ -39,31 +39,31 @@
                     <div class="tab-pane fade show active" id="nav-home-tab" role="tabpanel" aria-labelledby="nav-home-tab">  	
                     	
                     	<div class="open-wrapper">
-	                    	<div class="cnt_title" id="study_name">실무자 사이트 프로젝트 멤버 모집</div>
+	                    	<div class="cnt_title" id="study_name"></div>
 								<ul class="studyInfo_studyGrid__38Lfj"><!-- 주의:ul은 class명바꾸면 적용안됨. 왜지? -->
 								 	<li class="studyInfo_CntWrapper">
 										<span class="studyInfo_title">스터디 종류</span>
-										<span class="studyInfo_Cnt" id="study_type">출석/인증</span>
+										<span class="studyInfo_Cnt" id="study_type"></span>
 									</li>
 									<li class="studyInfo_CntWrapper">
 										<span class="studyInfo_title">모집 인원</span>
-										<span class="studyInfo_Cnt" id="recruit_cnt">5명</span>
+										<span class="studyInfo_Cnt" id="recruit_cnt"></span>
 									</li>
 									<li class="studyInfo_CntWrapper">
 										<span class="studyInfo_title">진행 방식</span>
-										<span class="studyInfo_Cnt" id="onoff">온라인</span>
+										<span class="studyInfo_Cnt" id="onoff"></span>
 									</li>
 									<li class="studyInfo_CntWrapper">
 										<span class="studyInfo_title">시작 예정일</span>
-										<span class="studyInfo_Cnt" id="start_date">2022.09.21</span>
+										<span class="studyInfo_Cnt" id="start_date"></span>
 									</li>
 									<li class="studyInfo_CntWrapper">
 										<span class="studyInfo_title">종료 예정일</span>
-										<span class="studyInfo_Cnt" id="end_date">2022.09.21</span>
+										<span class="studyInfo_Cnt" id="end_date"></span>
 									</li>
 									<li class="studyInfo_CntWrapper">
 										<span class="studyInfo_title">희망 지역</span>
-										<span class="studyInfo_Cnt" id="study_city">선택안함(온라인)</span>
+										<span class="studyInfo_Cnt" id="study_city"></span>
 									</li>
 								</ul>
                     	</div>
@@ -164,12 +164,12 @@
 						$("#study_name").text( data.study_name );
 						$("#study_type").text( data.study_type );
 						$("#recruit_cnt").text( data.recruit_cnt );
-						$("#study_writedate").text( data.study_writedate);
+						$("#study_city").text( data.study_city );
 						$("#onoff").text( data.study_onoff );
 						$("#member_nick").text( data.member_nick );
 						$("#start_date ").text( data.start_date );
 						$("#end_date ").text( data.end_date );
-						$("#study_content").text( data.study_content);
+						$("#study_content").html( data.study_content);
 
 						if("${login_info.member_id}" == data.member_id){
 							$("#delete_div").show();
