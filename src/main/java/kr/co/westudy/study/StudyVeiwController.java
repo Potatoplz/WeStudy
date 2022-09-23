@@ -44,9 +44,11 @@ public class StudyVeiwController {
 	//개설자용 모집현황 디테일
 	@GetMapping("/mystudy_state")
 	public String mystudy_state(String study_id, Model model, StudyDTO dto, HttpSession session) {
+		
 		String member_id = null;
 		member_id = (((MemberDTO) session.getAttribute("login_info")).getMember_id());
 		model.addAttribute("member_id", member_id);
+		System.out.println(" ==================================================" + study_id);
 		model.addAttribute("study_id", study_id);	
 		return "study/my_study_state";
 	}//mystudy_state
@@ -70,6 +72,7 @@ public class StudyVeiwController {
 		if( session.getAttribute("login_info") != null ) {
 			dto.setStudy_id(study_id);		
 			dto.setMember_id( ( (MemberDTO) session.getAttribute("login_info") ).getMember_id() );
+			String member_id = (((MemberDTO) session.getAttribute("login_info")).getMember_id());
 			System.out.println("~~~~~~~~~~~~~~~~~~~" + dto);
 			int apply_cnt = service.apply_cnt(dto);
 			model.addAttribute("apply_cnt", apply_cnt);

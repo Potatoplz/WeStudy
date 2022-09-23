@@ -67,14 +67,16 @@
 			<hr><br><br><br><br>
 			
 			  <div class="col text-center">
+			  
 				<c:choose>
-				    <c:when test="${apply_cnt == 0}">
-				    <button class="btn btn-info" id="register" name="register" type="button" data-toggle="modal" data-target="#myModal">지원하기</button>
+				    <c:when test="${apply_cnt == 1}">
+				    	<div class="apply_cancel" style="text-align:center;">
+						<button class="btn btn-warning" name="cancel_btn" id="cancel_btn">지원 취소</button>
+						</div>
 					</c:when>
 					<c:otherwise>
-					<div class="apply_cancel" style="text-align:center;">
-					<button class="btn btn-warning" name="cancel_btn" id="cancel_btn">지원 취소</button>
-					</div>
+						<button class="btn btn-info" id="register" name="register" type="button" data-toggle="modal" 
+					    	data-target="#myModal">지원하기</button>			
 					</c:otherwise>
 				</c:choose>
 			</div>
@@ -103,16 +105,6 @@
 		
 		
 		
-
-		
-		
-		
-		
-		
-		
-		<div id="delete_div" class="text-right">
-			<button class="btn btn-danger" id="delete_btn"> 게시글 삭제 </button>
-		</div>
 <%-- 		<%@ include file="/WEB-INF/views/footer.jsp" %> --%>
 	
 		

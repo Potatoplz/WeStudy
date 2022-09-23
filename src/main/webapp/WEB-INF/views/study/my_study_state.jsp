@@ -37,6 +37,70 @@
                   <div class="tab-content py-3 px-3 px-sm-0" id="nav-tabContent">
                     <div class="tab-pane fade show active" id="nav-home-tab" role="tabpanel" aria-labelledby="nav-home-tab">  	
                     	
+                    	
+                    	<script type="text/javascript">
+		
+		
+                		$(document).ready(function() {
+                			alert("여기가 진자")
+							
+                			
+                			
+                			
+                			
+                			$.get(
+								"${pageContext.request.contextPath}/study_rest/apply_member/" + ${study_id}
+								, {}
+								, function( data, status ) {
+									
+		
+								$.each(data, function(index, dto) {
+								
+							
+							
+							
+							
+							$("#card_member").append(
+									"<div class='col-sm-6 mb-4'>"	
+									+ "<div class='card'>"	
+									+ "<div class='card-body d-flex justify-content-between'>
+									+ "<div class='content d-flex align-items-center justify-content-between'>"
+									+ "<div class='ico'>"
+									+ "<img class='img-fluid' src='${pageContext.request.contextPath}/resources/study/img/member.png' />
+									+ "</div>"
+									+ "<div class='main ml-3'>"
+									+ "<h1 class='m-0 font-weight-light h3'>" + dto.member_nick + "님</h1>"
+									+ "<p class='mb-1 small'>" + dto.apply_content + "</p>"
+									+ "</div>" + "</div>"
+									+ "<div class='action border-left pl-3 d-flex align-items-center'>"
+									+ "<div>" + "<a href='#' class='btn btn-outline-danger btn-block btn-sm'>" + 거절 + "</a>"
+									+ "<a href='#!' class='btn btn-outline-success btn-block btn-sm'>" + 수락 + "</a>"
+									+ "</div>" + "</div>" + "</div>" + "</div>"
+								);//append
+							
+							
+							
+							
+							
+							
+							
+						});//each
+						
+					}//call back function
+					, "json"
+			);//get
+                			
+                			
+                			
+                			
+                			
+                			
+                		});//ready
+                		</script>
+                    	
+                    	
+                    	
+                    	
                     	<div class="open-wrapper">
 	                    	<div class="cnt_title" id="study_name"></div>
 								<ul class="studyInfo_studyGrid__38Lfj"><!-- 주의:ul은 class명바꾸면 적용안됨. 왜지? -->
@@ -128,40 +192,6 @@
 		<!-- 신청한 사람 정보 -->
 		<script type="text/javascript">
 		
-		$(document).ready(function() {
-			$.get(
-					"${pageContext.request.contextPath}/study_rest/apply_member/${study_id}"
-					, {}
-					, function( data, status ) {
-						
-						alert(JSON.stringify (data)); //데이터 확인용
-
-						$.each(data, function(index, dto) {
-							$("#card_member2").append(
-								"<div class='col-sm-6 mb-4'>"	
-								+ "<div class='card'>"	
-								+ "<div class='card-body d-flex justify-content-between'>
-								+ "<div class='content d-flex align-items-center justify-content-between'>"
-								+ "<div class='ico'>"
-								+ "<img class='img-fluid' src='${pageContext.request.contextPath}/resources/study/img/member.png' />
-								+ "</div>"
-								+ "<div class='main ml-3'>"
-								+ "<h1 class='m-0 font-weight-light h3'>" + dto.member_nick + "님</h1>"
-								+ "<p class='mb-1 small'>" + dto.apply_content + "</p>"
-								+ "</div>" + "</div>"
-								+ "<div class='action border-left pl-3 d-flex align-items-center'>"
-								+ "<div>" + "<a href='#' class='btn btn-outline-danger btn-block btn-sm'>" + 거절 + "</a>"
-								+ "<a href='#!' class='btn btn-outline-success btn-block btn-sm'>" + 수락 + "</a>"
-								+ "</div>" + "</div>" + "</div>" + "</div>"
-							);//append
-						});//each
-						
-					}//call back function
-					, "json"
-			);//get
-		});//ready
-		</script>
-
 		
 		<!-- 개설 스터디 모집 현황 -->
 		<script type="text/javascript">

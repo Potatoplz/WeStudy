@@ -22,6 +22,7 @@
 	</head>
 		<%@ include file="/WEB-INF/views/header.jsp" %>
 	<body>
+	<h4>${login_info.member_id}</h4>
  <div class="container">
               <div class="row">
                 <div class="col-12 ">

@@ -82,6 +82,7 @@ public class StudyRestController {
 	//스터디 신청자 목록
 	@GetMapping("/apply_member/{inData}")
 	public List<StudyDTO> apply_member(@PathVariable("inData") String study_id, StudyDTO dto) {
+		System.out.println("d===================================================================b");
 		List<StudyDTO> list = service.apply_member(study_id);
 		System.out.println("~~~~~~~~~~~~~신청자 여기~~~~ " + list);
 		return list;
