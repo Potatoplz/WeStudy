@@ -21,6 +21,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import kr.co.westudy.chat.ChatRoomRepository;
 import kr.co.westudy.util.dto.MemberDTO;
+import kr.co.westudy.util.dto.SearchDTO;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.java.Log;
 
@@ -144,6 +145,30 @@ public class StudyRestController {
 		int successCount = service.apply_cancel(dto);
 		return successCount;
 	}//delete
+
+	@PostMapping(value = "/wish_insert")
+	public void wish( SearchDTO dto, PrintWriter out) {
+
+		SearchDTO sDto = service.wishCheck(dto); // 찜 중복 체크용 쿼리
+
+		// 중복 체크
+		if (sDto != null) {
+			int successCount = 0;
+			successCount = service.wish_delete(sDto);
+			if (successCount >= 1) {
+				successCount = -1;
+			}
+			out.print(successCount);
+			out.close();
+			return;
+		} else { // 중복이 아니면 insert
+			int successCount = 0;
+			successCount = service.wish_insert(dto);
+			System.out.println(successCount);
+			out.print(successCount);
+			out.close();
+		}
+	}// wish
 	
 	
 }

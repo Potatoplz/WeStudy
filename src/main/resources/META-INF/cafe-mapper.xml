@@ -82,6 +82,26 @@
 		where c.cafe_id=b.cafe_id and b.room_id=r.room_id and r.reserve_id=p.reserve_id and r.member_id=m.member_id 
 		and r.cafe_id=b.cafe_id and m.member_id=#{member_id}
 		</select>
+
+		<insert id="wish_insert" parameterType="kr.co.westudy.util.dto.SearchDTO">
+		INSERT INTO cafe_wish (cafe_id, member_id, cafe_wish_date) 
+		select #{cafe_id}, #{member_id}, now()
+		from cafe
+		where cafe_id = #{cafe_id}
+		</insert>
+
+		<select id="wishCheck" parameterType="kr.co.westudy.util.dto.SearchDTO" resultType="kr.co.westudy.util.dto.SearchDTO">
+		select *
+		from cafe_wish
+		where member_id = #{member_id} and cafe_id = #{cafe_id}
+
+		</select>
+
+		<delete id="wish_delete">
+		delete from cafe_wish
+		where cafe_wish_id=#{cafe_wish_id}
+		</delete>
+
 	
 	
 	

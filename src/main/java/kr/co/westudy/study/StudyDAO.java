@@ -6,6 +6,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import kr.co.westudy.util.dto.SearchDTO;
+
 
 @Repository
 public class StudyDAO {
@@ -85,5 +87,23 @@ public class StudyDAO {
 		successCount = sqlSession.delete("StudyMapper.apply_cancel", dto);
 		return successCount;
 	}//delete
+
+	public int wish_insert(SearchDTO dto) {
+		int successCount = 0;
+		successCount = sqlSession.insert("StudyMapper.wish_insert", dto);
+		return successCount;
+	}// wish_insert
+
+	public SearchDTO wishCheck(SearchDTO dto) {
+		SearchDTO sDto = new SearchDTO();
+		sDto = sqlSession.selectOne("StudyMapper.wishCheck", dto);
+		return sDto;
+	}// wishCheck
+
+	public int wish_delete(SearchDTO sDto) {
+		int successCount = 0;
+		successCount = sqlSession.delete("StudyMapper.wish_delete", sDto);
+		return successCount;
+	}// delete
 	
 }

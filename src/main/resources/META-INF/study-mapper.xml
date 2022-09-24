@@ -93,6 +93,26 @@
 		where study_id = #{study_id}
 		and member_id = #{member_id}
 	</delete>
+
+	<insert id="wish_insert" parameterType="kr.co.westudy.util.dto.SearchDTO">
+		INSERT INTO study_wish (study_id, member_id, study_wish_date) 
+		select #{study_id}, #{member_id}, now()
+		from study_recruit
+		where study_id = #{study_id}
+		</insert>
+
+		<select id="wishCheck" parameterType="kr.co.westudy.util.dto.SearchDTO" resultType="kr.co.westudy.util.dto.SearchDTO">
+		select *
+		from study_wish
+		where member_id = #{member_id} and study_id = #{study_id}
+
+		</select>
+
+		<delete id="wish_delete">
+		delete from study_wish
+		where study_wish_id=#{study_wish_id}
+		</delete>
+
 	
 	
 </mapper>

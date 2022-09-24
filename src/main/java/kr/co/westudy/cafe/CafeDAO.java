@@ -6,6 +6,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import kr.co.westudy.util.dto.SearchDTO;
+
 
 
 @Repository
@@ -60,5 +62,23 @@ public class CafeDAO {
         successCount = sqlSession.insert("CafeMapper.writeroom", dto);
         return successCount;
     }// write
+   
+	public int wish_insert(SearchDTO dto) {
+		int successCount = 0;
+		successCount = sqlSession.insert("CafeMapper.wish_insert", dto);
+		return successCount;
+	}// wish_insert
+
+	public SearchDTO wishCheck(SearchDTO dto) {
+		SearchDTO sDto = new SearchDTO();
+		sDto = sqlSession.selectOne("CafeMapper.wishCheck", dto);
+		return sDto;
+	}// wishCheck
+
+	public int wish_delete(SearchDTO sDto) {
+		int successCount = 0;
+		successCount = sqlSession.delete("CafeMapper.wish_delete", sDto);
+		return successCount;
+	}// delete
 
 }

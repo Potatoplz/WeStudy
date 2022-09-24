@@ -26,7 +26,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import kr.co.westudy.cafe.CafeDTO;
 import kr.co.westudy.cafe.CafeService;
-import kr.co.westudy.util.SearchDTO;
+import kr.co.westudy.util.dto.SearchDTO;
 import lombok.extern.java.Log;
 
 @Log
@@ -44,9 +44,8 @@ public class CafeController {
         List<CafeDTO> list = null;
         list = service.cafeDetail(cafe_id); //
         return list;// data 리턴
-    }// cafe_detail
- 
-    // DB에서 카페 리스트 가져오기
+    }// list_cate
+
     @GetMapping(value = "/cafe_list")
     public List<CafeDTO> list_cafe(CafeDTO dto) {
         List<CafeDTO> list = null;
@@ -118,6 +117,30 @@ public class CafeController {
         out.print(successCount);
         out.close();
     }// insert
+
+    @PostMapping(value = "/wish_insert")
+    public void wish(SearchDTO dto, PrintWriter out) {
+
+        SearchDTO sDto = service.wishCheck(dto); // 찜 중복 체크용 쿼리
+
+        // 중복 체크
+        if (sDto != null) {
+            int successCount = 0;
+            successCount = service.wish_delete(sDto);
+            if (successCount >= 1) {
+                successCount = -1;
+            } 
+            out.print(successCount);
+            out.close();
+            return;
+        } else { // 중복이 아니면 insert
+            int successCount = 0;
+            successCount = service.wish_insert(dto);
+            System.out.println(successCount);
+            out.print(successCount);
+            out.close();
+        }
+    }// wish
 
     // @RequestMapping(value = "/{inData}", method = RequestMethod.DELETE)
     // public int delete(@PathVariable("inData") String board_no, HttpSession

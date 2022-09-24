@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import kr.co.westudy.util.dto.SearchDTO;
+
 
 @Service
 public class StudyService {
@@ -90,6 +92,24 @@ public class StudyService {
 		successCount = dao.apply_cancel( dto );
 		return successCount;
 	}//delete
+
+	public int wish_insert(SearchDTO dto) {
+		int successCount = 0;
+		successCount = dao.wish_insert(dto);
+		return successCount;
+	}// wish_insert
+
+	public SearchDTO wishCheck(SearchDTO dto) {
+		SearchDTO sDto = new SearchDTO();
+		sDto = dao.wishCheck(dto);
+		return sDto;
+	}// wishCheck
+
+	public int wish_delete(SearchDTO sDto) {
+		int successCount = 0;
+		successCount = dao.wish_delete(sDto);
+		return successCount;
+	}// delete
 	
 	
 	

@@ -569,29 +569,32 @@
             //찜 목록 추가하기 (중복체크)
             $(document).ready(function () {
               $("#wish_btn").click(function () {
-                alert("아직 기능 구현 전 이라능....")
+
                 //로그인 체크
-                /* if ("${login_info.member_id}" == "") {
+                if ("${login_info.member_id}" == "") {
                   alert("로그인 해주세요.");
                   return;
                 } else {
                   $.post(
-                    "${pageContext.request.contextPath}/md/wish_insert"
+                    "${pageContext.request.contextPath}/cafe/wish_insert"
                     , {
-                      md_id: ${ dto.cafe_id }
-                    , member_id : ${ dto.member_id }
-                  }
-                  , function(data, status) {
-                  if (data >= 1) {
+                      cafe_id: ${ detail_dto[0].cafe_id }
+                    , member_id: ${ login_info.member_id }
+	                  }
+	               , function(data, status) {
+                  if (data > 0) {
                     alert("찜 목록에 추가되었습니다.");
+                  } else if (data < 0) {
+                    alert("찜 목록에서 삭제 되었습니다.");
                   } else {
-                    alert("이미 찜 목록에 추가된 아이템입니다.");
+                    alert("잠시후 다시 시도해주세요.");
                   }
+
                 }//call back function
-            );//post
-            }//else */
-              }); //click
-            });//ready
+	         );//post
+            }//else
+      }); //click
+   });//ready
             // 날짜 선택   
             $(document).ready(function () {
               $("#Date").datepicker({
@@ -711,7 +714,5 @@
             });
           </script>
         </body>
-        <!-- 헤더 주석처리 해놓음 차후 해제 할 예정 -->
-        <%-- <%@ include file="/WEB-INF/views/footerMain.jsp" %> --%>
 
         </html>
