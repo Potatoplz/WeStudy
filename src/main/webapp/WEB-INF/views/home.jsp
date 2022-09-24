@@ -9,7 +9,7 @@
 			<title>WeStudy</title>
 
 			<!-- CSS 파일 -->
-			<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/home/css/home.css">
+			<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/home/home.css">
 			<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/home/css/headerMain.css">
 
 			<!-- CDN -->
@@ -68,61 +68,88 @@
 				</div>
 
 
-				<!--최신 스터디&카페 소개-->
+
+			<!--최신 스터디 소개-->
 
 				<div class="row" id="main_title">
 					<div class="col-2">
 					</div>
 					<div class="col">
-						<h3> 새로운 스터디&공간 </h3>
+						<h3 style="text-align:center;"><b> 새로 등록된 카페☕ </b></h3>
 					</div>
 					<div class="col-2">
 					</div>
 				</div>
 
-				<!-- 	<div class="row justify-content-md-center main-md"> -->
-				<!-- 		<div class="col-2"> -->
-				<!-- 		</div> -->
-				<!-- 		<div class="col-2"> -->
-				<!-- 	                <a href="#"> -->
-				<%-- <img class="hover:grow hover:shadow-lg"
-					src="${pageContext.request.contextPath}/resources/home/img/mark_1.jpg"> --%>
-					<!-- 	                    <p class="pt-3" style="text-align:center; text-decoration:none !important" id="main-md-name">마크 홀리</p> -->
-					<!-- 	                    <p class="pt-1" style="text-align:center; text-decoration:none !important" id="main-md-price">11,500원</p> -->
 
-					<!-- 	                </a> -->
-					<!-- 	            </div> -->
-					<!-- 		<div class="col-2"> -->
-					<!-- 	                <a href="#"> -->
-					<%-- <img class="hover:grow hover:shadow-lg"
-						src="${pageContext.request.contextPath}/resources/home/img/dam_1.jpg"> --%>
-						<!-- 	                 <p class="pt-3" style="text-align:center; text-decoration:none !important" id="main-md-name">담은</p> -->
-						<!-- 	                 <p class="pt-1" style="text-align:center; text-decoration:none !important" id="main-md-price">12,000원</p> -->
-						<!-- 	                </a> -->
-						<!-- 		</div> -->
-						<!-- 		<div class="col-2"> -->
-						<!-- 	                <a href="#"> -->
-						<%-- <img class="hover:grow hover:shadow-lg"
-							src="${pageContext.request.contextPath}/resources/home/img/straw_1.jpg"> --%>
-							<!-- 	                 <p class="pt-3" style="text-align:center; text-decoration:none !important" id="main-md-name">편백숲 딸기 스파클링</p> -->
-							<!-- 	                 <p class="pt-1" style="text-align:center; text-decoration:none !important" id="main-md-price">14,000원</p> -->
-							<!-- 	                </a> -->
-							<!-- 		</div> -->
-							<!-- 		<div class="col-2"> -->
-							<!-- 	                <a href="#"> -->
-							<%-- <img class="hover:grow hover:shadow-lg"
-								src="${pageContext.request.contextPath}/resources/home/img/boksun_1.jpg"> --%>
-								<!-- 	                 <p class="pt-3" style="text-align:center; text-decoration:none !important" id="main-md-name">복순도가 손 막걸리</p> -->
-								<!-- 	                 <p class="pt-1" style="text-align:center; text-decoration:none !important" id="main-md-price">13,000원</p> -->
-								<!-- 	                </a> -->
-								<!-- 		</div>	 -->
-								<!-- 		<div class="col-2"> -->
-								<!-- 		</div> -->
-								<!-- 	</div> -->
-								<!-- 	<div class="row" id="interval"> -->
-								<!-- 	</div> -->
+
+				<!--최신 스터디 소개-->
+
+				<div class="row" id="main_title">
+					<div class="col-2">
+					</div>
+					<div class="col">
+						<h3 style="text-align:center;"><b> 새로운 스터디😊 </b></h3>
+					</div>
+					<div class="col-2">
+					</div>
+				</div>
+
+				 <!-- 카드 -->   
+	<div class="container">		 
+        <section class="feature-area">
+	    <div class="container">
+	        <div class="row feature-box">
+	        
+	            <div class="cardboxnew" id="cardboxnew">
+	            <!-- 이 안에 내용 들어갑니다. -->
+	            </div><!-- end col-md-4 -->
+	            
+	        </div><!-- end row -->
+
+	    </div><!-- end container -->
+	  </section>
+        
+        
+ <!-- 카드 종료 -->       
+    </div><!-- container -->
+
 
 		</body>
-		<%-- <%@ include file="/WEB-INF/views/footer.jsp" %> --%>
+		<%@ include file="/WEB-INF/views/footer.jsp" %>
+		
+		<script type="text/javascript">
+		let limit_cnt = 0;
+		$(document).ready(function() {
+			
+				$.get(
+						"${pageContext.request.contextPath}/study_rest/list_home/"+limit_cnt
+						, {}
+						, function(data, status) {
+							//alert(JSON.stringify (data)); //데이터 확인용
+							
+							$.each(data, function(index, dto) {
+								$("#cardboxnew").append(
+										"<div class='feature-item'>"
+					                    + "<span class='feature__number'>" + dto.study_id + "</span>"
+					                    + "<span class='start_date'>"+ "시작 예정일 | " + dto.start_date +"</span>"
+					                    + "<h3 class='feature__title'><a href='${pageContext.request.contextPath}/study/detail?study_id=" + dto.study_id + "'>" + dto.study_name + "</a></h3>"
+					                    + "<h3 class='feature__desc2'>" + dto.hashtag + "</h3>"
+					                    + "<p class='badge badge-soft-success mb-0'>" + dto.study_onoff + "</p>"
+					                    + "<p class='badge badge-soft-success mb-0' id='city'>" + dto.study_city + "</p><br><hr>"
+					                    + "<section>"
+					                    + "<p class='feature__desc'><i class='fa fa-user-circle-o' aria-hidden='true'></i>" + dto.member_nick + "</p>"
+					                    + "<p class='recruit_cnt'><i class='fa fa-users' aria-hidden='true'></i>" + "2 / 6" + "</p>"
+										+ "</section>"
+					                    + "</div>"
+								);//append
+							});//each
+	
+						}//call back function
+						, "json"
+				);//get
+			
+		});//ready
+		</script>
 
 		</html>

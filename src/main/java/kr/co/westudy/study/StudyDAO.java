@@ -24,20 +24,26 @@ public class StudyDAO {
 		return list;
 	}//list
 	
+	public List<StudyDTO> list_home(StudyDTO dto) {
+		List<StudyDTO> list = sqlSession.selectList("StudyMapper.studylistHome", dto);
+		return list;
+	}//list_home
+	
+
 	public List<StudyDTO> apply_member(String study_id) {
 		List<StudyDTO> list = sqlSession.selectList("StudyMapper.applymember", study_id);
 		return list;
-	}//list
+	}//apply_member
 	
 	public List<StudyDTO> apply_list(String member_id) {
 		List<StudyDTO> list = sqlSession.selectList("StudyMapper.applylist", member_id);
 		return list;
-	}//list
+	}//apply_list
 	
 	public List<StudyDTO> myStudy_list(String member_id) {
 		List<StudyDTO> list = sqlSession.selectList("StudyMapper.mystudylist", member_id);
 		return list;
-	}//list
+	}//myStudy_list
 
 	public StudyDTO detail(String study_id) {
 		StudyDTO dto = null;

@@ -79,6 +79,16 @@ public class StudyRestController {
 		return list;
 	}//list
 	
+	
+	@GetMapping("/list_home/{inData}")
+	public List<StudyDTO> list_home(@PathVariable("inData") String limit_cnt) {
+		StudyDTO dto = new StudyDTO();
+		dto.setLimit_cnt(limit_cnt);
+		List<StudyDTO> list = service.list_home(dto);
+		return list;
+	}//list_home
+	
+	
 	//스터디 신청자 목록
 	@GetMapping("/apply_member/{inData}")
 	public List<StudyDTO> apply_member(@PathVariable("inData") String study_id, StudyDTO dto) {
@@ -86,7 +96,7 @@ public class StudyRestController {
 		List<StudyDTO> list = service.apply_member(study_id);
 		System.out.println("~~~~~~~~~~~~~신청자 여기~~~~ " + list);
 		return list;
-	}//apply_list
+	}//apply_member
 	
 	
 	//내가 신청한 스터디 목록

@@ -23,25 +23,31 @@ public class StudyService {
 		return list;
 	}//list
 	
+	public List<StudyDTO> list_home(StudyDTO dto) {
+		List<StudyDTO> list = dao.list_home(dto);
+		return list;
+	}//list
+	
+	
 	//내가 개설한 리스트
 	public List<StudyDTO> myStudy_list(String member_id) {
 		List<StudyDTO> list = dao.myStudy_list(member_id);
 		return list;
-	}//list
+	}//myStudy_list
 	
 	
 	//신청자 목록
 	public List<StudyDTO> apply_member(String study_id) {
 		List<StudyDTO> list = dao.apply_member(study_id);
 		return list;
-	}//list
+	}//apply_member
 		
 	
 	//내가 신청한 리스트
 	public List<StudyDTO> apply_list(String member_id) {
 		List<StudyDTO> list = dao.apply_list(member_id);
 		return list;
-	}//list
+	}//apply_list
 
 	public StudyDTO detail(String study_id) {
 		dao.incrementViewCnt(study_id);
