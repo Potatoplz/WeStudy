@@ -21,7 +21,7 @@ public class StudyDAO {
 		return successCount;
 	}//recruit
 
-	public List<StudyDTO> list(StudyDTO dto) {
+	public List<StudyDTO> list(SearchDTO dto) {
 		List<StudyDTO> list = sqlSession.selectList("StudyMapper.studylist", dto);
 		return list;
 	}//list

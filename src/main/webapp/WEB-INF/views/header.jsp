@@ -87,24 +87,31 @@
                       <div class="search-input-wrap">
                         <div class="input-round">
                           <div class="text">
-                          <select class="search-option">
-                          	<option>스터디 카페</option>
-                          	<option>스터디 모집</option>
-                          </select>
-                            
                             <form action="${pageContext.request.contextPath}/study/main" method="get">
+			                          <select class="search-option" id="searchOption" name="searchOption">
+			                          	<option value="cafe_name"
+										<c:if test="${search_dto.searchOption == 'cafe_name'}">selected="selected"</c:if>
+									> 스터디 카페 </option>
+									<option value="study_name"
+										<c:if test="${search_dto.searchOption == 'study_name'}">selected="selected"</c:if>
+									> 스터디 모집 </option>
+								</select>
+			                          
+                            
                               <input
                                 class="search-box"
                                 type="text"
-                                name="itemName"
+                                id="searchWord" 
+                                name="searchWord"
+								value="${search_dto.searchWord}"
                                 placeholder="검색어를 입력하세요."
                                 autocomplete="off"
                               />
+                             <button type="submit" >
+                          			<div class="search-icon"></div>
+                        		</button>
                             </form>
                           </div>
-                          <a href="javascript:void(0);" id="search-button">
-                          	<div class="search-icon"></div>
-                          </a>
                         </div>
                       </div>
                     </div>

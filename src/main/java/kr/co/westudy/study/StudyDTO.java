@@ -32,5 +32,8 @@ public class StudyDTO {
 	private String apply_content;
 	private String accept_yn;
 	
+	private String searchOption;
+	private String searchWord;
+	
 	
 }

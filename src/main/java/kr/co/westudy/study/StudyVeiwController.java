@@ -93,7 +93,9 @@ public class StudyVeiwController {
 	}//detail
 	
 	@GetMapping("/main")
-	public String main( SearchDTO dto ) {
+	public String main( SearchDTO dto, Model model) {
+		model.addAttribute("searchWord", dto.getSearchWord());
+		model.addAttribute("searchOption", dto.getSearchOption());
 		return "/study/study_main";
 	}//list
 	

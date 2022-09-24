@@ -20,7 +20,7 @@ public class StudyService {
 		return successCount;
 	}//recruit
 
-	public List<StudyDTO> list(StudyDTO dto) {
+	public List<StudyDTO> list(SearchDTO dto) {
 		List<StudyDTO> list = dao.list(dto);
 		return list;
 	}//list

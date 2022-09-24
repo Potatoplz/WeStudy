@@ -18,10 +18,18 @@
 		where study_team = #{study_team}
 	</select>
 	
-	<select id="studylist" parameterType="kr.co.westudy.study.StudyDTO" resultType="kr.co.westudy.study.StudyDTO">
+	<select id="studylist" parameterType="kr.co.westudy.util.dto.SearchDTO" resultType="kr.co.westudy.study.StudyDTO">
 		select study_id,study_team, study_name, study_type, recruit_cnt, study_onoff, study_city, view_cnt, 
 				start_date, end_date, study_content, study_writedate, study_state, member_id, member_nick, hashtag
 		from study_recruit
+				<if test="searchOption != null and searchOption != ''
+					and searchWord != null and searchWord !=''">
+			<choose>
+				<when test="searchOption == 'study_name'">
+					where study_name like concat('%', #{searchWord}, '%')
+				</when>
+			</choose>
+		</if>
 		order by study_id desc
 		limit ${limit_cnt}, 12
 	</select>

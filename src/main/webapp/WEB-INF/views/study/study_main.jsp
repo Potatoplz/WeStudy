@@ -73,8 +73,12 @@
 			
 			$("#tmpBtn").bind("click", function(){
 				$.get(
-						"${pageContext.request.contextPath}/study_rest/list/"+limit_cnt
-						, {}
+						"${pageContext.request.contextPath}/study_rest/list"
+						, {
+							searchOption: `${searchOption}`,
+							searchWord: `${searchWord}`,
+							limit_cnt: 0
+						}
 						, function(data, status) {
 							//alert(JSON.stringify (data)); //데이터 확인용
 							

@@ -61,5 +61,8 @@ public class SearchDTO {
     
     private String study_wish_id;
     private String study_wish_date;
+    
+	private String searchOption;
+	private String searchWord;
 
 }
