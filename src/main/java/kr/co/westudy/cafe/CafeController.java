@@ -53,6 +53,17 @@ public class CafeController {
         return list;// data 리턴
     }// cafe_list
     
+    
+    // DB에서 카페 리스트 가져오기 - 홈페이지 메인용 (3개만)
+    @GetMapping(value = "/cafe_list_home/{inData}")
+    public List<CafeDTO> cafe_list_home(@PathVariable("inData") String limit_cnt, CafeDTO dto) {
+        List<CafeDTO> list = null;
+        dto.setLimit_cnt(limit_cnt);
+        list = service.cafeListHome(dto); 
+        return list;// data 리턴
+    }// cafe_list_home
+    
+    
     // DB에서 카테고리에 맞는 DB 가져오기
     @GetMapping(value = "/select_list")
     public List<CafeDTO> selectlist_cafe(CafeDTO dto) {

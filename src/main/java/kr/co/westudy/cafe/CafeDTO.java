@@ -42,4 +42,6 @@ public class CafeDTO {
     private String[] arr_max_people;
     private String[] arr_price_hour;
     private String[] arr_room_name;
+    
+    private String limit_cnt;
 }

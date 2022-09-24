@@ -25,7 +25,7 @@ public class CafeDAO {
 		List<CafeDTO> list = null;
 		list = sqlSession.selectList("CafeMapper.cafeDetail", cafe_id);
 		return list;
-	}//list - 필터링
+	}//cafeDetail - 필터링
 	
 	public int cafeRoomCount( String cafe_id ) {
 		int roomTotalCount= 0;
@@ -38,6 +38,14 @@ public class CafeDAO {
 		list = sqlSession.selectList("CafeMapper.cafeList", dto);
 		return list;
 	}//list - 필터링
+	
+	
+	public List<CafeDTO> cafeListHome( CafeDTO dto ) {
+		List<CafeDTO> list = null;
+		list = sqlSession.selectList("CafeMapper.cafeListHome", dto);
+		return list;
+	}//cafeListHome - 홈페이지 메인용 리스트
+	
 	
 	public List<CafeDTO> cafeSelectList( CafeDTO dto ) {
 		List<CafeDTO> list = null;

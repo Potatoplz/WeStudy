@@ -69,46 +69,59 @@
 
 
 
-			<!--최신 스터디 소개-->
-
+			<!--최신 카페 소개-->
+		     <br><br>
 				<div class="row" id="main_title">
 					<div class="col-2">
 					</div>
 					<div class="col">
-						<h3 style="text-align:center;"><b> 새로 등록된 카페☕ </b></h3>
+						<h4 style="text-align:center; color:gray;"><b> 새롭게 등록된 카페 ☕ </b></h4>
 					</div>
 					<div class="col-2">
 					</div>
 				</div>
+				<br><br>
+				
+				
+			<!-- 카페 목록 자리 -->
+			<div class="container">
+				<div class="container2">
+				
+				        <div class="product-list" id="product-list"><!-- 이 안에 append -->
+				
+				        </div><!-- 이안에 appen -->
+				    </div>
+				</div><!-- 끝 -->
+			 </div>
 
-
-
+			<hr size="1px">
+			
 				<!--최신 스터디 소개-->
-
+			<br><br>
 				<div class="row" id="main_title">
 					<div class="col-2">
 					</div>
 					<div class="col">
-						<h3 style="text-align:center;"><b> 새로운 스터디😊 </b></h3>
+						<h4 style="text-align:center; color:gray;"><b> 새로운 스터디 😊 </b></h4>
 					</div>
 					<div class="col-2">
 					</div>
 				</div>
 
-				 <!-- 카드 -->   
-	<div class="container">		 
-        <section class="feature-area">
-	    <div class="container">
-	        <div class="row feature-box">
-	        
-	            <div class="cardboxnew" id="cardboxnew">
-	            <!-- 이 안에 내용 들어갑니다. -->
-	            </div><!-- end col-md-4 -->
-	            
-	        </div><!-- end row -->
-
-	    </div><!-- end container -->
-	  </section>
+			<!-- 스터디 목록 자리 -->   
+				<div class="container" style="">		 
+			        <section class="feature-area">
+				    <div class="container">
+				        <div class="row feature-box">
+				        
+				            <div class="cardboxnew" id="cardboxnew">
+				            <!-- 이 안에 내용 들어갑니다. -->
+				            </div><!-- end col-md-4 -->
+				            
+				        </div><!-- end row -->
+			
+				    </div><!-- end container -->
+				  </section>
         
         
  <!-- 카드 종료 -->       
@@ -151,5 +164,43 @@
 			
 		});//ready
 		</script>
+		
+		
+		<script type="text/javascript">
+		
+		let limit_cnt2 = 0;
+					$(document).ready(function () {
+						$.get(
+
+							"${pageContext.request.contextPath}/cafe/cafe_list_home/"+limit_cnt2
+							, {}
+							, function (data, status) {
+								//alert(JSON.stringify (data)); //데이터 확인용
+								$.each(data, function (index, dto) {
+									$("#product-list").append(
+											"<div class='product-grid'>"
+											+ "<div class='product-image' id='product-image'>"
+											+ "<a href='${pageContext.request.contextPath}/cafe/detail?cafe_id=" + dto.cafe_id + "'>"
+											+ "<img class='pic-1' src=" + dto.cafe_img_path1 + ">"
+											+ "<img class='pic-2' src=" + dto.cafe_img_path2 + ">"
+											+ "</a>"	
+						                    + "<ul class='social'><li><a href=# data-tip='Quick View'><i class='fa fa-search'></i></a></li><li><a href=# data-tip='Add to Wishlist'><i class='fa fa-shopping-bag'></i></a></li><li><a href=# data-tip='Add to Cart'><i class='fa fa-shopping-cart'></i></a></li></ul>"
+											+ "<span class='product-new-label'>" + dto.cafe_category + "</span>"
+											+ "</div>"	
+											
+											+ "<div class='product-content'>" 
+											+ "<h3 class='title'><a href=#>"  + "[" + dto.cafe_category + "]" +  	dto.cafe_name + "</a></h3>"
+											+ "<div class='price'>"+ dto.cafe_oneline + "</div>"
+											+ "<a class='add-to-cart' href=#>" + "+ Add To Cart" + "</a>"
+											+ "</div>"
+										+ "</div>"	
+													
+									);//append//+ "<div class='price'>2000원<span> / 시간</span></div>"
+								});//each
+							}//call back function
+							, "json"
+						);//get
+					});//ready
+			</script>
 
 		</html>

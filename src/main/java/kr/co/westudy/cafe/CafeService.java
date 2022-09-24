@@ -37,6 +37,14 @@ public class CafeService {
         return list;
     }// list - 필터링
     
+    
+    public List<CafeDTO> cafeListHome(CafeDTO dto) {
+        List<CafeDTO> list = null;
+        list = dao.cafeListHome(dto);
+        return list;
+    }// cafeListHome - 홈페이지 메인용 리스트
+    
+    
     public List<CafeDTO> cafeSelectList(CafeDTO dto) {
     	List<CafeDTO> list = null;
     	list = dao.cafeSelectList(dto);

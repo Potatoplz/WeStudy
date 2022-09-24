@@ -57,6 +57,16 @@
 		</select>
 		
 		
+		<select id="cafeListHome" parameterType="kr.co.westudy.cafe.CafeDTO"
+			resultType="kr.co.westudy.cafe.CafeDTO">
+		select cafe_id, cafe_name, post_code, cafe_addr1, cafe_addr2, open_time, close_time, cafe_img_name1, cafe_img_path1,
+		cafe_img_name2, cafe_img_path2, cafe_content1, cafe_content2, cafe_content3, cafe_category, cafe_oneline
+    	from cafe 
+		order by cafe_id desc
+		limit ${limit_cnt}, 3
+		</select>
+		
+		
 		<select id="cafeSelectList" parameterType="kr.co.westudy.cafe.CafeDTO"
 			resultType="kr.co.westudy.cafe.CafeDTO">
 		select cafe_id, cafe_name, post_code, cafe_addr1, cafe_addr2, open_time, close_time, cafe_img_name1, cafe_img_path1,

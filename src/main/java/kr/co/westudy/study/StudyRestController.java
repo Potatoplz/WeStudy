@@ -81,6 +81,7 @@ public class StudyRestController {
 	}//list
 	
 	
+	//홈페이지 메인용 리스트
 	@GetMapping("/list_home/{inData}")
 	public List<StudyDTO> list_home(@PathVariable("inData") String limit_cnt) {
 		StudyDTO dto = new StudyDTO();
