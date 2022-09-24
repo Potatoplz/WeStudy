@@ -25,5 +25,11 @@ public class PayDAO {
         successCount = sqlSession.insert("PayMapper.pay", prepareVO);
         return successCount;
     }// 결제 DB 입력
+    
+    public int calInsert(KakaoPayApprovePrepareVO prepareVO) {
+        int calCount = 0;
+        calCount = sqlSession.insert("PayMapper.calInsert", prepareVO);
+        return calCount;
+    }// 달력 DB 입력
 
 }

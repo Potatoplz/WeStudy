@@ -27,4 +27,9 @@ public class KakaoPayApprovePrepareVO {
 	
 	private int reserve_id;//예약번호
 	private String pay_state;//예약번호
+
+	private String plan_year;
+	private String plan_month;
+	private String plan_date;
+	
 }

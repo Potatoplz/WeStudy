@@ -23,4 +23,11 @@ public class PayService1 {
     	successCount = dao.pay(prepareVO);
     	return successCount;
     }// 예약 및 결제 DB 입력
+    
+    public int calInsert(KakaoPayApprovePrepareVO prepareVO) {
+    	int calCount = 0;
+    	calCount = dao.calInsert(prepareVO);
+    	
+    	return calCount;
+    }// 예약 및 결제 DB 입력
 }//class

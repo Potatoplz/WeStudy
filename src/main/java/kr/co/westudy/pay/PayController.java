@@ -125,6 +125,14 @@ public class PayController {
 		//예약 table DB 입력
 		int successCount = 0;
         successCount = payService1.reserve(prepareVO);
+        
+        //달력 table 일정 입력 
+        prepareVO.setPlan_year(((String) session.getAttribute("use_date")).substring(0,4));
+        prepareVO.setPlan_month(((String) session.getAttribute("use_date")).substring(6,7));
+        prepareVO.setPlan_date(((String) session.getAttribute("use_date")).substring(8,10));
+
+        int calCount = 0;
+        calCount = payService1.calInsert(prepareVO);
         //out.print(successCount);
         //out.close();
 		return "pay/resultSuccess";
