@@ -87,14 +87,15 @@
                       <div class="search-input-wrap">
                         <div class="input-round">
                           <div class="text">
-                            <form action="${pageContext.request.contextPath}/study/main" method="get">
+                      		
+                            	<form action="${pageContext.request.contextPath}/study/main" method="get">
 			                          <select class="search-option" id="searchOption" name="searchOption">
 			                          	<option value="cafe_name"
 										<c:if test="${search_dto.searchOption == 'cafe_name'}">selected="selected"</c:if>
-									> 스터디 카페 </option>
-									<option value="study_name"
+											> 스터디 카페 </option>
+											<option value="study_name"
 										<c:if test="${search_dto.searchOption == 'study_name'}">selected="selected"</c:if>
-									> 스터디 모집 </option>
+											> 스터디 모집 </option>
 								</select>
 			                          
                             

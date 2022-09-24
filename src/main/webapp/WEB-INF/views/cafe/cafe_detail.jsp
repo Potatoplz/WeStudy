@@ -148,7 +148,7 @@
             }
 
             #table2 img {
-              height: 400px;
+              height: 460px;
               width: 700px;
                !important
             }

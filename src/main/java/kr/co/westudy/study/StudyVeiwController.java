@@ -96,8 +96,12 @@ public class StudyVeiwController {
 	public String main( SearchDTO dto, Model model) {
 		model.addAttribute("searchWord", dto.getSearchWord());
 		model.addAttribute("searchOption", dto.getSearchOption());
+		System.out.println(dto.getSearchOption());
+		
 		return "/study/study_main";
+
 	}//list
+	
 	
 	@GetMapping("/list")
 	public String list(  ) {
