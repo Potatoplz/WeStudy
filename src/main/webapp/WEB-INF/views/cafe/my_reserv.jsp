@@ -80,6 +80,77 @@
       </div>
 
 
+      <!-- delivery modal start -->
+
+      <div class="modal" id="delivery_choice_modal">
+        <div class="modal-dialog">
+          <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header" style="background-color:#134674;">
+              <h4 class="text-white"> 예 약 정 보 상 세 </h4>
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+              <div class="col-12">
+                <table class="table table-hover table-borderless mr-6">
+                  <tbody>
+                    <tr>
+                      <th width="70%"> </th>
+                    </tr>
+                    <tr>
+                      <th> 예약 번호 </th>
+                      <td class="text-right"> <span id="span_sum_buy_amt">dto.cafe_name</span> 원 </td>
+                    </tr>
+                    <tr>
+                      <th> 카페 이름 </th>
+                      <td class="text-right"> -<span id="onlyCoupon">0</span> 원 </td>
+                    </tr>
+                    <tr>
+                      <th> Room 이름 </th>
+                      <td class="text-right"> -<span id="span_sum_discount_amt">4300</span> 원 </td>
+                    </tr>
+                    <tr>
+                      <th> 예약 날짜 </th>
+                      <td class="text-right"> -<span id="span_sum_discount_amt">4300</span> 원 </td>
+                    </tr>
+                    <tr>
+                      <th> 예약 시간 </th>
+                      <td class="text-right"> -<span id="span_sum_discount_amt">4300</span> 원 </td>
+                    </tr>
+                    <tr>
+                      <h5>
+                        <th>총 결제 금액</th>
+                      </h5>
+                      <td class="text-right">
+                        <h5><span id="span_sum_total_buy_amt">38700</span> 원</h5>
+                        <br>
+                    </tr>
+
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+              <button type="button" class="btn btn-sm" data-dismiss="modal"
+                style="background-color:#134674; color:white;"> 취 소 </button>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <!-- delivery modal end -->
+
+
+
+
+
+
+
     </body>
     <!-- DB불러오기  -->
 
@@ -140,70 +211,6 @@
                 + "</tr>"
 
 
-                //delivery modal start
-
-                +"<div class='modal' id='delivery_choice_modal'>"
-                  <div class="modal-dialog">
-                    <div class="modal-content">
-
-                      Modal Header
-                      <div class="modal-header" style="background-color:#134674;">
-                        <h4 class="text-white"> 예 약 정 보 상 세 </h4>
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                      </div>
-
-                      Modal body
-                      <div class="modal-body">
-                        <div class="col-12">
-                          <table class="table table-hover table-borderless mr-6">
-                            <tbody>
-                              <tr>
-                                <th width="70%"> </th>
-                              </tr>
-                              <tr>
-                                <th> 예약 번호 </th>
-                                <td class="text-right"> <span id="span_sum_buy_amt">dto.cafe_name</span> 원 </td>
-                              </tr>
-                              <tr>
-                                <th> 카페 이름 </th>
-                                <td class="text-right"> -<span id="onlyCoupon">0</span> 원 </td>
-                              </tr>
-                              <tr>
-                                <th> Room 이름 </th>
-                                <td class="text-right"> -<span id="span_sum_discount_amt">4300</span> 원 </td>
-                              </tr>
-                              <tr>
-                                <th> 예약 날짜 </th>
-                                <td class="text-right"> -<span id="span_sum_discount_amt">4300</span> 원 </td>
-                              </tr>
-                              <tr>
-                                <th> 예약 시간 </th>
-                                <td class="text-right"> -<span id="span_sum_discount_amt">4300</span> 원 </td>
-                              </tr>
-                              <tr>
-                                <h5>
-                                  <th>총 결제 금액</th>
-                                </h5>
-                                <td class="text-right">
-                                  <h5><span id="span_sum_total_buy_amt">38700</span> 원</h5>
-                                  <br>
-                              </tr>
-
-                            </tbody>
-                          </table>
-                        </div>
-                      </div>
-
-                      //Modal footer
-                      <div class="modal-footer">
-                        <button type="button" class="btn btn-sm" data-dismiss="modal"
-                          style="background-color:#134674; color:white;"> 취 소 </button>
-                      </div>
-
-                    </div>
-                  </div>
-                </div>
-                //delivery modal end
 
 
               );//append
