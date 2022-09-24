@@ -5,6 +5,25 @@
 	
 }
 
+.card2{
+	position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: 0.25rem;
+    display: flex;
+}
+
+#card_member {
+    display: flex;
+    flex-wrap: wrap;
+}
+
 nav > .nav.nav-tabs{
 
   border: none;
@@ -53,6 +72,15 @@ nav > div a.nav-item.nav-link:focus
 }
 
 /* 스터디 정보 */
+
+.study-title{
+	display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    word-break: break-all;
+    overflow: hidden;
+}
+
 .open-wrapper {
 	margin-left:158px;
 	margin-right:158px;
@@ -165,4 +193,5 @@ body {
 }
 .action > div .btn {
     border-radius: 70px !important;
+    width: 104px;
 }

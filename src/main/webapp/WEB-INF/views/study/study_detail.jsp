@@ -179,7 +179,10 @@
 					, url : "${pageContext.request.contextPath}/study_rest/apply/${study_id}"
 					, contentType : "application/json" //json 전송이라는 의미
 					, data : JSON.stringify( board )
-					, success : function(data, status, xhr){alert("지원 성공");}
+					, success : function(data, status, xhr){
+						alert("지원 성공");
+						location.href = "${pageContext.request.contextPath}/study/detail?study_id=${study_id}"
+					}
 					, error : function(data, status, xhr){alert("에러");}
 					, complete : function(data, status, xhr){} //작업 완료 
 				});//ajax

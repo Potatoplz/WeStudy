@@ -28,9 +28,10 @@ list-style:none;
 	float:right;
 }
 
+/* 타이틀 줄이기 */
 .feature__title{
 	margin-top:5px;
-	    display: -webkit-box;
+	display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
     word-break: break-all;

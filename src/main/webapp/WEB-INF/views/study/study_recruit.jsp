@@ -27,9 +27,8 @@
 	</head>
 	<%@ include file="/WEB-INF/views/header.jsp" %>
 	<body>
-		<hr>
-		<h3> 스터디 모집</h3>
-		<hr>
+		<br> <br>
+		<h3 class="text-center"> 스터디 모집</h3>
 	<div class="container">
 		<div class="wrapper">
 			<table class="table table-hover">
@@ -37,7 +36,7 @@
 					<tr>
 						<th> 스터디 제목 </th>
 						<td colspan="3">
-							<input type="text" id="title" name="title" maxlength="50" class="form-control">
+							<input type="text" id="title" name="title" maxlength="100" class="form-control">
 						</td>
 					</tr>
 					<tr>
