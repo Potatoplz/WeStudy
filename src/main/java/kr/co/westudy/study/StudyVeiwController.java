@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import kr.co.westudy.util.dto.MemberDTO;
+import kr.co.westudy.util.dto.SearchDTO;
 import lombok.Data;
 import lombok.extern.java.Log;
 
@@ -92,12 +93,12 @@ public class StudyVeiwController {
 	}//detail
 	
 	@GetMapping("/main")
-	public String main() {
+	public String main( SearchDTO dto ) {
 		return "/study/study_main";
 	}//list
 	
 	@GetMapping("/list")
-	public String list() {
+	public String list(  ) {
 		return "/study/study_list";
 	}//list
 	

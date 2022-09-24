@@ -92,7 +92,7 @@
                           	<option>스터디 모집</option>
                           </select>
                             
-                            <form action="${root}/store/list" method="get">
+                            <form action="${pageContext.request.contextPath}/study/main" method="get">
                               <input
                                 class="search-box"
                                 type="text"
@@ -102,7 +102,9 @@
                               />
                             </form>
                           </div>
-                          <div class="search-icon"></div>
+                          <a href="javascript:void(0);" id="search-button">
+                          	<div class="search-icon"></div>
+                          </a>
                         </div>
                       </div>
                     </div>
