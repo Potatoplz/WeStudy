@@ -129,9 +129,13 @@
 								                        +"</div>"
 								                    +"</div>"
 								                    +"<div class='action border-left pl-3 d-flex align-items-center'>"
-								                        +"<div>"
-								                            +"<button class='noBtn btn btn-outline-danger btn-block btn-sm' id='noBtn'>"+ "거절" +"</button>"
-								                            +"<button class='yesBtn btn btn-outline-success btn-block btn-sm' id='yesBtn'>"+ "수락" +"</button>"
+								                  		+"<div>"
+									                        +"<form method='POST' action='${pageContext.request.contextPath}/study/apply_n/"+dto.apply_id+"'>"
+									                            +"<button type='submit' class='btn btn-outline-danger btn-block btn-sm'>"+ "거절" +"</button>"
+									                        +"</form>"
+									                        +"<form method='POST' action='${pageContext.request.contextPath}/study/apply_y/"+dto.apply_id+"'>"
+									                            +"<button type='submit' class='btn btn-outline-success btn-block btn-sm'>"+ "수락" +"</button>"
+									                        +"</form>"
 								                        +"</div>"
 								                    +"</div>"
 								                +"</div>"
@@ -139,6 +143,8 @@
 								        +"</div>" 			 
 										
 								);//append
+								
+								
 							});//each
 	
 						}//call back function
@@ -148,31 +154,7 @@
 		});//ready
 		</script>
 		
-		<!-- 신청한 사람 수락/거절 -->
-		<script type="text/javascript">
-		$(document).ready(function() {
-			$("#yesBtn").click(function() {
-				
-				let board = {
-						apply_content : $("#apply_content").val() 
-				};//javascript object 생성
-				
-				$.ajax( {
-					type : "POST"
-					, url : "${pageContext.request.contextPath}/study_rest/apply/${study_id}"
-					, contentType : "application/json" //json 전송이라는 의미
-					, data : JSON.stringify( board )
-					, success : function(data, status, xhr){
-						alert("지원 성공");
-						location.href = "${pageContext.request.contextPath}/study/detail?study_id=${study_id}"
-					}
-					, error : function(data, status, xhr){alert("에러");}
-					, complete : function(data, status, xhr){} //작업 완료 
-				});//ajax
-			
-			});//click
-			});//ready
-		</script>
+
 		
 	
 		

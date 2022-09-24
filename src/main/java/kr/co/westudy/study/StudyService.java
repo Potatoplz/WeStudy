@@ -111,6 +111,19 @@ public class StudyService {
 		return successCount;
 	}// delete
 	
+	//스터디 지원 수락
+	public int applyY( StudyDTO dto ) {
+		int successCount = 0;
+		successCount = dao.applyY( dto );
+		return successCount;
+	}//applyYN
+	
+	//스터디 지원 거절
+	public int applyN( StudyDTO dto ) {
+		int successCount = 0;
+		successCount = dao.applyN( dto );
+		return successCount;
+	}//apply N
 	
 	
 }

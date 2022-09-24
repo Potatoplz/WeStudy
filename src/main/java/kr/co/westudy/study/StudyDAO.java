@@ -105,5 +105,16 @@ public class StudyDAO {
 		successCount = sqlSession.delete("StudyMapper.wish_delete", sDto);
 		return successCount;
 	}// delete
+	public int applyY(StudyDTO dto) {
+		int successCount = 0;
+		successCount = sqlSession.update("StudyMapper.applyY", dto);
+		return successCount;
+	}//applyY
+	
+	public int applyN(StudyDTO dto) {
+		int successCount = 0;
+		successCount = sqlSession.update("StudyMapper.applyN", dto);
+		return successCount;
+	}//applyN
 	
 }

@@ -114,5 +114,17 @@
 		</delete>
 
 	
+	<update id="applyY" parameterType="kr.co.westudy.study.StudyDTO">
+		update study_apply
+		set accept_yn = '승인완료'
+		where apply_id = #{apply_id} 
+	</update>
+	
+	<update id="applyN" parameterType="kr.co.westudy.study.StudyDTO">
+		update study_apply
+		set accept_yn = '승인거절'
+		where apply_id = #{apply_id} 
+	</update>
+	
 	
 </mapper>

@@ -9,6 +9,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import kr.co.westudy.util.dto.MemberDTO;
@@ -110,5 +114,25 @@ public class StudyVeiwController {
 	public String recruit() {
 		return "/study/study_recruit";
 	}//recruit
+	
+	//스터디 지원 수락
+	@PostMapping ("/apply_y/{inData}")
+	public void applyY( @PathVariable("inData") String apply_id, StudyDTO dto, PrintWriter out, HttpSession session) {
+		int successCount = 0;
+		dto.setApply_id(apply_id);
+		successCount = service.applyY( dto );
+		out.print(successCount);
+		out.close();
+	}//applyY
+	
+	//스터디 지원 거절
+	@PostMapping("/apply_n/{inData}")
+	public void applyN( @PathVariable("inData") String apply_id, StudyDTO dto, PrintWriter out, HttpSession session) {
+		int successCount = 0;
+		dto.setApply_id(apply_id);
+		successCount = service.applyN( dto );
+		out.print(successCount);
+		out.close();
+	}//applyN
 	
 }
