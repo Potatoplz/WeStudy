@@ -115,8 +115,8 @@
 //						alert(JSON.stringify (data)); //데이터 확인용
 
 							$.each(data, function(index, dto) {
-								$("#card_member").append(
-								         "<div class='col-sm-6 mb-4'>"
+
+								         let str = "<div class='col-sm-6 mb-4'>"
 								            +"<div class='card2'>"
 								                +"<div class='card-body d-flex justify-content-between;>"
 								                   +"<div class='content d-flex align-items-center justify-content-between'>"
@@ -130,26 +130,51 @@
 								                    +"</div>"
 								                    +"<div class='action border-left pl-3 d-flex align-items-center'>"
 								                  		+"<div>"
-									                        +"<form method='POST' action='${pageContext.request.contextPath}/study/apply_n/"+dto.apply_id+"'>"
-									                            +"<button type='submit' class='btn btn-outline-danger btn-block btn-sm'>"+ "거절" +"</button>"
+								                  if(dto.accept_yn == '승인대기'){
+									              	str = str
+									                        +"<form method='POST' action='${pageContext.request.contextPath}/study/apply_y/"+dto.apply_id+"' onsubmit='return false;'>"
+									                            +"<button type='submit' class='btn btn-outline-success btn-block btn-sm' id='yesBtn'>"+ "수락" +"</button>"
 									                        +"</form>"
-									                        +"<form method='POST' action='${pageContext.request.contextPath}/study/apply_y/"+dto.apply_id+"'>"
-									                            +"<button type='submit' class='btn btn-outline-success btn-block btn-sm'>"+ "수락" +"</button>"
-									                        +"</form>"
-								                        +"</div>"
-								                    +"</div>"
-								                +"</div>"
-								            +"</div>"
-								        +"</div>" 			 
+								                  			+"<form method='POST' action='${pageContext.request.contextPath}/study/apply_n/"+dto.apply_id+"'>"
+									                            +"<button type='submit' class='btn btn-outline-danger btn-block btn-sm' id='noBtn'>"+ "거절" +"</button>"
+									                        +"</form>";
+									                        
+								                  } else if(dto.accept_yn == '승인완료'){
+								                	str = str + "승인완료"
+								                  }	else {
+								                	str = str + "승인거절" 
+								                  }
+								                  str = str +"</div>"+"</div>"+"</div>"+"</div>"+"</div>"; 			 
 										
-								);//append
-								
+										$("#card_member").append(str);								
 								
 							});//each
 	
 						}//call back function
 						, "json"
 			);//get
+			
+			$("#yesBtn").click(function() {
+
+				$.post(
+						"${pageContext.request.contextPath}/study_rest/apply_y"
+						, {
+						apply_id : $("#applyId").val()
+						
+					}
+					, function(data, status) {
+						if(data >= 1){
+							alert("스터디 모집이 완료 되었습니다!");
+							location.href="${pageContext.request.contextPath}/study/main";
+						} else if(data <= 0){
+							alert("스터디 모집이 완료 되었습니다!");
+							location.href="${pageContext.request.contextPath}/study/main";
+						} else {
+							alert("잠시 후 다시 시도해주세요.");
+						}
+					}//call back function
+					)
+			});//click
 			
 		});//ready
 		</script>
@@ -197,7 +222,7 @@
 
 						$.each(data, function(index, dto) {
 
-							let str1 = "<tr>"
+							let str = "<tr>"
 								+ "<td>" + dto.study_id + "</td>"
 								+ "<td>" + dto.study_type + "</td>"
 								+ "<td><a href='${pageContext.request.contextPath}/study/detail?study_id=" + dto.study_id + "'>"
@@ -205,14 +230,14 @@
 								+ "<td>" + dto.start_date + "</td>"
 								+ "<td>" + dto.accept_yn + "</td>";
 							if(dto.accept_yn == '승인완료'){
-								str1 = str1 + "<td>" + "<a href='/chat/room?roomId="+ dto.study_team + "'><button class='btn btn-info'>입장</button></a>" + "</td>";
+								str = str + "<td>" + "<a href='/chat/room?roomId="+ dto.study_team + "'><button class='btn btn-info'>입장</button></a>" + "</td>";
 							}
 							else {
-								str1 = str1 + "<td><button class='btn btn-secondary'>입장대기</button></td>";
+								str = str + "<td><button class='btn btn-secondary'>입장대기</button></td>";
 							}
-							str1 = str1 + "</tr>";
+							str = str + "</tr>";
 
-							$("#apply_list_tbody").append( str1 );//append
+							$("#apply_list_tbody").append( str );//append
 						});//each
 
 					}//call back function

@@ -124,12 +124,14 @@ public class StudyVeiwController {
 	
 	//스터디 지원 수락
 	@PostMapping ("/apply_y/{inData}")
-	public void applyY( @PathVariable("inData") String apply_id, StudyDTO dto, PrintWriter out, HttpSession session) {
+	public String applyY( @PathVariable("inData") String apply_id, StudyDTO dto, PrintWriter out, HttpSession session) {
 		int successCount = 0;
 		dto.setApply_id(apply_id);
 		successCount = service.applyY( dto );
 		out.print(successCount);
 		out.close();
+			
+			return "study/my_study";
 	}//applyY
 	
 	//스터디 지원 거절
