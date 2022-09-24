@@ -15,6 +15,9 @@
 		<link rel="stylesheet" href="/resources/study/study_main.css">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/boxicons/2.1.0/css/boxicons.min.css"/>
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/5.3.45/css/materialdesignicons.css" />
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css">
+	
+	
 	</head>
 		<%@ include file="/WEB-INF/views/header.jsp" %>
 	<body>
@@ -29,6 +32,9 @@
         </div>
         <div class="cardWrite">
 <!--         <div class="col-md-6"> -->
+                    
+                    
+            <!-- 모집 글쓰기 버튼 -->
             <div class="d-flex flex-wrap align-items-center justify-content-end gap-2 mb-3">
                 <div>                
                     <a href="${pageContext.request.contextPath}/study/recruit" class="btn btn-primary"><i class="bx bx-plus me-1"></i>모집하기</a>
@@ -36,6 +42,8 @@
             </div>
         </div>
     </div>
+    
+    
  <!-- 카드 -->   
         <section class="feature-area">
 	    <div class="container">

@@ -31,7 +31,7 @@
 				start_date, end_date, study_content, study_writedate, study_state, member_id, member_nick, hashtag
 		from study_recruit
 		order by study_id desc
-		limit ${limit_cnt}, 3
+		limit ${limit_cnt}, 4
 	</select>
 	
 	

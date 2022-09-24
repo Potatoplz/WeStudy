@@ -143,7 +143,7 @@
 							
 							$.each(data, function(index, dto) {
 								$("#cardboxnew").append(
-										"<div class='feature-item'>"
+										"<div class='feature-item' style='margin-left: 25px;'>"
 					                    + "<span class='feature__number'>" + dto.study_id + "</span>"
 					                    + "<span class='start_date'>"+ "시작 예정일 | " + dto.start_date +"</span>"
 					                    + "<h3 class='feature__title'><a href='${pageContext.request.contextPath}/study/detail?study_id=" + dto.study_id + "'>" + dto.study_name + "</a></h3>"
