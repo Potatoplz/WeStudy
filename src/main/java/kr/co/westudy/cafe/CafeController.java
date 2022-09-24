@@ -68,12 +68,8 @@ public class CafeController {
     	List<CafeDTO> list = null;
     	list = service.cafeReservList(member_id); //
 		
-    	System.out.println("***********************************");
     	System.out.println(member_id);
-    	System.out.println("***********************************");
-    	System.out.println("***********************************");
     	System.out.println(list);
-		System.out.println("***********************************");
     	
     	return list;// data 리턴
     }// reserv_list
