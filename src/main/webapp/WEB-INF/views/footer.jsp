@@ -25,20 +25,23 @@
 <div class="container">
 <ul class="foote_bottom_ul_amrc">
 <li><a href=#>운영정책</a></li>
+<li>|</li>
 <li><a href=#>고객문의</a></li>
+<li>|</li>
 <li><a href=#>이용약관</a></li>
+<li>|</li>
 <li><a href=#>개인정보처리방침</a></li>
 <!-- <li><a href="http://webenlance.com">Blog</a></li> -->
 <!-- <li><a href="http://webenlance.com">Contact</a></li> -->
 </ul>
 <!--foote_bottom_ul_amrc ends here-->
-<p class="text-center">Copyright @2017 | Designed With by <a href="#">Your Company Name</a></p>
+<p class="text-center">Copyright @2022 | WeStudy corp. All Rights Reserved.</p>
 
 <ul class="social_footer_ul">
-<li><a href="http://webenlance.com"><i class="fab fa-facebook-f"></i></a></li>
-<li><a href="http://webenlance.com"><i class="fab fa-twitter"></i></a></li>
-<li><a href="http://webenlance.com"><i class="fab fa-linkedin"></i></a></li>
-<li><a href="http://webenlance.com"><i class="fab fa-instagram"></i></a></li>
+<li><a href="https://github.com/Potatoplz"><i class="fab fa-facebook-f"></i></a></li>
+<li><a href="https://github.com/hyewon116"><i class="fab fa-twitter"></i></a></li>
+<li><a href="https://github.com/TechnoOrc"><i class="fab fa-linkedin"></i></a></li>
+<li><a href="https://github.com/kkh9702"><i class="fab fa-instagram"></i></a></li>
 </ul>
 <!--social_footer_ul ends here-->
 </div>

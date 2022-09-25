@@ -110,7 +110,7 @@
 
 						<!-- 상품 목록 -->
 <div class="container2">
-    <h3 class="h3">shopping Demo-1 </h3>
+<!--     <h3 class="h3">shopping Demo-1 </h3> -->
 <!--     <div class="row"> -->
         <div class="product-list" id="product-list"><!-- 이 안에 append -->
 <!--       1번자리  -->
@@ -165,14 +165,13 @@
 											+ "<img class='pic-1' src=" + dto.cafe_img_path1 + ">"
 											+ "<img class='pic-2' src=" + dto.cafe_img_path2 + ">"
 											+ "</a>"	
-						                    + "<ul class='social'><li><a href=# data-tip='Quick View'><i class='fa fa-search'></i></a></li><li><a href=# data-tip='Add to Wishlist'><i class='fa fa-shopping-bag'></i></a></li><li><a href=# data-tip='Add to Cart'><i class='fa fa-shopping-cart'></i></a></li></ul>"
 											+ "<span class='product-new-label'>" + dto.cafe_category + "</span>"
 											+ "</div>"	
 											
 											+ "<div class='product-content'>" 
-											+ "<h3 class='title'><a href=#>"  + "[" + dto.cafe_category + "]" +  	dto.cafe_name + "</a></h3>"
+											+ "<h3 class='title'><a href='${pageContext.request.contextPath}/cafe/detail?cafe_id=" + dto.cafe_id + "'>"  + "[" + dto.cafe_category + "]" +  	dto.cafe_name + "</a></h3>"
 											+ "<div class='price'>"+ dto.cafe_oneline + "</div>"
-											+ "<a class='add-to-cart' href=#>" + "+ Add To Cart" + "</a>"
+											+ "<a class='add-to-cart' href=#>" + "+ Add to wishlist" + "</a>"
 											+ "</div>"
 										+ "</div>"	
 											
