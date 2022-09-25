@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -188,5 +189,15 @@ public class StudyRestController {
 		out.print(successCount);
 		out.close();
 	}//applyN
+	
+	//스터디 모집 마감
+	@PutMapping("/{inData}")
+	public void recruit_close( @PathVariable("inData") String study_id, StudyDTO dto, PrintWriter out, HttpSession session) {
+		int successCount = 0;
+		dto.setStudy_id(study_id);
+		successCount = service.recruit_close( dto );
+		out.print(successCount);
+		out.close();
+	}//recruit_close
 	
 }

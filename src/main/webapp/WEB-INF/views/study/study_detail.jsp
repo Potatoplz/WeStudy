@@ -19,6 +19,7 @@
 			<%@ include file="/WEB-INF/views/header.jsp" %>
 				<div class="cnt_wrapper">
 					<section class="cnt_header">
+					<div class="studyItem_closeNotice__1egkT" id="closed">모집 마감</div>
 						<div class="cnt_title" id="study_name">
 
 						</div>
@@ -38,7 +39,7 @@
 							<div class="cnt_registeredDate" id="study_writedate"></div>
 						</div>
 						<section class="studyButtons_buttonWrapper__3tcIE" id="delete_div">
-							<button class="studyButtons_buttons__12bG1">마감</button>
+							<button class="studyButtons_buttons__12bG1" id="close_btn">마감</button>
 							<button class="studyButtons_buttons__12bG1">수정</button>
 							<button class="studyButtons_buttons__12bG1" id="delete_btn">삭제</button>
 						</section>
@@ -228,11 +229,31 @@
 
 							});//click
 						});//ready
+						
+						$(document).ready(function () {
+							$("#close_btn").click(function () {
+								$.ajax({
+									type: "PUT"
+									, url: "${pageContext.request.contextPath}/study_rest/${study_id}"
+									, processData: false
+									, contentType: false
+									, cache: false
+									, success: function (result, status, xhr) {
+										if (result > 0) {
+											alert("스터디 모집이 마감 되었습니다.");
+											location.href = "${pageContext.request.contextPath}/study/main";
+										}//if
+									}//success
+								});//ajax
+
+							});//click
+						});//ready
 					</script>
 
 					<script type="text/javascript">
 						$("#delete_div").hide();
 						$("#apply-btn-wrapper").show();
+						$("#closed").hide();
 						
 						$(document).ready(function () {
 							$.get(
@@ -254,6 +275,10 @@
 									if ("${login_info.member_id}" == data.member_id) {
 										$("#delete_div").show();
 										$("#apply-btn-wrapper").hide();
+									}
+									if (data.study_state == '모집마감'){
+										$("#apply-btn-wrapper").hide();
+										$("#closed").show();
 									}
 								}//call back function
 								, "json"

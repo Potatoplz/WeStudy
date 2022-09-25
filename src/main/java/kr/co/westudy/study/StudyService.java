@@ -130,10 +130,17 @@ public class StudyService {
 		return successCount;
 	}//apply N
 
+	//승인완료 인원수
 	public int acceptCnt(StudyDTO dto) {
 		int successCount = 0;
 		successCount = dao.acceptCnt(dto);
 		return successCount;
 	}//acceptCnt
+
+	public int recruit_close(StudyDTO dto) {
+		int successCount = 0;
+		successCount = dao.recruit_close( dto );
+		return successCount;
+	}
 	
 }

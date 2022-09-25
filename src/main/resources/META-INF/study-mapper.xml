@@ -150,6 +150,11 @@
 		set accept_yn = '승인거절'
 		where apply_id = #{apply_id} 
 	</update>
+	<update id="recruit_close" parameterType="kr.co.westudy.study.StudyDTO">
+		update study_recruit
+		set study_state='모집마감'
+		where study_id = #{study_id} 
+	</update>
 	
 	
 </mapper>

@@ -1,4 +1,15 @@
 @charset "UTF-8";
+.studyItem_closeNotice__1egkT {
+    position: absolute;
+    top: 13%;
+    left: 50%;
+    padding: 10px;
+    -webkit-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+    color: #fff;
+    background-color: #2e2c2c85;
+    border-radius: 9px;
+}
 
 .studyButtons_buttonWrapper__3tcIE {
     display: flex;

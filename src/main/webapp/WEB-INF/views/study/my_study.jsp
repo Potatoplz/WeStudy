@@ -92,9 +92,19 @@
 								+ "<td><a href='${pageContext.request.contextPath}/study/detail?study_id=" + dto.study_id + "'><span  class='study-title'>"
 									+ dto.study_name + "</span></a></td>"
 								+ "<td>" + dto.start_date + "</td>"
-								+ "<td><a href='${pageContext.request.contextPath}/study/mystudy_state?study_id=" + dto.study_id + "'><span class='badge text-bg-warning'>"
-									+ dto.study_state + "</span></a></td>"
-								+ "<td>" + "<a href='/chat/room?roomId="+ dto.study_team + "'><button class='btn btn-info'>입장</button></a>" + "</td>"
+								if(dto.study_state == '모집마감'){
+									str1 = 
+										str1 
+										+ "<td><a href='${pageContext.request.contextPath}/study/mystudy_state?study_id=" + dto.study_id + "'><span class='badge text-bg-secondary' style='font-size:14px;'>"
+										+ dto.study_state + "</span></a></td>"
+								} else {//모집중
+									str1 = 
+										str1 
+										+ "<td><a href='${pageContext.request.contextPath}/study/mystudy_state?study_id=" + dto.study_id + "'><span class='badge text-bg-warning' style='font-size:14px;'>"
+										+ dto.study_state + "</span></a></td>"
+								}
+								
+								str1 = str1 + "<td>" + "<a href='/chat/room?roomId="+ dto.study_team + "'><button class='btn btn-info'>입장</button></a>" + "</td>"
 								+ "</tr>";
 								
 							$("#my_list_tbody").append( str1 );//append
