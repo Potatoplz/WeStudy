@@ -236,7 +236,7 @@
                   <br>
                   <!-- 후기/문의/교환 버튼 -->
                   <div class="text-center">
-                  	|
+                    |
                     <button type="button" class="btn btn-white" id="space">공간소개</button>
                     |
                     <button type="button" class="btn btn-white" id="facility">시설안내</button>
@@ -324,7 +324,7 @@
                     <h4>${dto.cafe_name}</h4>
                     <h5>${dto.cafe_addr1}</h5>
                     <div id="div_box" class="container col-12 h-100 bg-gray float-left">
-                      <div id="map" style="width:100%;height:500px;  "></div>
+                      <div id="map" style="width:100%;height:500px;  "></div><br><br><br>
                       <!-- <p>
                         <button onclick="hideMarkers()">마커 감추기</button>
                         <button onclick="showMarkers()">마커 보이기</button>
@@ -369,6 +369,7 @@
                       </script>
 
                     </div>
+                    
 
                 </section>
 
@@ -439,7 +440,8 @@
                     <br><br>
 
                   </div>
-                  <form action="/pay/confirm" method="post" target="print_popup" onsubmit="window.open('about:blank','print_popup','width=500,height=700, location=0, toolbars=no, top=100, left=720');">
+                  <form action="/pay/confirm" method="post" target="print_popup"
+                    onsubmit="window.open('about:blank','print_popup','width=500,height=700, location=0, toolbars=no, top=100, left=720');">
                     <!-- 예약번호 -->
                     <input type="hidden" name="partner_order_id" id="date_time_pay" required>
                     <!-- 카페번호 -->
