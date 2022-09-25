@@ -86,9 +86,9 @@
                     <div class="item sm-bar">
                       <div class="search-input-wrap">
                         <div class="input-round">
+                            	<form action="${pageContext.request.contextPath}/study/main" method="get">
                           <div class="text">
                       		
-                            	<form action="${pageContext.request.contextPath}/study/main" method="get">
 			                          <select class="search-option" id="searchOption" name="searchOption">
 			                          	<option value="cafe_name"
 										<c:if test="${search_dto.searchOption == 'cafe_name'}">selected="selected"</c:if>
@@ -108,14 +108,15 @@
                                 placeholder="검색어를 입력하세요."
                                 autocomplete="off"
                               />
-                             <button type="submit" >
-                          			<div class="search-icon"></div>
+                              </div>
+                            	<button class="search-icon" type="submit" >
+                          			
                         		</button>
                             </form>
+                            
                           </div>
                         </div>
                       </div>
-                    </div>
                     <!-- 알림 -->
                             <c:choose>
 								<c:when test="${login}">

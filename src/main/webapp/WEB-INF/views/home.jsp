@@ -10,7 +10,6 @@
 
 			<!-- CSS 파일 -->
 			<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/home/home.css">
-			<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/home/css/headerMain.css">
 
 			<!-- CDN -->
 			<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
