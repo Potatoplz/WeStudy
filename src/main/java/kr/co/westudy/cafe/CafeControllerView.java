@@ -23,13 +23,23 @@ public class CafeControllerView {
     @Autowired
     private CafeService service;
     
+    @GetMapping("/my_reserv_detail")
+    public String myReservDetail(HttpSession session, MemberDTO dto, Model model, String reserve_id) {
+    	String member_id = null;
+    	System.out.println("여기는 뷰컨트롤러 입니다."+reserve_id);
+		member_id = (((MemberDTO) session.getAttribute("login_info")).getMember_id());
+		model.addAttribute("reserve_id", reserve_id);
+		model.addAttribute("member_id", member_id);
+    	return "cafe/my_reserv_detail";
+	}
+    
     @GetMapping("/my_reserv")
     public String myReserv(HttpSession session, MemberDTO dto, Model model) {
     	String member_id = null;
-		member_id = (((MemberDTO) session.getAttribute("login_info")).getMember_id());
-		model.addAttribute("member_id", member_id);
+    	member_id = (((MemberDTO) session.getAttribute("login_info")).getMember_id());
+    	model.addAttribute("member_id", member_id);
     	return "cafe/my_reserv";
-	}
+    }
 
     @GetMapping(value = "/list") // Get방식 @ReqeustMapping과 동일한 기능을 합니다. Post방식은 @PostMapping으로 사용.
     public String list(String cafe_category, Model model) {

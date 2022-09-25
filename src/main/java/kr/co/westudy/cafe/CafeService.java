@@ -57,6 +57,12 @@ public class CafeService {
     	list = dao.cafeReservList(member_id);
     	return list;
     }// list - 필터링
+    
+    public List<CafeDTO> cafeReservDetail( SearchDTO dto ) {
+    	List<CafeDTO> list = null;
+    	list = dao.cafeReservDetail(dto);
+    	return list;
+    }// list - 필터링
 
     public int write(CafeDTO dto) {
         int successCount = 0;

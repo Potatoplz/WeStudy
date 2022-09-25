@@ -85,12 +85,22 @@
 	
 		<select id="cafeReservList" parameterType="java.lang.String"
 		resultType="kr.co.westudy.cafe.CafeDTO">
-		select r.reserve_id, c.cafe_name, b.room_name, r.use_date, r.use_start_time, r.use_end_time, p.pay_amount, p.pay_state, m.member_id
+		select r.reserve_id, c.cafe_name, b.room_name, r.use_date, r.use_start_time, r.use_end_time, p.pay_amount, p.pay_state, m.member_id, r.reserve_count
 		
 		from reserve r, cafe c, room b, pay p, member m
 
 		where c.cafe_id=b.cafe_id and b.room_id=r.room_id and r.reserve_id=p.reserve_id and r.member_id=m.member_id 
 		and r.cafe_id=b.cafe_id and m.member_id=#{member_id}
+		</select>
+		
+		<select id="cafeReservDetail" parameterType="kr.co.westudy.util.dto.SearchDTO"
+		resultType="kr.co.westudy.cafe.CafeDTO">
+		select r.reserve_id, c.cafe_name, b.room_name, r.use_date, r.use_start_time, r.use_end_time, p.pay_amount, p.pay_state, m.member_id, reserve_count
+		
+		from reserve r, cafe c, room b, pay p, member m
+
+		where c.cafe_id=b.cafe_id and b.room_id=r.room_id and r.reserve_id=p.reserve_id and r.member_id=m.member_id 
+		and r.cafe_id=b.cafe_id and m.member_id=#{member_id} and p.reserve_id=#{reserve_id}
 		</select>
 
 		<insert id="wish_insert" parameterType="kr.co.westudy.util.dto.SearchDTO">

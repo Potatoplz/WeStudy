@@ -31,6 +31,7 @@ public class CafeDTO {
     private String use_date;
     private String use_start_time;
     private String use_end_time;
+    private int reserve_count;
     private String pay_amount;
     private String pay_state;
 

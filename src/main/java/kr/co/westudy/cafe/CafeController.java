@@ -83,6 +83,29 @@ public class CafeController {
     	
     	return list;// data 리턴
     }// reserv_list
+    
+    // DB에서 예약  디테일 데이터 가저오기
+    @GetMapping(value = "/reserv_list_detail/{inData}/{inData1}")
+    public List<CafeDTO> reservlist_detail(@PathVariable("inData") String member_id, @PathVariable("inData1") String reserve_id , SearchDTO dto) {
+    	
+    	System.out.println("여기는 그냥 컨트롤러 입니다. 예약번호 는 ~~~~" + reserve_id);
+    	System.out.println("여기는 그냥 컨트롤러 입니다. 멤버아이el" + member_id);
+    	dto.setReserve_id(reserve_id);
+    	dto.setMember_id(member_id);
+    	System.out.println("여기는 그냥 컨트롤러 입니다. dto.getReserve_id()" + dto.getReserve_id());
+    	System.out.println("여기는 그냥 컨트롤러 입니다. getMember_id()" + dto.getMember_id());
+    	
+    	
+    	List<CafeDTO> list = null;
+    	list = service.cafeReservDetail(dto); //
+    	
+    	System.out.println(reserve_id);
+    	System.out.println("=========================================================================================");
+    	System.out.println("결과물입니다."+list);
+    	System.out.println("=========================================================================================");
+    	
+    	return list;// data 리턴
+    }// reserv_list_detail
 
     @PostMapping(value = "/insert")
     public void insert(CafeDTO dto, HttpSession session, PrintWriter out) throws IOException {

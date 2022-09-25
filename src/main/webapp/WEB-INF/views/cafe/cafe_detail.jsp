@@ -236,6 +236,7 @@
                   <br>
                   <!-- 후기/문의/교환 버튼 -->
                   <div class="text-center">
+                  	|
                     <button type="button" class="btn btn-white" id="space">공간소개</button>
                     |
                     <button type="button" class="btn btn-white" id="facility">시설안내</button>
@@ -247,6 +248,7 @@
                     <button type="button" class="btn btn-white" id="qna">Q&A</button>
                     |
                     <button type="button" class="btn btn-white" id="review">이용후기</button>
+                    |
                   </div>
                   <br>
                   <br>
