@@ -439,7 +439,7 @@
                     <br><br>
 
                   </div>
-                  <form action="/pay/confirm" method="post">
+                  <form action="/pay/confirm" method="post" target="print_popup" onsubmit="window.open('about:blank','print_popup','width=500,height=700, location=0, toolbars=no, top=100, left=720');">
                     <!-- 예약번호 -->
                     <input type="hidden" name="partner_order_id" id="date_time_pay" required>
                     <!-- 카페번호 -->
