@@ -37,7 +37,11 @@
 							</div>
 							<div class="cnt_registeredDate" id="study_writedate"></div>
 						</div>
-
+						<section class="studyButtons_buttonWrapper__3tcIE" id="delete_div">
+							<button class="studyButtons_buttons__12bG1">마감</button>
+							<button class="studyButtons_buttons__12bG1">수정</button>
+							<button class="studyButtons_buttons__12bG1" id="delete_btn">삭제</button>
+						</section>
 						<ul class="studyInfo_studyGrid__38Lfj">
 							<!-- 주의:ul은 class명바꾸면 적용안됨. 왜지? -->
 							<li class="studyInfo_CntWrapper">
@@ -76,8 +80,7 @@
 
 					<hr><br><br><br><br>
 
-					<div class="col text-center">
-
+					<div class="col text-center" id="apply-btn-wrapper">
 						<c:choose>
 							<c:when test="${apply_cnt == 1}">
 								<div class="apply_cancel" style="text-align:center;">
@@ -90,6 +93,8 @@
 							</c:otherwise>
 						</c:choose>
 					</div>
+					
+			
 
 					<!-- 댓글 -->
 
@@ -207,7 +212,6 @@
 					<script type="text/javascript">
 						$(document).ready(function () {
 							$("#delete_btn").click(function () {
-
 								$.ajax({
 									type: "DELETE"
 									, url: "${pageContext.request.contextPath}/study_rest/${study_id}"
@@ -216,8 +220,8 @@
 									, cache: false
 									, success: function (result, status, xhr) {
 										if (result > 0) {
-											alert("삭제 성공");
-											location.href = "${pageContext.request.contextPath}/study/list";
+											alert("게시글이 삭제 되었습니다.");
+											location.href = "${pageContext.request.contextPath}/study/main";
 										}//if
 									}//success
 								});//ajax
@@ -228,7 +232,8 @@
 
 					<script type="text/javascript">
 						$("#delete_div").hide();
-
+						$("#apply-btn-wrapper").show();
+						
 						$(document).ready(function () {
 							$.get(
 								"${pageContext.request.contextPath}/study_rest/${study_id}"
@@ -248,6 +253,7 @@
 
 									if ("${login_info.member_id}" == data.member_id) {
 										$("#delete_div").show();
+										$("#apply-btn-wrapper").hide();
 									}
 								}//call back function
 								, "json"

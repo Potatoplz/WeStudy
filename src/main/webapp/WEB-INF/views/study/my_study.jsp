@@ -89,7 +89,7 @@
 							let str1 = "<tr>"
 								+ "<td>" + dto.study_id + "</td>"
 								+ "<td>" + dto.study_type + "</td>"
-								+ "<td><a href='${pageContext.request.contextPath}/study/my_detail?study_id=" + dto.study_id + "'><span  class='study-title'>"
+								+ "<td><a href='${pageContext.request.contextPath}/study/detail?study_id=" + dto.study_id + "'><span  class='study-title'>"
 									+ dto.study_name + "</span></a></td>"
 								+ "<td>" + dto.start_date + "</td>"
 								+ "<td><a href='${pageContext.request.contextPath}/study/mystudy_state?study_id=" + dto.study_id + "'><span class='badge text-bg-warning'>"

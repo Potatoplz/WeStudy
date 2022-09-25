@@ -1,5 +1,11 @@
 @charset "UTF-8";
 
+.studyButtons_buttonWrapper__3tcIE {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+}
+
 body {
     font-family: 'Rubik', sans-serif;
     color: #757575;
