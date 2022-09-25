@@ -42,7 +42,7 @@
         <div class="container mt-5">
           <div class="row">
             <div class="col-md-4 col-12 card-stacked">
-              <div class="card shadow-line mb-3 chat">
+              <div class="card2 shadow-line mb-3 chat">
                 <div class="archived-messages d-flex p-3">
                   <div class="w-100">
                     <div class="d-flex pl-0">
@@ -88,7 +88,7 @@
             
             
             <div class="col-md-8 col-12 card-stacked">
-              <div class="card shadow-line mb-3 chat chat-panel">
+              <div class="card2 shadow-line mb-3 chat chat-panel">
                 <div class="p-3 chat-header">
                   <div class="d-flex">
                     <div class="w-100 d-flex pl-0">
@@ -127,6 +127,7 @@
                       </span>
                     </div>
                   </div>
+
                 </div>
                 <!-- 입력창 끝 -->
               </div>
@@ -142,14 +143,13 @@
 <%@ include file="/WEB-INF/views/footer.jsp" %>
 <!-- script 시작 -->
           <script type="text/javascript">
-         
           
           $(document).ready(function(){
               var roomName = '${room.roomName}';
               var roomId = '${roomId}';
               var username = '${login_info.member_nick}';
-              var date = new Date();
-      		  var dateInfo = date.getHours() + ":" + date.getMinutes();
+//              var date = new Date();
+//      		  var dateInfo = date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
 //       		  var dateInfo = date.getMonth() + 1 + "/" + date.getDate() + " "+ date.getHours() + ":" + date.getMinutes();
               console.log(roomName + ", " + roomId + ", " + username);
               var sockJs = new SockJS("/stomp/chat");
@@ -166,6 +166,7 @@
                 
                      var writer = content.sendId;
                      var message = content.message;
+                     var dateInfo = content.datetime;
                      var str = '';
                      
              		 
@@ -223,6 +224,9 @@
 					//id값이 inputMsg인 요소를 msg에 담아서 stomp, firebase로 전송
 					var msg = document.getElementById("inputMsg");
 	                  console.log( + username + ":" + msg.value);//브라우저 콘솔에 뜨네(F12)
+	                  var date = new Date();
+	          		  var dateInfo = date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();  
+	                  
 	                  
 	                  stomp.send('/pub/chat/message', {}, JSON.stringify({
 	                        roomId: roomId

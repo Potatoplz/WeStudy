@@ -69,6 +69,14 @@
 				from study_recruit sr, study_apply sa
 				where sa.member_id = #{member_id} and sa.study_id = sr.study_id;
 	</select>
+	
+	<select id="acceptCnt" parameterType="kr.co.westudy.study.StudyDTO" resultType="int">
+		select count(accept_yn)
+		from study_apply
+		where accept_yn='승인완료' and study_id = #{study_id};
+
+	</select>
+	
 	<select id="chatlist" parameterType="kr.co.westudy.study.StudyDTO" resultType="kr.co.westudy.study.StudyDTO">
 		select sr.study_team, sr.study_name
 		from study_recruit sr, study_apply sa

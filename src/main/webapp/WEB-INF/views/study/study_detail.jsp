@@ -13,12 +13,10 @@
 			<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
 			<link rel="stylesheet" href="/resources/study/study_detail.css">
 
-
 		</head>
 
 		<body>
 			<%@ include file="/WEB-INF/views/header.jsp" %>
-
 				<div class="cnt_wrapper">
 					<section class="cnt_header">
 						<div class="cnt_title" id="study_name">
@@ -48,6 +46,7 @@
 							</li>
 							<li class="studyInfo_CntWrapper">
 								<span class="studyInfo_title">모집 인원</span>
+								<span class="studyInfo_Cnt" id="recruit_cnt1">${acceptCnt}/</span>
 								<span class="studyInfo_Cnt" id="recruit_cnt"></span>
 							</li>
 							<li class="studyInfo_CntWrapper">

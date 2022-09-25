@@ -121,5 +121,11 @@ public class StudyDAO {
 		successCount = sqlSession.update("StudyMapper.applyN", dto);
 		return successCount;
 	}//applyN
+
+	public int acceptCnt(StudyDTO dto) {
+		int successCount = 0;
+		successCount = sqlSession.selectOne("StudyMapper.acceptCnt", dto);
+		return successCount;
+	}
 	
 }

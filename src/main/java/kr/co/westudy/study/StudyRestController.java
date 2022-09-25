@@ -169,5 +169,24 @@ public class StudyRestController {
 		}
 	}// wish
 	
+	//스터디 지원 수락
+	@PostMapping ("/apply_y/{inData}")
+	public void applyY( @PathVariable("inData") String apply_id, StudyDTO dto, PrintWriter out, HttpSession session) {
+		int successCount = 0;
+		dto.setApply_id(apply_id);
+		successCount = service.applyY( dto );
+		out.print(successCount);
+		out.close();
+	}//applyY
+	
+	//스터디 지원 거절
+	@PostMapping("/apply_n/{inData}")
+	public void applyN( @PathVariable("inData") String apply_id, StudyDTO dto, PrintWriter out, HttpSession session) {
+		int successCount = 0;
+		dto.setApply_id(apply_id);
+		successCount = service.applyN( dto );
+		out.print(successCount);
+		out.close();
+	}//applyN
 	
 }

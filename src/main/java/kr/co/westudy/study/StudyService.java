@@ -129,6 +129,11 @@ public class StudyService {
 		successCount = dao.applyN( dto );
 		return successCount;
 	}//apply N
-	
+
+	public int acceptCnt(StudyDTO dto) {
+		int successCount = 0;
+		successCount = dao.acceptCnt(dto);
+		return successCount;
+	}//acceptCnt
 	
 }

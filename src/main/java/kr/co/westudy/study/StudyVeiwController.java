@@ -70,7 +70,7 @@ public class StudyVeiwController {
 	
 	//일반 디테일
 	@GetMapping("/detail")
-	public String detail(String study_id, Model model, StudyDTO dto, HttpSession session) {
+	public String detail(String study_id, Model model, StudyDTO dto, HttpSession session, PrintWriter out) {
 		model.addAttribute("study_id", study_id);
 		
 		//스터디 지원 여부 확인
@@ -87,8 +87,12 @@ public class StudyVeiwController {
 		System.out.println("~~~~~~~~~~~~~~~~~~~" + dto);
 		int apply_cnt = service.apply_cnt(dto);
 		model.addAttribute("apply_cnt", apply_cnt);
-		
-			return "study/study_detail";
+		/* 스터디 승인완료된 인원수*/	
+	   int successCount = 0;
+	   dto.setStudy_id(study_id);
+	   successCount = service.acceptCnt(dto);
+	   model.addAttribute("acceptCnt", successCount);
+		return "study/study_detail";
 			
 	}//detail
 	
@@ -122,26 +126,19 @@ public class StudyVeiwController {
 		return "/study/study_recruit";
 	}//recruit
 	
-	//스터디 지원 수락
-	@PostMapping ("/apply_y/{inData}")
-	public String applyY( @PathVariable("inData") String apply_id, StudyDTO dto, PrintWriter out, HttpSession session) {
-		int successCount = 0;
-		dto.setApply_id(apply_id);
-		successCount = service.applyY( dto );
-		out.print(successCount);
-		out.close();
-			
-			return "study/my_study";
-	}//applyY
+	//스터디 승인 완료 인원수
+//	@PostMapping("/acceptCnt")
+//   public void acceptCnt (String study_id, StudyDTO dto, PrintWriter out, Model model, HttpSession session) {
+//	   int successCount = 0;
+//	   dto.setStudy_id(study_id);
+//	   successCount = service.acceptCnt(dto);
+//	   out.print(successCount);
+//	   out.close();
+//	   return;
+//   }//acceptCnt
 	
-	//스터디 지원 거절
-	@PostMapping("/apply_n/{inData}")
-	public void applyN( @PathVariable("inData") String apply_id, StudyDTO dto, PrintWriter out, HttpSession session) {
-		int successCount = 0;
-		dto.setApply_id(apply_id);
-		successCount = service.applyN( dto );
-		out.print(successCount);
-		out.close();
-	}//applyN
+	
+	
+	
 	
 }

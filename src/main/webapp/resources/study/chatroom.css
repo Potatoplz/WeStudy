@@ -2,12 +2,29 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400&;display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@50&;display=swap');
 
+.card2{
+	position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1pxsolidrgba(0,0,0,.125);
+    border-radius: .25rem;
+    height: 699px;
+    width: 100%;
+}
 
 #teamName{
 	font-size:22px;
 	
 }
 
+.inputMsg_label{
+    color: blue;
+}
 
 #sendBtn{
 	border:none;
@@ -19,7 +36,7 @@
    width: 100%!important;
    overflow-y: scroll;
    padding: 1rem!important;
-	height:695px;
+	height:543px;
 }
 
 .send-id{
@@ -351,7 +368,7 @@ a.btn i, button.btn i {
   border-top: 1px solid #eef0f9;
   cursor: pointer;
   overflow-y: scroll;
-      height: 770px;
+      height: 781px;
 }
 
 .chat-user-scroll {
