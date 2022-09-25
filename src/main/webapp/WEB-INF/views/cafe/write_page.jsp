@@ -285,7 +285,7 @@
                                                         , cache: false
                                                         , success: function (result) {
                                                             alert("카페가 등록 되었습니다.");
-                                                            location.href = "${pageContext.request.contextPath}/cafe/cafe_list";
+                                                            location.href = "${pageContext.request.contextPath}/cafe/list";
                                                         }//call back function
                                                         , error: function (xhr) {
                                                             alert("잠시 후 다시 시도해 주세요.");

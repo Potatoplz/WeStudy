@@ -156,5 +156,17 @@
 		where study_id = #{study_id} 
 	</update>
 	
+	<select id="wishList" parameterType="kr.co.westudy.util.dto.SearchDTO"
+			resultType="kr.co.westudy.util.dto.SearchDTO">
+		select s.study_id,s.study_team, s.study_name, s.study_type, s.recruit_cnt, s.study_onoff, s.study_city, s.view_cnt, 
+		s.start_date, s.end_date, s.study_content, s.study_writedate, s.study_state, s.member_id, s.member_nick, s.hashtag
+		
+		from study_recruit s, study_wish w 
+	
+		where w.member_id = #{member_id} and w.study_id = s.study_id
+	
+		order by study_wish_date desc
+		
+		</select>
 	
 </mapper>

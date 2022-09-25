@@ -133,5 +133,10 @@ public class StudyDAO {
 		successCount = sqlSession.update("StudyMapper.recruit_close", dto);
 		return successCount;
 	}
+	public List<SearchDTO> wishList(SearchDTO dto) {
+		List<SearchDTO> list = null;
+		list = sqlSession.selectList("StudyMapper.wishList", dto);
+		return list;
+	}// list - 필터링
 	
 }

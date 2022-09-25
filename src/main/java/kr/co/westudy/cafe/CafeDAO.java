@@ -95,4 +95,10 @@ public class CafeDAO {
 		return successCount;
 	}// delete
 
+	public List<SearchDTO> wishList(SearchDTO dto) {
+		List<SearchDTO> list = null;
+		list = sqlSession.selectList("CafeMapper.wishList", dto);
+		return list;
+	}// list - 필터링
+
 }

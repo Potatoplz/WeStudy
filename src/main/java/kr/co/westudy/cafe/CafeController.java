@@ -13,6 +13,7 @@ import java.util.List;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.web.servlet.server.Session;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
@@ -26,6 +27,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import kr.co.westudy.cafe.CafeDTO;
 import kr.co.westudy.cafe.CafeService;
+import kr.co.westudy.util.dto.MemberDTO;
 import kr.co.westudy.util.dto.SearchDTO;
 import lombok.extern.java.Log;
 
@@ -163,6 +165,14 @@ public class CafeController {
             out.close();
         }
     }// wish
+
+    @GetMapping(value = "/cafe_wish_list")
+    public List<SearchDTO> list_wish(SearchDTO dto, HttpSession session) {
+        dto.setMember_id(((MemberDTO) session.getAttribute("login_info")).getMember_id());
+        List<SearchDTO> list = null;
+        list = service.wishList(dto); //
+        return list;// data 리턴
+    }// cafe_list
 
     // @RequestMapping(value = "/{inData}", method = RequestMethod.DELETE)
     // public int delete(@PathVariable("inData") String board_no, HttpSession

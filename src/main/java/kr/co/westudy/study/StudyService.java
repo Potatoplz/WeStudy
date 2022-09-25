@@ -142,5 +142,11 @@ public class StudyService {
 		successCount = dao.recruit_close( dto );
 		return successCount;
 	}
+	public List<SearchDTO> wishList(SearchDTO dto) {
+		List<SearchDTO> list = null;
+		list = dao.wishList(dto);
+		return list;
+	}// list - 필터링
+	
 	
 }

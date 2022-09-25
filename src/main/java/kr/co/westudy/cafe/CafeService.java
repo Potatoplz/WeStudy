@@ -107,4 +107,10 @@ public class CafeService {
         return successCount;
     }// delete
 
+    public List<SearchDTO> wishList(SearchDTO dto) {
+        List<SearchDTO> list = null;
+        list = dao.wishList(dto);
+        return list;
+    }// list - 필터링
+
 }

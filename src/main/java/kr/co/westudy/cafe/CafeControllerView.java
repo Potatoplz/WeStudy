@@ -85,4 +85,9 @@ public class CafeControllerView {
     public String writePage() {
         return "cafe/write_page";// jsp file name
     }// writePage
+
+    @GetMapping(value = "/wish_list")
+    public String cafe_wish_list() {
+        return "wish/wish_list";
+    }// list
 }

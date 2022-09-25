@@ -169,6 +169,14 @@ public class StudyRestController {
 			out.close();
 		}
 	}// wish
+
+	@GetMapping(value = "/study_wish_list")
+	public List<SearchDTO> list_wish(SearchDTO dto, HttpSession session) {
+		dto.setMember_id(((MemberDTO) session.getAttribute("login_info")).getMember_id());
+		List<SearchDTO> list = null;
+		list = service.wishList(dto); //
+		return list;// data 리턴
+	}// wish_list
 	
 	//스터디 지원 수락
 	@PostMapping ("/apply_y/{inData}")

@@ -122,6 +122,17 @@
 		where cafe_wish_id=#{cafe_wish_id}
 		</delete>
 
+		<select id="wishList" parameterType="kr.co.westudy.util.dto.SearchDTO"
+			resultType="kr.co.westudy.util.dto.SearchDTO">
+		select c.cafe_id, c.cafe_name, c.post_code, c.cafe_addr1, c.cafe_addr2, c.open_time, c.close_time, c.cafe_img_name1, c.cafe_img_path1,
+		c.cafe_img_name2, c.cafe_img_path2, c.cafe_content1, c.cafe_content2, c.cafe_content3, c.cafe_category, c.cafe_oneline, w.cafe_wish_id,
+		w.member_id, w.cafe_wish_date
+    	from cafe c, cafe_wish w 
+		where w.member_id = #{member_id} and c.cafe_id = w.cafe_id
+	
+		order by cafe_wish_date desc
+		</select>
+
 	
 	
 	
