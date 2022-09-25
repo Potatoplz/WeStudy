@@ -26,7 +26,6 @@ public class CafeControllerView {
     @GetMapping("/my_reserv_detail")
     public String myReservDetail(HttpSession session, MemberDTO dto, Model model, String reserve_id) {
     	String member_id = null;
-    	System.out.println("여기는 뷰컨트롤러 입니다."+reserve_id);
 		member_id = (((MemberDTO) session.getAttribute("login_info")).getMember_id());
 		model.addAttribute("reserve_id", reserve_id);
 		model.addAttribute("member_id", member_id);
