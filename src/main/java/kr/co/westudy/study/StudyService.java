@@ -50,6 +50,11 @@ public class StudyService {
 		List<StudyDTO> list = dao.apply_list(member_id);
 		return list;
 	}//apply_list
+	
+	public List<StudyDTO> chat_list(String member_id) {
+		List<StudyDTO> list = dao.chat_list(member_id);
+		return list;
+	}//chat_list
 
 	public StudyDTO detail(String study_id) {
 		dao.incrementViewCnt(study_id);

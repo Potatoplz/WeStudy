@@ -69,6 +69,15 @@
 				from study_recruit sr, study_apply sa
 				where sa.member_id = #{member_id} and sa.study_id = sr.study_id;
 	</select>
+	<select id="chatlist" parameterType="kr.co.westudy.study.StudyDTO" resultType="kr.co.westudy.study.StudyDTO">
+		select sr.study_team, sr.study_name
+		from study_recruit sr, study_apply sa
+		where sr.member_id=#{member_id} or sa.member_id=#{member_id} and (sr.study_id = sa.study_id and sa.accept_yn='승인완료')
+		group by study_team;
+	</select>
+	
+	
+	
 	
 	<update id="incrementViewCnt" parameterType="java.lang.String">
 		update study_recruit

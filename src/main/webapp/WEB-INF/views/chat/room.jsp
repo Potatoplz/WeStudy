@@ -1,20 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-    
+    <%@ include file="/WEB-INF/views/header.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>WeStudy</title>
-<!-- <script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
-<!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" type="text/css" rel="stylesheet"> -->
 <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
-<link rel="stylesheet" href="/resources/study/chatroom(ori).css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"/>
+<link rel="stylesheet" href="/resources/study/chatroom.css">
 <!-- 실시간 css수정 -->
+
 </head>
-<%@ include file="/WEB-INF/views/header.jsp" %>
 <body>
 <!-- firebase -->
     <script src="https://www.gstatic.com/firebasejs/6.2.3/firebase-app.js"></script>
@@ -34,39 +33,110 @@
 	  firebase.initializeApp(firebaseConfig);
 	</script>
 
-<button class="load btn" id="load" style="color:white;"></button><!-- history load btn -->
 <!-- body 시작 -->
-  <div class="container2" id="jm-font">
-         				
-       <section class="box-wrapper">
-           	<!-- 메시지 창 -->
-	            <div class="messaging">
-           		 <!-- 채팅방 제목, 이전 메시지 -->
-		           	<ul class="his-btn">
-			            <li class="text-center">
-<!-- 	                        <a href="#" class="load btn btn-outline-secondary" id="load"></a> -->
-	                        <h3 class="text-center" id="room-title">${roomId}</h3>
-	                    </li>
-		           	</ul>
-		           	
-		            <div class="chatcontent" id="msgArea"><!-- 실시간 대화 append -->
-							<div id="incoming"></div><!-- DB목록 -->		
-							<div id="outgoing"></div><!-- DB목록 -->		
-			        </div>
-		        </div>
-		        
-             <!-- 입력 창 -->
-                <div class="type_msg">
-                    <div class="input_msg_write">
-                        <input type="text" id="inputMsg"  class="form-control" placeholder="type a message">
-                        <div class="input-group-append">
-                            <button class="msg_send_btn" type="button" id="sendBtn"><i class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
-                        </div>
+<section class="body2">
+<button class="load btn" id="load" style="color:white;"></button><!-- history load btn -->
+  <div class="main-wrapper">
+    <div class="container">
+      <div class="page-content">
+        <div class="container mt-5">
+          <div class="row">
+            <div class="col-md-4 col-12 card-stacked">
+              <div class="card shadow-line mb-3 chat">
+                <div class="archived-messages d-flex p-3">
+                  <div class="w-100">
+                    <div class="d-flex pl-0">
+                      <div class="d-flex flex-row mt-1">
+                        <span class="margin-auto mr-2">
+                          <div class="svg15 archived"></div>
+                        </span>
+                        <p class="margin-auto fw-400 text-dark-75">Team</p>
+                      </div>
+                      <div>
+                      </div>
                     </div>
+                  </div>
                 </div>
-                        <label for="inputMsg_label" id="inputMsg_label" class="inputMsg_label"></label>
-   </section>
- </div>                
+                <div class="chat-user-panel">
+	                
+					<c:forEach var="dto" items="${list}">
+					<a href="/chat/room?roomId=${dto.study_team}">
+	                  <div class="pb-3 d-flex flex-column navigation-mobile pagination-scrool chat-user-scroll">
+	                    <div class="chat-item d-flex pl-3 pr-0 pt-3 pb-3">
+	                      <div class="w-100">
+	                        <div class="d-flex pl-0">
+	                          <img class="rounded-circle shadow avatar-sm mr-3" src="${pageContext.request.contextPath}/resources/study/img/team.png">
+	                          <div>
+	                            <p class="margin-auto fw-400 text-dark-75">${dto.study_team}</p>
+	                            <div class="d-flex flex-row mt-1">
+	                              <span>
+	                                <div class="svg15 double-check"></div>
+	                              </span>
+	                              <span class="message-shortcut margin-auto text-muted fs-13 ml-1 mr-4">${dto.study_name}</span>
+	                            </div>
+	                          </div>
+	                        </div>
+	                      </div>
+	                    </div>
+	                   </div>
+	                  </a> 
+	              </c:forEach>   
+                 
+                  </div>
+                </div>
+              </div>
+            
+            
+            <div class="col-md-8 col-12 card-stacked">
+              <div class="card shadow-line mb-3 chat chat-panel">
+                <div class="p-3 chat-header">
+                  <div class="d-flex">
+                    <div class="w-100 d-flex pl-0">
+                      <img class="rounded-circle shadow avatar-sm mr-3 chat-profile-picture" src="${pageContext.request.contextPath}/resources/study/img/cat.png" >
+                      <div class="mr-3">
+                       	 <!-- team이름 -->
+                          <p class="fw-400 mb-0 text-dark-75" id="teamName">${roomId} 팀</p>
+                        <p class="sub-caption text-muted text-small mb-0"><i class="la la-clock mr-1"></i>${login_info.member_nick} 님 환영합니다!</p>
+                      </div>
+                    </div>
+                    <div class="flex-shrink-0 margin-auto">
+                      <a href="#" class="btn btn-sm btn-icon btn-light active text-dark ml-2">
+                        <svg viewBox="0 0 24 24" width="15" height="15" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="feather">
+                          <circle cx="12" cy="12" r="1"></circle>
+                          <circle cx="12" cy="5" r="1"></circle>
+                          <circle cx="12" cy="19" r="1"></circle>
+                        </svg>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                <div class="d-flex flex-row mb-3 navigation-mobile scrollable-chat-panel chat-panel-scroll">
+                <!-- 채팅박스 -->
+                  <div class="chat-box" id="msgArea">
+
+                  </div>
+                 <!-- 채팅 박스 -->
+                </div>
+                <!-- 입력창 -->
+                <div class="chat-search pl-3 pr-3">
+                  <div class="input-group">
+                    <input type="text" class="form-control" id="inputMsg" placeholder="Write a message">
+                    <div class="input-group-append prepend-white">
+                      <span class="input-group-text pl-2 pr-2">
+                        <button id="sendBtn"><i class="fs-19 bi bi-cursor ml-2 mr-2"></i></button>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <!-- 입력창 끝 -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+</section>     
 </body>
 <!-- body 끝 -->
 <%@ include file="/WEB-INF/views/footer.jsp" %>
@@ -79,7 +149,8 @@
               var roomId = '${roomId}';
               var username = '${login_info.member_nick}';
               var date = new Date();
-      		  var dateInfo = date.getMonth() + 1 + "/" + date.getDate() + " "+ date.getHours() + "시 " + date.getMinutes() + "분";
+      		  var dateInfo = date.getHours() + ":" + date.getMinutes();
+//       		  var dateInfo = date.getMonth() + 1 + "/" + date.getDate() + " "+ date.getHours() + ":" + date.getMinutes();
               console.log(roomName + ", " + roomId + ", " + username);
               var sockJs = new SockJS("/stomp/chat");
               //1. SockJS를 내부에 들고있는 stomp를 내어줌
@@ -95,29 +166,44 @@
                 
                      var writer = content.sendId;
                      var message = content.message;
-                     var fullFilePath =content.fullFilePath;
                      var str = '';
                      
              		 
-                      if(writer==username){ //보낸 메시지
-                  		 str =  "<ul class='realtime-out'>"+ writer;
-                         str += "<li class='realtime-out-li'>";
-                         str += "<li class='realtime-out-li2'>" + message + "</li>";
-                         str += "  <span class='realtime-out-span'>" + dateInfo + "</span>"; 
-                         str +="</ul>";   
-                       }
-                       else{ //받은 메시지
-                 		 str =  "<ul class='realtime-in'>"+ writer;
-                         str += "<li class='realtime-in-li'>";
-                         str += "<li class='realtime-in-li2'>" + message + "</li>";
-                         str += "  <span class='realtime-in-span'>"+ dateInfo +"</span>"; 
-                         str +="</ul>";   
-                       }
+                     if(writer==username){ //보낸 메시지
+                     	str =  "<div class='d-flex flex-row-reverse mb-2'>"
+                         str +=   "<div class='right-chat-message fs-13 mb-2'>"
+                         str +=     "<div class='mb-0 mr-3 pr-4'>"
+                         str +=       "<div class='d-flex flex-row'>"
+                         str +=         "<div class='pr-2'>"+message+"</div>"<!-- 보내는 메시지 -->
+                         str +=         "<div class='pr-4'></div>"
+                         str +=       "</div>"
+                         str +=     "</div>"
+                         str +=     "<div class='message-options dark'>"
+                         str +=       "<div class='message-time'>"
+                         str +=         "<div class='d-flex flex-row'>"
+                         str +=           "<div class='mr-2'>"+dateInfo+"</div>"<!-- 시간 -->
+                         str +=         "</div>"
+                         str +=       "</div>"
+                         str +=       "<div class='message-arrow'><i class='text-muted la la-angle-down fs-17'></i></div>"
+                         str +=     "</div>"
+                         str +=   "</div>"
+                         str += "</div>" 
+                        }
+                        else{ //받은 메시지
+                          str = "<p class='send-id'>"+writer+"</p>"
+                          str += "<div class='left-chat-message fs-13 mb-2'>"
+                        	 str +=     "<p class='mb-0 mr-3 pr-4'>"+message+"</p>"
+                        	 str +=    "<div class='message-options'>"
+                    		 str +=      "<div class='message-time'>"+dateInfo+"</div>"
+                    		 str +=     "<div class='message-arrow'><i class='text-muted la la-angle-down fs-17'></i></div>"
+                    		 str +=    "</div>"
+                      	 str +=   "</div>";
+                        }
                          $("#msgArea").append(str).stop().animate({ scrollTop: $('#msgArea')[0].scrollHeight }, 1000);
                  });
                  
                  //3. send(path, header, message)로 메세지를 보낼 수 있음
-                 stomp.send('/pub/chat/enter', {}, JSON.stringify({roomId: roomId, sendId: username})) //입장 메시지
+//                 stomp.send('/pub/chat/enter', {}, JSON.stringify({roomId: roomId, sendId: username})) //입장 메시지
               });
               
 	              $("#sendBtn").on("click", function(e){
@@ -159,46 +245,52 @@
 					getData();
               });
             $( "#load" ).trigger( "click" );//자동 클릭 jQuery click trigger
-				function addMsgToList(msg, id, dateInfo){
-					var _id = document.createElement("p"); 
-					var _msg = document.createElement("li");
-					var _dateInfo = document.createElement("span");
-					
-					_id.innerHTML = id;
-					_msg.innerHTML = msg;
-					_dateInfo.innerHTML = dateInfo;
-					
-                	if(username !== id){ //받은 메시지
-						var inMsg = document.getElementById("incoming");
-						
-						inMsg.appendChild(_id); 
-						inMsg.appendChild(_msg); 
-						inMsg.appendChild(_dateInfo);
-                	} else { //보낸 메시지
-                		var outMsg = document.getElementById("outgoing");
-    					
-    					outMsg.appendChild(_id); 
-    					outMsg.appendChild(_msg);
-    					outMsg.appendChild(_dateInfo);
-                	}
-				}
                 function getData() {
                 	firebase
                 		.database()
                 		.ref("chat/rooms/" + roomId)
                 		.once("value", function(snapshot) {
                 			snapshot.forEach(function(ChildSnapshot){
-                				var msg = ChildSnapshot.val().message;
-                				var id = ChildSnapshot.val().sendId;
-                				var dateInfo = ChildSnapshot.val().datetime;
-                				addMsgToList(msg, id, dateInfo);
-                				console.log("----------" + msg, id, dateInfo);
-//                				document.getElementById("data").innerHTML= msg + id;
+
+								 var writer = ChildSnapshot.val().sendId;
+                                 var message = ChildSnapshot.val().message;
+                                 var dateInfo = ChildSnapshot.val().datetime;
+                         		 
+                                  if(writer==username){ //보낸 메시지
+                                	str =  "<div class='d-flex flex-row-reverse mb-2'>"
+                                    str +=   "<div class='right-chat-message fs-13 mb-2'>"
+                                    str +=     "<div class='mb-0 mr-3 pr-4'>"
+                                    str +=       "<div class='d-flex flex-row'>"
+                                    str +=         "<div class='pr-2'>"+message+"</div>"<!-- 보내는 메시지 -->
+                                    str +=         "<div class='pr-4'></div>"
+                                    str +=       "</div>"
+                                    str +=     "</div>"
+                                    str +=     "<div class='message-options dark'>"
+                                    str +=       "<div class='message-time'>"
+                                    str +=         "<div class='d-flex flex-row'>"
+                                    str +=           "<div class='mr-2'>"+dateInfo+"</div>"<!-- 시간 -->
+                                    str +=         "</div>"
+                                    str +=       "</div>"
+                                    str +=       "<div class='message-arrow'><i class='text-muted la la-angle-down fs-17'></i></div>"
+                                    str +=     "</div>"
+                                    str +=   "</div>"
+                                    str += "</div>" 
+                                   }
+                                   else{ //받은 메시지
+                                     str = "<p class='send-id'>"+writer+"</p>"
+                                     str += "<div class='left-chat-message fs-13 mb-2'>"
+                                   	 str +=     "<p class='mb-0 mr-3 pr-4'>"+message+"</p>"
+                                   	 str +=    "<div class='message-options'>"
+                               		 str +=      "<div class='message-time'>"+dateInfo+"</div>"
+                               		 str +=     "<div class='message-arrow'><i class='text-muted la la-angle-down fs-17'></i></div>"
+                               		 str +=    "</div>"
+                                 	 str +=   "</div>";
+                                   }
+                                     $("#msgArea").append(str).stop().animate({ scrollTop: $('#msgArea')[0].scrollHeight }, 1000);
+                			
                 			});
                 	});
                 }
-                
-                
 			});
           
         </script>
