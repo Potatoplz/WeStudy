@@ -81,11 +81,12 @@ public class CafeController {
     // DB에서 예약  데이터 가저오기
     @GetMapping(value = "/reserv_list/{inData}")
     public List<CafeDTO> reservlist_cafe(@PathVariable("inData") String member_id, CafeDTO dto) {
+    	System.out.println("일반 컨트롤러 reserv_list 입니다. : " + member_id);
     	List<CafeDTO> list = null;
     	list = service.cafeReservList(member_id); //
-		
-    	System.out.println(member_id);
+		System.out.println("===========================================");
     	System.out.println(list);
+    	System.out.println("===========================================");
     	
     	return list;// data 리턴
     }// reserv_list

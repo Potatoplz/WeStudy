@@ -36,6 +36,7 @@ public class CafeControllerView {
     public String myReserv(HttpSession session, MemberDTO dto, Model model) {
     	String member_id = null;
     	member_id = (((MemberDTO) session.getAttribute("login_info")).getMember_id());
+    	System.out.println("뷰 컨트롤러 my_reserv 입니다. : " + member_id);
     	model.addAttribute("member_id", member_id);
     	return "cafe/my_reserv";
     }
