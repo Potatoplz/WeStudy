@@ -127,7 +127,7 @@
 													</button>
 												</div>
 
-												<a href="${pageContext.request.contextPath}/mypage/member_delete">
+												<a href="${pageContext.request.contextPath}/mypage/member_delete_form?member_email=${login_info.member_email}">
 													<button id="delete_btn" class="btn btn-warning float-left"> 회원 탈퇴 </button>
 												</a>
 										</div>

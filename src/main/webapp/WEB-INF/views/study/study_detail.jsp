@@ -23,13 +23,16 @@
 						<div class="cnt_title" id="study_name">
 
 						</div>
+						
+						
+						<span id="tag"></span><br>
+						
 						<!-- 찜 버튼 -->
 						<div>
-							<button type="button" id="wish_btn" class="btn btn-danger btn-sm">
+							<button type="button" id="wish_btn" class="btn btn-danger btn-sm flaot-right">
 								♡
 							</button>
 						</div>
-						<span id="tag"></span>
 						<div class="cnt_userdate">
 							<div class="cnt_user">
 								<img class="cnt_userImg"

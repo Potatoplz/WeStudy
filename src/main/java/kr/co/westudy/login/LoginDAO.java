@@ -38,6 +38,12 @@ public class LoginDAO {
 	    return successCount;
 	}//update
 	
+	public int delete( MemberDTO dto ) {
+	    int successCount = 0;
+	    successCount = sqlSession.delete("LoginMapper.member_delete", dto);
+	    return successCount;
+	}//update
+	
 	
 
 //	public int img_insert(MemberDTO dto) {
