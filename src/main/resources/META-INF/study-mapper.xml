@@ -35,6 +35,7 @@
 		limit ${limit_cnt}, 12
 	</select>
 	
+	
 	<select id="studylistHome" parameterType="kr.co.westudy.study.StudyDTO" resultType="kr.co.westudy.study.StudyDTO">
 		select study_id,study_team, study_name, study_type, recruit_cnt, study_onoff, study_city, view_cnt, 
 				start_date, end_date, study_content, study_writedate, study_state, member_id, member_nick, hashtag
