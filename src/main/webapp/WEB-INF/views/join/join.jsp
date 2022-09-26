@@ -4,7 +4,7 @@
 <%@ page import="java.net.URLEncoder" %>
 <%@ page import="java.security.SecureRandom" %>
 <%@ page import="java.math.BigInteger" %>
-
+<%@ include file="/WEB-INF/views/header.jsp" %>
 <!DOCTYPE html>
 	<html>
 		<title> westudy |  회원가입</title>
@@ -393,6 +393,7 @@
 			
 			<br><br><br>
 	</body>
+	<%@ include file="/WEB-INF/views/footer.jsp" %>
 </html>
 
 

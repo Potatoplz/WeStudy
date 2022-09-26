@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-
+<%@ include file="/WEB-INF/views/header.jsp" %>
 
 					<!DOCTYPE html>
 					<html>
@@ -51,11 +51,15 @@
 							#input_file_label {
 								color: red;
 							}
+							.container2{
+							    max-width: 1140px;
+    margin-left: 600px;
+        margin-top: 21px;}
 						</style>
 					</head>
 
 					<body>
-						<div class="container" id="profilecontainer">
+						<div class="container2" id="profilecontainer">
 							
 								<section class="col-9 h-100 bg-white float-left">
 									<hr>
@@ -138,6 +142,7 @@
 
 							
 						</div><!-- container -->
+				
 					</body>
 					<script type="text/javascript">
 

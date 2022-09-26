@@ -122,12 +122,12 @@
 								지 도
 							</button>
 
-							<div class="btn-group">
-								<button type="button" onclick="location.href='/cafe/write_page' " class="btn btn-warning"
-									style="background-color: coral;">
-									카페등록
-								</button>
-							</div>
+<!-- 							<div class="btn-group"> -->
+<!-- 								<button type="button" onclick="location.href='/cafe/write_page' " class="btn btn-warning" -->
+<!-- 									style="background-color: coral;"> -->
+<!-- 									카페등록 -->
+<!-- 								</button> -->
+<!-- 							</div> -->
 						</div>
 						<br><br>
 						<hr>

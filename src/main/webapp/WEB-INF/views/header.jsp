@@ -120,7 +120,7 @@
                     <!-- 알림 -->
                             <c:choose>
 								<c:when test="${login}">
-									<a href="${root }/cart/list">
+									<a href="${pageContext.request.contextPath}/cafe/wish_list">
                 	                    <div class="item sm-bar cart-icon">
                 	                    	<c:if test="${cartCount > 0}">
                 	                    	<span id="count" class="cart-count"></span>
@@ -137,7 +137,7 @@
 					               </a>
 								</c:when>
 								<c:otherwise>
-									<a href="${root }/member/login">
+									<a href="${pageContext.request.contextPath}/cafe/wish_list">
 					                    <div class="item sm-bar cart-icon">
 					                       <img
 					                        src="//cdn.ggumim.co.kr/resource/icons/ic_cart_black.png"
