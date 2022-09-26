@@ -63,6 +63,31 @@ public class MemberVeiwController {
 	}//profile
 	
 	
+	//회원 탈퇴
+	@PostMapping( "/member_delete" )
+	public void memberDelete( MemberDTO dto, PrintWriter out, HttpSession session) {
+		
+		dto.setMember_email( ( (MemberDTO) session.getAttribute("login_info") ).getMember_email() );
+		int successCount = 0;
+		successCount = service.delete( dto );
+		out.print(successCount);
+		out.close();
+			
+	}//join
+	
+	
+	//회원 탈퇴 페이지 띄우기
+	@GetMapping( "/member_delete_form" )
+	private String memberDeletepage( String member_email, Model model, MemberDTO dto, HttpSession session ) {
+		System.out.println("확인용~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" + member_email);
+	     dto.setMember_email( ( (MemberDTO) session.getAttribute("login_info") ).getMember_email() );
+		 List<MemberDTO> list = null;
+	     list = service.member_profile(member_email);
+	     model.addAttribute("detail_dto", list);
+	     return "/mypage/member_delete";
+	 }//update_form
+	
+	
 	//프로필 수정 폼 열기
 	@GetMapping( "/pro_update_form" )
 	private String update_form( String member_email, Model model, MemberDTO dto, HttpSession session ) {

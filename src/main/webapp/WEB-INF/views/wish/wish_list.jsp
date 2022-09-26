@@ -34,39 +34,6 @@
 
 				<!--Main 내용 시작 부분-->
 
-				<div class="row">
-					<div class="col" id="carousel">
-
-						<!-- 메인 이벤트 carousel -->
-
-						<div id="carouselExampleFade" class="carousel slide carousel-fade mb-10"
-							data-bs-ride="carousel">
-							<div class="carousel-inner">
-								<div class="carousel-item active">
-									<a href="${pageContext.request.contextPath}/"><img
-											src="${pageContext.request.contextPath}/resources/home/img/main_1.jpg"
-											class="d-block w-100" alt="1"></a>
-								</div>
-								<div class="carousel-item">
-									<a href="${pageContext.request.contextPath}/study/main">
-										<img src="${pageContext.request.contextPath}/resources/home/img/main_2.jpg"
-											class="d-block w-100" alt="2"></a>
-								</div>
-							</div>
-							<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade"
-								data-bs-slide="prev">
-								<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-								<span class="visually-hidden"></span>
-							</button>
-							<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade"
-								data-bs-slide="next">
-								<span class="carousel-control-next-icon" aria-hidden="true"></span>
-								<span class="visually-hidden"></span>
-							</button>
-						</div>
-					</div>
-				</div>
-
 
 
 				<!--최신 카페 소개-->
@@ -125,7 +92,6 @@
 				</section>
 
 
-				<!-- 카드 종료 -->
 			</div><!-- container -->
 
 
@@ -143,18 +109,22 @@
 
 							$.each(data, function (index, dto) {
 								$("#cardboxnew").append(
-									"<div class='feature-item' style='margin-left: 25px;'>"
-									+ "<span class='feature__number'>" + dto.study_id + "</span>"
-									+ "<span class='start_date'>" + "시작 예정일 | " + dto.start_date + "</span>"
-									+ "<h3 class='feature__title'><a href='${pageContext.request.contextPath}/study/detail?study_id=" + dto.study_id + "'>" + dto.study_name + "</a></h3>"
-									+ "<h3 class='feature__desc2'>" + dto.hashtag + "</h3>"
-									+ "<p class='badge badge-soft-success mb-0'>" + dto.study_onoff + "</p>"
-									+ "<p class='badge badge-soft-success mb-0' id='city'>" + dto.study_city + "</p><br><hr>"
-									+ "<section>"
-									+ "<p class='feature__desc'><i class='fa fa-user-circle-o' aria-hidden='true'></i>" + dto.member_nick + "</p>"
-									+ "<p class='recruit_cnt'><i class='fa fa-users' aria-hidden='true'></i>" + "2 / 6" + "</p>"
-									+ "</section>"
-									+ "</div>"
+										"<div class='feature-item'>"
+					                    + "<span class='feature__number'>" + dto.study_id + "</span>"
+					                    + "<span class='start_date'>"+ "시작 예정일 | " + dto.start_date +"</span>"
+					                    + "<h3 class='feature__title'><a href='${pageContext.request.contextPath}/study/detail?study_id=" + dto.study_id + "'>" + dto.study_name + "</a></h3>"
+					                    + "<h3 class='feature__desc2'>" + dto.hashtag + "</h3>"
+					                    + "<div class='badge-box'>"
+					                    + "<p class='badge badge-soft-success mb-0'>" + dto.study_onoff + "</p>"
+					                    + "<p class='badge badge-soft-success mb-0' id='city'>" + dto.study_city + "</p>"
+					                    + "</div>"
+					                    + "<section><hr>"
+					                    + "<p class='feature__desc'><i class='fa fa-user-circle-o' aria-hidden='true'></i> " + dto.member_nick + "</p>"
+					                    + "<p class='recruit_cnt'>"
+					                    + "<svg stroke='currentColor' fill='currentColor' stroke-width='0' viewBox='0 0 1024 1024' color='#999999' height='28' width='28' xmlns='http://www.w3.org/2000/svg' style='color: rgb(153, 153, 153);'><path d='M942.2 486.2C847.4 286.5 704.1 186 512 186c-192.2 0-335.4 100.5-430.2 300.3a60.3 60.3 0 0 0 0 51.5C176.6 737.5 319.9 838 512 838c192.2 0 335.4-100.5 430.2-300.3 7.7-16.2 7.7-35 0-51.5zM512 766c-161.3 0-279.4-81.8-362.7-254C232.6 339.8 350.7 258 512 258c161.3 0 279.4 81.8 362.7 254C791.5 684.2 673.4 766 512 766zm-4-430c-97.2 0-176 78.8-176 176s78.8 176 176 176 176-78.8 176-176-78.8-176-176-176zm0 288c-61.9 0-112-50.1-112-112s50.1-112 112-112 112 50.1 112 112-50.1 112-112 112z'></path></svg>"
+ 										+ dto.view_cnt + "</p>"
+										+ "</section>"
+					                    + "</div>"
 								);//append
 							});//each
 
@@ -183,7 +153,6 @@
 									+ "<img class='pic-1' src=" + dto.cafe_img_path1 + ">"
 									+ "<img class='pic-2' src=" + dto.cafe_img_path2 + ">"
 									+ "</a>"
-									+ "<ul class='social'><li><a href=# data-tip='Quick View'><i class='fa fa-search'></i></a></li><li><a href=# data-tip='Add to Wishlist'><i class='fa fa-shopping-bag'></i></a></li><li><a href=# data-tip='Add to Cart'><i class='fa fa-shopping-cart'></i></a></li></ul>"
 									+ "<span class='product-new-label'>" + dto.cafe_category + "</span>"
 									+ "</div>"
 

@@ -3,7 +3,6 @@
     <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
       <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
   <%-- 헤더 자리 --%>
-    <jsp:include page="/WEB-INF/views/header.jsp"></jsp:include>
     <br>
     <!DOCTYPE html>
     <html>
@@ -29,7 +28,12 @@
 
       <style>
 
+.text-white2{
+text-align:center;
+ color: #fff!important;
+ margin-left: 150px;
 
+}
 
 
       </style>
@@ -46,8 +50,7 @@
           <div class="modal-content">
             <!-- Modal Header -->
             <div class="modal-header" style="background-color:#134674;">
-              <h4 class="text-white"> 예 약 정 보 상 세 </h4>
-              <button type="button" class="close text-white" data-dismiss="modal"><a href="http://localhost/cafe/my_reserv"  style="color: white">&times;</a></button>
+              <h4 class="text-white2"> 예약 정보 상세 </h4>
             </div>
 
             <!-- Modal body -->
@@ -93,10 +96,6 @@
             </div>
 
             <!-- Modal footer -->
-            <div class="modal-footer">
-              <button type="button" class="btn btn-sm" data-dismiss="modal"
-                style="background-color:#134674; color:white;"><a href="http://localhost/cafe/my_reserv" style="color: white"> 취 소 </a></button>
-            </div>
           </div>
         </div>
       </div>

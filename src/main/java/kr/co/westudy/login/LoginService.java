@@ -33,6 +33,12 @@ public class LoginService {
 		return list;
 	}
 	
+	public int delete( MemberDTO dto ) {
+		int successCount = 0;
+		successCount = dao.delete( dto );
+		return successCount;
+	}//update
+	
 	public int update( MemberDTO dto ) {
 		int successCount = 0;
 		successCount = dao.update( dto );

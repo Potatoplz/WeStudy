@@ -23,13 +23,16 @@
 						<div class="cnt_title" id="study_name">
 
 						</div>
+						
+						
+						<span id="tag"></span><br>
+						
 						<!-- 찜 버튼 -->
 						<div>
-							<button type="button" id="wish_btn" class="btn btn-danger btn-sm">
+							<button type="button" id="wish_btn" class="btn btn-danger btn-sm flaot-right">
 								♡
 							</button>
 						</div>
-						<span id="tag"></span>
 						<div class="cnt_userdate">
 							<div class="cnt_user">
 								<img class="cnt_userImg"
@@ -241,7 +244,7 @@
 									, success: function (result, status, xhr) {
 										if (result > 0) {
 											alert("스터디 모집이 마감 되었습니다.");
-											location.href = "${pageContext.request.contextPath}/study/main";
+											location.href = "${pageContext.request.contextPath}/study/detail?study_id=${study_id}";
 										}//if
 									}//success
 								});//ajax

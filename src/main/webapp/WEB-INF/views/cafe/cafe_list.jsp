@@ -167,7 +167,6 @@
 											+ "</a>"	
 											+ "<span class='product-new-label'>" + dto.cafe_category + "</span>"
 											+ "</div>"	
-											
 											+ "<div class='product-content'>" 
 											+ "<h3 class='title'><a href='${pageContext.request.contextPath}/cafe/detail?cafe_id=" + dto.cafe_id + "'>"  + "[" + dto.cafe_category + "]" +  	dto.cafe_name + "</a></h3>"
 											+ "<div class='price'>"+ dto.cafe_oneline + "</div>"

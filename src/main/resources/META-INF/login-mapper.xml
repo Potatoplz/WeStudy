@@ -36,6 +36,12 @@
 	where member_email = #{member_email} 
 	</select>
 	
+	<delete id="member_delete" parameterType="kr.co.westudy.util.dto.MemberDTO">
+	 delete from member
+     where member_email = #{member_email}
+         and member_pwd = #{member_pwd}
+	</delete>
+	
 	<update id="member_update" parameterType="kr.co.westudy.util.dto.MemberDTO">
 	update member set member_nick = #{member_nick}, email_agree = #{email_agree}, sms_agree = #{sms_agree}
 	where member_id = #{member_id} and member_email = #{member_email}

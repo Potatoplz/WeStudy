@@ -48,7 +48,6 @@
             <div class="tab-content" id="myTabContent">
               <div class="tab-pane fade active show" id="home" role="tabpanel">
                 <div class="table-responsive">
-                
                   <table class="table">
                     <thead>
                       <tr>
@@ -84,6 +83,12 @@
   <!-- DB불러오기  -->
  
   <script type="text/javascript">
+
+  function winOpen(id){
+	  window.open('${pageContext.request.contextPath}/cafe/my_reserv_detail?reserve_id='+id,'_blank','width=500, height=500');
+	  //alert();
+  }
+
     $(document).ready(function () {
 			$.get(
 					"${pageContext.request.contextPath}/cafe/reserv_list/${member_id}"
@@ -98,13 +103,13 @@
 				                          +"<th scope='row'>"
 				                          +"<div class='event-date text-center'>"
 				                      	  +"<span>"
-				                          +"<a href='${pageContext.request.contextPath}/cafe/my_reserv_detail?reserve_id=" + dto.reserve_id + "'>" + dto.reserve_id
+				                          +"<a style='cursor:pointer;color:blue;' onclick='javascript:winOpen(" + dto.reserve_id + ")'>" + dto.reserve_id + "</a>"
 				                          + "</span>"
 				                       +"</div>"		
 							
 				                          +"<td>"
 				                            +"<div class='event-img text-center'>"
-				                              +"<h5>" + dto.cafe_name + "</h5>"
+				                              +"<h5 onclick='alert();'>" + dto.cafe_name + "</h5>"
 				                            +"</div>"
 				                          +"</td>"
 				                       

@@ -80,27 +80,6 @@
 									</div>
 									<br><br>
 
-<!-- 									업로드 버튼 -->
-									
-<%-- 									<c:choose> --%>
-<%-- 										<c:when test="${detail_dto.profile_img_path != null && detail_dto.profile_img_path != ''}"> --%>
-<%-- 											<img src="${detail_dto.profile_img_path}"> --%>
-<%-- 											<button id="thumbnail_btn" type="button" class="btn btn-danger delete_btn" value="${detail_dto.profile_img_path}"> --%>
-<!-- 												이미지 삭제 -->
-<!-- 											</button> -->
-<%-- 										</c:when> --%>
-<%-- 										<c:otherwise> --%>
-<!-- 											<label class="input_file_button" for="input_file"> -->
-<!-- 												프로필 사진 업로드 -->
-<!-- 											</label> -->
-<!-- 											<input type="file" id="input_file"> -->
-<!-- 											<label class="input_file_label" for="input_file" id="input_file_label"></label> -->
-<%-- 										</c:otherwise> --%>
-<%-- 									</c:choose> --%>
-						
-									<!-- 로그인 정보 넘기기 -->
-									<!-- 				<input id="member_id" name="member_id" type="hidden"  -->
-									<%-- value="${detail_dto.member_id}"> --%>
 
 										<!-- 회원 정보 -->
 										<c:forEach var="dto" items="${detail_dto}">
@@ -257,45 +236,6 @@
 							
 							
 							//이미지 등록 - 보류
-							
-// 							$("#input_file").on("change", function (event) {
-
-// 								let tmp1 = $("#input_file").val().substring($("#input_file").val().length - 3);
-// 								let tmp1_boolean = (tmp1 == "jpg" || tmp1 == "jpeg" || tmp1 == "gif" || tmp1 == "png"
-// 									|| tmp1 == "JPG" || tmp1 == "JPEG" || tmp1 == "GIF" || tmp1 == "PNG");
-// 								if ($.trim($("#input_file").val()) == "" || tmp1_boolean == false) {
-// 									$("#input_file_label").text("jpg/jpeg/gif/png 파일만 허용 됩니다.");
-// 									return;
-// 								} else { $("#input_file_label").text(""); }
-
-// 								var file = event.target.files[0];
-
-// 								var reader = new FileReader();
-// 								reader.onload = function (e) {
-
-// 									$("#profile_img").attr("src", e.target.result);
-// 								}
-
-// 								reader.readAsDataURL(file);
-
-
-// 								let form = new FormData(document.getElementById("write_form"));
-
-// 								$.ajax({
-// 									type: "POST"
-// 									, encType: "multipart/form-data"
-// 									, url: "${pageContext.request.contextPath}/mypage/img_insert"
-// 									, data: form
-// 									, processData: false
-// 									, contentType: false
-// 									, cache: false
-// 									, success: function (result) {
-// 										alert("이미지가 변경되었습니다.");
-// 									}//call back function
-// 									, error: function (xhr) {
-// 										alert("잠시 후 다시 시도해 주세요.");
-// 									}//call back function//xhr : xml http request/response
-// 								});//ajax
 
 					</script>
 

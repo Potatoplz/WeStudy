@@ -27,6 +27,7 @@
 			<choose>
 				<when test="searchOption == 'study_name'">
 					where study_name like concat('%', #{searchWord}, '%')
+					 		or hashtag like concat('%', #{searchWord}, '%')
 				</when>
 			</choose>
 		</if>
@@ -59,7 +60,8 @@
 	<select id="applymember" parameterType="kr.co.westudy.study.StudyDTO" resultType="kr.co.westudy.study.StudyDTO">
 		select apply_id, study_id, member_id, member_nick, apply_content, accept_yn
 				from study_apply
-				where study_id = #{study_id};
+				where study_id = #{study_id}
+				order by apply_id desc;
 	</select>
 	
 	<select id="applylist" parameterType="kr.co.westudy.study.StudyDTO" resultType="kr.co.westudy.study.StudyDTO">
