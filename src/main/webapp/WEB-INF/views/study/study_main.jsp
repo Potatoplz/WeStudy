@@ -27,7 +27,7 @@
     <div class="row align-items-center" id="nav2">
             <div class="cardTitle">
             <div class="mb-3">
-                <h5 class="card-title">모집 리스트 <span class="text-muted fw-normal ms-2">(834)</span></h5>
+                <h5 class="card-title">모집 리스트 <span class="text-muted fw-normal ms-2">(40)</span></h5>
             </div>
         </div>
         <div class="cardWrite">

@@ -54,7 +54,8 @@
 		select study_id, study_team, study_name, study_type, recruit_cnt, study_onoff, study_city, view_cnt, 
 				start_date, end_date, study_content, study_writedate, study_state, member_id, member_nick, hashtag
 				from study_recruit
-				where member_id = #{member_id};
+				where member_id = #{member_id}
+				order by study_id desc;
 	</select>
 	
 	<select id="applymember" parameterType="kr.co.westudy.study.StudyDTO" resultType="kr.co.westudy.study.StudyDTO">
@@ -69,7 +70,8 @@
 				sr.start_date, sr.end_date, sr.study_content, sr.study_writedate, sr.study_state, sr.member_id, sr.member_nick,
 				sa.apply_content, sa.accept_yn, sr.hashtag
 				from study_recruit sr, study_apply sa
-				where sa.member_id = #{member_id} and sa.study_id = sr.study_id;
+				where sa.member_id = #{member_id} and sa.study_id = sr.study_id
+				order by study_id desc;
 	</select>
 	
 	<select id="acceptCnt" parameterType="kr.co.westudy.study.StudyDTO" resultType="int">

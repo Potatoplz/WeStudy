@@ -93,6 +93,7 @@
                                 <option value="노원구">노원구</option>
                                 <option value="도봉구">도봉구</option>
                                 <option value="동대문구">동대문구</option>
+                                <option value="마포구">마포구</option>
                                 <option value="서대문구">서대문구</option>
                                 <option value="서초구">서초구</option>
                                 <option value="성동구">성동구</option>
