@@ -105,6 +105,13 @@
 								지 도
 							</button>
 						</div>
+						<!-- 등록후삭제 -->
+						<div>
+							<button type="button" onclick="location.href='/cafe/write_page' " class="btn btn-warning"
+								style="background-color: coral;">
+								카페등록
+							</button>
+						</div>
 						<br><br>
 						<hr>
 
