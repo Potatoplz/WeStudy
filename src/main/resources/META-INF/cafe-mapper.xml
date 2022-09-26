@@ -41,20 +41,31 @@
 		</if>
 		</select>
 		
+		
+		
+		
+		
 		<select id="cafeList" parameterType="kr.co.westudy.cafe.CafeDTO"
 			resultType="kr.co.westudy.cafe.CafeDTO">
 		select cafe_id, cafe_name, post_code, cafe_addr1, cafe_addr2, open_time, close_time, cafe_img_name1, cafe_img_path1,
 		cafe_img_name2, cafe_img_path2, cafe_content1, cafe_content2, cafe_content3, cafe_category, cafe_oneline
     	from cafe 
 		<if test="cafe_category != null and cafe_category != ''">
-			and cafe_category = #{cafe_category}
+			where cafe_category = #{cafe_category}
 		</if>
 		<if test="cafe_addr2 != null and cafe_addr2 != ''">
-			and cafe_addr2 like concat('%', #{cafe_addr2}, '%')
+			where cafe_addr2 like concat('%', #{cafe_addr2}, '%')
 		</if>
 
 		order by cafe_id desc
 		</select>
+		
+		
+		
+		
+		
+		
+		
 		
 		
 		<select id="cafeListHome" parameterType="kr.co.westudy.cafe.CafeDTO"

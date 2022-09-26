@@ -50,8 +50,12 @@ public class CafeController {
 
     @GetMapping(value = "/cafe_list")
     public List<CafeDTO> list_cafe(CafeDTO dto) {
-        List<CafeDTO> list = null;
+       System.out.println("여기는 일반 컨트롤러 입니다." + dto);
+    	List<CafeDTO> list = null;
         list = service.cafeList(dto); //
+        System.out.println("==============================================");
+        System.out.println(dto);
+        System.out.println("==============================================");
         return list;// data 리턴
     }// cafe_list
     

@@ -182,7 +182,6 @@
 										+ "</div>"	
 											
 											
-											
 									);//append//+ "<div class='price'>2000원<span> / 시간</span></div>"
 								});//each
 							}//call back function
