@@ -76,10 +76,10 @@
                 <div class="menu">
 
                   <a class="study_R" href="${pageContext.request.contextPath}/study/main" >
-                    <div class="item" style="margin-left:20px;">스터디 모집</div>
+                    <div class="item" id="h-title" style="margin-left:20px;">스터디 모집</div>
                   </a>
                   <a href="${pageContext.request.contextPath}/cafe/list">
-                    <div class="item">스터디 카페</div>
+                    <div class="item" id="h-title">스터디 카페</div>
                   </a>
                   <div class="right">
                     <!-- <a href="/search"> -->

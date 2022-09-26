@@ -241,7 +241,7 @@
 									, success: function (result, status, xhr) {
 										if (result > 0) {
 											alert("스터디 모집이 마감 되었습니다.");
-											location.href = "${pageContext.request.contextPath}/study/main";
+											location.href = "${pageContext.request.contextPath}/study/detail?study_id=${study_id}";
 										}//if
 									}//success
 								});//ajax
