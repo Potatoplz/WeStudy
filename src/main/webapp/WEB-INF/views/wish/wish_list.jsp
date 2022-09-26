@@ -105,7 +105,7 @@
 						"${pageContext.request.contextPath}/study_rest/study_wish_list" 
 						, {}
 						, function (data, status) {
-							alert(JSON.stringify (data)); //데이터 확인용
+							//alert(JSON.stringify (data)); //데이터 확인용
 
 							$.each(data, function (index, dto) {
 								$("#cardboxnew").append(
