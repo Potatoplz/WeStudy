@@ -187,7 +187,6 @@
 											+ "<img class='pic-1' src=" + dto.cafe_img_path1 + ">"
 											+ "<img class='pic-2' src=" + dto.cafe_img_path2 + ">"
 											+ "</a>"	
-						                    + "<ul class='social'><li><a href=# data-tip='Quick View'><i class='fa fa-search'></i></a></li><li><a href=# data-tip='Add to Wishlist'><i class='fa fa-shopping-bag'></i></a></li><li><a href=# data-tip='Add to Cart'><i class='fa fa-shopping-cart'></i></a></li></ul>"
 											+ "<span class='product-new-label'>" + dto.cafe_category + "</span>"
 											+ "</div>"	
 											
