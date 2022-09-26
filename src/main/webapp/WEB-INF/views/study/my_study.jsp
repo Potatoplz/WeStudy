@@ -138,7 +138,7 @@
 							if(dto.accept_yn == '승인완료'){
 								str1 = 
 									str1 
-									+ "<td><span class='badge text-bg-warning'>" + dto.accept_yn + "</span></td>"
+									+ "<td><span class='badge text-bg-success'>" + dto.accept_yn + "</span></td>"
 									+ "<td>" + "<a href='/chat/room?roomId="+ dto.study_team + "'><button class='btn btn-info'>입장</button></a>" + "</td>"
 							} else if(dto.accept_yn == '승인거절') {
 								str1 = 

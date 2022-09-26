@@ -32,11 +32,11 @@
 					<c:forEach var="dto" items="${list}">
 						<tr>
 							<td style="width:15%;">
-								<input type="text" class="form-control" id="plan_start_time" name="plan_start_time"
+								<input type="time" class="form-control" id="plan_start_time" name="plan_start_time"
 										value="${dto.plan_start_time}" maxlength="20">
 							</td>
 							<td style="width:15%;">
-								<input type="text" class="form-control" id="plan_end_time" name="plan_end_time"
+								<input type="time" class="form-control" id="plan_end_time" name="plan_end_time"
 										value="${dto.plan_end_time}" maxlength="20">
 							</td>
 							<td style="width:35%;">
@@ -96,10 +96,10 @@
 			$("tbody").append(
 					'<tr>'
 					+ '<td style="width:15%;">'
-					+ '<input type="text" class="form-control" id="plan_start_time" name="plan_start_time" maxlength="20">'
+					+ '<input type="time" class="form-control" id="plan_start_time" name="plan_start_time" maxlength="20">'
 					+ '</td>'
 					+ '<td style="width:15%;">'
-					+ '<input type="text" class="form-control" id="plan_end_time" name="plan_end_time" maxlength="20">'
+					+ '<input type="time" class="form-control" id="plan_end_time" name="plan_end_time" maxlength="20">'
 					+ '</td>'
 					+ '<td style="width:40%;">'
 					+ '<input type="hidden" id="plan_no" name="plan_no" value="">'
