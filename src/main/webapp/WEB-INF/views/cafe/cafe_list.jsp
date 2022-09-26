@@ -26,7 +26,22 @@
 					<link rel="stylesheet" href="/resources/mdList/assets/css/owl.css">
 					<link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css"
 						type="text/css" />
-
+<style type="text/css">
+.btn-group2 {
+    position: relative;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    vertical-align: middle;
+    border: solid 1px #524c4c7d;
+        outline: none;
+    
+}
+.btn-group2 button {
+    border: solid 1px #524c4c7d;
+    border-left: none;
+        outline: none;
+}
+</style>
 				</head>
 
 				<body>
@@ -95,7 +110,7 @@
 							</div>
 						</div>
 
-						<div class="btn-group">
+						<div class="btn-group2" style="border:none;">
 							<input placeholder="날짜를 선택해 주세요" type="text" id="Date" name="Date">
 						</div>
 						
