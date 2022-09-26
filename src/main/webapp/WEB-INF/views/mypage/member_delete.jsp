@@ -127,8 +127,9 @@
 										if(data == 1){
 											alert("회원 탈퇴가 완료되었습니다.");
 											location.href="${pageContext.request.contextPath}/";
+											location.href="${pageContext.request.contextPath}/mypage/logout";
 										} else {
-											alert("잠시 후 다시 시도해 주세요.");
+											alert("비밀번호를 잘못 입력하셨습니다.");
 										}
 									}//call back function
 							);//post

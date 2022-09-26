@@ -27,6 +27,7 @@
 			<choose>
 				<when test="searchOption == 'study_name'">
 					where study_name like concat('%', #{searchWord}, '%')
+					 		or hashtag like concat('%', #{searchWord}, '%')
 				</when>
 			</choose>
 		</if>
