@@ -100,7 +100,7 @@ text-align:center;
                       </h5>
                       <td class="text-right">
                       	<fmt:formatNumber type="number" var="priceNum" value="${pay_info.total_amount}" />
-                        <h5><span id="pay_amount">${priceNum}</span></h5>
+                        <h5><span id="pay_amount">&#8361;${priceNum}</span></h5>
                         <br>
                     </tr>
 
