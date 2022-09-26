@@ -27,6 +27,7 @@ public class SearchDTO {
     private String cafe_oneline;
     private String cafe_category;
     private String reserve_id;
+    private String hashtag;
 
     private String room_id;
     private String max_people;
