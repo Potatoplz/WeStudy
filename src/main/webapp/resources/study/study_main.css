@@ -4,7 +4,7 @@
 	margin-bottom: 5px;
     font-size: 20px;
     padding-top: 5px;
-    padding-bottom: 28px;
+  padding-bottom: 16px;
 }
 
 
@@ -338,7 +338,7 @@ list-style:none;
       .feature-area .feature-box .feature-item .feature__title {
         font-size: 20px;
         font-weight: 700;
-        margin-bottom: 24px;
+            margin-bottom: 8px;
            margin-top: 13px;
         text-transform: capitalize; 
         }

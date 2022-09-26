@@ -135,7 +135,7 @@
 					<tr>
 						<th> 태그 </th>
 						<td colspan="3">
-							<input type="text" id="tag" name="tag" maxlength="20" class="form-control" placeholder="#갓생 #미라클모닝 #코딩" value="#갓생 #열공 #스터디">
+							<input type="text" id="tag" name="tag" maxlength="25" class="form-control" placeholder="#갓생 #미라클모닝 #코딩">
 						</td>
 					</tr>
 				</tbody>
