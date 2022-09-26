@@ -468,7 +468,7 @@
                     <!-- 예약시간 -->
                     <input type="hidden" name="reserve_count" id="reserve_count" required>
                     <!-- 방번호 -->
-                    <input type="hidden" name="room_id" id="room_id" value="${roomCount}" required>
+                    <input type="hidden" name="room_id" id="room_id" value="${dto.room_id}" required>
                     <br>
                     <br>
                     <!-- 예약일시 -->

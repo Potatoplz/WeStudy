@@ -74,7 +74,8 @@
         </div>
 
 </body>
-		
+<br><br><br><br><br><br><br>
+		<%@ include file="/WEB-INF/views/footer.jsp" %>
 		<!-- 개설한 스터디 불러오기 -->
 		<script type="text/javascript">
 		$(document).ready(function() {
