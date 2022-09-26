@@ -66,6 +66,8 @@
 									href="${pageContext.request.contextPath}/cafe/list?cafe_category=도봉구">도봉구</a>
 								<a class="dropdown-item" id="동대문구"
 									href="${pageContext.request.contextPath}/cafe/list?cafe_category=동대문구">동대문구</a>
+								<a class="dropdown-item" id="마포구"
+									href="${pageContext.request.contextPath}/cafe/list?cafe_category=동대문구">마포구</a>
 								<a class="dropdown-item" id="서대문구"
 									href="${pageContext.request.contextPath}/cafe/list?cafe_category=서대문구">서대문구</a>
 								<a class="dropdown-item" id="서초구"
