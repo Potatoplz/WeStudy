@@ -79,7 +79,6 @@
 		select count(accept_yn)
 		from study_apply
 		where accept_yn='승인완료' and study_id = #{study_id};
-
 	</select>
 	
 	<select id="chatlist" parameterType="kr.co.westudy.study.StudyDTO" resultType="kr.co.westudy.study.StudyDTO">
@@ -88,9 +87,6 @@
 		where sr.member_id=#{member_id} or sa.member_id=#{member_id} and (sr.study_id = sa.study_id and sa.accept_yn='승인완료')
 		group by study_team;
 	</select>
-	
-	
-	
 	
 	<update id="incrementViewCnt" parameterType="java.lang.String">
 		update study_recruit
@@ -131,19 +127,17 @@
 		where study_id = #{study_id}
 		</insert>
 
-		<select id="wishCheck" parameterType="kr.co.westudy.util.dto.SearchDTO" resultType="kr.co.westudy.util.dto.SearchDTO">
+	<select id="wishCheck" parameterType="kr.co.westudy.util.dto.SearchDTO" resultType="kr.co.westudy.util.dto.SearchDTO">
 		select *
 		from study_wish
 		where member_id = #{member_id} and study_id = #{study_id}
+	</select>
 
-		</select>
-
-		<delete id="wish_delete">
+	<delete id="wish_delete">
 		delete from study_wish
 		where study_wish_id=#{study_wish_id}
-		</delete>
+	</delete>
 
-	
 	<update id="applyY" parameterType="kr.co.westudy.study.StudyDTO">
 		update study_apply
 		set accept_yn = '승인완료'
@@ -155,6 +149,7 @@
 		set accept_yn = '승인거절'
 		where apply_id = #{apply_id} 
 	</update>
+	
 	<update id="recruit_close" parameterType="kr.co.westudy.study.StudyDTO">
 		update study_recruit
 		set study_state='모집마감'
@@ -167,11 +162,8 @@
 		s.start_date, s.end_date, s.study_content, s.study_writedate, s.study_state, s.member_id, s.member_nick, s.hashtag
 		
 		from study_recruit s, study_wish w 
-	
 		where w.member_id = #{member_id} and w.study_id = s.study_id
-	
 		order by study_wish_date desc
-		
-		</select>
+	</select>
 	
 </mapper>
