@@ -121,14 +121,10 @@
 			
 				    </div><!-- end container -->
 				  </section>
-        
-        
- <!-- 카드 종료 -->       
+ 		<!-- 카드 종료 -->       
     </div><!-- container -->
-
-
-		</body>
-		<%@ include file="/WEB-INF/views/footer.jsp" %>
+	</body>
+	<%@ include file="/WEB-INF/views/footer.jsp" %>
 		
 		<script type="text/javascript">
 		let limit_cnt = 0;
