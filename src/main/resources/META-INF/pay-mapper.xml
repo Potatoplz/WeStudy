@@ -5,8 +5,6 @@
 
 <mapper namespace="PayMapper">
 	
-	
-
 	<insert id="reserve" parameterType="kr.co.westudy.vo.KakaoPayApprovePrepareVO" useGeneratedKeys="true" keyProperty="reserve_id">
 		insert into reserve (member_id, member_nick, use_date, use_start_time, use_end_time, reserve_status, reserve_count,
 		room_id, cafe_id )

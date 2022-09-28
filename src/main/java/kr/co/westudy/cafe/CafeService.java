@@ -17,19 +17,19 @@ public class CafeService {
         List<CafeDTO> list = null;
         list = dao.cafeRoomList(cafe_id);
         return list;
-    }// detail - 필터링
+    }// cafeRoomList
     
     public List<CafeDTO> cafeDetail(String cafe_id) {
     	List<CafeDTO> list = null;
     	list = dao.cafeDetail(cafe_id);
     	return list;
-    }// detail - 필터링
+    }// cafeDetail
     
 	public int cafeRoomCount( String cafe_id ) {
 		int roomTotalCount= 0;
 		roomTotalCount = dao.cafeRoomCount(cafe_id);
     	return roomTotalCount;
-    }// detail - 필터링
+    }// cafeRoomCount
 
     public List<CafeDTO> cafeList(CafeDTO dto) {
         List<CafeDTO> list = null;
@@ -49,20 +49,20 @@ public class CafeService {
     	List<CafeDTO> list = null;
     	list = dao.cafeSelectList(dto);
     	return list;
-    }// list - 필터링
+    }// cafeSelectList - 필터링
     
     
     public List<CafeDTO> cafeReservList( String member_id ) {
     	List<CafeDTO> list = null;
     	list = dao.cafeReservList(member_id);
     	return list;
-    }// list - 필터링
+    }// cafeReservList
     
     public List<CafeDTO> cafeReservDetail( SearchDTO dto ) {
     	List<CafeDTO> list = null;
     	list = dao.cafeReservDetail(dto);
     	return list;
-    }// list - 필터링
+    }// cafeReservDetail
 
     public int write(CafeDTO dto) {
         int successCount = 0;
@@ -105,12 +105,12 @@ public class CafeService {
         int successCount = 0;
         successCount = dao.wish_delete(sDto);
         return successCount;
-    }// delete
+    }// wish_delete
 
     public List<SearchDTO> wishList(SearchDTO dto) {
         List<SearchDTO> list = null;
         list = dao.wishList(dto);
         return list;
-    }// list - 필터링
+    }// wishList
 
 }

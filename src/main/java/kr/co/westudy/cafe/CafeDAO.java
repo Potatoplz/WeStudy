@@ -21,6 +21,7 @@ public class CafeDAO {
 		list = sqlSession.selectList("CafeMapper.cafeRoomList", cafe_id);
 		return list;
 	}//RoomList - 필터링
+	
 	public List<CafeDTO> cafeDetail( String cafe_id ) {
 		List<CafeDTO> list = null;
 		list = sqlSession.selectList("CafeMapper.cafeDetail", cafe_id);
@@ -37,7 +38,7 @@ public class CafeDAO {
 		List<CafeDTO> list = null;
 		list = sqlSession.selectList("CafeMapper.cafeList", dto);
 		return list;
-	}//list - 필터링
+	}//list
 	
 	
 	public List<CafeDTO> cafeListHome( CafeDTO dto ) {
@@ -51,7 +52,7 @@ public class CafeDAO {
 		List<CafeDTO> list = null;
 		list = sqlSession.selectList("CafeMapper.cafeSelectList", dto);
 		return list;
-	}//list - 필터링
+	}//cafeSelectList
 	
 	public List<CafeDTO> cafeReservDetail( SearchDTO dto ) {
 		List<CafeDTO> list = null;
@@ -69,13 +70,13 @@ public class CafeDAO {
         int successCount = 0;
         successCount = sqlSession.insert("CafeMapper.writecafe", dto);
         return successCount;
-    }// write
+    }// writecafe
 
     public int writeroom(RoomDTO dto) {
         int successCount = 0;
         successCount = sqlSession.insert("CafeMapper.writeroom", dto);
         return successCount;
-    }// write
+    }// writeroom
    
 	public int wish_insert(SearchDTO dto) {
 		int successCount = 0;
@@ -99,6 +100,6 @@ public class CafeDAO {
 		List<SearchDTO> list = null;
 		list = sqlSession.selectList("CafeMapper.wishList", dto);
 		return list;
-	}// list - 필터링
+	}// wishList
 
 }
