@@ -3,6 +3,7 @@
 		<%@ page import="java.net.URLEncoder" %>
 			<%@ page import="java.security.SecureRandom" %>
 				<%@ page import="java.math.BigInteger" %>
+<%@ include file="/WEB-INF/views/header.jsp" %>
 
 					<!DOCTYPE html>
 					<html>
@@ -62,12 +63,16 @@
 							#input_file_label {
 								color: red;
 							}
-						
+						.container2{
+							    max-width: 1140px;
+					    		margin-left: 390px;
+					      		margin-top: 21px;
+					      		}
 						</style>
 					</head>
 
 					<body>
-						<div class="container" id="profilecontainer">
+						<div class="container2" id="profilecontainer">
 								<section class="col-9 h-100 bg-white float-left">
 									<hr>
 									<h3> 프로필 관리 </h3>
@@ -145,7 +150,6 @@
 							
 						</div><!-- container -->
 					</body>
-
 					<script>
 					
 					let checkedNICK = "";

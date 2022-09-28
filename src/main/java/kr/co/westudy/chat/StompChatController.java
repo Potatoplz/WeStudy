@@ -46,4 +46,12 @@ public class StompChatController {
 		System.out.println("보낸 메시지 : " + message.getMessage());
 		
 	}
+	
+	//클라이언트에서 /pub/chat/message 경로로 메시지를 보내는 요청을 하면 
+	//메시지 controller가 받아서 /sub/chat/room/roomid를 구독하고 있는 클라이언트에게 메시지를 전
+	
+	
+	
+	
+	
 }

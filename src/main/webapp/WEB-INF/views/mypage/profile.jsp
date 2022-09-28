@@ -53,8 +53,9 @@
 							}
 							.container2{
 							    max-width: 1140px;
-    margin-left: 600px;
-        margin-top: 21px;}
+					    		margin-left: 390px;
+					      		margin-top: 21px;
+					      		}
 						</style>
 					</head>
 
