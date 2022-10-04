@@ -5,7 +5,6 @@
 <br>
 
 <h2> 🧑‍🤝‍🧑 팀원과 역할 </h2>  
-![image](https://user-images.githubusercontent.com/90268447/187327053-a6bf526c-9633-418c-b552-352698a990d8.png)
 ![image](https://user-images.githubusercontent.com/90268447/193769549-9ff32f2a-6ff3-450e-9572-f6f0e67903a2.png)
 
 <br><br><br>
