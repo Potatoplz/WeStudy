@@ -6,7 +6,7 @@
 
 <h2> 🧑‍🤝‍🧑 팀원과 역할 </h2>  
 <img src=https://user-images.githubusercontent.com/90268447/193769549-9ff32f2a-6ff3-450e-9572-f6f0e67903a2.png width="90%"></img
-<br><br><br>
+<br><br>
 
 <h2> 💎 주요 기능 </h2>
 
