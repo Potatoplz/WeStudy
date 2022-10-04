@@ -9,6 +9,7 @@
 <br><br><br>
 
 <h2> 💎 주요 기능 </h2>
+
 <b>1. 네이버, 카카오 로그인</b>
 - API 적용, 기본 정보 불러오기
 
@@ -34,7 +35,7 @@
 <br><br>
 
 <h2> 🎥 시연 영상 </h2>
-https://www.youtube.com/watch?v=IeXZuWqRbac
+https://www.youtube.com/watch?v=wpBuRqvHxK4
 <br><br>
 
 <h2> 📃 최종발표 자료(PPT) </h2>
