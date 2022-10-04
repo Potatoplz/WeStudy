@@ -4,8 +4,8 @@
 <p>스터디 모집 & 스터디룸 예약 & 일정 관리를 한 번에<br> 
 <br>
 
-<h2> 🧑‍🤝‍🧑 팀원과 역할 </h2>
-![image](https://user-images.githubusercontent.com/90268447/193765228-aa398d49-14de-433f-9e96-e2dea3757bab.png)
+<h2> 🧑‍🤝‍🧑 팀원과 역할 </h2>  
+![image](https://user-images.githubusercontent.com/90268447/193765228-aa398d49-14de-433f-9e96-e2dea3757bab.png)  
 <br><br><br>
 
 <h2> 💎 주요 기능 </h2>
