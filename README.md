@@ -5,7 +5,9 @@
 <br>
 
 <h2> 🧑‍🤝‍🧑 팀원과 역할 </h2>  
-![image](https://user-images.githubusercontent.com/90268447/193765228-aa398d49-14de-433f-9e96-e2dea3757bab.png)  
+![image](https://user-images.githubusercontent.com/90268447/187327053-a6bf526c-9633-418c-b552-352698a990d8.png)
+![image](https://user-images.githubusercontent.com/90268447/193769549-9ff32f2a-6ff3-450e-9572-f6f0e67903a2.png)
+
 <br><br><br>
 
 <h2> 💎 주요 기능 </h2>
@@ -39,7 +41,8 @@ https://www.youtube.com/watch?v=wpBuRqvHxK4
 <br><br>
 
 <h2> 📃 최종발표 자료(PPT) </h2>
-https://spot-belt-aac.notion.site/WeStudy-58f57ba6f00b4b9a9cee3d6f42868dde
+https://spot-belt-aac.notion.site/WeStudy-58f57ba6f00b4b9a9cee3d6f42868dde <br>
+- 간트차트, 유스케이스, 메뉴구조도, ERD, 시퀀스 다이어그램, 코드 리뷰 등 정리
 <br><br>
 
 <h2> 💻 개발 환경 </h2>
