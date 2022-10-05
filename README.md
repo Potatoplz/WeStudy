@@ -34,8 +34,8 @@
 
 <br>
 
-<h2> 🎥 시연 영상 </h2>
-https://www.youtube.com/watch?v=wpBuRqvHxK4
+<h2> 🎥 발표 영상 </h2>
+https://youtu.be/K_FuXJfrNiU
 <br><br>
 
 <h2> 📃 최종발표 자료(PPT) </h2>
