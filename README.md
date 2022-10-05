@@ -38,6 +38,10 @@
 https://youtu.be/K_FuXJfrNiU
 <br><br>
 
+<h2> 🎥 시연 영상 </h2>
+https://youtu.be/wpBuRqvHxK4
+<br><br>
+
 <h2> 📃 최종발표 자료(PPT) </h2>
 https://spot-belt-aac.notion.site/WeStudy-58f57ba6f00b4b9a9cee3d6f42868dde <br>
 - 간트차트, 유스케이스, 메뉴구조도, ERD, 시퀀스 다이어그램, 코드 리뷰 등 정리
